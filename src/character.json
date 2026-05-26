@@ -1,0 +1,95 @@
+{
+    "data": {
+        "Page": {
+            "characters": [
+                {
+                    "id": 89028,
+                    "name": {
+                        "full": "Izuku Midoriya",
+                        "native": "\u7dd1\u8c37\u51fa\u4e45",
+                        "alternative": [
+                            "Deku (\u30c7\u30af)"
+                        ]
+                    },
+                    "image": {
+                        "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b89028-8w1I9o1ISHMg.png"
+                    },
+                    "description": "__Height:__ 166 cm (5'5\u00bc\")\n__Quirk:__ One For All\n\nStudent in Class 1-A at U.A High School.\n\nAlthough he was born without a Quirk, Izuku's innate heroism and strong sense of justice manages to catch the attention of the legendary hero [All Might](https://anilist.co/character/89224). Izuku has since become All Might's closest pupil.\n\nIzuku is a very timid, reserved, and polite boy. Although initially portrayed as insecure, tearful, and vulnerable, Izuku gradually matures into a more confident and braver person. His infectious leadership skills, combined with his passion and strategic abilities, have turned Izuku into a central figure of Class 1-A. He is caring and emotional, never hesitating to help or rescue someone in danger, even if he knows that he might not be strong or otherwise qualified enough to do it.\n\nIzuku is extremely (and sometimes scarily) enthusiastic about topics related to heroes. His dream drives him to write down notes about everything he learns about heroes' Quirks and fighting capabilities. Thanks to this practice, Izuku has developed a great analytical mind and can form complex battle plans in a few seconds, factoring in the best ways he can utilize the Quirks of allies and enemies alike for his own advantage.\n\nIzuku's Quirk \"One For All\" was transferred to him from All Might. His Quirk allows him to stockpile an enormous amount of raw power, allowing him to significantly enhance all of his physical abilities to various boundless levels. This results in unbelievable levels of strength, speed, stamina, agility, and durability. Izuku can focus the stockpiled power into a single body part, or spread it across his entire body evenly, though, focusing the power in a single part puts a greater strain on that part of his body.",
+                    "gender": "Male"
+                },
+                {
+                    "id": 36774,
+                    "name": {
+                        "full": "Deku",
+                        "native": "\u30c7\u30af",
+                        "alternative": []
+                    },
+                    "image": {
+                        "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b36774-eeokL0F1bdo1.png"
+                    },
+                    "description": "Staz's head enforcer in Eastern hell.",
+                    "gender": null
+                },
+                {
+                    "id": 250028,
+                    "name": {
+                        "full": "Deku",
+                        "native": "\u6728\u5076",
+                        "alternative": []
+                    },
+                    "image": {
+                        "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b250028-jYnmaBFDYDTI.png"
+                    },
+                    "description": null,
+                    "gender": null
+                },
+                {
+                    "id": 42532,
+                    "name": {
+                        "full": "Adeku",
+                        "native": "\u30a2\u30c7\u30af",
+                        "alternative": [
+                            "Alder"
+                        ]
+                    },
+                    "image": {
+                        "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/42532.jpg"
+                    },
+                    "description": "Alder is the champion of the Unova region. Alder made his debut in BW034 during a flashback of Trip's childhood. He was battling a Trainer in the middle of town with his Bouffalant as Trip spectated in awe. After the battle, the Champion approached the child and allowed him to pet and feed Bouffalant. He then inspired Trip to train hard when he got older, and the two shook hands.",
+                    "gender": null
+                },
+                {
+                    "id": 73007,
+                    "name": {
+                        "full": "Dekunobo",
+                        "native": null,
+                        "alternative": [
+                            "Dekunobu",
+                            "Dekunobou"
+                        ]
+                    },
+                    "image": {
+                        "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/73007.jpg"
+                    },
+                    "description": "Dekunobu watches over little Onimaro, and the two of them move into the Amatsu house. He offers his aid to the Amatsus and helps Mai and Ai whenever he can.",
+                    "gender": null
+                },
+                {
+                    "id": 346010,
+                    "name": {
+                        "full": "Hitode-kun",
+                        "native": "\u30d2\u30c8\u30c7\u304f\u3093",
+                        "alternative": [
+                            "Starfish"
+                        ]
+                    },
+                    "image": {
+                        "medium": "https://s4.anilist.co/file/anilistcdn/character/medium/b346010-yKR2SpOmeIIP.jpg"
+                    },
+                    "description": null,
+                    "gender": null
+                }
+            ]
+        }
+    }
+}

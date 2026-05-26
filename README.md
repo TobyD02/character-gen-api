@@ -1,0 +1,1 @@
+API reference for Anilist: https://docs.anilist.co/reference/object/character
