@@ -9,10 +9,8 @@ class CharacterProfileModel(BaseModel):
     model_config = ConfigDict(extra="ignore")
 
     id: int | None = None
+    character_id: int
 
-    page_id: int
-
-    name: str
     image_url: str
 
     categories: list[str]

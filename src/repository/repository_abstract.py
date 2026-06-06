@@ -1,7 +1,8 @@
 import os
-import sqlite3
 from abc import ABC
-from pathlib import Path
+
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 
 class RepositoryAbstract(ABC):
@@ -12,15 +13,15 @@ class RepositoryAbstract(ABC):
         if table_name:
             self.table_name = table_name
 
-        database_path = os.getenv("SQLITE_PATH")
-        if not database_path:
-            database_path = "./db.sqlite3"
+        database_url = os.getenv("DATABASE_URL")
+        if not database_url:
+            raise ValueError("DATABASE_URL is not set")
 
-        self.database_path = database_path
-        self.connection = sqlite3.connect(self.database_path)
-        self.connection.row_factory = sqlite3.Row
+        self.connection = psycopg2.connect(
+            database_url,
+        )
 
-        self.cursor = self.connection.cursor()
+        self.cursor = self.connection.cursor(cursor_factory=RealDictCursor)
 
     def close(self) -> None:
         self.connection.close()

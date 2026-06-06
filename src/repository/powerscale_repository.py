@@ -1,5 +1,6 @@
 import os
 
+from src.model.character_power_scale_model import CharacterPowerScaleModel
 from src.repository.repository_abstract import RepositoryAbstract
 
 
@@ -9,15 +10,20 @@ class PowerScaleRepository(RepositoryAbstract):
 
     def get_by_label(self, label: str):
         self.cursor.execute(
-            "SELECT * FROM powerscale WHERE label = ?",
+            "SELECT * FROM powerscale WHERE label = %s",
             (label,)
         )
-        return self.cursor.fetchone()
+        result = self.cursor.fetchone()
+
+        if not result:
+            return None
+
+        return CharacterPowerScaleModel.model_validate(result)
 
     def insert(self, tier: float, label: str, name: str):
         self.cursor.execute("""
-            INSERT OR IGNORE INTO powerscale (tier, label, name)
-            VALUES (?, ?, ?)
+            INSERT INTO powerscale (tier, label, name)
+            VALUES (%s, %s, %s)
         """, (tier, label, name))
 
         self.connection.commit()

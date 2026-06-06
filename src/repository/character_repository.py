@@ -1,7 +1,4 @@
-import os
-from pathlib import Path
-
-from src.model.character_profile_model import CharacterProfileModel
+from src.model.character_model import CharacterModel
 from src.repository.repository_abstract import RepositoryAbstract
 
 
@@ -9,87 +6,29 @@ class CharacterRepository(RepositoryAbstract):
     def __init__(self):
         super().__init__("character")
 
-    def insert(self, character: CharacterProfileModel, powerscale_id: int):
-        self.cursor.execute(
-            """
-            INSERT INTO character_profile (page_id,
-                                           name,
-                                           image,
-                                           description,
-                                           powerscale_id,
-                                           html_colour_hex)
-            VALUES (:page_id,
-                    :name,
-                    :image,
-                    :description,
-                    :powerscale_id,
-                    :html_colour_hex)
-            """, {
-                "page_id": character.page_id,
-                "name": character.name,
-                "image": character.image_url,
-                "description": character.description,
-                "powerscale_id": powerscale_id,
-                "html_colour_hex": character.html_colour_hex
-            })
+    def insert(self, page_id: int, name: str) -> int:
+        # 2. create stub record
+        self.cursor.execute("""
+            INSERT INTO character (
+                page_id,
+                name
+            )
+            VALUES (%s, %s)
+            RETURNING character_id
+        """, (page_id, name))
 
         self.connection.commit()
-        return self.cursor.lastrowid
+        return self.cursor.fetchone()[0]
 
-    def _build_character_model(self, row_data: dict):
-        row_data["image_url"] = row_data.pop("image")
-        row_data["categories"] = []
-        row_data["special_abilities"] = []
-        row_data["powerscale"] = None
-
-        return CharacterProfileModel.model_validate(row_data)
-
-    def select_by_id(self, id: int) -> int | None:
-        self.cursor.execute(
-            """
+    def select(self, character_id: int):
+        # 1. try find
+        self.cursor.execute("""
             SELECT *
-            FROM character_profile
-            WHERE id = :id
-            """,
-            {"id": id}
-        )
+            FROM character
+            WHERE character_id = %s
+            """, (character_id,))
 
         row = self.cursor.fetchone()
-        if row is None:
-            return None
+        if row:
+            return CharacterModel.model_validate(row)
 
-        return row["id"]
-
-
-    def select_by_name(self, name: str) -> int | None:
-        self.cursor.execute(
-            """
-            SELECT id
-            FROM character_profile
-            WHERE name = :name
-            """,
-            {"name": name}
-        )
-
-        row = self.cursor.fetchone()
-        if row is None:
-            return None
-
-        return row["id"]
-
-
-    def select_by_page_id(self, page_id: int) -> int | None:
-        self.cursor.execute(
-            """
-            SELECT id
-            FROM character_profile
-            WHERE page_id = :page_id
-            """,
-            {"page_id": page_id}
-        )
-
-        row = self.cursor.fetchone()
-        if row is None:
-            return None
-
-        return row["id"]

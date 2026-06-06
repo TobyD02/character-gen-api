@@ -6,4 +6,4 @@ COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["uvicorn", "--port", "80", "--host", "0.0.0.0", "public.index:app"]
+ENTRYPOINT ["uvicorn", "--reload", "--port", "80", "--host", "0.0.0.0", "public.index:app"]

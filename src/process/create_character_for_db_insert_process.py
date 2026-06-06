@@ -28,10 +28,9 @@ class CreateCharacterForDbInsertProcess(ProcessAbstract):
     #         html_colour_hex=ollama_character_definition_model.html_colour_hex,
     #     )
 
-    def execute(self, name: str, image_url: str, powerscaling: CharacterPowerScaleModel, page_id: int, categories: list[str], ollama_character_definition_model: OllamaCharacterDefinitionModel):
+    def execute(self, character_id: int, image_url: str, powerscaling: CharacterPowerScaleModel, categories: list[str], ollama_character_definition_model: OllamaCharacterDefinitionModel):
         return CharacterProfileModel(
-            page_id=page_id,
-            name=name,
+            character_id=character_id,
             image_url=image_url,
             categories=categories,
             description=ollama_character_definition_model.description,

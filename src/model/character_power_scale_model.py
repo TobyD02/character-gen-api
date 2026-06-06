@@ -71,6 +71,7 @@ character_power_scale_data = [
 ]
 
 class CharacterPowerScaleModel(BaseModel):
+    powerscale_id: int | None = None
     tier: float
     label: str
     name: str
