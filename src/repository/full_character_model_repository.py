@@ -3,22 +3,19 @@ import sqlite3
 
 from src.model.character_profile_model import CharacterProfileModel
 from src.model.character_power_scale_model import CharacterPowerScaleModel
+from src.repository.repository_abstract import RepositoryAbstract
 
 
-class FullCharacterModelRepository:
+class FullCharacterModelRepository(RepositoryAbstract):
     def __init__(self):
-        db_path = os.getenv("SQLITE_PATH") or "./db.sqlite3"
-
-        self.connection = sqlite3.connect(db_path)
-        self.connection.row_factory = sqlite3.Row
-        self.cursor = self.connection.cursor()
+        super().__init__()
 
     def select(self, character_id: int) -> CharacterProfileModel:
         self.cursor.execute("""
                             SELECT *
                             FROM character_profile
-                            WHERE id = :id
-                            """, {"id": character_id})
+                            WHERE character_id = %s
+                            """, (character_id))
 
         character = self.cursor.fetchone()
         if not character:

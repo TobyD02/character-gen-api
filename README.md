@@ -1,5 +1,8 @@
 ## Running
 
+- **This has been updated - now ollama exists in the docker compose. It may be quicker to run locally and set ollama_url
+  to host.docker.internal instead.**
+
 ```shell
 ollama pull gemma4:e4b
 ollama serve
@@ -21,5 +24,5 @@ docker compose up --build
     - For each, literally just serialise a character name and page id. Once all have been fetched, all queries happen
       via the database - and character models are generated on when and if they are needed.
     - Will require updating the database - since on a search, nothing is serialised into the database.
-      - Perhaps a basic model that is just "Character" -> (id, pageid, name). 
-      - This then links to a character profile etc....
+        - Perhaps a basic model that is just "Character" -> (id, pageid, name).
+        - This then links to a character profile etc....

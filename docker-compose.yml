@@ -5,13 +5,35 @@ services:
       dockerfile: docker/api.Dockerfile
     environment:
       DATABASE_URL: "postgresql://postgres:postgres@db:5432/app"
-      OLLAMA_URL: "http://host.docker.internal:11434"
+      OLLAMA_URL: "http://ollama:11434"
     ports:
       - "80:80"
     volumes:
       - .:/app
       - api_db:/data
 
+  ollama:
+    image: ollama/ollama
+    volumes:
+      - ollama:/root/.ollama
+
+    entrypoint:
+      - sh
+      - -c
+      - |
+        ollama serve &
+        pid=$!
+
+        echo "Waiting for Ollama..."
+        until ollama list >/dev/null 2>&1; do
+          sleep 1
+        done
+
+        echo "Pulling gemma4:e4b..."
+        ollama pull gemma4:e4b
+
+        echo "Model ready"
+        wait $pid
 
   scraper:
     build:
@@ -40,3 +62,4 @@ services:
 volumes:
   api_db:
   pg_data:
+  ollama:
