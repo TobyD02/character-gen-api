@@ -65,9 +65,16 @@ class OllamaGenerateCharacterProcess(ProcessAbstract):
 
         self.client = ollama.Client(host)
 
+        model = os.getenv("OLLAMA_MODEL")
+        if not model:
+            model = "gemma4:e4b"
+
+        self.model = model
+
+
     def execute(self, description: str) -> OllamaCharacterDefinitionModel:
         response = self.client.chat(
-            model='gemma4:e4b',
+            model=self.model,
             messages=[
                 {
                     'role': 'user',

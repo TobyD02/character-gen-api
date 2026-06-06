@@ -9,11 +9,11 @@ class CharacterProfileRepository(RepositoryAbstract):
     def __init__(self):
         super().__init__("character_profile")
 
-    def insert(self, character: CharacterProfileModel, powerscale_id: int):
+    def insert(self, character: CharacterProfileModel):
         self.cursor.execute("""
             INSERT INTO character_profile (
                 character_id,
-                image,
+                image_url,
                 description,
                 powerscale_id,
                 html_colour_hex
@@ -24,7 +24,7 @@ class CharacterProfileRepository(RepositoryAbstract):
                 character.character_id,
                 character.image_url,
                 character.description,
-                powerscale_id,
+                character.powerscale_id,
                 character.html_colour_hex
             ))
 

@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS powerscale
 CREATE TABLE IF NOT EXISTS character_profile
 (
     character_profile_id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    character_id         INTEGER REFERENCES character (character_id),
-    image                TEXT,
+    character_id         INTEGER NOT NULL UNIQUE REFERENCES character (character_id),
+    image_url               TEXT,
     description          TEXT,
     powerscale_id        INTEGER,
     html_colour_hex      TEXT
@@ -43,4 +43,15 @@ CREATE TABLE IF NOT EXISTS character_category
     FOREIGN KEY (category_id)
         REFERENCES category (category_id)
         ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS character_special_ability
+(
+    character_id INTEGER NOT NULL REFERENCES character(character_id),
+    name TEXT NOT NULL,
+    description TEXT NOT NULL,
+    special_ability_emoji TEXT NOT NULL,
+
+    CONSTRAINT uq_character_special_ability_character_name
+    UNIQUE(character_id, name)
 );

@@ -1,4 +1,5 @@
-from src.model.character_profile_model import CharacterProfileModel
+from src.repository.character_special_ability_repository import CharacterSpecialAbilityRepository
+from src.model.character_response_model import CharacterResponseModel
 from src.model.death_battle_fandom_query_response_model import DeathBattleFandomQueryResponseModel
 from src.process.create_character_for_db_insert_process import CreateCharacterForDbInsertProcess
 from src.process.extract_powerscaling_from_death_battle_query_response_process import \
@@ -19,6 +20,7 @@ from src.repository.character_repository import CharacterRepository
 class IndexController:
     def __init__(self):
         self.character_service = CharacterService(
+            CharacterSpecialAbilityRepository(),
             CharacterRepository(),
             CharacterSearchRepository(),
             FullCharacterModelRepository(),
@@ -39,6 +41,6 @@ class IndexController:
 
         return self.character_service.search_death_battle_fandom(character_name)
 
-    def post_character(self, character_id: int) -> CharacterProfileModel|None:
+    def post_character(self, character_id: int) -> CharacterResponseModel:
         # model = self.character_service.search_death_battle_fandom_with_page_id(page_id)
-        return self.character_service.generate_new_character(character_id)
+        return self.character_service.get_or_generate_character(character_id)

@@ -32,15 +32,8 @@ class CreateCharacterForDbInsertProcess(ProcessAbstract):
         return CharacterProfileModel(
             character_id=character_id,
             image_url=image_url,
-            categories=categories,
             description=ollama_character_definition_model.description,
             # Generated enrichment
-            special_abilities=[
-                ollama_character_definition_model.special_ability_1,
-                ollama_character_definition_model.special_ability_2,
-                ollama_character_definition_model.special_ability_3,
-                ollama_character_definition_model.special_ability_4,
-            ],
-            powerscale=powerscaling,
+            powerscale_id=powerscaling.powerscale_id,
             html_colour_hex=ollama_character_definition_model.html_colour_hex,
         )

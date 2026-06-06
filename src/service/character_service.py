@@ -1,3 +1,7 @@
+from src.model.character_model import CharacterModel
+from src.model.ollama_character_model import OllamaCharacterDefinitionModel
+from src.model.character_power_scale_model import CharacterPowerScaleModel
+from src.repository.character_special_ability_repository import CharacterSpecialAbilityRepository
 from src.model.character_profile_model import CharacterProfileModel
 from src.model.death_battle_fandom_query_response_model import DeathBattleFandomQueryResponseModel
 from src.process.create_character_for_db_insert_process import CreateCharacterForDbInsertProcess
@@ -14,22 +18,26 @@ from src.repository.powerscale_repository import PowerScaleRepository
 from src.service.service_abstract import ServiceAbstract
 from src.repository.character_search_repository import CharacterSearchRepository
 from src.repository.character_repository import CharacterRepository
+from src.model.character_response_model import CharacterResponseModel
+
 
 class CharacterService(ServiceAbstract):
     def __init__(
-        self,
-        character_repository: CharacterRepository,
-        character_search_repository: CharacterSearchRepository,
-        full_character_model_repository: FullCharacterModelRepository,
-        character_profile_repository: CharacterProfileRepository,
-        character_category_repository: CharacterCategoryRepository,
-        powerscale_repository: PowerScaleRepository,
-        ollama_generate_character_process: OllamaGenerateCharacterProcess,
-        create_character_for_db_insert_process: CreateCharacterForDbInsertProcess,
-        search_death_battle_fandom_wiki_process: SearchDeathBattleFandomWikiProcess,
-        fetch_and_parse_search_death_battle_fandom_wiki_process: FetchAndParseDeathBattleFandomWikiPageContentProcess,
-        extract_powerscaling_from_death_battle_query_response_process: ExtractPowerscalingFromDeathBattleQueryResponseProcess,
+            self,
+            character_special_ability_repository: CharacterSpecialAbilityRepository,
+            character_repository: CharacterRepository,
+            character_search_repository: CharacterSearchRepository,
+            full_character_model_repository: FullCharacterModelRepository,
+            character_profile_repository: CharacterProfileRepository,
+            character_category_repository: CharacterCategoryRepository,
+            powerscale_repository: PowerScaleRepository,
+            ollama_generate_character_process: OllamaGenerateCharacterProcess,
+            create_character_for_db_insert_process: CreateCharacterForDbInsertProcess,
+            search_death_battle_fandom_wiki_process: SearchDeathBattleFandomWikiProcess,
+            fetch_and_parse_search_death_battle_fandom_wiki_process: FetchAndParseDeathBattleFandomWikiPageContentProcess,
+            extract_powerscaling_from_death_battle_query_response_process: ExtractPowerscalingFromDeathBattleQueryResponseProcess,
     ):
+        self.character_special_ability_repository: CharacterSpecialAbilityRepository = character_special_ability_repository
         self.character_repository: CharacterRepository = character_repository
         self.character_search_repository: CharacterSearchRepository = character_search_repository
         self.full_character_model_repository: FullCharacterModelRepository = full_character_model_repository
@@ -64,11 +72,18 @@ class CharacterService(ServiceAbstract):
         except Exception as e:
             raise e
 
-    def generate_new_character(self, character_id: int) -> CharacterProfileModel:
+    def get_or_generate_character(self, character_id: int) -> CharacterResponseModel:
         try:
             character = self.character_repository.select(character_id)
         except Exception as e:
             raise e
+
+        # Check if character profile exists, in which case return it.30259
+        try:
+            return self.full_character_model_repository.select(character)
+        except Exception as e:
+            print(f"Failed to find exising character profile, generating new one: {e}", flush=True)
+            pass
 
         try:
             model_with_tags = self.search_death_battle_fandom_with_page_id(character.page_id)
@@ -95,7 +110,7 @@ class CharacterService(ServiceAbstract):
             raise e
 
         # generate character model
-        character_profile =  self.create_character_for_db_insert_process.execute(
+        character_profile = self.create_character_for_db_insert_process.execute(
             character.character_id,
             model_with_tags.image_url,
             powerscaling,
@@ -103,33 +118,57 @@ class CharacterService(ServiceAbstract):
             ollama_result
         )
 
-        character_profile = self._insert_character(character_profile)
+        return self._insert_character(character, character_profile, powerscaling, model_with_tags, ollama_result)
 
-        return character_profile
 
-    def _insert_character(self, character: CharacterProfileModel):
+    def _insert_character(
+            self,
+            character: CharacterModel,
+            character_profile: CharacterProfileModel,
+            powerscaling: CharacterPowerScaleModel,
+            model_with_tags: DeathBattleFandomQueryResponseModel,
+            ollama_character_definition: OllamaCharacterDefinitionModel
+    ) -> CharacterResponseModel:
         # 1. Resolve powerscale
-        ps = self.powerscale_repository.get_by_label(character.powerscale.label)
+        powerscale = self.powerscale_repository.get_by_label(powerscaling.label)
 
-        if not ps:
+        if not powerscale:
             self.powerscale_repository.insert(
-                character.powerscale.tier,
-                character.powerscale.label,
-                character.powerscale.name
+                powerscaling.tier,
+                powerscaling.label,
+                powerscaling.name
             )
-            ps = self.powerscale_repository.get_by_label(character.powerscale.label)
+            powerscale = self.powerscale_repository.get_by_label(powerscaling.label)
 
-        powerscale_id = ps.powerscale_id
+        character_profile.powerscale_id = powerscale.powerscale_id
 
         # 2. Insert character
-        character_id = self.character_profile_repository.insert(character, powerscale_id)
+        character_profile_id = self.character_profile_repository.insert(character_profile)
 
         # 3. Insert categories
-        self.character_category_repository.insert_many(character_id, character.categories)
+        self.character_category_repository.insert_many(character.character_id, model_with_tags.categories)
 
-        character.id = character_id
-        return character
+        # 4. Insert special abilities
+        special_abilities = [
+            ollama_character_definition.special_ability_1,
+            ollama_character_definition.special_ability_2,
+            ollama_character_definition.special_ability_3,
+            ollama_character_definition.special_ability_4,
+        ]
+
+        self.character_special_ability_repository.insert_character_special_abilities(character.character_id, special_abilities)
 
 
-    def get_character(self, character_id: int):
+        character_profile.character_profile_id = character_profile_id
+        character_profile.powerscale_id = powerscale.powerscale_id
+
+        return CharacterResponseModel(
+            character=character,
+            character_profile=character_profile,
+            categories=model_with_tags.categories,
+            powerscale=powerscaling,
+            special_abilities=special_abilities
+        )
+
+    def _get_character(self, character_id: int):
         return self.full_character_model_repository.select(character_id)

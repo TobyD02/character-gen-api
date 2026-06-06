@@ -1,6 +1,6 @@
-GET http://localhost/Gogeta
+GET http://localhost/all might
 
 ###
 
-GET http://localhost/character/10517
+GET http://localhost/character/30259
 Content-Type: application/json

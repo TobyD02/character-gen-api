@@ -6,18 +6,9 @@ from src.model.ollama_character_model import OllamaSpecialAbilityModel
 
 
 class CharacterProfileModel(BaseModel):
-    model_config = ConfigDict(extra="ignore")
-
-    id: int | None = None
+    character_profile_id: int | None = None
     character_id: int
-
     image_url: str
-
-    categories: list[str]
-
     description: str = ""
-
-    # Generated enrichment
-    special_abilities: list[OllamaSpecialAbilityModel]
-    powerscale: CharacterPowerScaleModel
+    powerscale_id: int|None
     html_colour_hex: str
