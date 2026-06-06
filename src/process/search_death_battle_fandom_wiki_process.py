@@ -9,7 +9,7 @@ from src.process.process_abstract import ProcessAbstract
 
 class SearchDeathBattleFandomWikiProcess(ProcessAbstract):
     def __init__(self):
-        self.base_url_template = "https://vsbattles.fandom.com/api.php?ction=query&format=json&generator=search&gsrsearch={character_name}&gsrlimit=3&prop=categories|pageimages&cllimit=max&pithumbsize=400&pilimit=max"
+        self.base_url_template = "https://vsbattles.fandom.com/api.php?action=query&format=json&generator=search&gsrsearch={character_name}&gsrlimit=3&prop=categories|pageimages&cllimit=max&pithumbsize=400&pilimit=max"
         self.base_url_template_page_id = "https://vsbattles.fandom.com/api.php?action=query&format=json&pageids={page_id}&prop=categories|pageimages&cllimit=max&pithumbsize=400&pilimit=max"
 
     def execute(self, character_name: str) -> list[DeathBattleFandomQueryResponseModel]:
