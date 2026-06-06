@@ -1,3 +1,9 @@
+## Todo
+- [ ] Update special ability generation
+  - Special abilities should be extracted and linked to certain combative tags that are explicitly defined.
+  - This way - combat tags can be linked to gameplay features.
+  - i.e. some defensive tag could be linked to defensive special ability, etc...
+
 ## Running
 
 - **This has been updated - now ollama exists in the docker compose. It may be quicker to run locally and set ollama_url
