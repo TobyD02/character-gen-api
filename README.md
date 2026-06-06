@@ -1,1 +1,9 @@
-API reference for Anilist: https://docs.anilist.co/reference/object/character
+## Running
+
+```shell
+ollama serve
+```
+
+```shell
+docker compose up --build
+```

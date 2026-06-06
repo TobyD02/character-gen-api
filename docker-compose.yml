@@ -1,0 +1,16 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SQLITE_PATH: "/data/db.sqlite3"
+      OLLAMA_URL: "http://host.docker.internal:11434"
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+      - api_db:/data
+
+volumes:
+  api_db:

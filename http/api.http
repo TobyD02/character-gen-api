@@ -1,0 +1,6 @@
+GET http://localhost/Gogeta
+
+###
+
+GET http://localhost/character/4753512
+Content-Type: application/json
