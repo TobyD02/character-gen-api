@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ character.name }} — Combat Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --c-primary:   {{ character_profile.colour_primary }};
+      --c-secondary: {{ character_profile.colour_secondary }};
+      --c-tertiary:  {{ character_profile.colour_tertiary }};
+      --c-ice:   #7ecfea;
+      --c-fire:  #f97c2e;
+      --c-gold:  #d4a843;
+      --c-text:  #e8dfc8;
+      --c-dim:   #8a8070;
+      --card-w:  420px;
+      --card-h:  680px;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #04090d;
+      font-family: 'Rajdhani', sans-serif;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 40%, rgba(0,45,60,.5) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 60%, rgba(135,30,45,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── CARD ── */
+    .card {
+      width: var(--card-w);
+      height: var(--card-h);
+      position: relative;
+      border-radius: 18px;
+      cursor: default;
+      transform-style: preserve-3d;
+      transition: transform .1s ease-out;
+      animation: cardReveal 1.2s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    @keyframes cardReveal {
+      from { opacity:0; transform: translateY(60px) scale(.9) rotateX(8deg); }
+      to   { opacity:1; transform: translateY(0)   scale(1)  rotateX(0deg); }
+    }
+
+    .card-border {
+      position: absolute;
+      inset: -2px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--c-ice) 0%, var(--c-gold) 25%, var(--c-tertiary) 50%, var(--c-gold) 75%, var(--c-ice) 100%);
+      background-size: 300% 300%;
+      animation: shimmer 4s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0%,100% { background-position: 0% 50%; }
+      50%     { background-position: 100% 50%; }
+    }
+
+    .card-face {
+      position: absolute;
+      inset: 2px;
+      border-radius: 17px;
+      overflow: hidden;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--c-secondary);
+    }
+
+    /* ── HEADER ── */
+    .card-header {
+      position: relative;
+      padding: 14px 18px 10px;
+      background: linear-gradient(160deg, var(--c-primary) 0%, var(--c-secondary) 100%);
+      flex-shrink: 0;
+    }
+
+    .card-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, var(--c-ice), var(--c-gold), var(--c-fire));
+    }
+
+    .tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(212,168,67,.12);
+      border: 1px solid rgba(212,168,67,.4);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--c-gold);
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .tier-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--c-gold);
+      box-shadow: 0 0 6px var(--c-gold);
+    }
+
+    .card-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 15px;
+      font-weight: 900;
+      color: var(--c-text);
+      line-height: 1.2;
+      text-shadow: 0 0 20px rgba(126,207,234,.4);
+    }
+
+    .card-id {
+      font-size: 10px;
+      color: var(--c-dim);
+      letter-spacing: 2px;
+      margin-top: 2px;
+    }
+
+    /* ── IMAGE ── */
+    .image-zone {
+      position: relative;
+      height: 175px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .image-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, rgba(0,80,120,.7) 0%, rgba(0,45,60,.4) 45%, rgba(135,30,45,.4) 55%, rgba(80,5,20,.7) 100%);
+    }
+
+    .image-bg::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0; width: 45%;
+      background: radial-gradient(ellipse at left center, rgba(126,207,234,.25) 0%, transparent 70%);
+      animation: icePulse 3s ease-in-out infinite alternate;
+    }
+
+    .image-bg::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 0; bottom: 0; width: 45%;
+      background: radial-gradient(ellipse at right center, rgba(249,124,46,.25) 0%, transparent 70%);
+      animation: firePulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes icePulse  { from { opacity:.5; } to { opacity:1; } }
+    @keyframes firePulse { from { opacity:1;  } to { opacity:.5; } }
+
+    .image-split {
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(212,168,67,.6) 30%, rgba(212,168,67,.6) 70%, transparent);
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .image-split::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--c-gold);
+      box-shadow: 0 0 12px var(--c-gold);
+    }
+
+    .char-image {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      height: 165px;
+      width: auto;
+      object-fit: contain;
+      z-index: 3;
+      filter: drop-shadow(0 0 16px rgba(0,0,0,.8));
+    }
+
+    .palette-strip {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      display: flex;
+      z-index: 4;
+    }
+
+    .palette-strip div { flex: 1; opacity: .85; }
+
+    /* ── DESCRIPTION ── */
+    .card-desc {
+      padding: 9px 16px 8px;
+      font-size: 11px;
+      line-height: 1.5;
+      color: rgba(232,223,200,.75);
+      font-style: italic;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      flex-shrink: 0;
+    }
+
+    /* ── ABILITIES ── */
+    .abilities-label {
+      padding: 7px 16px 3px;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--c-gold);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    /* Scrollable list with fade-out at the bottom */
+    .abilities-list {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      /* Hide scrollbar visually but keep it functional */
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      /* Fade mask so cut-off content looks intentional */
+      -webkit-mask-image: linear-gradient(180deg, black 80%, transparent 100%);
+      mask-image: linear-gradient(180deg, black 80%, transparent 100%);
+    }
+
+    .abilities-list::-webkit-scrollbar { display: none; }
+
+    .ability {
+      position: relative;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 8px;
+      padding: 7px 10px 7px 36px;
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
+
+    .ability:hover {
+      background: rgba(255,255,255,.07);
+      border-color: rgba(212,168,67,.25);
+    }
+
+    .ability[data-target="self"]  { border-left: 2px solid var(--c-ice); }
+    .ability[data-target="other"] { border-left: 2px solid var(--c-fire); }
+    .ability[data-target="multi"] { border-left: 2px solid var(--c-tertiary); }
+
+    .ability-cost {
+      position: absolute;
+      left: 8px; top: 50%;
+      transform: translateY(-50%);
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      color: #04090d;
+    }
+
+    .ability[data-target="self"]  .ability-cost { background: var(--c-ice); }
+    .ability[data-target="other"] .ability-cost { background: var(--c-fire); }
+    .ability[data-target="multi"] .ability-cost { background: var(--c-tertiary); }
+
+    .ability-name {
+      font-size: 11px;
+      font-weight: 700;
+      font-family: 'Cinzel', serif;
+      color: var(--c-text);
+      letter-spacing: .5px;
+      margin-bottom: 1px;
+    }
+
+    .ability-desc {
+      font-size: 9.5px;
+      color: rgba(232,223,200,.55);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .ability-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .5px;
+      background: rgba(255,255,255,.06);
+      color: var(--c-dim);
+    }
+
+    .stat-pill.pos  { color: #6ed99a; }
+    .stat-pill.neg  { color: #e06060; }
+    .stat-pill.stun { color: var(--c-gold); background: rgba(212,168,67,.15); }
+    .stat-pill.rng  { color: var(--c-ice); }
+    .stat-pill.aoe  { color: var(--c-fire); }
+
+    /* ── FOOTER ── */
+    .card-footer {
+      position: relative;
+      padding: 7px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .card-footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, var(--c-fire), var(--c-gold), var(--c-ice));
+    }
+
+    .footer-tier span:first-child {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      color: var(--c-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-tier span:last-child {
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      color: var(--c-gold);
+    }
+
+    .el-icons { display: flex; gap: 6px; }
+
+    .el-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px;
+    }
+
+    .el-ice  { background: rgba(126,207,234,.15); border: 1px solid rgba(126,207,234,.4); }
+    .el-fire { background: rgba(249,124,46,.15);  border: 1px solid rgba(249,124,46,.4); }
+
+    .footer-id { font-size: 9px; color: var(--c-dim); letter-spacing: 2px; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <div class="card-border"></div>
+  <div class="card-face">
+
+    {# ── HEADER ── #}
+    <div class="card-header">
+      <div class="tier-badge">
+        <div class="tier-dot"></div>
+        {{ powerscale.label | upper | replace("_", "-") }}
+        &nbsp;·&nbsp;
+        {{ powerscale.name }}
+      </div>
+      <div class="card-name">{{ character.name }}</div>
+      <div class="card-id">ID #{{ character.character_id }}&nbsp;·&nbsp;PAGE #{{ character.page_id }}</div>
+    </div>
+
+    {# ── IMAGE ── #}
+    <div class="image-zone">
+      <div class="image-bg"></div>
+      <div class="image-split"></div>
+      <img class="char-image" src="{{ character_profile.image_url }}" alt="{{ character.name }}"/>
+      <div class="palette-strip">
+        <div style="background:{{ character_profile.colour_primary }}"></div>
+        <div style="background:{{ character_profile.colour_secondary }}"></div>
+        <div style="background:{{ character_profile.colour_tertiary }}"></div>
+        <div style="background:#7ecfea"></div>
+        <div style="background:#f97c2e"></div>
+      </div>
+    </div>
+
+    {# ── DESCRIPTION ── #}
+    <div class="card-desc">{{ character_profile.description }}</div>
+
+    {# ── ABILITIES ── #}
+    <div class="abilities-label">Special Abilities</div>
+    <div class="abilities-list">
+      {% for ab in special_abilities %}
+      <div class="ability" data-target="{{ ab.target }}">
+        <div class="ability-cost">{{ ab.cost }}</div>
+        <div class="ability-name">{{ ab.name }}</div>
+        <div class="ability-desc">{{ ab.description }}</div>
+        <div class="ability-stats">
+          {% if ab.health_add != 0 %}
+            <span class="stat-pill {{ 'pos' if ab.health_add > 0 else 'neg' }}">♥ {{ '+' if ab.health_add > 0 }}{{ ab.health_add }} HP</span>
+          {% endif %}
+          {% if ab.defense_add != 0 %}
+            <span class="stat-pill {{ 'pos' if ab.defense_add > 0 else 'neg' }}">🛡 {{ '+' if ab.defense_add > 0 }}{{ ab.defense_add }} DEF</span>
+          {% endif %}
+          {% if ab.movement_add != 0 %}
+            <span class="stat-pill {{ 'pos' if ab.movement_add > 0 else 'neg' }}">⚡ {{ '+' if ab.movement_add > 0 }}{{ ab.movement_add }} MOV</span>
+          {% endif %}
+          {% if ab.attack_power_add != 0 %}
+            <span class="stat-pill {{ 'pos' if ab.attack_power_add > 0 else 'neg' }}">⚔ {{ '+' if ab.attack_power_add > 0 }}{{ ab.attack_power_add }} ATK</span>
+          {% endif %}
+          {% if ab.range > 0 %}
+            <span class="stat-pill rng">↗ RNG {{ ab.range }}</span>
+          {% endif %}
+          {% if ab.area_of_effect > 1 %}
+            <span class="stat-pill aoe">◎ AoE {{ ab.area_of_effect }}</span>
+          {% endif %}
+          {% if ab.will_stun %}
+            <span class="stat-pill stun">⚡ STUN</span>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {# ── FOOTER ── #}
+    <div class="card-footer">
+      <div class="footer-tier">
+        <span>Power Scale</span>
+        <span>{{ powerscale.name }}</span>
+      </div>
+      <div class="el-icons">
+        <div class="el-icon el-ice">❄</div>
+        <div class="el-icon el-fire">🔥</div>
+      </div>
+      <div class="footer-id">#{{ character.character_id }}</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const card = document.getElementById('card');
+  document.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+    const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+    card.style.transform = `rotateY(${dx * 7}deg) rotateX(${-dy * 7}deg)`;
+  });
+  document.addEventListener('mouseleave', () => { card.style.transform = ''; });
+</script>
+</body>
+</html>

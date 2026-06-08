@@ -19,6 +19,11 @@ from src.repository.powerscale_repository import PowerScaleRepository
 from src.service.character_service import CharacterService
 from src.repository.character_repository import CharacterRepository
 
+from fastapi.templating import Jinja2Templates
+from fastapi import Request
+
+templates = Jinja2Templates(directory="templates")
+
 
 class IndexController:
     def __init__(self):
@@ -49,3 +54,16 @@ class IndexController:
     def post_character(self, character_id: int) -> CharacterResponseModel:
         # model = self.character_service.search_death_battle_fandom_with_page_id(page_id)
         return self.character_service.get_or_generate_character(character_id)
+
+    def render_character(self, request: Request, character_id: int):
+        character = self.character_service.get_or_generate_character(character_id)
+        return templates.TemplateResponse(
+            request=request, name="card.html.j2", context={
+                "character": character.character,
+                "character_profile": character.character_profile,
+                "special_abilities": character.special_abilities,
+                "categories": character.categories,
+                "powerscale": character.powerscale,
+            }
+        )
+
