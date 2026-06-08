@@ -1,9 +1,19 @@
 ## Todo
-- [ ] Update special ability generation
-  - Special abilities should be extracted and linked to certain combative tags that are explicitly defined.
-  - This way - combat tags can be linked to gameplay features.
-  - i.e. some defensive tag could be linked to defensive special ability, etc...
-
+- [ ] Combat Ideas
+  - Cannot guarantee that abilities be generated properly - i.e. attacks dont buff enemies, etc...
+  - Instead - what if characters have base attack, and abilities that buff their base stats
+    - i.e. boost attack damage, defense, recover hp
+    - These could be either buff or debuff - with debuff targetting foes and buff targetting allies
+    - for debuff - if target is set to self (for some reason) change to other
+    - all values are scalar - debuff implies negative, buff implies positive.
+  - Alternatively, could define enums for types of abilities
+    - i.e. heal, damage, buff, stun, slow, etc...
+    - Perhaps moves could be linked to an array of these (with a maximum number)
+    - Then - moves are given a base power which informs how powerful they are
+      - Perhaps the final cost is this power * number of effects they inflict
+  - Powerscale could be a buff for generate attack power/base stats etc...
+    - Could also inform the amount of 'mana' - i.e. how many points they can spend on moves per turn.
+ 
 ## Running
 
 - **This has been updated - now ollama exists in the docker compose. It may be quicker to run locally and set ollama_url
