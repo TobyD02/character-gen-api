@@ -1,6 +1,6 @@
 from src.model.character_response_model import CharacterResponseModel
 from src.model.character_model import CharacterModel
-from src.model.ollama_character_model import OllamaSpecialAbilityModel
+from src.model.character_special_ability_model import CharacterSpecialAbilityModel
 from src.model.character_profile_model import CharacterProfileModel
 from src.model.character_power_scale_model import CharacterPowerScaleModel
 from src.repository.repository_abstract import RepositoryAbstract
@@ -61,7 +61,7 @@ class FullCharacterModelRepository(RepositoryAbstract):
 
         csa = self.cursor.fetchall()
         print("Got Special Abilities", flush=True)
-        special_abilities = [OllamaSpecialAbilityModel.model_validate(i) for i in csa]
+        special_abilities = [CharacterSpecialAbilityModel.model_validate(i) for i in csa]
         print(f"Populated Special Abilities {special_abilities}", flush=True)
 
         return CharacterResponseModel(

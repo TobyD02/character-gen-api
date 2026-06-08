@@ -1,6 +1,6 @@
-GET http://localhost/all might
+GET http://localhost/vegeta
 
 ###
 
-GET http://localhost/character/30259
+GET http://localhost/character/14831
 Content-Type: application/json

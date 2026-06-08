@@ -15,15 +15,20 @@ class PowerScaleRepository(RepositoryAbstract):
         )
         result = self.cursor.fetchone()
 
+        print(result, flush=True)
+
         if not result:
             return None
 
         return CharacterPowerScaleModel.model_validate(result)
 
-    def insert(self, tier: float, label: str, name: str):
+    def insert(self, tier: float, label: str, name: str) -> int:
         self.cursor.execute("""
             INSERT INTO powerscale (tier, label, name)
             VALUES (%s, %s, %s)
+            RETURNING powerscale_id
         """, (tier, label, name))
 
         self.connection.commit()
+
+        return self.cursor.fetchone()["powerscale_id"]

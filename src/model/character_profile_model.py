@@ -11,4 +11,8 @@ class CharacterProfileModel(BaseModel):
     image_url: str
     description: str = ""
     powerscale_id: int|None
-    html_colour_hex: str
+
+    colour_primary: str|None
+    colour_secondary: str|None
+    colour_tertiary: str|None
+

@@ -28,12 +28,22 @@ class CreateCharacterForDbInsertProcess(ProcessAbstract):
     #         html_colour_hex=ollama_character_definition_model.html_colour_hex,
     #     )
 
-    def execute(self, character_id: int, image_url: str, powerscaling: CharacterPowerScaleModel, categories: list[str], ollama_character_definition_model: OllamaCharacterDefinitionModel):
+    def execute(
+        self,
+        character_id: int,
+        image_url: str,
+        powerscaling: CharacterPowerScaleModel,
+        categories: list[str],
+        ollama_character_definition_model: OllamaCharacterDefinitionModel,
+        colour_palette: dict[str, str]
+    ):
         return CharacterProfileModel(
             character_id=character_id,
             image_url=image_url,
             description=ollama_character_definition_model.description,
             # Generated enrichment
             powerscale_id=powerscaling.powerscale_id,
-            html_colour_hex=ollama_character_definition_model.html_colour_hex,
+            colour_primary=colour_palette["primary"] if "primary" in colour_palette else None,
+            colour_secondary=colour_palette["secondary"] if "secondary" in colour_palette else None,
+            colour_tertiary=colour_palette["tertiary"] if "tertiary" in colour_palette else None,
         )

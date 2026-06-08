@@ -16,16 +16,20 @@ class CharacterProfileRepository(RepositoryAbstract):
                 image_url,
                 description,
                 powerscale_id,
-                html_colour_hex
+                colour_primary,
+                colour_secondary,
+                colour_tertiary
             )
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
             RETURNING character_profile_id
             """, (
                 character.character_id,
                 character.image_url,
                 character.description,
                 character.powerscale_id,
-                character.html_colour_hex
+                character.colour_primary,
+                character.colour_secondary,
+                character.colour_tertiary
             ))
 
         self.connection.commit()

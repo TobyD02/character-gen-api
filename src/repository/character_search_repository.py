@@ -7,13 +7,19 @@ class CharacterSearchRepository(RepositoryAbstract):
         super().__init__("character")
 
     def search(self, query: str):
-        self.cursor.execute("""
+        pattern = f"%{query}%"
+        self.cursor.execute(
+            """
             SELECT character_id, page_id, name
             FROM character
             WHERE name ILIKE %s
-            ORDER BY name
-            LIMIT 10
-        """, (f"%{query}%",))
+               OR similarity(name, %s) > 0.3
+            ORDER BY similarity(name, %s) DESC,
+                     length(name) ASC
+            LIMIT 25;
+            """,
+            (pattern, query, query)
+        )
 
         results = self.cursor.fetchall()
 

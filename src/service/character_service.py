@@ -1,6 +1,10 @@
+from src.model.character_special_ability_model import CharacterSpecialAbilityModel
+from src.process.build_character_special_ability_from_generated_process import \
+    BuildCharacterSpecialAbilityFromGeneratedProcess
 from src.model.character_model import CharacterModel
-from src.model.ollama_character_model import OllamaCharacterDefinitionModel
+from src.model.ollama_character_model import OllamaCharacterDefinitionModel, OllamaSpecialAbilityModel
 from src.model.character_power_scale_model import CharacterPowerScaleModel
+from src.process.extract_domainant_colour_from_image_url_process import ExtractDominantColourFromImageUrlProcess
 from src.repository.character_special_ability_repository import CharacterSpecialAbilityRepository
 from src.model.character_profile_model import CharacterProfileModel
 from src.model.death_battle_fandom_query_response_model import DeathBattleFandomQueryResponseModel
@@ -24,6 +28,8 @@ from src.model.character_response_model import CharacterResponseModel
 class CharacterService(ServiceAbstract):
     def __init__(
             self,
+            extract_dominant_colour_from_image_url_process: ExtractDominantColourFromImageUrlProcess,
+            build_character_special_ability_from_generated_process: BuildCharacterSpecialAbilityFromGeneratedProcess,
             character_special_ability_repository: CharacterSpecialAbilityRepository,
             character_repository: CharacterRepository,
             character_search_repository: CharacterSearchRepository,
@@ -37,6 +43,10 @@ class CharacterService(ServiceAbstract):
             fetch_and_parse_search_death_battle_fandom_wiki_process: FetchAndParseDeathBattleFandomWikiPageContentProcess,
             extract_powerscaling_from_death_battle_query_response_process: ExtractPowerscalingFromDeathBattleQueryResponseProcess,
     ):
+        self.extract_dominant_colour_from_image_url_process: ExtractDominantColourFromImageUrlProcess = \
+            extract_dominant_colour_from_image_url_process
+        self.build_character_special_ability_from_generated_process: BuildCharacterSpecialAbilityFromGeneratedProcess = \
+            build_character_special_ability_from_generated_process
         self.character_special_ability_repository: CharacterSpecialAbilityRepository = character_special_ability_repository
         self.character_repository: CharacterRepository = character_repository
         self.character_search_repository: CharacterSearchRepository = character_search_repository
@@ -104,10 +114,21 @@ class CharacterService(ServiceAbstract):
         except Exception as e:
             raise e
 
+        # Generate special abilities and description
+        # @todo: Filter character categories, and use select categories to inform special abilities
         try:
-            ollama_result = self.ollama_generate_character_process.execute(description)
+            ollama_result = self.ollama_generate_character_process.execute(description, model_with_tags.categories)
         except Exception as e:
             raise e
+
+        special_ability_models = self.build_character_special_ability_from_generated_process.execute([
+            ollama_result.special_ability_1,
+            ollama_result.special_ability_2,
+            ollama_result.special_ability_3,
+            ollama_result.special_ability_4,
+        ])
+
+        color_palette = self.extract_dominant_colour_from_image_url_process.execute(model_with_tags.image_url)
 
         # generate character model
         character_profile = self.create_character_for_db_insert_process.execute(
@@ -115,10 +136,11 @@ class CharacterService(ServiceAbstract):
             model_with_tags.image_url,
             powerscaling,
             model_with_tags.categories,
-            ollama_result
+            ollama_result,
+            color_palette
         )
 
-        return self._insert_character(character, character_profile, powerscaling, model_with_tags, ollama_result)
+        return self._insert_character(character, character_profile, powerscaling, model_with_tags, ollama_result, special_ability_models)
 
 
     def _insert_character(
@@ -127,7 +149,8 @@ class CharacterService(ServiceAbstract):
             character_profile: CharacterProfileModel,
             powerscaling: CharacterPowerScaleModel,
             model_with_tags: DeathBattleFandomQueryResponseModel,
-            ollama_character_definition: OllamaCharacterDefinitionModel
+            ollama_character_definition: OllamaCharacterDefinitionModel,
+            special_abilities: list[CharacterSpecialAbilityModel]
     ) -> CharacterResponseModel:
         # 1. Resolve powerscale
         powerscale = self.powerscale_repository.get_by_label(powerscaling.label)
@@ -148,14 +171,6 @@ class CharacterService(ServiceAbstract):
         # 3. Insert categories
         self.character_category_repository.insert_many(character.character_id, model_with_tags.categories)
 
-        # 4. Insert special abilities
-        special_abilities = [
-            ollama_character_definition.special_ability_1,
-            ollama_character_definition.special_ability_2,
-            ollama_character_definition.special_ability_3,
-            ollama_character_definition.special_ability_4,
-        ]
-
         self.character_special_ability_repository.insert_character_special_abilities(character.character_id, special_abilities)
 
 
@@ -166,9 +181,6 @@ class CharacterService(ServiceAbstract):
             character=character,
             character_profile=character_profile,
             categories=model_with_tags.categories,
-            powerscale=powerscaling,
+            powerscale=powerscale,
             special_abilities=special_abilities
         )
-
-    def _get_character(self, character_id: int):
-        return self.full_character_model_repository.select(character_id)

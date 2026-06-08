@@ -5,10 +5,10 @@ from src.model.death_battle_fandom_query_response_model import DeathBattleFandom
 
 
 def register_routes(app: FastAPI):
-    @app.get("/{character_name}")
+    @app.get("/api/search/{character_name}")
     async def get_search(character_name: str):
         return IndexController().get_search(character_name)
 
-    @app.get("/character/{page_id}")
+    @app.get("/api/character/{page_id}")
     async def post_character(page_id: int):
         return IndexController().post_character(page_id)

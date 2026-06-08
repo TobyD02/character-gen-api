@@ -1,3 +1,6 @@
+from src.process.build_character_special_ability_from_generated_process import \
+    BuildCharacterSpecialAbilityFromGeneratedProcess
+from src.process.extract_domainant_colour_from_image_url_process import ExtractDominantColourFromImageUrlProcess
 from src.repository.character_special_ability_repository import CharacterSpecialAbilityRepository
 from src.model.character_response_model import CharacterResponseModel
 from src.model.death_battle_fandom_query_response_model import DeathBattleFandomQueryResponseModel
@@ -20,6 +23,8 @@ from src.repository.character_repository import CharacterRepository
 class IndexController:
     def __init__(self):
         self.character_service = CharacterService(
+            ExtractDominantColourFromImageUrlProcess(),
+            BuildCharacterSpecialAbilityFromGeneratedProcess(),
             CharacterSpecialAbilityRepository(),
             CharacterRepository(),
             CharacterSearchRepository(),
