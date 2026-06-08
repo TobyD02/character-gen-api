@@ -107,7 +107,7 @@ class OllamaGenerateCharacterProcess(ProcessAbstract):
         completed_prompt = self.PROMPT_PREFIX + description  # + f"categories: [{','.join(categories)}]"
         print("Generating...", flush=True)
         response = self.client.chat(
-            model="gemma4:12b",
+            model=self.model,
             messages=[
                 {
                     'role': 'user',
