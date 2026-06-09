@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Cosmic Battle Simulator - Tier Scaled</title>
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --text-color: #c5c6c7;
+            --panel-bg: #1f2833;
+            --alpha-color: #ff4757;
+            --omega-color: #1e90ff;
+            --accent-color: #66fcf1;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        h1 {
+            color: var(--accent-color);
+            text-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+            margin: 0 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 1.8em;
+        }
+        #status {
+            color: #45a29e;
+            font-size: 1em;
+            margin-bottom: 15px;
+            height: 20px;
+            font-weight: bold;
+        }
+
+        .battle-container {
+            display: grid;
+            grid-template-columns: 250px 700px 250px;
+            gap: 15px;
+            max-width: 1250px;
+            width: 100%;
+        }
+
+        .roster-panel {
+            background-color: var(--panel-bg);
+            border: 2px solid #334155;
+            border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            height: 500px;
+            overflow-y: auto;
+        }
+        .roster-panel.alpha { border-color: var(--alpha-color); }
+        .roster-panel.omega { border-color: var(--omega-color); }
+
+        .panel-title {
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #334155;
+            font-size: 1.1em;
+        }
+        .alpha .panel-title { color: var(--alpha-color); }
+        .omega .panel-title { color: var(--omega-color); }
+
+        .roster-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.2);
+            padding: 6px;
+            border-radius: 4px;
+            font-size: 0.82em;
+            border-left: 3px solid transparent;
+        }
+        .roster-row.dead { opacity: 0.3; filter: grayscale(100%); }
+
+        .roster-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            overflow: hidden;
+            border: 1px solid #555;
+            flex-shrink: 0;
+        }
+        .roster-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .roster-info { flex-grow: 1; min-width: 0; }
+        .roster-meta { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 2px; }
+        .char-name-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 110px;}
+        .status-tag { font-size: 0.8em; text-transform: uppercase; flex-shrink: 0; }
+        .status-tag.healthy { color: #2ed573; }
+        .status-tag.danger { color: #ffa502; }
+        .status-tag.dead { color: #ff4757; }
+        .powerscale-lbl { font-size: 0.75em; color: #a4b0be; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+        .powerscale-num { font-size: 0.8em; color: var(--accent-color); font-weight: bold;}
+
+        .mini-hp-bg { background: #333; height: 6px; border-radius: 3px; overflow: hidden; }
+        .mini-hp-bar { height: 100%; width: 100%; transition: width 0.2s; }
+
+        .center-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        canvas {
+            background-color: #11161d;
+            border: 2px solid #45a29e;
+            border-radius: 8px;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .board-panel {
+            background-color: var(--panel-bg);
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 12px;
+            box-sizing: border-box;
+            height: 160px;
+        }
+        .board-panel h3 {
+            margin: 0 0 8px 0;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            border-bottom: 1px solid #334155;
+            padding-bottom: 4px;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+        .leaderboard-table th { text-align: left; color: #8892b0; font-weight: normal; padding-bottom: 3px;}
+        .leaderboard-table td { padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .stat-val { font-weight: bold; text-align: right; color: #fff;}
+        .team-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 5px; }
+
+        #combat-log {
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.85em;
+            padding-right: 5px;
+            height: 115px;
+        }
+        .log-line { margin-bottom: 4px; line-height: 1.3; border-bottom: 1px solid rgba(255,255,255,0.02); padding-bottom: 2px;}
+        .log-fighter { font-weight: bold; }
+        .log-skill { color: #e9b32a; font-style: italic; }
+        .log-sys { color: var(--accent-color); }
+    </style>
+</head>
+<body>
+
+<h1>Cosmic Nexus Arena</h1>
+<div id="status">Syncing dimensional parameters...</div>
+
+<div class="battle-container">
+    <div class="roster-panel alpha" id="alpha-panel">
+        <div class="panel-title" id="left-panel-title">Team Alpha</div>
+        <div id="alpha-rows"></div>
+    </div>
+
+    <div class="center-column">
+        <canvas id="arenaCanvas" width="700" height="500"></canvas>
+    </div>
+
+    <div class="roster-panel omega" id="omega-panel">
+        <div class="panel-title" id="right-panel-title">Team Omega</div>
+        <div id="omega-rows"></div>
+    </div>
+</div>
+
+<div class="dashboard-grid">
+    <div class="board-panel">
+        <h3>🏆 Live Performance MVP Leaderboard</h3>
+        <table class="leaderboard-table">
+            <thead>
+            <tr>
+                <th>Category</th>
+                <th>Combatant (Tier)</th>
+                <th style="text-align: right;">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>⚔️ Highest Damage Dealt</td>
+                <td id="mvp-dmg-name">--</td>
+                <td id="mvp-dmg-val" class="stat-val">0</td>
+            </tr>
+            <tr>
+                <td>❤️ Top Restoration Healing</td>
+                <td id="mvp-heal-name">--</td>
+                <td id="mvp-heal-val" class="stat-val">0</td>
+            </tr>
+            <tr>
+                <td>🛡️ Most Damage Blocked</td>
+                <td id="mvp-block-name">--</td>
+                <td id="mvp-block-val" class="stat-val">0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="board-panel">
+        <h3>🛰️ Combat Event Logs</h3>
+        <div id="combat-log"></div>
+    </div>
+</div>
+
+<script>
+    // --- GLOBAL CONFIGURATION ---
+    const FREE_FOR_ALL = true; // Set to false to return to original Team Alpha vs Team Omega mode
+
+    const canvas = document.getElementById('arenaCanvas');
+    const ctx = canvas.getContext('2d');
+    const statusEl = document.getElementById('status');
+
+    let entities = [];
+    let particles = [];
+    let isRunning = false;
+    let mouseX = 0, mouseY = 0;
+
+    // Dataset array matching your schema context
+    const characterPowerScaleData = [
+        {'tier': 1, 'label': 'tier_11', 'name': 'Infinitesimal'},
+        {'tier': 1.1, 'label': 'tier_11-c', 'name': 'Low Hypoverse level'},
+        {'tier': 1.2, 'label': 'tier_11-b', 'name': 'Hypoverse level'},
+        {'tier': 1.3, 'label': 'tier_11-a', 'name': 'High Hypoverse level'},
+        {'tier': 2, 'label': 'tier_10', 'name': 'Human'},
+        {'tier': 2.1, 'label': 'tier_10-c', 'name': 'Below Average Human level'},
+        {'tier': 2.2, 'label': 'tier_10-b', 'name': 'Human level'},
+        {'tier': 2.3, 'label': 'tier_10-a', 'name': 'Athlete level'},
+        {'tier': 3, 'label': 'tier_9', 'name': 'Superhuman'},
+        {'tier': 3.1, 'label': 'tier_9-c', 'name': 'Street level'},
+        {'tier': 3.2, 'label': 'tier_9-b', 'name': 'Wall level'},
+        {'tier': 3.3, 'label': 'tier_9-a', 'name': 'Small Building level'},
+        {'tier': 4, 'label': 'tier_8', 'name': 'Urban'},
+        {'tier': 4.1, 'label': 'tier_8-c', 'name': 'Building level'},
+        {'tier': 4.2, 'label': 'tier_high_8-c', 'name': 'Large Building level'},
+        {'tier': 4.3, 'label': 'tier_8-b', 'name': 'City Block level'},
+        {'tier': 4.4, 'label': 'tier_8-a', 'name': 'Multi-City Block level'},
+        {'tier': 5, 'label': 'tier_7', 'name': 'Nuclear'},
+        {'tier': 5.1, 'label': 'tier_low_7-c', 'name': 'Small Town level'},
+        {'tier': 5.2, 'label': 'tier_7-c', 'name': 'Town level'},
+        {'tier': 5.3, 'label': 'tier_high_7-c', 'name': 'Large Town level'},
+        {'tier': 5.4, 'label': 'tier_low_7-b', 'name': 'Small City level'},
+        {'tier': 5.5, 'label': 'tier_7-b', 'name': 'City level'},
+        {'tier': 5.6, 'label': 'tier_7-a', 'name': 'Mountain level'},
+        {'tier': 5.7, 'label': 'tier_high_7-a', 'name': 'Large Mountain level'},
+        {'tier': 6, 'label': 'tier_6', 'name': 'Tectonic'},
+        {'tier': 6.1, 'label': 'tier_6-c', 'name': 'Island level'},
+        {'tier': 6.2, 'label': 'tier_high_6-c', 'name': 'Large Island level'},
+        {'tier': 6.3, 'label': 'tier_low_6-b', 'name': 'Small Country level'},
+        {'tier': 6.4, 'label': 'tier_6-b', 'name': 'Country level'},
+        {'tier': 6.5, 'label': 'tier_high_6-b', 'name': 'Large Country level'},
+        {'tier': 6.6, 'label': 'tier_6-a', 'name': 'Continent level'},
+        {'tier': 6.7, 'label': 'tier_high_6-a', 'name': 'Multi-Continent level'},
+        {'tier': 7, 'label': 'tier_5', 'name': 'Substellar'},
+        {'tier': 7.1, 'label': 'tier_5-c', 'name': 'Moon level'},
+        {'tier': 7.2, 'label': 'tier_low_5-b', 'name': 'Small Planet level'},
+        {'tier': 7.3, 'label': 'tier_5-b', 'name': 'Planet level'},
+        {'tier': 7.4, 'label': 'tier_5-a', 'name': 'Large Planet level'},
+        {'tier': 7.5, 'label': 'tier_high_5-a', 'name': 'Brown Dwarf level'},
+        {'tier': 8, 'label': 'tier_4', 'name': 'Stellar'},
+        {'tier': 8.1, 'label': 'tier_low_4-c', 'name': 'Small Star level'},
+        {'tier': 8.2, 'label': 'tier_4-c', 'name': 'Star level'},
+        {'tier': 8.3, 'label': 'tier_high_4-c', 'name': 'Large Star level'},
+        {'tier': 8.4, 'label': 'tier_4-b', 'name': 'Solar System level'},
+        {'tier': 8.5, 'label': 'tier_4-a', 'name': 'Multi-Solar System level'},
+        {'tier': 9, 'label': 'tier_3', 'name': 'Cosmic'},
+        {'tier': 9.1, 'label': 'tier_3-c', 'name': 'Galaxy level'},
+        {'tier': 9.2, 'label': 'tier_3-b', 'name': 'Multi-Galaxy level'},
+        {'tier': 9.3, 'label': 'tier_3-a', 'name': 'Universe level'},
+        {'tier': 9.4, 'label': 'tier_high_3-a', 'name': 'High Universe level'},
+        {'tier': 10, 'label': 'tier_2', 'name': 'Multiversal'},
+        {'tier': 10.1, 'label': 'tier_low_2-c', 'name': 'Universe level+'},
+        {'tier': 10.2, 'label': 'tier_2-c', 'name': 'Low Multiverse level'},
+        {'tier': 10.3, 'label': 'tier_2-b', 'name': 'Multiverse level'},
+        {'tier': 10.4, 'label': 'tier_2-a', 'name': 'Multiverse level+'},
+        {'tier': 11, 'label': 'tier_1', 'name': 'Higher Infinity'},
+        {'tier': 11.1, 'label': 'tier_low_1-c', 'name': 'Low Complex Multiverse level'},
+        {'tier': 11.2, 'label': 'tier_1-c', 'name': 'Complex Multiverse level'},
+        {'tier': 11.3, 'label': 'tier_high_1-c', 'name': 'High Complex Multiverse level'},
+        {'tier': 11.4, 'label': 'tier_1-b', 'name': 'Hyperverse level'},
+        {'tier': 11.5, 'label': 'tier_high_1-b', 'name': 'High Hyperverse level'},
+        {'tier': 11.6, 'label': 'tier_low_1-a', 'name': 'Low Outerverse level'},
+        {'tier': 11.7, 'label': 'tier_1-a', 'name': 'Outerverse level'},
+        {'tier': 11.8, 'label': 'tier_high_1-a', 'name': 'High Outerverse level'},
+        {'tier': 12, 'label': 'tier_0', 'name': 'Boundless'}
+    ];
+
+    const fallbackNames = ["Aethelgard", "Vex Aura", "Kaelthas", "Malakor", "Sargeras", "Ysera", "Therazane", "Al'Akir", "Ragnaros", "Nozdormu"];
+    const fallbackEmojis = ["⚔️", "🔥", "⚡", "🔮", "☠️", "🐺", "🛡️", "☄️", "☣️", "👁️"];
+
+    function generateMockRoster() {
+        const mock = [];
+        for (let i = 0; i < 10; i++) {
+            let tierObj = characterPowerScaleData[Math.floor(Math.random() * characterPowerScaleData.length)];
+            mock.push({
+                "character": { "character_id": 4000 + i, "name": fallbackNames[i % fallbackNames.length] },
+                "character_profile": { "emoji_1": fallbackEmojis[i % fallbackEmojis.length], "image_url": "" },
+                "special_abilities": [
+                    { "name": "Cosmic Strike", "target": "other", "health_add": -10, "defense_add": 0 },
+                    { "name": "Aether Mend", "target": "self", "health_add": 8, "defense_add": 1 },
+                    { "name": "Singularity AoE", "target": "multi", "health_add": -5, "defense_add": 0 }
+                ],
+                "powerscale": { "tier": tierObj.tier, "name": tierObj.name, "label": tierObj.label }
+            });
+        }
+        return mock;
+    }
+
+    const TIER_SCALING_BASE = 6;
+
+    // --- Combatant Logic Engine ---
+    class Fighter {
+        constructor(data, team) {
+            this.id = data.character.character_id;
+            this.name = data.character.name;
+            this.emoji = data.character_profile?.emoji_1 || "❓";
+            this.team = team;
+
+            // If Free For All is on, generate unique colors per combatant based on ID
+            this.color = FREE_FOR_ALL
+                ? `hsl(${(this.id * 73) % 360}, 85%, 60%)`
+                : (team === 1 ? '#ff4757' : '#1e90ff');
+
+            this.tierValue = Math.round((Number(data.powerscale?.tier) || 1.0) * TIER_SCALING_BASE);
+            this.tierTitle = data.powerscale?.name || "Unknown Continuum";
+
+            this.maxHp = 100 + Math.floor(this.tierValue * 20);
+            this.hp = this.maxHp;
+
+            this.radius = 22;
+            this.speed = 1.0 + (this.tierValue * 0.1) + Math.random() * 0.5;
+            this.attackRange = 55 + Math.random() * 20;
+            this.cooldownMax = 80;
+            this.cooldown = Math.random() * 40;
+            this.baseDefense = 1 + Math.floor(this.tierValue * 0.5);
+
+            this.stats = { damageDealt: 0, healingDone: 0, damageBlocked: 0 };
+            this.abilities = data.special_abilities || [{ "name": "Strike", "target": "other", "health_add": -10 }];
+
+            // Balanced spawning distribution map
+            this.x = team === 1 ? Math.random() * 120 + 60 : canvas.width - (Math.random() * 120 + 60);
+            this.y = Math.random() * (canvas.height - 120) + 60;
+            this.vx = 0; this.vy = 0;
+
+            this.imgLoaded = false;
+            this.img = new Image();
+            if (data.character_profile?.image_url) {
+                this.img.src = data.character_profile.image_url;
+                this.img.onload = () => { this.imgLoaded = true; };
+            }
+        }
+
+        update(opposingTeam, friendlyTeam) {
+            if (this.hp <= 0) return;
+            if (this.cooldown > 0) this.cooldown--;
+
+            let nearestTarget = null;
+            let minDist = Infinity;
+
+            // In FFA, everyone alive who isn't 'this' entity is an enemy
+            const activeEnemies = FREE_FOR_ALL
+                ? entities.filter(e => e !== this && e.hp > 0)
+                : opposingTeam.filter(e => e.hp > 0);
+
+            for (let enemy of activeEnemies) {
+                let dist = Math.hypot(enemy.x - this.x, enemy.y - this.y);
+                if (dist < minDist) {
+                    minDist = dist;
+                    nearestTarget = enemy;
+                }
+            }
+
+            if (nearestTarget) {
+                let dx = nearestTarget.x - this.x;
+                let dy = nearestTarget.y - this.y;
+
+                if (minDist > this.attackRange) {
+                    this.vx = (dx / minDist) * this.speed;
+                    this.vy = (dy / minDist) * this.speed;
+                } else {
+                    this.vx = 0; this.vy = 0;
+                    if (this.cooldown <= 0) this.executeCombatTurn(nearestTarget, activeEnemies);
+                }
+            }
+
+            // Simple soft-body repulsion collision check
+            const separationGroup = FREE_FOR_ALL ? entities.filter(e => e.hp > 0) : friendlyTeam;
+            for (let buddy of separationGroup) {
+                if (buddy !== this && buddy.hp > 0) {
+                    let dist = Math.hypot(this.x - buddy.x, this.y - buddy.y);
+                    if (dist < this.radius * 1.8) {
+                        this.x += ((this.x - buddy.x) / dist) * 1.2;
+                        this.y += ((this.y - buddy.y) / dist) * 1.2;
+                    }
+                }
+            }
+
+            this.x = Math.max(this.radius, Math.min(canvas.width - this.radius, this.x + this.vx));
+            this.y = Math.max(this.radius, Math.min(canvas.height - this.radius, this.y + this.vy));
+        }
+
+        executeCombatTurn(target, customEnemyList) {
+            this.cooldown = this.cooldownMax;
+            let action = this.abilities[Math.floor(Math.random() * this.abilities.length)];
+
+            let scaleMultiplier = this.tierValue;
+
+            if (action.target === 'self') {
+                let rawHeal = Math.abs(action.health_add || 8);
+                let scaledHeal = Math.floor(rawHeal * scaleMultiplier);
+
+                let startingHp = this.hp;
+                this.hp = Math.min(this.maxHp, this.hp + scaledHeal);
+                let actualHealed = this.hp - startingHp;
+
+                this.stats.healingDone += actualHealed;
+                if(action.defense_add) this.baseDefense += action.defense_add;
+
+                particles.push(new TextFx(`+${actualHealed} HP`, this.x, this.y - 20, '#2ed573'));
+                logMsg(`<span class="log-fighter" style="color:${this.color}">${this.name}</span> cast <span class="log-skill">[${action.name}]</span> multiplying healing by tier T-${this.tierValue} (+${actualHealed}).`);
+            }
+            else if (action.target === 'multi') {
+                logMsg(`💥 <span class="log-fighter" style="color:${this.color}">${this.name}</span> (T-${this.tierValue}) burst <span class="log-skill">[${action.name}]</span> across local coordinates.`);
+                customEnemyList.forEach(enemy => {
+                    if (enemy.hp > 0 && Math.hypot(enemy.x - this.x, enemy.y - this.y) < 180) {
+                        let baseDmg = Math.abs(action.health_add || 5);
+                        this.dealDamage(enemy, baseDmg * scaleMultiplier);
+                    }
+                });
+            }
+            else {
+                let baseDmg = Math.abs(action.health_add || 10);
+                let scaledDmg = baseDmg * scaleMultiplier;
+                logMsg(`<span class="log-fighter" style="color:${this.color}">${this.name}</span> used <span class="log-skill">[${action.name}]</span> on <span class="log-fighter" style="color:${target.color}">${target.name}</span>.`);
+                this.dealDamage(target, scaledDmg);
+            }
+        }
+
+        dealDamage(victim, finalScaledDmg) {
+            let blocked = Math.min(finalScaledDmg - 1, victim.baseDefense);
+            if (blocked < 0) blocked = 0;
+            let netDmg = Math.max(1, Math.floor(finalScaledDmg - blocked));
+
+            victim.hp = Math.max(0, victim.hp - netDmg);
+
+            this.stats.damageDealt += netDmg;
+            victim.stats.damageBlocked += blocked;
+
+            particles.push(new VisualBeam(this.x, this.y, victim.x, victim.y, this.color));
+            particles.push(new TextFx(`-${netDmg}`, victim.x, victim.y - 22, '#ff4757'));
+            if (blocked > 0) {
+                particles.push(new TextFx(`🛡️ ${Math.floor(blocked)} Mitigated`, victim.x, victim.y + 15, '#ffa502'));
+            }
+
+            if (victim.hp <= 0) {
+                logMsg(`💀 <strong>${victim.name}</strong> (${victim.tierTitle}) was atomized!`);
+            }
+        }
+
+        draw() {
+            ctx.save();
+            if (this.hp <= 0) {
+                ctx.globalAlpha = 0.12;
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#000'; ctx.fill();
+                ctx.font = '20px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText('❌', this.x, this.y);
+                ctx.restore();
+                return;
+            }
+
+            let isHovered = Math.hypot(mouseX - this.x, mouseY - this.y) < this.radius;
+
+            if (isHovered) {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius + 6, 0, Math.PI * 2);
+                ctx.strokeStyle = '#66fcf1';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = '#1a1f29';
+            ctx.fill();
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = this.color;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius - 1, 0, Math.PI * 2);
+            ctx.clip();
+
+            if (this.imgLoaded) {
+                ctx.drawImage(this.img, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2);
+            } else {
+                ctx.font = '22px Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText(this.emoji, this.x, this.y + 2);
+            }
+            ctx.restore();
+
+            let pct = this.hp / this.maxHp;
+            ctx.fillStyle = 'rgba(0,0,0,0.6)';
+            ctx.fillRect(this.x - 22, this.y - 35, 44, 5);
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x - 22, this.y - 35, 44 * pct, 5);
+
+            if (isHovered) {
+                ctx.font = 'bold 11px sans-serif';
+                ctx.textAlign = 'center';
+
+                let txt = `${this.name} | Tier ${this.tierValue}: ${this.tierTitle}`;
+                let width = ctx.measureText(txt).width + 12;
+
+                ctx.fillStyle = 'rgba(11, 12, 16, 0.95)';
+                ctx.fillRect(this.x - width/2, this.y - 62, width, 20);
+                ctx.strokeStyle = '#66fcf1';
+                ctx.strokeRect(this.x - width/2, this.y - 62, width, 20);
+
+                ctx.fillStyle = '#fff';
+                ctx.fillText(txt, this.x, this.y - 48);
+            }
+        }
+    }
+
+    // --- Visual SFX Vectors ---
+    class VisualBeam {
+        constructor(x1, y1, x2, y2, color) {
+            this.x1 = x1; this.y1 = y1; this.x2 = x2; this.y2 = y2;
+            this.color = color; this.life = 10;
+        }
+        update() { this.life--; }
+        draw() {
+            ctx.save(); ctx.globalAlpha = this.life / 10;
+            ctx.beginPath(); ctx.moveTo(this.x1, this.y1); ctx.lineTo(this.x2, this.y2);
+            ctx.strokeStyle = this.color; ctx.lineWidth = 3; ctx.stroke();
+            ctx.restore();
+        }
+    }
+
+    class TextFx {
+        constructor(msg, x, y, color) {
+            this.msg = msg; this.color = color;
+            this.x = x + (Math.random() * 14 - 7); this.y = y;
+            this.life = 40;
+        }
+        update() { this.y -= 0.6; this.life--; }
+        draw() {
+            ctx.save(); ctx.globalAlpha = this.life / 40;
+            ctx.font = 'bold 12px sans-serif'; ctx.fillStyle = this.color;
+            ctx.shadowColor = 'black'; ctx.shadowBlur = 3;
+            ctx.fillText(this.msg, this.x - 12, this.y);
+            ctx.restore();
+        }
+    }
+
+    // --- Operations System Core ---
+    async function init() {
+        logMsg("<span class='log-sys'>System: Tracking matrix variables...</span>");
+
+        if (FREE_FOR_ALL) {
+            document.getElementById('left-panel-title').innerText = "Roster Sector A";
+            document.getElementById('right-panel-title').innerText = "Roster Sector B";
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+        });
+
+        try {
+            const response = await fetch('http://localhost/api/characters/random');
+            if (!response.ok) throw new Error("API Offline");
+            const data = await response.json();
+            buildArena(data);
+        } catch (err) {
+            console.warn("Generating decoupled local tier datasets.");
+            buildArena(generateMockRoster());
+        }
+    }
+
+    function buildArena(rawRecords) {
+        entities = []; particles = [];
+        rawRecords.forEach((record, idx) => {
+            let assignedTeam = idx % 2 === 0 ? 1 : 2;
+            entities.push(new Fighter(record, assignedTeam));
+        });
+
+        renderStaticSidebars();
+        isRunning = true;
+        logMsg("<span class='log-sys'>🚀 Reality Simulation active. Multipliers scaled from T-1 up to T-12.</span>");
+        requestAnimationFrame(battleLoopUpdate);
+    }
+
+    function renderStaticSidebars() {
+        const alphaBox = document.getElementById('alpha-rows');
+        const omegaBox = document.getElementById('omega-rows');
+        alphaBox.innerHTML = ''; omegaBox.innerHTML = '';
+
+        entities.forEach(f => {
+            let row = document.createElement('div');
+            row.id = `row-${f.id}`;
+            row.className = 'roster-row';
+            row.style.borderLeft = `3px solid ${f.color}`;
+            row.innerHTML = `
+                    <div class="roster-avatar" id="avatar-box-${f.id}">
+                        ${f.imgLoaded ? `<img src="${f.img.src}" />` : f.emoji}
+                    </div>
+                    <div class="roster-info">
+                        <div class="roster-meta">
+                            <span class="char-name-text">${f.name}</span>
+                            <span class="powerscale-num">T-${f.tierValue}</span>
+                        </div>
+                        <span class="powerscale-lbl">✨ ${f.tierTitle}</span>
+                        <div class="mini-hp-bg" style="margin-top:4px;">
+                            <div class="mini-hp-bar" id="bar-${f.id}" style="background-color: ${f.color}"></div>
+                        </div>
+                    </div>
+                `;
+            if(f.team === 1) alphaBox.appendChild(row);
+            else omegaBox.appendChild(row);
+        });
+    }
+
+    function computeLeaderboards() {
+        let topDmg = { name: '--', val: 0, color: '#fff', tier: 1 };
+        let topHeal = { name: '--', val: 0, color: '#fff', tier: 1 };
+        let topBlock = { name: '--', val: 0, color: '#fff', tier: 1 };
+
+        entities.forEach(f => {
+            if (f.stats.damageDealt > topDmg.val) {
+                topDmg = { name: f.name, val: Math.floor(f.stats.damageDealt), color: f.color, tier: f.tierValue };
+            }
+            if (f.stats.healingDone > topHeal.val) {
+                topHeal = { name: f.name, val: Math.floor(f.stats.healingDone), color: f.color, tier: f.tierValue };
+            }
+            if (f.stats.damageBlocked > topBlock.val) {
+                topBlock = { name: f.name, val: Math.floor(f.stats.damageBlocked), color: f.color, tier: f.tierValue };
+            }
+        });
+
+        const updateField = (idName, idVal, obj) => {
+            const nameEl = document.getElementById(idName);
+            const valEl = document.getElementById(idVal);
+            if (obj.val > 0) {
+                nameEl.innerHTML = `<span class="team-dot" style="background-color:${obj.color}"></span>${obj.name} <small style="color:#888;">(T-${obj.tier})</small>`;
+                valEl.innerText = obj.val;
+            }
+        };
+
+        updateField('mvp-dmg-name', 'mvp-dmg-val', topDmg);
+        updateField('mvp-heal-name', 'mvp-heal-val', topHeal);
+        updateField('mvp-block-name', 'mvp-block-val', topBlock);
+    }
+
+    function updateLiveRosters() {
+        entities.forEach(f => {
+            const row = document.getElementById(`row-${f.id}`);
+            const bar = document.getElementById(`bar-${f.id}`);
+            if (!row || !bar) return;
+
+            let pct = Math.max(0, (f.hp / f.maxHp) * 100);
+            bar.style.width = `${pct}%`;
+            if (f.hp <= 0) row.classList.add('dead');
+        });
+    }
+
+    function battleLoopUpdate() {
+        if (!isRunning) return;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        let team1 = entities.filter(e => e.team === 1);
+        let team2 = entities.filter(e => e.team === 2);
+
+        let t1Alive = team1.filter(e => e.hp > 0).length;
+        let t2Alive = team2.filter(e => e.hp > 0).length;
+        let totalAlive = entities.filter(e => e.hp > 0);
+
+        entities.forEach(f => {
+            f.update(team2, team1);
+            f.draw();
+        });
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+            particles[i].update();
+            particles[i].draw();
+            if (particles[i].life <= 0) particles.splice(i, 1);
+        }
+
+        updateLiveRosters();
+        computeLeaderboards();
+
+        if (FREE_FOR_ALL) {
+            document.getElementById('alpha-panel').firstElementChild.innerText = `Active Sector A (${t1Alive})`;
+            document.getElementById('omega-panel').firstElementChild.innerText = `Active Sector B (${t2Alive})`;
+        } else {
+            document.getElementById('alpha-panel').firstElementChild.innerText = `Team Alpha (${t1Alive})`;
+            document.getElementById('omega-panel').firstElementChild.innerText = `Team Omega (${t2Alive})`;
+        }
+
+        // Win conditions assessment
+        if (FREE_FOR_ALL) {
+            if (totalAlive.length <= 1) {
+                isRunning = false;
+                let survivor = totalAlive[0];
+                if (survivor) {
+                    statusEl.innerText = `BATTLE TERMINATED: ${survivor.name.toUpperCase()} WINS THE FREE-FOR-ALL!`;
+                    statusEl.style.color = survivor.color;
+                    logMsg(`<span class='log-sys'>🏆 <strong>Engagement over. Lone Survivor: ${survivor.name}</strong></span>`);
+                } else {
+                    statusEl.innerText = `BATTLE TERMINATED: MUTUAL DESTRUCTION!`;
+                    statusEl.style.color = '#ff4757';
+                }
+                return;
+            }
+        } else {
+            if (t1Alive === 0 || t2Alive === 0) {
+                isRunning = false;
+                let champion = t1Alive > 0 ? "TEAM ALPHA" : "TEAM OMEGA";
+                statusEl.innerText = `BATTLE TERMINATED: ${champion} WINS!`;
+                statusEl.style.color = t1Alive > 0 ? '#ff4757' : '#1e90ff';
+                logMsg(`<span class='log-sys'>🏆 <strong>Engagement over. Winner: ${champion}</strong></span>`);
+                return;
+            }
+        }
+
+        statusEl.innerText = FREE_FOR_ALL ? "Chaos active. Free-for-all evaluation matrix operational." : "Arena operational. Scaling algorithms are active.";
+        requestAnimationFrame(battleLoopUpdate);
+    }
+
+    function logMsg(stringData) {
+        const box = document.getElementById('combat-log');
+        let logLine = document.createElement('div');
+        logLine.className = 'log-line';
+        logLine.innerHTML = stringData;
+        box.appendChild(logLine);
+        box.scrollTop = box.scrollHeight;
+    }
+
+    window.onload = init;
+</script>
+</body>
+</html>
