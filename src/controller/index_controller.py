@@ -91,3 +91,14 @@ class IndexController:
             }
         )
 
+    def render_character_roster(self, request: Request):
+        characters = self.character_service.get_character_roster()
+        return templates.TemplateResponse(
+            request=request, name="cards.html.j2", context={ "characters": [{
+                "character": i.character,
+                "character_profile": i.character_profile,
+                "special_abilities": i.special_abilities,
+                "categories": i.categories,
+                "powerscale": i.powerscale,
+            } for i in characters]}
+        )

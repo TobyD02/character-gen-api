@@ -160,6 +160,15 @@ class CharacterService(ServiceAbstract):
 
         return cards
 
+
+    def get_character_roster(self):
+        ids = self.character_profile_repository.select_random_character_ids(20)
+        cards = []
+        for character_id in ids:
+            cards.append(self.get_or_generate_character(character_id))
+
+        return cards
+
     def get_by_category(self, category_id: int):
         ids = self.character_profile_repository.get_by_category(category_id)
 
