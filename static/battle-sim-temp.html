@@ -598,7 +598,7 @@
         });
 
         try {
-            const response = await fetch('http://localhost/api/characters/random');
+            const response = await fetch('http://localhost/api/characters/category/17780');
             if (!response.ok) throw new Error("API Offline");
             const data = await response.json();
             buildArena(data);
