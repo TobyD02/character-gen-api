@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmic Nexus Arena</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap');
+
+    :root {
+      --bg:        #08090d;
+      --surface:   #0f1117;
+      --border:    #1e2433;
+      --gold:      #c8922a;
+      --gold-lit:  #f0b93a;
+      --glow-gold: rgba(200,146,42,0.35);
+      --plasma:    #00d4ff;
+      --dim:       #4a5568;
+      --txt:       #c9cdd8;
+      --txt-dim:   #6b7280;
+      --radius:    6px;
+
+      --alpha: #e8453c;
+      --alpha-glow: rgba(232,69,60,0.4);
+      --omega: #3b7de8;
+      --omega-glow: rgba(59,125,232,0.4);
+      --neutral: #9b59b6;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--txt);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 12px;
+      gap: 12px;
+    }
+
+    /* ── HEADER ───────────────────────── */
+    #header {
+      width: 100%;
+      max-width: 1320px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    #logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: var(--gold-lit);
+      text-shadow: 0 0 20px var(--glow-gold);
+    }
+    #logo span { color: var(--plasma); }
+    #battle-status {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--plasma);
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    #round-counter {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    /* ── TEAM SCORE BAR ───────────────── */
+    #score-bar {
+      width: 100%;
+      max-width: 1320px;
+      display: grid;
+      grid-template-columns: 180px 1fr 180px;
+      align-items: center;
+      gap: 12px;
+    }
+    .team-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+    .team-title.alpha { color: var(--alpha); text-shadow: 0 0 10px var(--alpha-glow); }
+    .team-title.omega { color: var(--omega); text-shadow: 0 0 10px var(--omega-glow); }
+
+    #morale-track {
+      position: relative;
+      height: 24px;
+      background: #0a0b10;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    #morale-alpha { position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, var(--alpha), rgba(232,69,60,0.6)); transition: width 0.5s; }
+    #morale-omega { position: absolute; right: 0; top: 0; height: 100%; background: linear-gradient(270deg, var(--omega), rgba(59,125,232,0.6)); transition: width 0.5s; }
+    #morale-center {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      top: 3px; font-family: 'Share Tech Mono', monospace; font-size: 0.65rem;
+      color: rgba(255,255,255,0.7); pointer-events: none; z-index: 2;
+    }
+    .score-pill {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1;
+    }
+    .score-pill.alpha { color: var(--alpha); }
+    .score-pill.omega { color: var(--omega); }
+
+    /* ── MAIN LAYOUT ──────────────────── */
+    #main-layout {
+      width: 100%;
+      max-width: 1320px;
+      display: grid;
+      grid-template-columns: 220px 1fr 220px;
+      gap: 12px;
+    }
+
+    /* ── ROSTER PANELS ────────────────── */
+    .roster-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      /* Height is dynamically set in JS to match the arena */
+    }
+    .roster-panel.alpha { border-top: 3px solid var(--alpha); }
+    .roster-panel.omega { border-top: 3px solid var(--omega); }
+
+    .roster-header {
+      padding: 8px 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .alpha .roster-header { color: var(--alpha); }
+    .omega .roster-header { color: var(--omega); }
+    .roster-alive-count {
+      font-size: 0.7rem;
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--dim);
+    }
+
+    .roster-body { padding: 6px; display: flex; flex-direction: column; gap: 5px; overflow-y: auto; flex: 1; }
+
+    .combatant-card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 6px 7px;
+      cursor: default;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .combatant-card.selected { border-color: var(--gold); background: rgba(200,146,42,0.06); }
+    .combatant-card.dead { opacity: 0.28; filter: grayscale(1); pointer-events: none; }
+    .combatant-card.danger { border-color: rgba(232,69,60,0.5); }
+    .combatant-card.status-stunned { border-color: #ffd700; }
+
+    .card-top { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
+    .card-avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: #0a0b10; border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0; overflow: hidden;
+    }
+    .card-info { flex: 1; min-width: 0; }
+    .card-name {
+      font-weight: 700; font-size: 0.82rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      line-height: 1.1;
+    }
+    .card-tier {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.67rem; color: var(--gold); line-height: 1;
+    }
+    .card-tier-label { font-size: 0.67rem; color: var(--txt-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+
+    .hp-track { height: 5px; background: #0a0b10; border-radius: 3px; overflow: hidden; margin-top: 1px; }
+    .hp-fill { height: 100%; transition: width 0.25s, background 0.5s; border-radius: 3px; }
+
+    .status-icons { display: flex; gap: 3px; margin-top: 3px; font-size: 0.65rem; height: 12px; }
+
+    /* ── ARENA CANVAS WRAPPER ─────────── */
+    #arena-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    #arenaCanvas {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 40px rgba(0,0,0,0.7), inset 0 0 60px rgba(0,0,0,0.5);
+      display: block;
+      cursor: crosshair;
+    }
+
+    /* ── BOTTOM DASHBOARD ─────────────── */
+    #dashboard {
+      width: 100%;
+      max-width: 1320px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .dash-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .dash-panel-header {
+      padding: 7px 12px;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dash-panel-body { padding: 8px 10px; height: 140px; overflow-y: auto; }
+
+    /* Leaderboard */
+    .lb-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.82rem;
+    }
+    .lb-icon { font-size: 1rem; width: 20px; text-align: center; }
+    .lb-label { color: var(--txt-dim); font-size: 0.72rem; width: 90px; flex-shrink: 0; }
+    .lb-name { flex: 1; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lb-val { font-family: 'Share Tech Mono', monospace; font-size: 0.8rem; color: var(--gold-lit); }
+    .lb-tier { font-size: 0.65rem; color: var(--dim); margin-left: 4px; }
+
+    /* Event Log */
+    #event-log {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .elog-line { padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .elog-sys   { color: var(--plasma); }
+    .elog-kill  { color: #ff4444; font-weight: bold; }
+    .elog-heal  { color: #2ecc71; }
+    .elog-skill { color: var(--gold); }
+    .elog-buff  { color: #9b59b6; }
+
+    /* Arena Legend */
+    .legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; padding: 3px 0; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-square { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+    /* ── TEAM SETUP MODAL ─────────────── */
+    #setup-overlay {
+      position: fixed; inset: 0;
+      background: rgba(8,9,13,0.96);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+    }
+    #setup-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      width: 560px;
+      max-width: 95vw;
+    }
+    #setup-box h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+      color: var(--gold-lit);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .setup-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .setup-label { font-size: 0.85rem; color: var(--txt-dim); width: 140px; flex-shrink: 0; }
+    .setup-value { font-family: 'Orbitron', sans-serif; font-size: 0.9rem; color: var(--gold); min-width: 40px; }
+    input[type=range] {
+      flex: 1; accent-color: var(--gold);
+      background: transparent;
+    }
+    select {
+      flex: 1; background: #0a0b10; color: var(--txt);
+      border: 1px solid var(--border); border-radius: 4px;
+      padding: 5px 8px; font-family: 'Rajdhani', sans-serif; font-size: 0.9rem;
+    }
+
+    .btn-primary {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;
+      background: linear-gradient(135deg, #b8820f, #d4a020);
+      color: #0a0800; border: none; border-radius: var(--radius);
+      padding: 10px 28px; cursor: pointer;
+      box-shadow: 0 0 20px rgba(200,146,42,0.3);
+      transition: box-shadow 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { box-shadow: 0 0 30px rgba(200,146,42,0.6); transform: translateY(-1px); }
+    .btn-secondary {
+      font-family: 'Orbitron', sans-serif; font-size: 0.8rem;
+      background: transparent; color: var(--dim);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 8px 20px; cursor: pointer; letter-spacing: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--txt); border-color: var(--dim); }
+    .btn-row { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+
+    /* ── VICTORY BANNER ───────────────── */
+    #victory-banner {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(8,9,13,0.88);
+      z-index: 90;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+    #victory-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem; font-weight: 900;
+      letter-spacing: 5px;
+      text-shadow: 0 0 30px currentColor;
+      text-align: center;
+    }
+    #victory-sub {
+      font-size: 1rem; color: var(--txt-dim); letter-spacing: 2px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<div id="setup-overlay">
+  <div style="font-family:'Orbitron',sans-serif;font-size:2rem;font-weight:900;color:var(--gold-lit);letter-spacing:6px;text-shadow:0 0 30px var(--glow-gold);">
+    COSMIC NEXUS
+  </div>
+  <div id="setup-box">
+    <h2>⚔ BATTLE CONFIGURATION</h2>
+
+    <div class="setup-row">
+      <span class="setup-label">Battle Mode</span>
+      <select id="cfg-mode">
+        <option value="teams">Team Battle (Alpha vs Omega)</option>
+        <option value="ffa">Free-For-All Chaos</option>
+        <option value="3teams">Three-Way War</option>
+      </select>
+    </div>
+
+    <div class="setup-row">
+      <span class="setup-label">Arena Size</span>
+      <select id="cfg-arena">
+        <option value="med">Standard Nexus (850×540)</option>
+        <option value="small">Skirmish Chamber (650×420)</option>
+        <option value="large">Grand Colosseum (1050×640)</option>
+      </select>
+    </div>
+
+    <div class="setup-row">
+      <span class="setup-label">Hazard Zones</span>
+      <select id="cfg-hazards">
+        <option value="all">Full Arena Hazards</option>
+        <option value="some">Shrine & High-Ground Only</option>
+        <option value="none">No Hazards (Clean Combat)</option>
+      </select>
+    </div>
+
+    <div class="setup-row">
+      <span class="setup-label">Battle Speed</span>
+      <input type="range" id="cfg-speed" min="1" max="5" value="2" oninput="document.getElementById('cfg-speed-val').innerText=['Crawl','Normal','Swift','Fast','Blitz'][this.value-1]">
+      <span class="setup-value" style="font-size:0.72rem;min-width:46px;" id="cfg-speed-val">Normal</span>
+    </div>
+
+    <div style="border-top:1px solid var(--border);margin:10px 0 14px;padding-top:12px;">
+      <div style="font-family:'Orbitron',sans-serif;font-size:0.65rem;letter-spacing:2px;color:var(--txt-dim);margin-bottom:10px;">⚙ POWER SCALING TUNING</div>
+
+      <div class="setup-row" style="margin-bottom:10px;">
+        <span class="setup-label" style="font-size:0.78rem;">Tier Influence
+          <span style="display:block;font-size:0.67rem;color:var(--txt-dim);font-weight:normal;">How much tier gap matters</span>
+        </span>
+        <input type="range" id="cfg-tier-infl" min="0" max="100" value="40"
+               oninput="document.getElementById('cfg-tier-infl-val').innerText=this.value+'%'">
+        <span class="setup-value" style="font-size:0.72rem;min-width:42px;" id="cfg-tier-infl-val">40%</span>
+      </div>
+
+      <div class="setup-row" style="margin-bottom:10px;">
+        <span class="setup-label" style="font-size:0.78rem;">Damage Scale
+          <span style="display:block;font-size:0.67rem;color:var(--txt-dim);font-weight:normal;">% of victim max HP per hit</span>
+        </span>
+        <input type="range" id="cfg-dmg-scale" min="2" max="30" value="10"
+               oninput="document.getElementById('cfg-dmg-scale-val').innerText=this.value+'%'">
+        <span class="setup-value" style="font-size:0.72rem;min-width:42px;" id="cfg-dmg-scale-val">10%</span>
+      </div>
+
+      <div class="setup-row" style="margin-bottom:10px;">
+        <span class="setup-label" style="font-size:0.78rem;">Defence Weight
+          <span style="display:block;font-size:0.67rem;color:var(--txt-dim);font-weight:normal;">How much defence reduces damage</span>
+        </span>
+        <input type="range" id="cfg-def-weight" min="0" max="100" value="30"
+               oninput="document.getElementById('cfg-def-weight-val').innerText=this.value+'%'">
+        <span class="setup-value" style="font-size:0.72rem;min-width:42px;" id="cfg-def-weight-val">30%</span>
+      </div>
+
+      <div class="setup-row" style="margin-bottom:10px;">
+        <span class="setup-label" style="font-size:0.78rem;">Mana Regen
+          <span style="display:block;font-size:0.67rem;color:var(--txt-dim);font-weight:normal;">Mana recovered per tick</span>
+        </span>
+        <input type="range" id="cfg-mana-regen" min="1" max="10" value="3"
+               oninput="document.getElementById('cfg-mana-regen-val').innerText=this.value">
+        <span class="setup-value" style="font-size:0.72rem;min-width:42px;" id="cfg-mana-regen-val">3</span>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-primary" onclick="launchBattle()">⚡ LAUNCH BATTLE</button>
+    </div>
+  </div>
+</div>
+
+<div id="victory-banner">
+  <div id="victory-text">TEAM ALPHA WINS</div>
+  <div id="victory-sub">SIMULATION COMPLETE — ALL COMBATANTS ASSESSED</div>
+  <div class="btn-row" style="margin-top:8px;">
+    <button class="btn-primary" onclick="reviewBattle()">🔍 REVIEW BATTLE</button>
+    <button class="btn-secondary" onclick="resetToSetup()">⚙ NEW BATTLE</button>
+  </div>
+</div>
+
+<div id="review-controls" style="display: none; position: fixed; bottom: 30px; right: 30px; z-index: 80;">
+  <button class="btn-primary" onclick="resetToSetup()" style="box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(200,146,42,0.5);">⚙ CONFIGURE NEW BATTLE</button>
+</div>
+
+<div id="header">
+  <div id="logo">COSMIC<span>NEXUS</span></div>
+  <div id="battle-status">AWAITING CONFIGURATION...</div>
+  <div id="round-counter">ROUND 0</div>
+</div>
+
+<div id="score-bar">
+  <div>
+    <div class="team-title alpha" id="team-a-title">TEAM ALPHA</div>
+    <div class="score-pill alpha" id="score-alpha">0</div>
+  </div>
+  <div>
+    <div id="morale-track">
+      <div id="morale-alpha" style="width:50%"></div>
+      <div id="morale-omega" style="width:50%"></div>
+      <div id="morale-center">POWER BALANCE</div>
+    </div>
+  </div>
+  <div>
+    <div class="team-title omega" id="team-b-title">TEAM OMEGA</div>
+    <div class="score-pill omega" id="score-omega">0</div>
+  </div>
+</div>
+
+<div id="main-layout">
+  <div class="roster-panel alpha" id="panel-alpha">
+    <div class="roster-header">
+      <span id="rh-alpha">ALPHA FORCE</span>
+      <span class="roster-alive-count" id="alive-alpha">0 alive</span>
+    </div>
+    <div class="roster-body" id="rows-alpha"></div>
+  </div>
+
+  <div id="arena-wrap">
+    <canvas id="arenaCanvas"></canvas>
+  </div>
+
+  <div class="roster-panel omega" id="panel-omega">
+    <div class="roster-header">
+      <span id="rh-omega">OMEGA FORCE</span>
+      <span class="roster-alive-count" id="alive-omega">0 alive</span>
+    </div>
+    <div class="roster-body" id="rows-omega"></div>
+  </div>
+</div>
+
+<div id="dashboard">
+
+  <div class="dash-panel">
+    <div class="dash-panel-header">🏆 LIVE MVP LEADERBOARD</div>
+    <div class="dash-panel-body">
+      <div class="lb-row">
+        <span class="lb-icon">⚔️</span>
+        <span class="lb-label">Damage Dealt</span>
+        <span class="lb-name" id="mvp-dmg-name">—</span>
+        <span class="lb-tier" id="mvp-dmg-tier"></span>
+        <span class="lb-val" id="mvp-dmg-val">0</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-icon">💉</span>
+        <span class="lb-label">Healing Done</span>
+        <span class="lb-name" id="mvp-heal-name">—</span>
+        <span class="lb-tier" id="mvp-heal-tier"></span>
+        <span class="lb-val" id="mvp-heal-val">0</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-icon">🛡️</span>
+        <span class="lb-label">Dmg Blocked</span>
+        <span class="lb-name" id="mvp-blk-name">—</span>
+        <span class="lb-tier" id="mvp-blk-tier"></span>
+        <span class="lb-val" id="mvp-blk-val">0</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-icon">💀</span>
+        <span class="lb-label">Kill Count</span>
+        <span class="lb-name" id="mvp-kill-name">—</span>
+        <span class="lb-tier" id="mvp-kill-tier"></span>
+        <span class="lb-val" id="mvp-kill-val">0</span>
+      </div>
+      <div class="lb-row">
+        <span class="lb-icon">🔥</span>
+        <span class="lb-label">Longest Alive</span>
+        <span class="lb-name" id="mvp-surv-name">—</span>
+        <span class="lb-tier" id="mvp-surv-tier"></span>
+        <span class="lb-val" id="mvp-surv-val">0s</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-panel">
+    <div class="dash-panel-header">🛰 COMBAT EVENT LOG</div>
+    <div class="dash-panel-body" id="event-log-wrap">
+      <div id="event-log"></div>
+    </div>
+  </div>
+
+  <div class="dash-panel">
+    <div class="dash-panel-header">🗺 ARENA LEGEND</div>
+    <div class="dash-panel-body" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="legend-grid">
+        <div class="legend-item"><div class="legend-dot" style="background:#3b7de8;box-shadow:0 0 6px #3b7de8;"></div>Alpha Spawn</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e8453c;box-shadow:0 0 6px #e8453c;"></div>Omega Spawn</div>
+        <div class="legend-item"><div class="legend-square" style="background:rgba(46,204,113,0.35);border:1px solid #2ecc71;"></div>Shrine (+Heal)</div>
+        <div class="legend-item"><div class="legend-square" style="background:rgba(155,89,182,0.35);border:1px solid #9b59b6;"></div>Vortex (Stun)</div>
+        <div class="legend-item"><div class="legend-square" style="background:rgba(241,196,15,0.25);border:1px solid #f1c40f;"></div>High Ground (+Dmg/Def)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f1c40f;"></div>⚡ Stunned</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#e8453c;"></div>↩ Retreating</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#c8922a;"></div>Hover for stats</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ═══════════════════════════════════════════════════════════════
+  //  DATA
+  // ═══════════════════════════════════════════════════════════════
+  const POWER_SCALE = [
+    {tier:1,   name:'Infinitesimal',            label:'tier_11'},
+    {tier:1.1, name:'Low Hypoverse',             label:'tier_11-c'},
+    {tier:1.2, name:'Hypoverse',                 label:'tier_11-b'},
+    {tier:1.3, name:'High Hypoverse',            label:'tier_11-a'},
+    {tier:2,   name:'Human',                     label:'tier_10'},
+    {tier:2.1, name:'Below Average Human',       label:'tier_10-c'},
+    {tier:2.2, name:'Human level',               label:'tier_10-b'},
+    {tier:2.3, name:'Athlete level',             label:'tier_10-a'},
+    {tier:3,   name:'Superhuman',                label:'tier_9'},
+    {tier:3.1, name:'Street level',              label:'tier_9-c'},
+    {tier:3.2, name:'Wall level',                label:'tier_9-b'},
+    {tier:3.3, name:'Small Building level',      label:'tier_9-a'},
+    {tier:4,   name:'Urban',                     label:'tier_8'},
+    {tier:4.1, name:'Building level',            label:'tier_8-c'},
+    {tier:4.2, name:'Large Building level',      label:'tier_high_8-c'},
+    {tier:4.3, name:'City Block level',          label:'tier_8-b'},
+    {tier:4.4, name:'Multi-City Block level',    label:'tier_8-a'},
+    {tier:5,   name:'Nuclear',                   label:'tier_7'},
+    {tier:5.1, name:'Small Town level',          label:'tier_low_7-c'},
+    {tier:5.2, name:'Town level',                label:'tier_7-c'},
+    {tier:5.3, name:'Large Town level',          label:'tier_high_7-c'},
+    {tier:5.4, name:'Small City level',          label:'tier_low_7-b'},
+    {tier:5.5, name:'City level',                label:'tier_7-b'},
+    {tier:5.6, name:'Mountain level',            label:'tier_7-a'},
+    {tier:5.7, name:'Large Mountain level',      label:'tier_high_7-a'},
+    {tier:6,   name:'Tectonic',                  label:'tier_6'},
+    {tier:6.1, name:'Island level',              label:'tier_6-c'},
+    {tier:6.2, name:'Large Island level',        label:'tier_high_6-c'},
+    {tier:6.3, name:'Small Country level',       label:'tier_low_6-b'},
+    {tier:6.4, name:'Country level',             label:'tier_6-b'},
+    {tier:6.5, name:'Large Country level',       label:'tier_high_6-b'},
+    {tier:6.6, name:'Continent level',           label:'tier_6-a'},
+    {tier:6.7, name:'Multi-Continent level',     label:'tier_high_6-a'},
+    {tier:7,   name:'Substellar',                label:'tier_5'},
+    {tier:7.1, name:'Moon level',                label:'tier_5-c'},
+    {tier:7.2, name:'Small Planet level',        label:'tier_low_5-b'},
+    {tier:7.3, name:'Planet level',              label:'tier_5-b'},
+    {tier:7.4, name:'Large Planet level',        label:'tier_5-a'},
+    {tier:7.5, name:'Brown Dwarf level',         label:'tier_high_5-a'},
+    {tier:8,   name:'Stellar',                   label:'tier_4'},
+    {tier:8.1, name:'Small Star level',          label:'tier_low_4-c'},
+    {tier:8.2, name:'Star level',                label:'tier_4-c'},
+    {tier:8.3, name:'Large Star level',          label:'tier_high_4-c'},
+    {tier:8.4, name:'Solar System level',        label:'tier_4-b'},
+    {tier:8.5, name:'Multi-Solar System level',  label:'tier_4-a'},
+    {tier:9,   name:'Cosmic',                    label:'tier_3'},
+    {tier:9.1, name:'Galaxy level',              label:'tier_3-c'},
+    {tier:9.2, name:'Multi-Galaxy level',        label:'tier_3-b'},
+    {tier:9.3, name:'Universe level',            label:'tier_3-a'},
+    {tier:9.4, name:'High Universe level',       label:'tier_high_3-a'},
+    {tier:10,  name:'Multiversal',               label:'tier_2'},
+    {tier:10.1,name:'Universe level+',           label:'tier_low_2-c'},
+    {tier:10.2,name:'Low Multiverse level',      label:'tier_2-c'},
+    {tier:10.3,name:'Multiverse level',          label:'tier_2-b'},
+    {tier:10.4,name:'Multiverse level+',         label:'tier_2-a'},
+    {tier:11,  name:'Higher Infinity',           label:'tier_1'},
+    {tier:11.1,name:'Low Complex Multiverse',    label:'tier_low_1-c'},
+    {tier:11.2,name:'Complex Multiverse',        label:'tier_1-c'},
+    {tier:11.3,name:'High Complex Multiverse',   label:'tier_high_1-c'},
+    {tier:11.4,name:'Hyperverse level',          label:'tier_1-b'},
+    {tier:11.5,name:'High Hyperverse level',     label:'tier_high_1-b'},
+    {tier:11.6,name:'Low Outerverse level',      label:'tier_low_1-a'},
+    {tier:11.7,name:'Outerverse level',          label:'tier_1-a'},
+    {tier:11.8,name:'High Outerverse level',     label:'tier_high_1-a'},
+    {tier:12,  name:'Boundless',                 label:'tier_0'},
+  ];
+
+  const MOCK_NAMES    = ['Aethelgard','Vex Aura','Kaelthas','Malakor','Sargeras','Ysera','Therazane','Al\'Akir','Ragnaros','Nozdormu','Archimonde','Illidan','Sylvanas','Jaina','Garrosh','Thrall','Anduin','Arthas','Varian','Khadgar'];
+  const MOCK_EMOJIS   = ['⚔️','🔥','⚡','🔮','☠️','🐺','🛡️','☄️','👁️','🌀','🗡️','🦅','🩸','❄️','💀','🌊','☀️','🌑','🏹','💎'];
+  const MOCK_ABILITIES = [
+    [{name:'Cosmic Strike',   target:'other', health_add:-12, defense_add:0, cost: 25},
+      {name:'Aether Mend',     target:'self',  health_add:8,   defense_add:1, cost: 40},
+      {name:'Singularity AoE', target:'multi', health_add:-6,  defense_add:0, cost: 60},
+      {name:'Void Bolt',       target:'other', health_add:-15, defense_add:0, cost: 35}],
+    [{name:'Inferno Wave',    target:'multi', health_add:-8,  defense_add:0, cost: 45},
+      {name:'Ember Shield',    target:'self',  health_add:6,   defense_add:2, cost: 30},
+      {name:'Soul Drain',      target:'other', health_add:-10, defense_add:0, cost: 20},
+      {name:'Phoenix Surge',   target:'self',  health_add:12,  defense_add:0, cost: 50}],
+    [{name:'Thunder Clap',    target:'multi', health_add:-9,  defense_add:0, cost: 50},
+      {name:'Static Barrier',  target:'self',  health_add:4,   defense_add:3, cost: 35},
+      {name:'Chain Lightning', target:'other', health_add:-14, defense_add:0, cost: 30},
+      {name:'Storm Surge',     target:'multi', health_add:-5,  defense_add:0, cost: 60}],
+  ];
+
+  function generateMockRoster(count) {
+    const roster = [];
+    for (let i = 0; i < count; i++) {
+      const tierObj = POWER_SCALE[Math.floor(Math.random() * POWER_SCALE.length)];
+      const abilities = MOCK_ABILITIES[i % MOCK_ABILITIES.length];
+      roster.push({
+        character:         { character_id: 8000 + i, name: MOCK_NAMES[i % MOCK_NAMES.length] },
+        character_profile: { emoji_1: MOCK_EMOJIS[i % MOCK_EMOJIS.length], image_url: '' },
+        special_abilities: abilities,
+        powerscale:        { tier: tierObj.tier, name: tierObj.name, label: tierObj.label }
+      });
+    }
+    return roster;
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  CONFIG & STATE
+  // ═══════════════════════════════════════════════════════════════
+  const canvas = document.getElementById('arenaCanvas');
+  const ctx    = canvas.getContext('2d');
+
+  let CFG = {};
+  let entities   = [];
+  let particles  = [];
+  let zones      = [];
+  let isRunning  = false;
+  let rafId      = null;
+  let round      = 0;
+  let tickAcc    = 0;
+  let mouseX = 0, mouseY = 0;
+  let score = { alpha: 0, omega: 0 };
+
+  const TEAM_COLORS = {
+    1: { primary:'#3b7de8', glow:'rgba(59,125,232,0.5)',  name:'ALPHA' },
+    2: { primary:'#e8453c', glow:'rgba(232,69,60,0.5)',   name:'OMEGA' },
+    3: { primary:'#9b59b6', glow:'rgba(155,89,182,0.5)',  name:'GAMMA' },
+  };
+  const NEUTRAL_COLOR = '#c8922a';
+  const TIER_BASE = 6;
+
+  // ═══════════════════════════════════════════════════════════════
+  //  ARENA ZONES
+  // ═══════════════════════════════════════════════════════════════
+  function buildZones(W, H, hazardMode) {
+    const z = [];
+    if (hazardMode === 'none') return z;
+
+    // Central Vortex
+    z.push({ type:'vortex',    x: W/2-40, y: H/2-40, w:80, h:80,
+      color:'rgba(155,89,182,0.25)', border:'#9b59b6',
+      label:'⚡ VORTEX',  tick: (f) => { if(Math.random()<0.04) applyStatus(f,'stunned',60); } });
+
+    // Healing Shrines (corners)
+    [[0.15,0.15],[0.85,0.15],[0.15,0.85],[0.85,0.85]].forEach(([rx,ry]) => {
+      z.push({ type:'shrine', x:rx*W-24, y:ry*H-24, w:48, h:48,
+        color:'rgba(46,204,113,0.2)', border:'#2ecc71',
+        label:'✚',
+        tick: (f) => { if(Math.random()<0.08) { f.hp = Math.min(f.maxHp, f.hp + Math.ceil(f.maxHp*0.02)); } }});
+    });
+
+    if (hazardMode === 'some') return z;
+
+    // High-ground platforms
+    [[0.5,0.5-0.18,0.08,0.22],[0.5,0.5+0.18,0.08,0.22]].forEach(([rx,ry,rh,rw])=>{
+      z.push({ type:'highground', x:(rx-rw/2)*W, y:(ry-rh/2)*H, w:rw*W, h:rh*H,
+        color:'rgba(241,196,15,0.18)', border:'#f1c40f',
+        label:'⬆ HIGH GROUND',
+        tick: () => {} });
+    });
+
+    return z;
+  }
+
+  function entityInZone(f, z) {
+    return f.x > z.x && f.x < z.x+z.w && f.y > z.y && f.y < z.y+z.h;
+  }
+
+  function isHighGround(f) {
+    return zones.filter(z=>z.type==='highground').some(z=>entityInZone(f,z));
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  STATUS EFFECTS — stun only (applied by Vortex zone)
+  // ═══════════════════════════════════════════════════════════════
+  const STATUS_META = {
+    stunned: { color:'#f1c40f', icon:'⚡', block:true },
+  };
+
+  function applyStatus(f, type, duration) {
+    if (!f.statuses) f.statuses = {};
+    f.statuses[type] = (f.statuses[type] || 0) + duration;
+  }
+
+  function tickStatuses(f) {
+    if (!f.statuses) return;
+    for (const [type, ticks] of Object.entries(f.statuses)) {
+      if (ticks <= 0) { delete f.statuses[type]; continue; }
+      f.statuses[type]--;
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  FIGHTER CLASS
+  // ═══════════════════════════════════════════════════════════════
+  class Fighter {
+    constructor(data, team, idx) {
+      this.id       = data.character.character_id;
+      this.name     = data.character.name;
+      this.emoji    = data.character_profile?.emoji_1 || '❓';
+      this.team     = team;
+      this.teamColor = TEAM_COLORS[team]?.primary || NEUTRAL_COLOR;
+
+      const tierRaw  = Number(data.powerscale?.tier) || 1;
+      this.tierVal   = Math.round(tierRaw * TIER_BASE);
+      this.tierTitle = data.powerscale?.name || 'Unknown';
+      this.tierLabel = data.powerscale?.label || '';
+
+      this.maxHp    = 120 + this.tierVal * 22;
+      this.hp       = this.maxHp;
+
+      // MANA SYSTEM
+      this.maxMana  = 200;
+      this.mana     = this.maxMana;
+      this.basicAttack = { name:'Basic Strike', target:'other', health_add:-4, defense_add:0, cost:0 };
+
+      this.radius   = 14 + Math.min(this.tierVal * 0.3, 8);
+      this.baseSpeed = 1.2 + this.tierVal * 0.08 + Math.random() * 0.3;
+      this.speed    = this.baseSpeed;
+      this.attackRange = 52 + Math.random() * 18;
+      this.cooldownMax = Math.max(40, 90 - this.tierVal * 2);
+      this.cooldown = Math.random() * this.cooldownMax;
+      this.baseDefense = 1 + Math.floor(this.tierVal * 0.4);
+      this.aggroRadius = 200 + this.tierVal * 3;
+
+      this.statuses = {};
+      this.stats    = { damageDealt:0, healingDone:0, damageBlocked:0, kills:0, aliveTicks:0 };
+      this.abilities = data.special_abilities || [{ name:'Strike', target:'other', health_add:-10, cost: 10 }];
+      this.retreating = false;
+      this.retreatTimer = 0;
+      this.formationOffset = { x: (Math.random()-0.5)*30, y: (Math.random()-0.5)*30 };
+
+      this.vx = 0; this.vy = 0;
+      this.x = 0; this.y = 0;
+
+      this.img = new Image();
+      this.imgLoaded = false;
+      if (data.character_profile?.image_url) {
+        this.img.src = data.character_profile.image_url;
+        this.img.onload = () => { this.imgLoaded = true; };
+      }
+
+      this.deathTime = null;
+    }
+
+    get alive() { return this.hp > 0; }
+    get hpPct()  { return this.hp / this.maxHp; }
+
+    isStunned()  { return (this.statuses.stunned || 0) > 0; }
+
+    getSpeedMult() {
+      let m = 1;
+      if (this.retreating) m *= 1.4;
+      return m;
+    }
+
+    getDefense() {
+      let d = this.baseDefense;
+      if (isHighGround(this)) d *= 1.3;
+      return d;
+    }
+
+    getTierRatio(victimTierVal) {
+      const myT  = this.tierVal;
+      const theirT = victimTierVal;
+      const maxT = 72; // TIER_BASE * 12
+      const rawAdv = (myT - theirT) / maxT;
+      const ratio = 0.5 + rawAdv * CFG.tierInfl;
+      return Math.max(0.05, Math.min(2.0, ratio));
+    }
+
+    getAttackMult() {
+      let m = 1;
+      if (isHighGround(this)) m *= 1.25;
+      return m;
+    }
+
+    update(allEnemies, allFriends) {
+      if (!this.alive) return;
+
+      tickStatuses(this);
+      if (!this.alive) return;
+
+      // REGENERATE MANA
+      if (!this.isStunned()) {
+        this.mana = Math.min(this.maxMana, this.mana + CFG.manaRegen);
+      }
+
+      this.stats.aliveTicks++;
+
+      // Zone interactions
+      for (const z of zones) {
+        if (entityInZone(this, z) && z.tick) z.tick(this);
+      }
+
+      if (!this.alive) return;
+      if (this.isStunned()) return;
+
+      if (this.cooldown > 0) this.cooldown--;
+
+      // HP-based retreat logic
+      const hpPct = this.hpPct;
+      if (hpPct < 0.22 && !this.retreating) {
+        this.retreating   = true;
+        this.retreatTimer = 90 + Math.floor(Math.random() * 60);
+      }
+      if (this.retreating) {
+        this.retreatTimer--;
+        if (this.retreatTimer <= 0 || hpPct > 0.55) this.retreating = false;
+      }
+
+      const speed = this.baseSpeed * this.getSpeedMult();
+
+      // --- TARGET SELECTION ---
+      let target = null;
+
+      if (!this.retreating) {
+        // Prioritise lowest-HP enemy within aggro range, fallback to nearest
+        let bestScore = Infinity;
+        for (const e of allEnemies) {
+          if (!e.alive) continue;
+          const dist = Math.hypot(e.x - this.x, e.y - this.y);
+          if (dist > this.aggroRadius && target) continue;
+          const score = e.hpPct * 100 + dist * 0.3; // weight low-HP targets
+          if (score < bestScore) { bestScore = score; target = e; }
+        }
+      }
+
+      if (target && !this.retreating) {
+        const dx = target.x - this.x;
+        const dy = target.y - this.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist > this.attackRange) {
+          this.vx = (dx / dist) * speed;
+          this.vy = (dy / dist) * speed;
+        } else {
+          this.vx *= 0.8; this.vy *= 0.8;
+          if (this.cooldown <= 0) this.executeCombatTurn(target, allEnemies);
+        }
+      } else if (this.retreating) {
+        // Retreat: move away from nearest threat
+        const nearest = allEnemies.reduce((best, e) => {
+          if (!e.alive) return best;
+          const d = Math.hypot(e.x-this.x, e.y-this.y);
+          return (!best || d < best.d) ? {e, d} : best;
+        }, null);
+        if (nearest) {
+          const dx = this.x - nearest.e.x;
+          const dy = this.y - nearest.e.y;
+          const d  = Math.hypot(dx, dy) || 1;
+          this.vx  = (dx/d) * speed;
+          this.vy  = (dy/d) * speed;
+        }
+        // Try to seek shrine
+        const shrine = zones.find(z => z.type==='shrine');
+        if (shrine) {
+          const sx = shrine.x + shrine.w/2;
+          const sy = shrine.y + shrine.h/2;
+          const dd = Math.hypot(sx-this.x, sy-this.y);
+          if (dd > 20) {
+            this.vx = (this.vx + (sx-this.x)/dd * speed * 0.6) / 1.6;
+            this.vy = (this.vy + (sy-this.y)/dd * speed * 0.6) / 1.6;
+          }
+        }
+      }
+
+      // Separation from all combatants
+      for (const b of [...allFriends, ...allEnemies]) {
+        if (b === this || !b.alive) continue;
+        const dist = Math.hypot(this.x - b.x, this.y - b.y);
+        const minD = this.radius + b.radius + 2;
+        if (dist < minD && dist > 0) {
+          const push = (minD - dist) / minD * 1.8;
+          this.vx += ((this.x - b.x) / dist) * push;
+          this.vy += ((this.y - b.y) / dist) * push;
+        }
+      }
+
+      const W = canvas.width, H = canvas.height;
+      this.x = Math.max(this.radius, Math.min(W - this.radius, this.x + this.vx));
+      this.y = Math.max(this.radius, Math.min(H - this.radius, this.y + this.vy));
+      this.vx *= 0.85; this.vy *= 0.85;
+    }
+
+    executeCombatTurn(target, enemies) {
+      this.cooldown = this.cooldownMax;
+
+      // FILTER AFFORDABLE ABILITIES
+      const affordable = this.abilities.filter(a => this.mana >= (a.cost || 0));
+
+      let action;
+
+      // USE FALLBACK IF OUT OF MANA
+      if (affordable.length === 0) {
+        action = this.basicAttack;
+      } else {
+        const closeEnemies = enemies.filter(e => e.alive && Math.hypot(e.x-this.x,e.y-this.y)<180).length;
+        const multiAbilities = affordable.filter(a => a.target==='multi');
+        const healAbilities  = affordable.filter(a => a.target==='self');
+        const attackAbilities= affordable.filter(a => a.target==='other');
+
+        if (this.hpPct < 0.35 && healAbilities.length) {
+          action = healAbilities[Math.floor(Math.random()*healAbilities.length)];
+        } else if (closeEnemies >= 3 && multiAbilities.length) {
+          action = multiAbilities[Math.floor(Math.random()*multiAbilities.length)];
+        } else if (attackAbilities.length) {
+          action = attackAbilities[Math.floor(Math.random()*attackAbilities.length)];
+        } else {
+          action = affordable[Math.floor(Math.random()*affordable.length)];
+        }
+      }
+
+      // DEDUCT MANA COST
+      this.mana -= (action.cost || 0);
+
+      const atkMult = this.getAttackMult();
+
+      if (action.target === 'self') {
+        const healPct  = CFG.dmgScale * (Math.abs(action.health_add || 8) / 10) * 0.8;
+        const rawHeal  = Math.floor(this.maxHp * healPct * atkMult);
+        const prev     = this.hp;
+        this.hp        = Math.min(this.maxHp, this.hp + rawHeal);
+        const actual   = this.hp - prev;
+        this.stats.healingDone += actual;
+        if (action.defense_add) this.baseDefense = Math.min(this.baseDefense + action.defense_add, this.baseDefense * 1.5);
+        spawnText(`+${actual} HP`, this.x, this.y - 22, '#2ecc71');
+        logEvent(`<span style="color:${this.teamColor}">${this.name}</span> <span class="elog-heal">used [${action.name}] → healed ${actual} HP</span>`);
+      }
+      else if (action.target === 'multi') {
+        logEvent(`<span style="color:${this.teamColor}">${this.name}</span> <span class="elog-skill">unleashed [${action.name}]!</span>`);
+        let hit = 0;
+        enemies.forEach(e => {
+          if (e.alive && Math.hypot(e.x-this.x, e.y-this.y) < 190) {
+            const dmgPct = CFG.dmgScale * (Math.abs(action.health_add||5) / 10) * 0.55 * this.getTierRatio(e.tierVal) * atkMult;
+            this.dealDamage(e, dmgPct);
+            hit++;
+          }
+        });
+        if (!hit && target.alive) {
+          const dmgPct = CFG.dmgScale * (Math.abs(action.health_add||5) / 10) * 0.55 * this.getTierRatio(target.tierVal) * atkMult;
+          this.dealDamage(target, dmgPct);
+        }
+        spawnBeam(this.x, this.y, target.x, target.y, this.teamColor, true);
+      }
+      else {
+        logEvent(`<span style="color:${this.teamColor}">${this.name}</span> → <span class="elog-skill">[${action.name}]</span> → <span style="color:${target.teamColor}">${target.name}</span>`);
+        const dmgPct = CFG.dmgScale * (Math.abs(action.health_add||10) / 10) * this.getTierRatio(target.tierVal) * atkMult;
+        this.dealDamage(target, dmgPct);
+      }
+    }
+
+    dealDamage(victim, dmgFraction) {
+      const rawDmg = victim.maxHp * dmgFraction;
+
+      const defRatio  = (victim.getDefense() / (1 + 72 * 0.4));
+      const reduction = CFG.defWeight * defRatio;
+      const netDmg    = Math.max(1, Math.floor(rawDmg * (1 - reduction)));
+      const blocked   = Math.max(0, Math.floor(rawDmg - netDmg));
+
+      victim.hp = Math.max(0, victim.hp - netDmg);
+      this.stats.damageDealt      += netDmg;
+      victim.stats.damageBlocked  += blocked;
+
+      spawnText(`-${netDmg}`, victim.x, victim.y - 22, '#e8453c');
+      if (blocked > 0) spawnText(`🛡 ${blocked}`, victim.x, victim.y + 10, '#f1c40f', 0.75);
+      spawnBeam(this.x, this.y, victim.x, victim.y, this.teamColor);
+
+      if (!victim.alive && victim.deathTime === null) {
+        victim.deathTime = round;
+        this.stats.kills++;
+        logEvent(`<span class="elog-kill">☠ ${victim.name} (${victim.tierTitle}) atomized by ${this.name}!</span>`);
+      }
+    }
+
+    draw() {
+      const alive = this.alive;
+      ctx.save();
+
+      if (!alive) {
+        ctx.globalAlpha = 0.18;
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+        ctx.fillStyle = '#111'; ctx.fill();
+        ctx.fillStyle = '#555'; ctx.font = `${this.radius*1.1}px Arial`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText('✕', this.x, this.y);
+        ctx.restore(); return;
+      }
+
+      const hovered = Math.hypot(mouseX - this.x, mouseY - this.y) < this.radius + 8;
+
+      let ringColor = this.teamColor;
+      if ((this.statuses.stunned||0) > 0) ringColor = STATUS_META.stunned.color;
+
+      if (hovered) {
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.radius + 8, 0, Math.PI*2);
+        ctx.strokeStyle = '#c8922a'; ctx.lineWidth = 1.5; ctx.stroke();
+      }
+
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.radius + 3, 0, Math.PI*2);
+      ctx.fillStyle = ringColor + '55'; ctx.fill();
+
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+      ctx.fillStyle = '#0d0e14'; ctx.fill();
+      ctx.strokeStyle = ringColor; ctx.lineWidth = 2.5; ctx.stroke();
+
+      ctx.save();
+      ctx.beginPath(); ctx.arc(this.x, this.y, this.radius - 2, 0, Math.PI*2); ctx.clip();
+      if (this.imgLoaded) {
+        ctx.drawImage(this.img, this.x-this.radius, this.y-this.radius, this.radius*2, this.radius*2);
+      } else {
+        ctx.font = `${this.radius * 1.05}px Arial`;
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(this.emoji, this.x, this.y + 1);
+      }
+      ctx.restore();
+
+      // HP bar
+      const barW = this.radius * 2.2;
+      const barH = 4;
+      const bx   = this.x - barW/2;
+      const by   = this.y - this.radius - 9;
+      ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(bx, by, barW, barH);
+      const hpColor = this.hpPct > 0.55 ? '#2ecc71' : this.hpPct > 0.28 ? '#f39c12' : '#e74c3c';
+      ctx.fillStyle = hpColor;
+      ctx.fillRect(bx, by, barW * this.hpPct, barH);
+
+      // MANA BAR
+      const manaPct = this.mana / this.maxMana;
+      ctx.fillStyle = 'rgba(0,0,0,0.7)'; ctx.fillRect(bx, by + barH + 1, barW, 2);
+      ctx.fillStyle = '#00d4ff';
+      ctx.fillRect(bx, by + barH + 1, barW * Math.max(0, manaPct), 2);
+
+      if (this.retreating) {
+        ctx.font = '10px Arial'; ctx.textAlign = 'center';
+        ctx.fillStyle = '#ffa502'; ctx.fillText('↩', this.x, this.y - this.radius - 12);
+      }
+
+      if (hovered) {
+        const label = `${this.name} | T-${this.tierVal}: ${this.tierTitle} | Mana: ${Math.floor(this.mana)}`;
+        ctx.font = 'bold 11px "Share Tech Mono", monospace';
+        const tw = ctx.measureText(label).width + 14;
+        const tx = Math.max(2, Math.min(canvas.width - tw - 2, this.x - tw/2));
+        const ty = this.y - this.radius - 30;
+        ctx.fillStyle = 'rgba(8,9,13,0.95)';
+        ctx.fillRect(tx, ty, tw, 18);
+        ctx.strokeStyle = '#c8922a'; ctx.lineWidth = 1; ctx.strokeRect(tx, ty, tw, 18);
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'left'; ctx.fillText(label, tx + 7, ty + 12);
+      }
+
+      ctx.restore();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  PARTICLES
+  // ═══════════════════════════════════════════════════════════════
+  class Beam {
+    constructor(x1,y1,x2,y2,color,wide=false){
+      this.x1=x1;this.y1=y1;this.x2=x2;this.y2=y2;
+      this.color=color; this.life=12; this.max=12; this.wide=wide;
+    }
+    update(){ this.life--; }
+    draw(){
+      ctx.save(); ctx.globalAlpha = this.life/this.max;
+      ctx.beginPath(); ctx.moveTo(this.x1,this.y1); ctx.lineTo(this.x2,this.y2);
+      ctx.strokeStyle = this.color; ctx.lineWidth = this.wide ? 3 : 1.5; ctx.stroke();
+      if (this.wide) {
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.5; ctx.stroke();
+      }
+      ctx.restore();
+    }
+  }
+  class TextFloat {
+    constructor(msg,x,y,color,scale=1){
+      this.msg=msg; this.color=color; this.scale=scale;
+      this.x=x+(Math.random()*18-9); this.y=y;
+      this.life=42;
+    }
+    update(){ this.y-=0.55; this.life--; }
+    draw(){
+      ctx.save(); ctx.globalAlpha = this.life/42;
+      ctx.font = `bold ${Math.floor(12*this.scale)}px "Share Tech Mono",monospace`;
+      ctx.fillStyle = this.color; ctx.textAlign = 'center';
+      ctx.shadowColor = '#000'; ctx.shadowBlur = 4;
+      ctx.fillText(this.msg, this.x, this.y);
+      ctx.restore();
+    }
+  }
+  class Shockwave {
+    constructor(x,y,color){ this.x=x;this.y=y;this.color=color;this.r=5;this.life=25; }
+    update(){ this.r+=4; this.life--; }
+    draw(){
+      ctx.save(); ctx.globalAlpha = this.life/25*0.5;
+      ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.strokeStyle=this.color; ctx.lineWidth=2; ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  function spawnText(msg,x,y,color,scale=1){  particles.push(new TextFloat(msg,x,y,color,scale)); }
+  function spawnBeam(x1,y1,x2,y2,color,wide=false){ particles.push(new Beam(x1,y1,x2,y2,color,wide)); }
+  function spawnWave(x,y,color){ particles.push(new Shockwave(x,y,color)); }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  ARENA DRAW
+  // ═══════════════════════════════════════════════════════════════
+  function drawArena() {
+    const W = canvas.width, H = canvas.height;
+
+    // Starfield BG
+    ctx.fillStyle = '#08090d';
+    ctx.fillRect(0, 0, W, H);
+
+    // Grid
+    ctx.strokeStyle = 'rgba(30,36,51,0.6)'; ctx.lineWidth = 1;
+    const gStep = 60;
+    for (let x = 0; x <= W; x += gStep) {
+      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
+    }
+    for (let y = 0; y <= H; y += gStep) {
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    }
+
+    // Arena ring
+    ctx.beginPath();
+    ctx.ellipse(W/2, H/2, W*0.46, H*0.44, 0, 0, Math.PI*2);
+    ctx.strokeStyle = 'rgba(200,146,42,0.12)'; ctx.lineWidth = 2; ctx.stroke();
+
+    // Zones
+    for (const z of zones) {
+      ctx.save();
+      ctx.fillStyle = z.color;
+      ctx.strokeStyle = z.border;
+      ctx.lineWidth = 1;
+      const rx = z.w/2; const ry = z.h/2;
+      const cx = z.x+rx; const cy = z.y+ry;
+
+      ctx.beginPath();
+      ctx.roundRect(z.x, z.y, z.w, z.h, 6);
+      ctx.fill(); ctx.stroke();
+
+      if (z.type==='shrine' || z.type==='vortex') {
+        const pulse = 0.5 + 0.5 * Math.sin(round * 0.06);
+        ctx.globalAlpha = pulse * 0.3;
+        ctx.beginPath(); ctx.roundRect(z.x-3,z.y-3,z.w+6,z.h+6,8);
+        ctx.strokeStyle = z.border; ctx.lineWidth = 1.5; ctx.stroke();
+      }
+
+      ctx.globalAlpha = 0.8;
+      ctx.font = 'bold 9px "Rajdhani",sans-serif';
+      ctx.fillStyle = z.border;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(z.label, cx, cy);
+      ctx.restore();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  SPAWN POSITIONS
+  // ═══════════════════════════════════════════════════════════════
+  function setSpawnPositions(mode) {
+    const W = canvas.width, H = canvas.height;
+    const byTeam = {};
+    entities.forEach(f => { (byTeam[f.team] || (byTeam[f.team] = [])).push(f); });
+
+    const teamCount = Object.keys(byTeam).length;
+
+    Object.entries(byTeam).forEach(([team, fighters], ti) => {
+      let cx, cy;
+      if (teamCount === 2) {
+        cx = team == 1 ? W * 0.18 : W * 0.82;
+        cy = H * 0.5;
+      } else {
+        const angle = (ti / teamCount) * Math.PI * 2 - Math.PI/2;
+        cx = W/2 + Math.cos(angle) * W * 0.32;
+        cy = H/2 + Math.sin(angle) * H * 0.30;
+      }
+
+      fighters.forEach((f, i) => {
+        const spread = Math.min(fighters.length * 9, 55);
+        const angle  = (i / fighters.length) * Math.PI * 2;
+        f.x = cx + Math.cos(angle) * spread * (0.5 + Math.random() * 0.5) + f.formationOffset.x;
+        f.y = cy + Math.sin(angle) * spread * (0.5 + Math.random() * 0.5) + f.formationOffset.y;
+        f.x = Math.max(f.radius, Math.min(W - f.radius, f.x));
+        f.y = Math.max(f.radius, Math.min(H - f.radius, f.y));
+      });
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  SIDEBAR RENDERING
+  // ═══════════════════════════════════════════════════════════════
+  function buildSidebars() {
+    const alphaBox = document.getElementById('rows-alpha');
+    const omegaBox = document.getElementById('rows-omega');
+    alphaBox.innerHTML = ''; omegaBox.innerHTML = '';
+
+    entities.forEach(f => {
+      const card = document.createElement('div');
+      card.className = 'combatant-card';
+      card.id        = `card-${f.id}`;
+      card.innerHTML = `
+      <div class="card-top">
+        <div class="card-avatar" id="av-${f.id}">${f.emoji}</div>
+        <div class="card-info">
+          <div class="card-name">${f.name}</div>
+          <div class="card-tier">T-${f.tierVal}</div>
+          <span class="card-tier-label">${f.tierTitle}</span>
+        </div>
+      </div>
+      <div class="hp-track">
+        <div class="hp-fill" id="hpbar-${f.id}" style="width:100%;background:${f.teamColor}"></div>
+      </div>
+      <div class="status-icons" id="si-${f.id}"></div>
+    `;
+      (f.team === 1 ? alphaBox : omegaBox).appendChild(card);
+    });
+  }
+
+  function updateSidebars() {
+    let aAlive = 0, bAlive = 0;
+
+    entities.forEach(f => {
+      const card   = document.getElementById(`card-${f.id}`);
+      const hpBar  = document.getElementById(`hpbar-${f.id}`);
+      const siBox  = document.getElementById(`si-${f.id}`);
+      if (!card || !hpBar) return;
+
+      const pct = Math.max(0, f.hpPct * 100);
+      hpBar.style.width = `${pct}%`;
+      hpBar.style.background = pct > 55 ? f.teamColor : pct > 28 ? '#f39c12' : '#e74c3c';
+
+      card.className = 'combatant-card';
+      if (!f.alive) { card.classList.add('dead'); }
+      else {
+        if (f.hpPct < 0.3) card.classList.add('danger');
+        if ((f.statuses.stunned || 0) > 0) card.classList.add('status-stunned');
+      }
+
+      siBox.innerHTML = (f.statuses.stunned || 0) > 0 ? '⚡' : '';
+
+      if (f.alive) { f.team === 1 ? aAlive++ : bAlive++; }
+    });
+
+    document.getElementById('alive-alpha').textContent = `${aAlive} alive`;
+    document.getElementById('alive-omega').textContent = `${bAlive} alive`;
+    document.getElementById('score-alpha').textContent = score.alpha;
+    document.getElementById('score-omega').textContent = score.omega;
+
+    const totalTier = entities.reduce((s,f) => s + (f.alive ? f.tierVal : 0), 0);
+    const alpTier   = entities.filter(f=>f.team===1&&f.alive).reduce((s,f)=>s+f.tierVal,0);
+    const omgTier   = entities.filter(f=>f.team===2&&f.alive).reduce((s,f)=>s+f.tierVal,0);
+    if (totalTier > 0) {
+      document.getElementById('morale-alpha').style.width = `${(alpTier/totalTier)*100}%`;
+      document.getElementById('morale-omega').style.width = `${(omgTier/totalTier)*100}%`;
+    }
+  }
+
+  function updateLeaderboard() {
+    const leaders = {
+      dmg:  { name:'—', val:0, tier:0, color:'#fff' },
+      heal: { name:'—', val:0, tier:0, color:'#fff' },
+      blk:  { name:'—', val:0, tier:0, color:'#fff' },
+      kill: { name:'—', val:0, tier:0, color:'#fff' },
+      surv: { name:'—', val:0, tier:0, color:'#fff' },
+    };
+    entities.forEach(f => {
+      if (f.stats.damageDealt  > leaders.dmg.val)  leaders.dmg  = {name:f.name, val:Math.floor(f.stats.damageDealt),  tier:f.tierVal, color:f.teamColor};
+      if (f.stats.healingDone  > leaders.heal.val) leaders.heal = {name:f.name, val:Math.floor(f.stats.healingDone),  tier:f.tierVal, color:f.teamColor};
+      if (f.stats.damageBlocked> leaders.blk.val)  leaders.blk  = {name:f.name, val:Math.floor(f.stats.damageBlocked),tier:f.tierVal, color:f.teamColor};
+      if (f.stats.kills        > leaders.kill.val) leaders.kill = {name:f.name, val:f.stats.kills,                    tier:f.tierVal, color:f.teamColor};
+      if (f.stats.aliveTicks   > leaders.surv.val) leaders.surv = {name:f.name, val:Math.floor(f.stats.aliveTicks/60),tier:f.tierVal, color:f.teamColor};
+    });
+
+    const set = (pre, data) => {
+      const nEl = document.getElementById(`mvp-${pre}-name`);
+      const tEl = document.getElementById(`mvp-${pre}-tier`);
+      const vEl = document.getElementById(`mvp-${pre}-val`);
+      if (!nEl) return;
+      nEl.textContent = data.name;
+      nEl.style.color = data.color;
+      tEl.textContent = data.tier ? `T-${data.tier}` : '';
+      vEl.textContent = pre==='surv' ? `${data.val}s` : data.val;
+    };
+    set('dmg', leaders.dmg);
+    set('heal', leaders.heal);
+    set('blk', leaders.blk);
+    set('kill', leaders.kill);
+    set('surv', leaders.surv);
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  EVENT LOG
+  // ═══════════════════════════════════════════════════════════════
+  let logBuffer = [];
+  function logEvent(html) {
+    logBuffer.push(html);
+    if (logBuffer.length > 200) logBuffer.shift();
+    const box = document.getElementById('event-log');
+    const wrap = document.getElementById('event-log-wrap');
+    const line = document.createElement('div');
+    line.className = 'elog-line';
+    line.innerHTML = html;
+    box.appendChild(line);
+    // Trim DOM
+    while (box.children.length > 80) box.removeChild(box.firstChild);
+    wrap.scrollTop = wrap.scrollHeight;
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  WIN CONDITION & REPLAY
+  // ═══════════════════════════════════════════════════════════════
+  function checkWin() {
+    const mode = CFG.mode;
+    const aliveByTeam = {};
+    entities.forEach(f => {
+      if (f.alive) aliveByTeam[f.team] = (aliveByTeam[f.team]||0) + 1;
+    });
+    const teamsAlive = Object.keys(aliveByTeam).length;
+
+    if (mode === 'ffa') {
+      const total = entities.filter(f=>f.alive).length;
+      if (total > 1) return false;
+      const winner = entities.find(f=>f.alive);
+      declareVictory(winner ? `${winner.name.toUpperCase()} WINS` : 'MUTUAL ANNIHILATION', winner?.teamColor || '#c8922a');
+      return true;
+    } else {
+      if (teamsAlive > 1) return false;
+      const winTeam = parseInt(Object.keys(aliveByTeam)[0]);
+      const tC = TEAM_COLORS[winTeam];
+      if (tC) {
+        score[winTeam===1?'alpha':'omega']++;
+        declareVictory(`TEAM ${tC.name} WINS`, tC.primary);
+      } else {
+        declareVictory('BATTLE CONCLUDED', '#c8922a');
+      }
+      return true;
+    }
+  }
+
+  function declareVictory(text, color) {
+    isRunning = false;
+    cancelAnimationFrame(rafId);
+    const vb = document.getElementById('victory-banner');
+    const vt = document.getElementById('victory-text');
+    vb.style.display = 'flex';
+    vt.textContent   = text;
+    vt.style.color   = color;
+    document.getElementById('battle-status').textContent = 'SIMULATION COMPLETE';
+    logEvent(`<span class="elog-sys">🏆 BATTLE OVER: ${text}</span>`);
+  }
+
+  function reviewBattle() {
+    document.getElementById('victory-banner').style.display = 'none';
+    document.getElementById('review-controls').style.display = 'block';
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  MAIN LOOP
+  // ═══════════════════════════════════════════════════════════════
+  const TICK_STEP = 1000 / 60;
+  let lastTime = 0;
+
+  function gameLoop(timestamp) {
+    if (!isRunning) return;
+
+    const delta = timestamp - lastTime;
+    lastTime = timestamp;
+    tickAcc += delta;
+    const ticksPerFrame = Math.ceil(CFG.speed);
+
+    for (let t = 0; t < ticksPerFrame; t++) {
+      round++;
+
+      entities.forEach(f => {
+        if (!f.alive) return;
+        const enemies  = entities.filter(e => e.team !== f.team && e.alive);
+        const friends  = entities.filter(e => e.team === f.team && e !== f && e.alive);
+        f.update(enemies, friends);
+      });
+
+      for (let i = particles.length-1; i >= 0; i--) {
+        particles[i].update();
+        if (particles[i].life <= 0) particles.splice(i,1);
+      }
+    }
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    drawArena();
+
+    particles.forEach(p => p.draw());
+    entities.forEach(f => f.draw());
+
+    updateSidebars();
+    updateLeaderboard();
+
+    document.getElementById('round-counter').textContent = `ROUND ${Math.floor(round/10)}`;
+    document.getElementById('battle-status').textContent =
+            `Active combatants: ${entities.filter(f=>f.alive).length} / ${entities.length}  |  Elapsed: ${Math.floor(round/(60*CFG.speed))}s`;
+
+    if (!checkWin()) {
+      rafId = requestAnimationFrame(gameLoop);
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  //  INIT / LAUNCH
+  // ═══════════════════════════════════════════════════════════════
+  canvas.addEventListener('mousemove', e => {
+    const r = canvas.getBoundingClientRect();
+    mouseX = e.clientX - r.left;
+    mouseY = e.clientY - r.top;
+
+    // Allow tooltips to function during review mode
+    if (!isRunning && document.getElementById('review-controls').style.display === 'block') {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawArena();
+      particles.forEach(p => p.draw());
+      entities.forEach(f => f.draw());
+    }
+  });
+
+  function launchBattle() {
+    cancelAnimationFrame(rafId);
+
+    CFG = {
+      mode:      document.getElementById('cfg-mode').value,
+      arena:     document.getElementById('cfg-arena').value,
+      hazards:   document.getElementById('cfg-hazards').value,
+      speed:     parseInt(document.getElementById('cfg-speed').value),
+      tierInfl:  parseInt(document.getElementById('cfg-tier-infl').value) / 100,
+      dmgScale:  parseInt(document.getElementById('cfg-dmg-scale').value)  / 100,
+      defWeight: parseInt(document.getElementById('cfg-def-weight').value) / 100,
+      manaRegen: parseInt(document.getElementById('cfg-mana-regen').value) / 10
+    };
+
+    const arenaMap = { small:[650,420], med:[850,540], large:[1050,640] };
+    const [W,H] = arenaMap[CFG.arena] || [850,540];
+    canvas.width  = W;
+    canvas.height = H;
+
+    // Explicitly lock roster heights to canvas height to enforce scrolling
+    document.getElementById('panel-alpha').style.height = H + 'px';
+    document.getElementById('panel-omega').style.height = H + 'px';
+
+    particles = [];
+    entities  = [];
+    zones     = buildZones(W, H, CFG.hazards);
+    round     = 0;
+    logBuffer = [];
+    document.getElementById('event-log').innerHTML = '';
+
+    (async () => {
+      let rawData;
+      try {
+        const res = await fetch('http://localhost/api/characters/all');
+        if (!res.ok) throw new Error();
+        rawData = await res.json();
+      } catch {
+        const mockCount = CFG.mode === 'ffa' ? 12 : 10;
+        rawData = generateMockRoster(mockCount);
+      }
+
+      const total = rawData.length;
+
+      rawData.forEach((rec, i) => {
+        let team;
+        if (CFG.mode === 'ffa')    team = i + 1;
+        else if (CFG.mode === '3teams') team = (i % 3) + 1;
+        else                       team = (i % 2) + 1;
+        entities.push(new Fighter(rec, team, i));
+      });
+
+      setSpawnPositions(CFG.mode);
+      buildSidebars();
+
+      if (CFG.mode === 'ffa') {
+        document.getElementById('team-a-title').textContent = 'FREE-FOR-ALL';
+        document.getElementById('team-b-title').textContent = 'ARENA';
+        document.getElementById('rh-alpha').textContent = 'ROSTER A';
+        document.getElementById('rh-omega').textContent = 'ROSTER B';
+      } else {
+        document.getElementById('team-a-title').textContent = 'TEAM ALPHA';
+        document.getElementById('team-b-title').textContent = CFG.mode === '3teams' ? 'TEAM OMEGA / GAMMA' : 'TEAM OMEGA';
+        document.getElementById('rh-alpha').textContent = 'ALPHA FORCE';
+        document.getElementById('rh-omega').textContent = CFG.mode === '3teams' ? 'OMEGA + GAMMA' : 'OMEGA FORCE';
+      }
+
+      document.getElementById('victory-banner').style.display = 'none';
+      document.getElementById('review-controls').style.display = 'none';
+      document.getElementById('setup-overlay').style.display  = 'none';
+
+      logEvent(`<span class="elog-sys">⚡ ${total} combatants loaded. Reality simulation active. Tier scaling: T-6 → T-72.</span>`);
+      isRunning = true;
+      lastTime  = performance.now();
+      rafId     = requestAnimationFrame(gameLoop);
+    })();
+  }
+
+  function resetToSetup() {
+    isRunning = false;
+    cancelAnimationFrame(rafId);
+    document.getElementById('victory-banner').style.display = 'none';
+    document.getElementById('review-controls').style.display = 'none';
+    document.getElementById('setup-overlay').style.display  = 'flex';
+  }
+</script>
+</body>
+</html>
