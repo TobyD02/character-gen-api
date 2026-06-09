@@ -1537,7 +1537,7 @@
     (async () => {
       let rawData;
       try {
-        const res = await fetch('http://localhost/api/characters/all');
+        const res = await fetch('http://localhost/api/characters/random');
         if (!res.ok) throw new Error();
         rawData = await res.json();
       } catch {
@@ -1591,3 +1591,4 @@
 </script>
 </body>
 </html>
+
