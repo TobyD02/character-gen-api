@@ -152,6 +152,14 @@ class CharacterService(ServiceAbstract):
 
         return cards
 
+    def get_all_characters(self):
+        ids = self.character_profile_repository.select_all_character_ids()
+        cards = []
+        for character_id in ids:
+            cards.append(self.get_or_generate_character(character_id))
+
+        return cards
+
     def _insert_character(
             self,
             character: CharacterModel,

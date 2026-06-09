@@ -62,13 +62,17 @@ class CharacterProfileRepository(RepositoryAbstract):
 
         return [i["character_id"] for i in self.cursor.fetchall()]
 
-    def select_random_character_ids(self, limit: int) -> list[int]:
+    def select_random_character_ids(self, limit: int, min_tier: float=1, max_tier: float=12) -> list[int]:
         self.cursor.execute(
             """
-            SELECT character_id
-            FROM character_profile
+            SELECT cp.character_id
+            FROM character_profile cp
+                     JOIN powerscale ps ON cp.powerscale_id = ps.powerscale_id
+            WHERE ps.tier BETWEEN %s AND %s
             ORDER BY RANDOM()
             LIMIT %s
-            """, (limit,))
+            """,
+            (min_tier, max_tier, limit)
+        )
 
         return [i["character_id"] for i in self.cursor.fetchall()]

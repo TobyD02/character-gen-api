@@ -56,10 +56,13 @@ class IndexController:
         return self.character_service.get_or_generate_character(character_id)
 
     def get_random_characters(self):
-        return self.character_service.get_random_generated(20)
+        return self.character_service.get_random_generated(50)
+
+    def get_all_characters(self):
+        return self.character_service.get_all_characters()
 
     def render_characters(self, request: Request):
-        characters = self.character_service.get_random_generated(6)
+        characters = self.character_service.get_all_characters()
         return templates.TemplateResponse(
             request=request, name="cards.html.j2", context={ "characters": [{
                 "character": i.character,
