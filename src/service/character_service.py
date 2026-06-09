@@ -143,10 +143,8 @@ class CharacterService(ServiceAbstract):
         return self._insert_character(character, character_profile, powerscaling, model_with_tags, ollama_result, special_ability_models)
 
 
-    def get_random_generated(self):
-        ids = []
-        for i in range(4):
-            ids.append(self.character_profile_repository.select_random_character_id())
+    def get_random_generated(self, count: int):
+        ids = self.character_profile_repository.select_random_character_ids(count)
 
         cards = []
         for character_id in ids:
