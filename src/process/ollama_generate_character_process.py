@@ -5,43 +5,6 @@ import ollama
 from src.model.ollama_character_model import OllamaCharacterDefinitionModel
 from src.process.process_abstract import ProcessAbstract
 
-test_data = {
-    "name": "Monkey D. Luffy",
-    "description": "Monkey D. Luffy is the captain of the Straw Hat Pirates and a powerful fighter who gained rubber-like abilities after eating a Devil Fruit.",
-    "special_abilities": [
-        {
-            "name": "Gomu Gomu no Pistol",
-            "description": "Luffy stretches his arm and launches a high-speed punch.",
-            "special_ability_emoji": "👊"
-        },
-        {
-            "name": "Gear Second",
-            "description": "Enhances speed and strength by accelerating blood flow.",
-            "special_ability_emoji": "💨"
-        },
-        {
-            "name": "Haki",
-            "description": "A spiritual power allowing Luffy to overpower enemies.",
-            "special_ability_emoji": "⚡"
-        }
-    ],
-}
-
-test_data_fixed = {
-    "name": "Monkey D. Luffy",
-    "description": "...",
-    "special_ability_1": test_data["special_abilities"][0],
-    "special_ability_2": test_data["special_abilities"][1],
-    "special_ability_3": test_data["special_abilities"][2],
-    "special_ability_4": {
-        "name": "Empty",
-        "description": "N/A",
-        "special_ability_emoji": "❌"
-    },
-    "html_colour_hex": "#ff0000"
-}
-
-
 class OllamaGenerateCharacterProcess(ProcessAbstract):
     def __init__(self):
         self.PROMPT_PREFIX = '''
@@ -118,6 +81,3 @@ class OllamaGenerateCharacterProcess(ProcessAbstract):
         )
 
         return OllamaCharacterDefinitionModel.model_validate_json(response.message.content)
-
-    def execute_test(self, description):
-        return OllamaCharacterDefinitionModel.model_validate(test_data_fixed)
