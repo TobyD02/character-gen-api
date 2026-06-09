@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Roster — Combat Cards</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Roster</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"/>
 
     <style>
-        *, *::before, *::after {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -20,30 +20,13 @@
         body {
             background: #04090d;
             font-family: 'Rajdhani', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             color: #e8dfc8;
-            overflow: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background: radial-gradient(ellipse 60% 50% at 20% 40%, rgba(74, 111, 165, 0.08) 0%, transparent 70%),
-            radial-gradient(ellipse 50% 50% at 80% 60%, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
+            overflow-x: hidden; /* 🧯 kills horizontal scroll */
         }
 
         .page-header {
-            position: relative;
-            z-index: 1;
             text-align: center;
             padding: 25px 20px 10px;
-            flex-shrink: 0;
         }
 
         .page-header h1 {
@@ -51,7 +34,6 @@
             font-size: 26px;
             color: #d4a843;
             letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(212, 168, 67, 0.3);
         }
 
         .page-header p {
@@ -62,62 +44,30 @@
             text-transform: uppercase;
         }
 
-        /* ── GRID SCROLLABLE VIEWPORT ── */
         .cards-viewport {
-            position: relative;
-            z-index: 1;
             width: 100%;
-
-            /* FIX: Changed from 1920px to 100% to destroy the empty outer-screen margins */
-            max-width: 100%;
             height: calc(100vh - 100px);
             overflow-y: auto;
-            overflow-x: hidden;
 
             display: grid;
 
-            /* FIX: Increased track size to 620px to make the cards significantly larger */
-            grid-template-columns: repeat(auto-fill, minmax(min(100%, 620px), 620px));
-
-            /* FIX: Margins tightened to push cards closer to each other and the screen edges */
-            gap: 14px 18px;
-            {#padding: 10px 20px 80px;#}
-            padding: 0;
+            /* ✅ KEY FIX */
+            grid-template-columns: repeat(auto-fit, minmax(840px, 840px));
 
             justify-content: center;
-            align-items: start;
+            gap: 14px 18px;
+            padding: 20px;
 
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(212, 168, 67, 0.3) rgba(255, 255, 255, 0.01);
+            overflow-x: hidden; /* extra safety */
         }
 
-        /* FIX: Synced layout helpers to match the new card scale limits */
-        .cards-viewport .card {
-            margin: 0 auto;
-            width: 100%;
-            max-width: 620px;
+        .card {
+            width: 840px;
             height: 400px;
-        }
-
-        .cards-viewport::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .cards-viewport::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .cards-viewport::-webkit-scrollbar-thumb {
-            background: rgba(212, 168, 67, 0.25);
-            border-radius: 3px;
-        }
-
-        .cards-viewport::-webkit-scrollbar-thumb:hover {
-            background: rgba(212, 168, 67, 0.5);
         }
     </style>
 </head>
+
 <body>
 
 <header class="page-header">
@@ -128,14 +78,12 @@
 <main class="cards-viewport">
 
     {% for member in characters %}
-
-        {% set character          = member.character %}
-        {% set character_profile  = member.character_profile %}
-        {% set powerscale         = member.powerscale %}
-        {% set special_abilities  = member.special_abilities %}
+        {% set character = member.character %}
+        {% set character_profile = member.character_profile %}
+        {% set powerscale = member.powerscale %}
+        {% set special_abilities = member.special_abilities %}
 
         {% include 'partials/card_partial.html.j2' %}
-
     {% endfor %}
 
 </main>

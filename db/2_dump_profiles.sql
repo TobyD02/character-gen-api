@@ -1,0 +1,8814 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict 28f3rpXKN8KTwJ4pW1uTDSvo8d8QSLmjQbyJinDtdoToG6ckthLs2BFxtu6XCGt
+
+-- Dumped from database version 16.14
+-- Dumped by pg_dump version 16.14
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.category (category_id, name) FROM stdin;
+1	absorption_users
+2	accelerated_development_users
+3	acrobats
+4	anime_characters
+5	aura_users
+6	awakened_power_users
+7	biology_users
+8	blood_users
+9	body_control_users
+10	characters
+11	curse_users
+12	damage_boost_users
+13	dimensional_travel_users
+14	empowerment_users
+15	energy_users
+16	enhanced_senses_users
+17	extrasensory_perception_users
+18	fissionism_users
+19	good_characters
+20	heroes
+21	homing_attack_users
+22	humans
+23	immortals
+24	information_analysis_users
+25	jujutsu_kaisen
+26	knife_users
+27	law_users
+28	light_users
+29	male_characters
+30	manga_characters
+31	martial_artists
+32	matter_users
+33	multiple_selves_users
+34	non-physical_interaction_users
+35	outdated_pages
+36	philanthropes
+37	pocket_reality_users
+38	poison_users
+39	power_nullification_users
+40	precognition_users
+41	primary_protagonists
+42	protagonists
+43	purification_users
+44	rage_users
+45	regeneration_users
+46	sealing_users
+47	sorcerers
+48	soul_users
+49	space_users
+50	statistics_amplification_users
+51	subjective_reality_users
+52	supernatural_willpower_users
+53	teenagers
+54	teleportation_users
+55	thread_users
+56	tier_7
+57	tier_8
+58	tier_8-b
+59	tier_8-c
+60	tier_high_7-c
+61	tragic_characters
+62	vector_manipulation_users
+63	weapon_masters
+64	weapon_users
+65	wire_users
+67	adults
+68	afterimage_users
+77	durability_negation_users
+79	energy_projection_users
+82	explosion_users
+84	eye_users
+85	flight_users
+86	forcefield_users
+87	free_movement_users
+88	geniuses
+89	gravity_users
+90	healers
+93	information_users
+94	instinctive_action_users
+95	invisibility_users
+102	mathematics_users
+103	mentors
+104	mind_users
+105	neutral_characters
+108	pain_users
+109	paralysis_users
+110	perception_users
+111	physics_users
+113	power_modification_users
+116	pressure_point_users
+120	resurrection_users
+122	shockwave_users
+123	size_users
+124	social_influencers
+131	teachers
+134	tier_7-b
+136	tier_low_7-b
+138	vibration_users
+142	comic_relief_characters
+143	elasticity_users
+146	game_characters
+147	glove_users
+152	nicktoons
+153	non-canon_characters
+154	organic_users
+157	radiation_users
+158	self-sustenance_users
+160	summoners
+163	time_users
+164	underwater_breathing_users
+165	wand_users
+166	water_users
+168	additional_limbs_users
+170	air_users
+172	antagonists
+173	attack_reflection_users
+177	body_puppetry_users
+178	bone_users
+179	brawlers
+181	corrosion_users
+182	criminals
+184	darkness_users
+185	deconstruction_users
+186	electricity_users
+188	evil_characters
+191	fear_users
+193	fusionism_users
+195	illusionists
+197	large_sized_characters
+198	leaders
+200	longevity_users
+204	mass_murderers
+205	metal_users
+206	misanthropes
+208	murderers
+209	my_hero_academia
+210	power_absorption_users
+211	power_bestowal_users
+213	primary_antagonists
+214	psychopaths
+217	reactive_evolution_users
+224	supervillains
+226	terrorists
+227	tier_6
+228	tier_6-a
+229	tier_6-b
+231	villains
+232	acid_users
+238	bodily_weaponry_users
+240	breath_attack_users
+242	danmaku_users
+243	disabled_characters
+254	honorable_characters
+256	ice_users
+257	idols
+263	messiah_characters
+272	self-destruction_users
+273	sound_users
+275	superheroes
+277	surface_scalers
+279	temperature_users
+283	transformation_users
+284	vehicle_users
+285	wrestlers
+288	adaptation_users
+290	adventurers
+293	aliens
+294	amnesiacs
+297	bfr_users
+298	ball_users
+302	chi_users
+303	clairvoyance_users
+304	comedy_characters
+309	disc_users
+310	dragon_ball
+312	ectoplasm_users
+318	existence_erasure_users
+321	fantasy_characters
+322	farmers
+323	fishers
+326	fourth_wall_aware_characters
+328	gods
+343	married_characters
+345	martial_arts_champions
+348	orphans
+350	parents
+352	portal_users
+353	power_mimicry_users
+358	princes
+359	prisoners
+362	reactive_power_level_users
+363	restoration_users
+364	revived_characters
+365	royal_characters
+366	saiyans
+375	statistics_reduction_users
+376	status_effect_users
+377	stealth_masters
+380	survivors
+382	telekinesis_users
+383	telepaths
+385	tier_2
+386	tier_2-c
+387	tier_4
+388	tier_4-b
+392	void_users
+393	weapon_creation_users
+395	weather_users
+402	emotionless_characters
+421	transmutation_users
+422	ainur
+423	animal_users
+424	blade_users
+425	book_characters
+427	concept_users
+428	dream_users
+429	dual_wielders
+432	fire_users
+435	higher-dimensional_beings
+437	incorporeal_characters
+438	intangibility_users
+439	istari
+442	lord_of_the_rings
+443	magic_users
+444	maiar
+447	psychics
+448	reality_warpers
+450	ring_users
+451	smokers
+453	spirits
+454	staff_users
+455	sword_users
+459	tier_1
+460	tier_1-a
+461	tier_3
+463	tier_7-a
+464	tier_high_1-a
+465	tier_high_3-a
+469	wise_characters
+470	wizards
+471	animals
+473	bolt
+474	cartoon_characters
+476	dogs
+482	mammals
+483	movie_characters
+484	pets
+485	playable_characters
+489	small_sized_characters
+491	tier_10
+492	tier_10-c
+495	tier_9
+496	tier_9-b
+498	video_game_characters
+504	assassins
+505	astronauts
+511	cosmic_awareness_users
+512	cyborgs
+513	damage_reduction_users
+516	engineers
+520	fallen_characters
+533	jedi
+534	kids
+535	knights
+536	live-action_characters
+541	mechanics
+542	memory_users
+543	military_characters
+552	pilots
+553	plasma_users
+558	psychometry_users
+561	retrocognition_users
+563	science_fantasy_characters
+564	soldiers
+565	star_wars
+578	traitors
+579	vehicular_masters
+583	widowed_characters
+584	astral_projection_users
+590	female_characters
+594	horror_characters
+599	magnetism_users
+604	science_fiction_characters
+606	stranger_things
+607	tv_characters
+608	technology_users
+609	technopaths
+614	tier_10-b
+623	bow_users
+631	kings
+644	rulers
+651	tier_9-a
+654	tier_high_7-a
+657	warriors
+660	abstract_entities
+661	acausal_characters
+664	automatic_translation_users
+665	avatar_creation_users
+667	beyond-dimensional_beings
+670	causality_users
+671	chaos_users
+673	comic_book_characters
+675	corruption_users
+676	cosmic_entities
+677	creation_users
+680	death_users
+681	demons
+682	dimensional_manipulation_users
+684	disease_users
+686	earth_users
+698	genderless_characters
+702	hellfire_users
+703	holy_users
+708	ink_users
+712	life_users
+715	marvel_comics
+718	necromancers
+720	nigh-omniscient_beings
+722	nonexistent_characters
+723	omnipresent_beings
+724	paper_users
+725	paraconsistent_characters
+728	plant_users
+729	plot_manipulation_users
+731	possession_users
+734	probability_users
+739	shapeshifters
+742	space_survival_users
+748	supernatural_luck_users
+749	supreme_beings
+755	transcendent_beings
+765	armor_users
+766	athletes
+769	berserkers
+770	black_bulls
+771	black_clover
+773	book_users
+786	energy_weapon_users
+792	fusions
+793	glass_cannons
+800	light_novel_characters
+801	loyal_characters
+825	stone_walls
+830	tier_5
+831	tier_5-c
+833	tier_high_6-a
+834	tier_low_5-b
+836	unholy_users
+838	weapon_control_users
+841	whip_users
+842	wing_users
+851	black_hole_users
+853	captains
+880	platform_creation_users
+884	sleep_users
+897	007
+899	alcoholics
+901	drivers
+902	federal_agents
+903	gamblers
+905	gun_users
+909	mi6_agents
+913	phone_users
+916	secret_agents
+919	spies
+928	cape_users
+932	dc_comics
+940	kryptonians
+953	cloth_users
+955	dc_animated_movies
+961	green_lanterns
+964	justice_league_members
+974	tier_5-a
+1007	hybrids
+1049	claw_users
+1053	game_bosses
+1055	honkai:_star_rail
+1059	monsters
+1066	role-playing_characters
+1071	tail_users
+1074	tier_3-c
+1082	empathic_manipulation_users
+1100	star_trek
+1104	tier_low_2-c
+1108	fairies
+1109	fairy_gone
+1119	blessing_users
+1120	call_of_duty
+1137	preparation_users
+1152	time_travelers
+1153	variable_tier
+1163	otaku's_adventure
+1170	tier_high_8-c
+1172	witches
+1176	data_beings
+1177	data_users
+1181	game_users
+1183	gravity_falls
+1187	robots
+1188	seduction_users
+1195	tier_9-c
+1197	yandere_characters
+1202	manhwa_characters
+1204	mercenaries
+1205	mercenary_enrollment
+1213	webcomic_characters
+1216	internet_characters
+1217	invulnerability_users
+1221	shen_comix
+1227	tier_3-b
+1230	age_users
+1242	eldritch_horrors
+1248	ghosts
+1260	pigs
+1261	possessed/brainwashed_characters
+1275	the_amityville_horror
+1280	unknown_tier
+1287	insectoids
+1291	one-punch_man
+1294	baldi's_basics_in_education_and_learning
+1298	indie_game_characters
+1299	inorganic_beings
+1309	androids
+1311	chain_users
+1313	crossover_characters
+1317	fighting_game_characters
+1321	hackers
+1330	soul_calibur
+1331	spear_users
+1338	tier_high_6-c
+1343	antiheroes
+1352	madness_combat
+1362	vigilantes
+1366	gorillaz
+1369	music_characters
+1370	musicians
+1385	ichiban_ushiro_no_daimaou
+1403	tier_low_7-c
+1414	villainous
+1415	50_cent_(verse)
+1418	bomb_users
+1425	gangsters
+1437	rappers
+1439	snipers
+1451	cyanide_and_happiness
+1461	tier_10-a
+1469	final_bosses
+1472	golems
+1482	the_troop
+1487	acupuncture_users
+1497	duplication_users
+1528	sleight_of_hand_users
+1529	solar_energy_users
+1537	the_god_of_high_school
+1542	tier_4-a
+1543	tier_high_4-c
+1555	magical_girl_raising_project
+1556	magical_girls
+1562	bfdi_contestants
+1563	battle_for_dream_island
+1567	hosts
+1577	toon_force_users
+1602	reformed_characters
+1605	thieves
+1614	brawl_stars
+1634	dog_man
+1646	cats
+1655	hi-fi_rush
+1681	schoolgirls
+1684	shield_users
+1686	tier_8-a
+1697	density_users
+1701	element_users
+1713	kages
+1720	naruto
+1721	ninjas
+1727	smoke_users
+1746	cracking_beings
+1747	cracking_users
+1750	dimensional_storage_users
+1760	multilocation_users
+1769	shiei_no_sona-nyl_~what_beautiful_memories
+1776	tier_6-c
+1782	visual_novel_characters
+1784	what_a_beautiful_series
+1839	absolute_zero_users
+1844	antimatter_users
+1859	damage_transferal_users
+1873	fate_users
+1890	machines
+1891	madness_users
+1899	omniscient_beings
+1918	resistance_negation_users
+1935	tier_1-c
+1941	xeno_(series)
+1942	xenoblade
+1946	ducks
+1956	toys
+1980	ordem_paranormal
+2003	ok_k.o.!_let's_be_heroes
+2005	skeletons
+2007	tier_7-c
+2008	undead
+2030	tier_low_6-b
+2031	turma_da_mônica
+2036	flatland
+2051	lawyers
+2059	tier_11
+2060	tier_11-a
+2064	battle_angel_alita
+2067	cyberpunk_characters
+2069	drone_users
+2074	hunters
+2097	drug_addicts
+2104	narcissists
+2112	the_boys
+2120	axe_users
+2132	guilty_gear
+2133	homunculi
+2135	key_users
+2144	tier_low_1-c
+2150	archie_sonic
+2151	artificial_characters
+2152	artificial_intelligence
+2162	construction_users
+2168	eggrobo_tech
+2186	nanotechnology_users
+2220	turtles
+2237	grappling_users
+2238	hook_users
+2248	the_fairly_oddparents
+2283	street_fighter
+2301	the_100
+2309	arrowverse_(cw)
+2340	dc_animated_universe
+2379	tier_5-b
+2389	duos
+2393	jojo's_bizarre_adventure
+2415	super_soldiers
+2421	astro_boy
+2427	tezuka-verse
+2435	avatar:_the_last_airbender
+2446	elders
+2449	elemental_intangibility_users
+2453	fan_users
+2470	lava_users
+2477	monks
+2495	team_avatar
+2514	dungeons_and_dragons
+2544	gauntlet_users
+2560	shadow_of_the_beast
+2566	thrown_weapon_users
+2578	real_world
+2585	bat_users
+2586	beat_down:_fist_of_vengeance
+2588	brass_knuckle_users
+2598	pipe_users
+2615	horses
+2625	undertale
+2632	double_down
+2653	clive_barker's_undying
+2668	bourne_series
+2669	cia_agents
+2719	unsong
+2720	web_novel_characters
+2724	dexter
+2731	police_officers
+2742	boxers
+2748	the_boxer_(manhwa)
+2756	arrancar
+2759	bleach
+2765	espada
+2781	sadists
+2793	tier_high_6-b
+2795	trident_users
+2803	brick_users
+2808	helmet_users
+2817	pickaxe_users
+2820	rope_users
+2822	sisu
+2844	league_of_legends
+2867	adhesivity_users
+2869	arachnids
+2873	kaiju
+2876	monsterverse
+2877	spiders
+2884	underground_mobility_users
+2907	supernatural
+2938	tatoeba_last_dungeon
+2943	adeptus_astartes
+2951	chaos_(warhammer)
+2954	clones
+3006	tyrants
+3012	warhammer_40,000
+3013	warlords
+3018	camouflage_users
+3030	slimes
+3031	species
+3043	shell_users
+3044	starcraft
+3057	omori
+3086	wuthering_waves
+3094	club_users
+3095	crossbow_users
+3105	hammer_users
+3109	mace_users
+3124	the_last_of_us
+3131	angels
+3144	spawn_(comics)
+3170	ring_fit_adventure
+3187	battery_users
+3192	environment_users
+3194	fire_extinguisher_users
+3196	flamethrower_users
+3197	food_users
+3199	fragrance_users
+3210	lighter_users
+3213	mascots
+3216	oddworld
+3226	rubber_band_users
+3235	tape_users
+3241	torch_users
+3244	trap_users
+3252	delinquents
+3253	mtm_(makoto_mizuta)_verse
+3275	sousei_no_onmyouji
+3278	summons
+3288	fish
+3291	hellboy
+3324	the_simpsons
+3362	megami_tensei
+3366	petrification_users
+3392	the_walking_dead
+3401	students
+3406	unordinary
+3417	uglyhood
+3421	doll_users
+3428	mashle:_magic_and_muscles
+3445	anti-villains
+3452	cosmic_devourers
+3492	star_wars_(legends)
+3505	hunter_x_hunter
+3546	maou_gakuin_no_futekigousha
+3588	warhammer_fantasy
+3591	bloodborne
+3597	giants
+3603	mutants
+3605	rune_users
+3616	devil_may_cry
+3653	magical_girl_spec-ops_asuka
+3660	abigail_(2024_movie)
+3679	vampires
+3703	infamous
+3724	blade_trilogy
+3739	spike_users
+3744	vampire_hunters
+3755	fate
+3764	nasuverse
+3805	mask_users
+3806	ordeal
+3821	cephalopods
+3829	guardians
+3832	marvel_cinematic_universe
+3834	mounts
+3859	monster_hunter
+3862	reptiles
+3875	dragon_ball_(toei)
+3888	ova_characters
+3889	planet_trade_organization
+3907	dancers
+3908	double_dragon
+3918	kidnappers
+3919	kunio-kun
+3924	minions
+3999	mega_pokémon
+4002	pokémon
+4014	wood_users
+4019	marvel_animated
+4024	wolverine_&_the_x-men_-_avengers:_emh!
+4029	doctors
+4034	marvel_age
+4037	mutates
+4039	scientists
+4040	super_scientists
+4061	marksmen
+4125	stalkers
+4128	thunderbolts_members
+4154	the_incredible_hulk:_ultimate_destruction
+4165	card_users
+4195	doctor_sleep
+4220	+99_reinforced_wooden_stick
+4235	ape_vs._monster
+4248	primates
+4275	the_walking_dead_(tv_universe)
+4281	angels_of_death_(verse)
+4291	priests
+4299	abraham_lincoln_vampire_hunter
+4315	presidents
+4327	night_at_the_museum
+4360	shikkoku_no_sharnoth
+4372	abstracts_(marvel)
+4397	throne_of_glass
+4400	birds
+4428	rivals_of_aether
+4438	darksiders
+4444	morality_users
+4449	tier_3-a
+4465	one_piece
+4466	pirates
+4472	cursed_characters
+4494	dynamax_users
+4517	aeverse
+4518	adventurequest
+4560	ultraman
+4585	isekai_characters
+4596	seinarukana_-the_spirit_of_eternity_sword_2
+4601	the_spirit_of_eternity_sword
+4622	absolver
+4675	hulk_(2003)
+4705	silent_hill
+4739	youkai
+4740	zashiki_warashi
+4749	gintama
+4754	parasol_users
+4771	izuna:_legend_of_the_unemployed_ninja
+4793	bubble_users
+4822	horn_users
+4826	magma_users
+4828	marvel_vs._capcom
+4834	silent_characters
+4839	tier_high_5-a
+4867	the_weakness_of_beatrice
+4877	lsd:_dream_emulator
+4887	genshin_impact
+4916	manhua_characters
+4964	trinity_seven
+5015	sword_art_online
+5043	cane_users
+5045	devourers
+5046	doctor_who
+5048	hive_minds
+5076	mesopotamian_gods
+5083	saint_seiya
+5118	green_worldz
+5163	toriko
+5166	amphibians
+5170	devonian_period
+5172	paleozoic_era
+5184	in_stars_and_time
+5192	time_manipulators
+5251	toaru_majutsu_no_index
+5272	insects
+5292	aceable
+5310	azure_striker_gunvolt
+5354	dinosaur_king
+5355	dinosaurs
+5369	tier_2-b
+5395	final_fantasy
+5438	tier_2-a
+5459	the_powerpuff_girls
+5475	rubyquest
+5513	detectives
+5520	ms_paint_adventures
+5522	problem_sleuth
+5530	zombies
+5540	krypto_the_superdog_(2005_cartoon)
+5544	non-standard_breathing_users
+5558	11eyes_-tsumi_to_batsu_to_aganai_no_shoujo
+5687	emanators
+5705	katana_users
+5765	sin_and_punishment
+5785	demigods
+5806	servants_(nasuverse)
+5829	epic_literature
+5832	illiad
+5838	poem_characters
+5859	greek_gods
+5879	assassin's_creed
+5912	blazblue
+5926	princesses
+5947	mega_man
+5987	dragon_slayers
+5988	dragons
+5995	fairy_tail
+6027	libra_of_the_vampire_princess
+6065	plants
+6066	plants_vs._zombies
+6114	dandadan
+6118	hair_users
+6132	cretaceous_period
+6135	jurassic_park
+6174	primal_carnage
+6188	mesozoic_era
+6194	boruto
+6231	super_science_friends
+6260	resident_evil
+6278	at_night,_i_become_a_monster
+6310	len'en_project
+6357	tensei_shitara_slime_datta_ken
+6489	neon_genesis_evangelion
+6501	archangels
+6513	exorcists
+6517	guitar_users
+6518	hazbin_hotel
+6547	sociopaths
+6580	nier
+6591	apple_users
+6606	record_of_ragnarok
+6619	the_promised_neverland
+6634	tokyo_babel_pilgrims_of_the_apocalypse
+6659	needless
+6732	the_beekeeper_(2024_movie)
+\.
+
+
+--
+-- Data for Name: character_category; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.character_category (character_id, category_id) FROM stdin;
+32928	1
+32928	2
+32928	3
+32928	4
+32928	5
+32928	6
+32928	7
+32928	8
+32928	9
+32928	10
+32928	11
+32928	12
+32928	13
+32928	14
+32928	15
+32928	16
+32928	17
+32928	18
+32928	19
+32928	20
+32928	21
+32928	22
+32928	23
+32928	24
+32928	25
+32928	26
+32928	27
+32928	28
+32928	29
+32928	30
+32928	31
+32928	32
+32928	33
+32928	34
+32928	35
+32928	36
+32928	37
+32928	38
+32928	39
+32928	40
+32928	41
+32928	42
+32928	43
+32928	44
+32928	45
+32928	46
+32928	47
+32928	48
+32928	49
+32928	50
+32928	51
+32928	52
+32928	53
+32928	54
+32928	55
+32928	56
+32928	57
+32928	58
+32928	59
+32928	60
+32928	61
+32928	62
+32928	63
+32928	64
+32928	65
+25011	3
+25011	67
+25011	68
+25011	4
+25011	5
+25011	6
+25011	7
+25011	10
+25011	11
+25011	12
+25011	13
+25011	77
+25011	14
+25011	79
+25011	15
+25011	16
+25011	82
+25011	17
+25011	84
+25011	85
+25011	86
+25011	87
+25011	88
+25011	89
+25011	90
+25011	21
+25011	22
+25011	93
+25011	94
+25011	95
+25011	25
+25011	27
+25011	28
+25011	29
+25011	30
+25011	31
+25011	102
+25011	103
+25011	104
+25011	105
+25011	34
+25011	35
+25011	108
+25011	109
+25011	110
+25011	111
+25011	37
+25011	113
+25011	39
+25011	40
+25011	116
+25011	42
+25011	43
+25011	45
+25011	120
+25011	46
+25011	122
+25011	123
+25011	124
+25011	47
+25011	48
+25011	49
+25011	50
+25011	51
+25011	52
+25011	131
+25011	54
+25011	56
+25011	134
+25011	60
+25011	136
+25011	62
+25011	138
+25011	63
+27108	1
+27108	10
+27108	142
+27108	143
+27108	82
+27108	86
+27108	146
+27108	147
+27108	19
+27108	20
+27108	29
+27108	31
+27108	152
+27108	153
+27108	154
+27108	41
+27108	42
+27108	157
+27108	158
+27108	123
+27108	160
+27108	56
+27108	60
+27108	163
+27108	164
+27108	165
+27108	166
+30189	3
+30189	168
+30189	67
+30189	170
+30189	4
+30189	172
+30189	173
+30189	6
+30189	7
+30189	9
+30189	177
+30189	178
+30189	179
+30189	10
+30189	181
+30189	182
+30189	12
+30189	184
+30189	185
+30189	186
+30189	16
+30189	188
+30189	82
+30189	17
+30189	191
+30189	85
+30189	193
+30189	22
+30189	195
+30189	24
+30189	197
+30189	198
+30189	28
+30189	200
+30189	29
+30189	30
+30189	31
+30189	204
+30189	205
+30189	206
+30189	33
+30189	208
+30189	209
+30189	210
+30189	211
+30189	40
+30189	213
+30189	214
+30189	157
+30189	44
+30189	217
+30189	45
+30189	158
+30189	123
+30189	124
+30189	50
+30189	52
+30189	224
+30189	54
+30189	226
+30189	227
+30189	228
+30189	229
+30189	61
+30189	231
+30259	232
+30259	3
+30259	67
+30259	68
+30259	170
+30259	4
+30259	238
+30259	179
+30259	240
+30259	10
+30259	242
+30259	243
+30259	186
+30259	14
+30259	79
+30259	15
+30259	16
+30259	82
+30259	191
+30259	85
+30259	19
+30259	20
+30259	254
+30259	22
+30259	256
+30259	257
+30259	94
+30259	28
+30259	29
+30259	30
+30259	31
+30259	263
+30259	209
+30259	34
+30259	36
+30259	211
+30259	39
+30259	41
+30259	42
+30259	44
+30259	272
+30259	273
+30259	50
+30259	275
+30259	52
+30259	277
+30259	131
+30259	279
+30259	227
+30259	228
+30259	229
+30259	283
+30259	284
+30259	285
+26705	2
+26705	3
+26705	288
+26705	67
+26705	290
+26705	68
+26705	170
+26705	293
+26705	294
+26705	173
+26705	5
+26705	297
+26705	298
+26705	9
+26705	240
+26705	10
+26705	302
+26705	303
+26705	304
+26705	12
+26705	242
+26705	185
+26705	13
+26705	309
+26705	310
+26705	77
+26705	312
+26705	186
+26705	14
+26705	79
+26705	15
+26705	16
+26705	318
+26705	82
+26705	17
+26705	321
+26705	322
+26705	323
+26705	85
+26705	86
+26705	326
+26705	193
+26705	328
+26705	19
+26705	90
+26705	20
+26705	21
+26705	254
+26705	195
+26705	24
+26705	94
+26705	95
+26705	197
+26705	28
+26705	200
+26705	29
+26705	30
+26705	343
+26705	31
+26705	345
+26705	32
+26705	34
+26705	348
+26705	109
+26705	350
+26705	110
+26705	352
+26705	353
+26705	39
+26705	40
+26705	116
+26705	41
+26705	358
+26705	359
+26705	42
+26705	44
+26705	362
+26705	363
+26705	364
+26705	365
+26705	366
+26705	46
+26705	158
+26705	122
+26705	124
+26705	48
+26705	273
+26705	49
+26705	50
+26705	375
+26705	376
+26705	377
+26705	160
+26705	52
+26705	380
+26705	131
+26705	382
+26705	383
+26705	54
+26705	385
+26705	386
+26705	387
+26705	388
+26705	163
+26705	283
+26705	138
+26705	392
+26705	393
+26705	63
+26705	395
+13768	293
+13768	172
+13768	5
+13768	10
+13768	302
+13768	310
+13768	402
+13768	16
+13768	17
+13768	84
+13768	85
+13768	86
+13768	19
+13768	20
+13768	21
+13768	29
+13768	30
+13768	105
+13768	213
+13768	362
+13768	46
+13768	275
+13768	380
+13768	385
+13768	386
+13768	421
+9605	422
+9605	423
+9605	424
+9605	425
+9605	10
+9605	427
+9605	428
+9605	429
+9605	186
+9605	321
+9605	432
+9605	19
+9605	20
+9605	435
+9605	23
+9605	437
+9605	438
+9605	439
+9605	198
+9605	28
+9605	442
+9605	443
+9605	444
+9605	29
+9605	42
+9605	447
+9605	448
+9605	364
+9605	450
+9605	451
+9605	48
+9605	453
+9605	454
+9605	455
+9605	382
+9605	383
+9605	54
+9605	459
+9605	460
+9605	461
+9605	56
+9605	463
+9605	464
+9605	465
+9605	136
+9605	63
+9605	64
+9605	469
+9605	470
+3474	471
+3474	238
+3474	473
+3474	474
+3474	10
+3474	476
+3474	16
+3474	146
+3474	19
+3474	20
+3474	29
+3474	482
+3474	483
+3474	484
+3474	485
+3474	41
+3474	42
+3474	158
+3474	489
+3474	377
+3474	491
+3474	492
+3474	57
+3474	58
+3474	495
+3474	496
+3474	138
+3474	498
+1044	1
+1044	3
+1044	67
+1044	170
+1044	172
+1044	504
+1044	505
+1044	173
+1044	5
+1044	474
+1044	10
+1044	303
+1044	511
+1044	512
+1044	513
+1044	243
+1044	15
+1044	516
+1044	16
+1044	188
+1044	17
+1044	520
+1044	191
+1044	432
+1044	85
+1044	86
+1044	146
+1044	88
+1044	19
+1044	90
+1044	20
+1044	22
+1044	24
+1044	94
+1044	533
+1044	534
+1044	535
+1044	536
+1044	29
+1044	343
+1044	31
+1044	32
+1044	541
+1044	542
+1044	543
+1044	104
+1044	483
+1044	208
+1044	34
+1044	348
+1044	109
+1044	350
+1044	110
+1044	552
+1044	553
+1044	40
+1044	41
+1044	359
+1044	42
+1044	558
+1044	44
+1044	45
+1044	561
+1044	365
+1044	563
+1044	564
+1044	565
+1044	50
+1044	376
+1044	455
+1044	131
+1044	53
+1044	382
+1044	383
+1044	279
+1044	226
+1044	56
+1044	134
+1044	61
+1044	578
+1044	579
+1044	231
+1044	63
+1044	64
+1044	583
+7944	584
+7944	7
+7944	10
+7944	303
+7944	185
+7944	186
+7944	590
+7944	85
+7944	19
+7944	20
+7944	594
+7944	22
+7944	534
+7944	28
+7944	536
+7944	599
+7944	542
+7944	352
+7944	447
+7944	44
+7944	604
+7944	48
+7944	606
+7944	607
+7944	608
+7944	609
+7944	53
+7944	382
+7944	383
+7944	491
+7944	614
+7944	56
+7944	57
+7944	59
+7944	60
+7944	61
+1481	67
+1481	424
+1481	425
+1481	623
+1481	10
+1481	321
+1481	146
+1481	19
+1481	90
+1481	20
+1481	22
+1481	631
+1481	198
+1481	536
+1481	200
+1481	442
+1481	29
+1481	343
+1481	483
+1481	34
+1481	350
+1481	485
+1481	42
+1481	365
+1481	644
+1481	451
+1481	455
+1481	461
+1481	56
+1481	463
+1481	495
+1481	651
+1481	496
+1481	465
+1481	654
+1481	136
+1481	498
+1481	657
+1481	63
+1481	64
+29263	660
+29263	661
+29263	423
+29263	5
+29263	664
+29263	665
+29263	297
+29263	667
+29263	7
+29263	8
+29263	670
+29263	671
+29263	10
+29263	673
+29263	427
+29263	675
+29263	676
+29263	677
+29263	11
+29263	184
+29263	680
+29263	681
+29263	682
+29263	13
+29263	684
+29263	77
+29263	686
+29263	14
+29263	79
+29263	15
+29263	16
+29263	188
+29263	318
+29263	17
+29263	432
+29263	86
+29263	326
+29263	193
+29263	698
+29263	328
+29263	19
+29263	90
+29263	702
+29263	703
+29263	195
+29263	23
+29263	437
+29263	93
+29263	708
+29263	95
+29263	197
+29263	27
+29263	712
+29263	200
+29263	443
+29263	715
+29263	32
+29263	33
+29263	718
+29263	105
+29263	720
+29263	34
+29263	722
+29263	723
+29263	724
+29263	725
+29263	110
+29263	111
+29263	728
+29263	729
+29263	352
+29263	731
+29263	211
+29263	39
+29263	734
+29263	157
+29263	448
+29263	120
+29263	563
+29263	739
+29263	123
+29263	48
+29263	742
+29263	49
+29263	375
+29263	377
+29263	51
+29263	160
+29263	748
+29263	749
+29263	608
+29263	54
+29263	459
+29263	464
+29263	163
+29263	755
+29263	283
+29263	421
+29263	138
+29263	392
+1857	1
+1857	2
+1857	3
+1857	290
+1857	4
+1857	765
+1857	766
+1857	173
+1857	5
+1857	769
+1857	770
+1857	771
+1857	424
+1857	773
+1857	670
+1857	10
+1857	302
+1857	304
+1857	12
+1857	513
+1857	680
+1857	681
+1857	429
+1857	77
+1857	79
+1857	15
+1857	786
+1857	16
+1857	17
+1857	321
+1857	85
+1857	193
+1857	792
+1857	793
+1857	19
+1857	20
+1857	21
+1857	24
+1857	94
+1857	438
+1857	800
+1857	801
+1857	29
+1857	30
+1857	31
+1857	542
+1857	104
+1857	33
+1857	34
+1857	348
+1857	35
+1857	211
+1857	353
+1857	39
+1857	40
+1857	41
+1857	42
+1857	43
+1857	44
+1857	217
+1857	362
+1857	123
+1857	124
+1857	48
+1857	50
+1857	825
+1857	160
+1857	455
+1857	53
+1857	382
+1857	830
+1857	831
+1857	227
+1857	833
+1857	834
+1857	283
+1857	836
+1857	657
+1857	838
+1857	63
+1857	64
+1857	841
+1857	842
+32573	1
+32573	2
+32573	3
+32573	67
+32573	4
+32573	5
+32573	770
+32573	771
+32573	851
+32573	424
+32573	853
+32573	10
+32573	302
+32573	184
+32573	77
+32573	79
+32573	15
+32573	16
+32573	17
+32573	321
+32573	85
+32573	86
+32573	19
+32573	20
+32573	24
+32573	93
+32573	535
+32573	198
+32573	800
+32573	28
+32573	801
+32573	443
+32573	29
+32573	30
+32573	543
+32573	35
+32573	109
+32573	880
+32573	39
+32573	40
+32573	116
+32573	884
+32573	47
+32573	49
+32573	50
+32573	455
+32573	131
+32573	227
+32573	229
+32573	56
+32573	833
+32573	654
+32573	63
+32573	470
+13348	897
+13348	67
+13348	899
+13348	10
+13348	901
+13348	902
+13348	903
+13348	19
+13348	905
+13348	20
+13348	22
+13348	536
+13348	909
+13348	29
+13348	31
+13348	483
+13348	913
+13348	41
+13348	42
+13348	916
+13348	451
+13348	124
+13348	919
+13348	377
+13348	495
+13348	496
+13348	284
+13348	579
+13348	63
+13348	64
+27576	293
+27576	928
+27576	10
+27576	302
+27576	673
+27576	932
+27576	184
+27576	16
+27576	85
+27576	19
+27576	20
+27576	256
+27576	438
+27576	940
+27576	198
+27576	28
+27576	443
+27576	29
+27576	42
+27576	275
+27576	387
+27576	388
+10891	67
+10891	5
+10891	474
+10891	10
+10891	953
+10891	677
+10891	955
+10891	15
+10891	432
+10891	85
+10891	86
+10891	19
+10891	961
+10891	22
+10891	93
+10891	964
+10891	29
+10891	31
+10891	543
+10891	483
+10891	552
+10891	450
+10891	158
+10891	275
+10891	830
+10891	974
+10891	579
+10891	63
+26700	2
+26700	3
+26700	67
+26700	68
+26700	170
+26700	293
+26700	173
+26700	5
+26700	297
+26700	9
+26700	10
+26700	302
+26700	303
+26700	12
+26700	13
+26700	310
+26700	186
+26700	14
+26700	79
+26700	15
+26700	16
+26700	82
+26700	17
+26700	85
+26700	86
+26700	326
+26700	19
+26700	20
+26700	254
+26700	22
+26700	1007
+26700	24
+26700	95
+26700	28
+26700	200
+26700	29
+26700	30
+26700	343
+26700	31
+26700	34
+26700	350
+26700	352
+26700	39
+26700	116
+26700	358
+26700	42
+26700	44
+26700	364
+26700	365
+26700	366
+26700	122
+26700	273
+26700	49
+26700	50
+26700	375
+26700	377
+26700	380
+26700	131
+26700	383
+26700	279
+26700	385
+26700	386
+26700	283
+26700	138
+1	660
+1	293
+1	172
+1	504
+1	297
+1	238
+1	9
+1	10
+1	1049
+1	79
+1	16
+1	17
+1	1053
+1	146
+1	1055
+1	437
+1	438
+1	197
+1	1059
+1	208
+1	105
+1	34
+1	484
+1	213
+1	364
+1	1066
+1	563
+1	604
+1	158
+1	50
+1	1071
+1	54
+1	461
+1	1074
+1	498
+1	842
+2	288
+2	293
+2	7
+2	10
+2	680
+2	1082
+2	15
+2	16
+2	85
+2	88
+2	90
+2	435
+2	437
+2	438
+2	712
+2	536
+2	29
+2	32
+2	104
+2	211
+2	448
+2	120
+2	604
+2	1100
+2	607
+2	54
+2	385
+2	1104
+2	755
+3	4
+3	10
+3	1108
+3	1109
+3	590
+3	22
+3	23
+3	495
+3	496
+3	63
+4	3
+4	170
+4	7
+4	1119
+4	1120
+4	10
+4	684
+4	186
+4	786
+4	326
+4	146
+4	88
+4	905
+4	22
+4	26
+4	28
+4	29
+4	35
+4	109
+4	110
+4	553
+4	1137
+4	41
+4	42
+4	157
+4	45
+4	272
+4	123
+4	124
+4	564
+4	273
+4	375
+4	160
+4	279
+4	495
+4	651
+4	1152
+4	1153
+4	138
+4	393
+4	63
+5	10
+5	590
+5	905
+5	90
+5	22
+5	443
+5	1163
+5	41
+5	42
+5	120
+5	884
+5	50
+5	57
+5	1170
+5	63
+5	1172
+6	172
+6	474
+6	10
+6	1176
+6	1177
+6	186
+6	188
+6	590
+6	1181
+6	698
+6	1183
+6	24
+6	731
+6	448
+6	1187
+6	1188
+6	608
+6	609
+6	491
+6	492
+6	495
+6	651
+6	1195
+6	1153
+6	1197
+7	67
+7	10
+7	188
+7	24
+7	1202
+7	31
+7	1204
+7	1205
+7	543
+7	208
+7	564
+7	377
+7	495
+7	1195
+7	63
+7	1213
+8	10
+8	20
+8	1216
+8	1217
+8	29
+8	108
+8	448
+8	1221
+8	50
+8	275
+8	491
+8	492
+8	461
+8	1227
+8	1153
+8	1213
+9	1230
+9	170
+9	423
+9	172
+9	5
+9	425
+9	10
+9	677
+9	184
+9	681
+9	684
+9	428
+9	1242
+9	186
+9	1082
+9	188
+9	191
+9	432
+9	1248
+9	594
+9	195
+9	23
+9	437
+9	95
+9	197
+9	712
+9	542
+9	104
+9	108
+9	110
+9	1260
+9	1261
+9	731
+9	213
+9	734
+9	884
+9	273
+9	453
+9	160
+9	608
+9	609
+9	382
+9	383
+9	54
+9	279
+9	1275
+9	57
+9	59
+9	495
+9	496
+9	1280
+9	231
+9	166
+9	395
+10	10
+10	188
+10	85
+10	1287
+10	197
+10	30
+10	1059
+10	1291
+10	495
+10	651
+11	1294
+11	10
+11	146
+11	698
+11	1298
+11	1299
+11	105
+11	45
+11	1187
+11	491
+11	614
+11	495
+11	496
+11	498
+12	68
+12	1309
+12	424
+12	1311
+12	10
+12	1313
+12	15
+12	82
+12	590
+12	1317
+12	85
+12	86
+12	89
+12	1321
+12	21
+12	23
+12	24
+12	31
+12	45
+12	120
+12	272
+12	122
+12	1330
+12	1331
+12	50
+12	377
+12	455
+12	382
+12	54
+12	227
+12	1338
+12	138
+12	498
+12	63
+12	64
+13	1343
+13	504
+13	10
+13	182
+13	14
+13	82
+13	146
+13	1321
+13	1216
+13	1352
+13	29
+13	31
+13	50
+13	377
+13	495
+13	651
+13	496
+13	1195
+13	578
+13	1362
+13	63
+13	64
+14	10
+14	1366
+14	22
+14	28
+14	1369
+14	1370
+14	42
+14	495
+14	496
+15	4
+15	172
+15	10
+15	242
+15	15
+15	17
+15	590
+15	85
+15	88
+15	1321
+15	22
+15	1385
+15	23
+15	800
+15	200
+15	443
+15	30
+15	31
+15	104
+15	38
+15	377
+15	608
+15	54
+15	459
+15	460
+15	56
+15	495
+15	651
+15	464
+15	1403
+16	471
+16	474
+16	10
+16	23
+16	29
+16	45
+16	124
+16	160
+16	57
+16	1170
+16	1414
+17	1415
+17	3
+17	67
+17	1418
+17	10
+17	182
+17	16
+17	82
+17	432
+17	146
+17	1425
+17	90
+17	22
+17	1217
+17	26
+17	198
+17	31
+17	1369
+17	1370
+17	108
+17	1137
+17	41
+17	1437
+17	45
+17	1439
+17	124
+17	50
+17	495
+17	496
+17	163
+17	579
+17	63
+18	899
+18	766
+18	10
+18	304
+18	1451
+18	520
+18	19
+18	905
+18	20
+18	22
+18	1216
+18	29
+18	42
+18	491
+18	1461
+18	495
+18	496
+18	1195
+18	61
+19	238
+19	10
+19	16
+19	1469
+19	146
+19	698
+19	1472
+19	23
+19	1299
+19	197
+19	1059
+19	153
+19	45
+19	120
+19	158
+19	279
+19	1482
+19	57
+19	1170
+21	1
+21	2
+21	1487
+21	288
+21	170
+21	172
+21	7
+21	9
+21	10
+21	1049
+21	677
+21	185
+21	1497
+21	686
+21	14
+21	15
+21	16
+21	188
+21	82
+21	17
+21	191
+21	432
+21	85
+21	328
+21	89
+21	23
+21	1216
+21	27
+21	28
+21	200
+21	29
+21	1202
+21	31
+21	205
+21	34
+21	728
+21	210
+21	353
+21	39
+21	116
+21	45
+21	120
+21	158
+21	1528
+21	1529
+21	48
+21	273
+21	50
+21	52
+21	382
+21	383
+21	279
+21	1537
+21	461
+21	1227
+21	1074
+21	387
+21	1542
+21	1543
+21	138
+21	231
+21	166
+21	842
+22	67
+22	10
+22	16
+22	590
+22	22
+22	24
+22	800
+22	1555
+22	1556
+22	45
+22	158
+22	495
+22	651
+22	283
+23	1562
+23	1563
+23	474
+23	10
+23	142
+23	1567
+23	1299
+23	1216
+23	198
+23	29
+23	104
+23	105
+23	124
+23	385
+23	386
+23	1577
+24	3
+24	67
+24	172
+24	766
+24	298
+24	1418
+24	10
+24	673
+24	182
+24	12
+24	242
+24	79
+24	786
+24	516
+24	188
+24	82
+24	85
+24	24
+24	29
+24	715
+24	1204
+24	105
+24	111
+24	42
+24	1602
+24	454
+24	224
+24	1605
+24	57
+24	1170
+24	1280
+24	62
+24	284
+24	579
+24	231
+25	5
+25	1614
+25	10
+25	12
+25	513
+25	242
+25	79
+25	16
+25	905
+25	1299
+25	29
+25	50
+25	377
+25	54
+25	56
+25	463
+25	134
+25	498
+25	63
+26	10
+26	673
+26	1634
+26	85
+26	20
+26	1299
+26	29
+26	42
+26	1187
+26	495
+26	496
+26	283
+27	3
+27	238
+27	1646
+27	10
+27	1049
+27	12
+27	16
+27	590
+27	85
+27	146
+27	1321
+27	1655
+27	195
+27	1299
+27	1187
+27	489
+27	124
+27	160
+27	54
+27	57
+27	1170
+27	283
+27	498
+28	3
+28	67
+28	10
+28	12
+28	16
+28	590
+28	19
+28	22
+28	800
+28	443
+28	1555
+28	1556
+28	31
+28	45
+28	1681
+28	46
+28	158
+28	1684
+28	57
+28	1686
+28	63
+28	64
+29	3
+29	67
+29	68
+29	4
+29	5
+29	7
+29	10
+29	302
+29	1697
+29	1497
+29	686
+29	186
+29	1701
+29	14
+29	79
+29	15
+29	82
+29	17
+29	191
+29	85
+29	86
+29	87
+29	22
+29	195
+29	1713
+29	26
+29	198
+29	28
+29	29
+29	30
+29	31
+29	1720
+29	1721
+29	109
+29	38
+29	39
+29	46
+29	739
+29	1727
+29	50
+29	377
+29	277
+29	227
+29	229
+29	56
+29	463
+29	421
+29	166
+29	63
+29	285
+30	660
+30	661
+30	7
+30	238
+30	10
+30	953
+30	511
+30	1746
+30	1747
+30	242
+30	184
+30	1750
+30	13
+30	428
+30	318
+30	17
+30	1299
+30	94
+30	1217
+30	197
+30	32
+30	1760
+30	34
+30	722
+30	111
+30	352
+30	39
+30	734
+30	45
+30	158
+30	1769
+30	49
+30	377
+30	51
+30	491
+30	614
+30	227
+30	1776
+30	495
+30	651
+30	1152
+30	283
+30	1280
+30	1782
+30	392
+30	1784
+31	3
+31	67
+31	68
+31	4
+31	5
+31	7
+31	10
+31	302
+31	12
+31	1697
+31	1497
+31	686
+31	186
+31	14
+31	79
+31	15
+31	82
+31	17
+31	191
+31	432
+31	86
+31	87
+31	22
+31	195
+31	23
+31	1299
+31	94
+31	1713
+31	26
+31	198
+31	28
+31	29
+31	30
+31	31
+31	1720
+31	1721
+31	109
+31	38
+31	39
+31	45
+31	46
+31	158
+31	739
+31	1727
+31	50
+31	377
+31	277
+31	279
+31	227
+31	229
+31	56
+31	463
+31	1280
+31	63
+32	1839
+32	1
+32	661
+32	170
+32	423
+32	1844
+32	173
+32	665
+32	6
+32	297
+32	177
+32	670
+32	10
+32	303
+32	427
+32	181
+32	675
+32	677
+32	12
+32	513
+32	1859
+32	184
+32	1177
+32	680
+32	185
+32	13
+32	428
+32	686
+32	186
+32	1701
+32	1082
+32	79
+32	318
+32	82
+32	1873
+32	191
+32	432
+32	86
+32	146
+32	328
+32	90
+32	435
+32	21
+32	256
+32	23
+32	24
+32	93
+32	1217
+32	197
+32	27
+32	28
+32	1890
+32	1891
+32	542
+32	205
+32	104
+32	105
+32	34
+32	722
+32	723
+32	1899
+32	108
+32	109
+32	110
+32	111
+32	728
+32	485
+32	38
+32	352
+32	731
+32	210
+32	211
+32	39
+32	40
+32	43
+32	217
+32	362
+32	448
+32	45
+32	1918
+32	120
+32	46
+32	123
+32	884
+32	1727
+32	48
+32	49
+32	51
+32	160
+32	748
+32	749
+32	455
+32	383
+32	54
+32	279
+32	459
+32	1935
+32	163
+32	755
+32	421
+32	392
+32	166
+32	1941
+32	1942
+33	1563
+33	474
+33	10
+33	1946
+33	15
+33	85
+33	1299
+33	1216
+33	28
+33	54
+33	385
+33	386
+33	1577
+33	1956
+34	1
+34	8
+34	10
+34	12
+34	184
+34	1701
+34	1082
+34	15
+34	318
+34	1873
+34	191
+34	432
+34	85
+34	146
+34	328
+34	90
+34	22
+34	23
+34	712
+34	443
+34	32
+34	542
+34	104
+34	1980
+34	731
+34	448
+34	1066
+34	50
+34	375
+34	382
+34	383
+34	54
+34	495
+34	651
+34	163
+34	421
+35	474
+35	10
+35	142
+35	186
+35	432
+35	85
+35	19
+35	20
+35	443
+35	29
+35	2003
+35	45
+35	2005
+35	56
+35	2007
+35	2008
+36	1230
+36	471
+36	7
+36	238
+36	10
+36	953
+36	181
+36	675
+36	184
+36	428
+36	23
+36	197
+36	712
+36	104
+36	154
+36	38
+36	352
+36	213
+36	48
+36	279
+36	227
+36	2030
+36	2031
+36	1280
+37	425
+37	10
+37	143
+37	2036
+37	85
+37	29
+37	483
+37	552
+37	42
+37	49
+37	491
+37	614
+37	579
+38	67
+38	425
+38	10
+38	2036
+38	19
+38	2051
+38	29
+38	343
+38	483
+38	350
+38	41
+38	42
+38	489
+38	2059
+38	2060
+39	4
+39	1343
+39	766
+39	2064
+39	179
+39	10
+39	2067
+39	512
+39	2069
+39	16
+39	590
+39	905
+39	22
+39	2074
+39	23
+39	26
+39	30
+39	31
+39	345
+39	1370
+39	40
+39	41
+39	42
+39	604
+39	1727
+39	273
+39	455
+39	608
+39	495
+39	496
+39	63
+39	65
+41	67
+41	172
+41	766
+41	10
+41	2097
+41	22
+41	257
+41	536
+41	29
+41	208
+41	1370
+41	2104
+41	105
+41	1602
+41	45
+41	50
+41	275
+41	224
+41	607
+41	2112
+41	57
+41	59
+41	495
+41	651
+41	61
+41	231
+42	1
+42	2120
+42	297
+42	8
+42	10
+42	677
+42	77
+42	186
+42	590
+42	1317
+42	432
+42	146
+42	89
+42	2132
+42	2133
+42	93
+42	2135
+42	443
+42	485
+42	45
+42	739
+42	383
+42	459
+42	227
+42	228
+42	2144
+43	1
+43	661
+43	1230
+43	170
+43	172
+43	2150
+43	2151
+43	2152
+43	5
+43	297
+43	9
+43	670
+43	10
+43	303
+43	953
+43	673
+43	427
+43	2162
+43	677
+43	682
+43	13
+43	684
+43	1497
+43	2168
+43	186
+43	14
+43	79
+43	15
+43	188
+43	82
+43	85
+43	86
+43	698
+43	88
+43	89
+43	1321
+43	90
+43	438
+43	1217
+43	27
+43	542
+43	2186
+43	34
+43	108
+43	109
+43	37
+43	352
+43	731
+43	39
+43	41
+43	43
+43	157
+43	448
+43	45
+43	120
+43	1187
+43	46
+43	158
+43	739
+43	48
+43	49
+43	51
+43	52
+43	608
+43	609
+43	382
+43	279
+43	459
+43	1935
+43	385
+43	386
+43	1152
+43	163
+43	578
+43	283
+43	2220
+43	231
+43	392
+43	393
+43	842
+44	3
+44	7
+44	9
+44	474
+44	10
+44	1497
+44	143
+44	79
+44	82
+44	193
+44	88
+44	19
+44	2237
+44	2238
+44	23
+44	24
+44	534
+44	29
+44	1137
+44	42
+44	45
+44	54
+44	279
+44	2248
+44	227
+44	833
+44	1577
+45	3
+45	67
+45	170
+45	172
+45	504
+45	7
+45	9
+45	1311
+45	10
+45	1049
+45	12
+45	429
+45	77
+45	14
+45	188
+45	82
+45	1873
+45	590
+45	1317
+45	146
+45	90
+45	22
+45	801
+45	31
+45	109
+45	110
+45	485
+45	38
+45	116
+45	124
+45	377
+45	2283
+45	131
+45	55
+45	495
+45	651
+45	498
+45	657
+45	63
+45	64
+46	172
+46	2151
+46	10
+46	542
+46	104
+46	108
+46	213
+46	604
+46	607
+46	2301
+46	227
+46	833
+46	1280
+47	1
+47	68
+47	170
+47	172
+47	2309
+47	240
+47	10
+47	143
+47	186
+47	15
+47	16
+47	85
+47	698
+47	256
+47	438
+47	31
+47	352
+47	1187
+47	739
+47	607
+47	56
+47	136
+47	1152
+47	579
+47	138
+48	1
+48	170
+48	293
+48	1309
+48	172
+48	5
+48	297
+48	474
+48	10
+48	953
+48	2340
+48	242
+48	1697
+48	428
+48	402
+48	79
+48	15
+48	432
+48	85
+48	87
+48	256
+48	23
+48	24
+48	1299
+48	438
+48	1890
+48	29
+48	32
+48	104
+48	2186
+48	105
+48	353
+48	447
+48	217
+48	448
+48	45
+48	1187
+48	739
+48	123
+48	884
+48	49
+48	376
+48	277
+48	608
+48	382
+48	383
+48	54
+48	459
+48	830
+48	2379
+48	56
+48	2144
+48	136
+49	172
+49	5
+49	9
+49	10
+49	181
+49	185
+49	2389
+49	17
+49	23
+49	437
+49	2393
+49	29
+49	30
+49	32
+49	35
+49	108
+49	38
+49	160
+49	495
+49	1195
+49	283
+49	421
+50	3
+50	173
+50	10
+50	242
+50	82
+50	254
+50	94
+50	28
+50	1352
+50	564
+50	2415
+50	495
+50	651
+50	63
+51	170
+51	4
+51	2421
+51	10
+51	19
+51	29
+51	30
+51	1187
+51	2427
+51	495
+51	496
+52	3
+52	67
+52	170
+52	584
+52	173
+52	2435
+52	297
+52	240
+52	474
+52	10
+52	302
+52	303
+52	673
+52	680
+52	77
+52	686
+52	2446
+52	186
+52	1701
+52	2449
+52	14
+52	15
+52	17
+52	2453
+52	321
+52	432
+52	85
+52	86
+52	193
+52	793
+52	19
+52	90
+52	20
+52	256
+52	23
+52	1299
+52	438
+52	95
+52	534
+52	197
+52	2470
+52	712
+52	28
+52	599
+52	29
+52	343
+52	31
+52	2477
+52	33
+52	34
+52	348
+52	350
+52	211
+52	39
+52	41
+52	42
+52	45
+52	46
+52	158
+52	48
+52	273
+52	454
+52	50
+52	277
+52	131
+52	2495
+52	53
+52	830
+52	831
+52	56
+52	2007
+52	57
+52	1686
+52	58
+52	495
+52	651
+52	1403
+52	164
+52	166
+52	64
+53	170
+53	5
+53	238
+53	10
+53	2514
+53	16
+53	321
+53	85
+53	26
+53	200
+53	1059
+53	105
+53	1331
+53	50
+53	377
+53	160
+53	495
+53	651
+53	496
+53	63
+53	64
+54	1
+54	67
+54	1343
+54	8
+54	179
+54	10
+54	1049
+54	184
+54	1497
+54	686
+54	432
+54	85
+54	146
+54	2544
+54	905
+54	594
+54	29
+54	1059
+54	34
+54	552
+54	485
+54	1261
+54	39
+54	41
+54	42
+54	44
+54	45
+54	120
+54	563
+54	2560
+54	122
+54	1331
+54	50
+54	376
+54	279
+54	2566
+54	57
+54	59
+54	284
+54	579
+54	138
+54	498
+54	63
+55	471
+55	10
+55	16
+55	482
+55	2578
+55	491
+55	1461
+55	614
+55	495
+55	1195
+56	2
+56	2585
+56	2586
+56	769
+56	2588
+56	10
+56	182
+56	12
+56	82
+56	1425
+56	905
+56	22
+56	198
+56	208
+56	2598
+56	1137
+56	41
+56	45
+56	124
+56	377
+56	57
+56	495
+56	496
+56	1195
+56	1170
+56	393
+56	63
+57	10
+57	242
+57	85
+57	146
+57	2615
+57	1298
+57	1299
+57	443
+57	29
+57	1059
+57	34
+57	48
+57	495
+57	496
+57	2625
+57	166
+58	1343
+58	504
+58	10
+58	680
+58	684
+58	2632
+58	88
+58	19
+58	1321
+58	90
+58	95
+58	28
+58	29
+58	1204
+58	208
+58	38
+58	1137
+58	120
+58	919
+58	608
+58	491
+58	1461
+58	61
+59	172
+59	9
+59	10
+59	2653
+59	85
+59	1248
+59	594
+59	22
+59	23
+59	438
+59	1217
+59	120
+59	382
+59	491
+59	1461
+59	2008
+59	62
+59	63
+60	2668
+60	2669
+60	10
+60	902
+60	905
+60	22
+60	536
+60	29
+60	31
+60	543
+60	483
+60	41
+60	42
+60	1439
+60	919
+60	377
+60	495
+60	496
+60	61
+61	170
+61	7
+61	425
+61	10
+61	303
+61	304
+61	427
+61	677
+61	513
+61	184
+61	186
+61	85
+61	88
+61	90
+61	703
+61	23
+61	93
+61	1216
+61	29
+61	42
+61	448
+61	48
+61	273
+61	382
+61	383
+61	54
+61	459
+61	491
+61	614
+61	495
+61	496
+61	464
+61	2719
+61	2720
+62	67
+62	10
+62	182
+62	2724
+62	188
+62	905
+62	31
+62	208
+62	2104
+62	38
+62	2731
+62	1137
+62	884
+62	124
+62	377
+62	607
+62	495
+62	1195
+62	64
+63	170
+63	9
+63	2742
+63	10
+63	29
+63	1202
+63	31
+63	50
+63	2748
+63	495
+63	651
+63	138
+63	1213
+64	1
+64	4
+64	172
+64	2756
+64	5
+64	297
+64	2759
+64	10
+64	302
+64	13
+64	15
+64	16
+64	2765
+64	188
+64	17
+64	85
+64	24
+64	95
+64	197
+64	29
+64	30
+64	1059
+64	34
+64	109
+64	352
+64	731
+64	210
+64	39
+64	2781
+64	739
+64	48
+64	49
+64	453
+64	50
+64	376
+64	455
+64	383
+64	227
+64	228
+64	229
+64	2793
+64	283
+64	2795
+64	231
+64	166
+64	64
+65	67
+65	1343
+65	424
+65	1418
+65	2803
+65	10
+65	2446
+65	19
+65	905
+65	2808
+65	22
+65	26
+65	536
+65	29
+65	31
+65	543
+65	483
+65	208
+65	2817
+65	41
+65	42
+65	2820
+65	1684
+65	2822
+65	564
+65	377
+65	52
+65	495
+65	1195
+65	63
+65	64
+66	1
+66	8
+66	1311
+66	10
+66	427
+66	13
+66	15
+66	191
+66	85
+66	146
+66	90
+66	23
+66	1217
+66	197
+66	2844
+66	712
+66	29
+66	32
+66	105
+66	34
+66	485
+66	731
+66	39
+66	45
+66	120
+66	563
+66	123
+66	48
+66	49
+66	50
+66	375
+66	455
+66	459
+66	2144
+66	283
+66	657
+66	63
+67	2867
+67	423
+67	2869
+67	238
+67	10
+67	146
+67	2873
+67	197
+67	200
+67	2876
+67	2877
+67	160
+67	55
+67	387
+67	388
+67	227
+67	229
+67	2884
+68	172
+68	7
+68	10
+68	681
+68	686
+68	186
+68	1701
+68	188
+68	321
+68	590
+68	85
+68	703
+68	594
+68	23
+68	536
+68	443
+68	32
+68	542
+68	208
+68	214
+68	45
+68	2781
+68	2907
+68	607
+68	382
+68	383
+68	54
+68	56
+68	2007
+68	1152
+68	163
+68	231
+68	395
+69	1
+69	170
+69	4
+69	172
+69	10
+69	675
+69	681
+69	686
+69	15
+69	17
+69	321
+69	23
+69	631
+69	800
+69	443
+69	29
+69	30
+69	731
+69	48
+69	160
+69	2938
+69	56
+69	136
+70	232
+70	288
+70	2943
+70	172
+70	765
+70	5
+70	297
+70	7
+70	1119
+70	179
+70	2951
+70	10
+70	1049
+70	2954
+70	513
+70	684
+70	77
+70	16
+70	188
+70	520
+70	432
+70	86
+70	146
+70	88
+70	905
+70	22
+70	23
+70	24
+70	198
+70	443
+70	29
+70	31
+70	32
+70	542
+70	543
+70	104
+70	206
+70	208
+70	108
+70	350
+70	210
+70	40
+70	213
+70	734
+70	447
+70	214
+70	44
+70	448
+70	45
+70	120
+70	1066
+70	563
+70	564
+70	48
+70	273
+70	50
+70	160
+70	2415
+70	52
+70	455
+70	608
+70	57
+70	58
+70	59
+70	578
+70	3006
+70	164
+70	579
+70	138
+70	498
+70	231
+70	3012
+70	3013
+70	657
+70	63
+71	232
+71	9
+71	3018
+71	10
+71	2514
+71	2449
+71	16
+71	321
+71	146
+71	438
+71	197
+71	1059
+71	105
+71	158
+71	3030
+71	3031
+71	495
+71	651
+71	496
+72	168
+72	293
+72	10
+72	146
+72	698
+72	1059
+72	45
+72	563
+72	3043
+72	3044
+72	57
+72	59
+74	9
+74	10
+74	77
+74	1082
+74	191
+74	590
+74	1053
+74	146
+74	1298
+74	197
+74	3057
+74	39
+74	40
+74	158
+74	50
+74	375
+74	376
+74	57
+74	58
+74	498
+75	1
+75	10
+75	303
+75	511
+75	16
+75	17
+75	85
+75	146
+75	24
+75	1299
+75	353
+75	158
+75	489
+75	830
+75	974
+75	56
+75	134
+75	1280
+75	498
+75	3086
+76	67
+76	172
+76	2120
+76	424
+76	1418
+76	179
+76	10
+76	3094
+76	3095
+76	16
+76	188
+76	82
+76	590
+76	1469
+76	432
+76	1053
+76	146
+76	905
+76	3105
+76	90
+76	594
+76	22
+76	3109
+76	31
+76	208
+76	105
+76	348
+76	2598
+76	485
+76	1137
+76	213
+76	359
+76	42
+76	2781
+76	564
+76	377
+76	380
+76	3124
+76	495
+76	496
+76	61
+76	498
+76	231
+76	63
+77	3131
+77	1343
+77	765
+77	504
+77	10
+77	673
+77	15
+77	432
+77	85
+77	23
+77	28
+77	29
+77	45
+77	3144
+77	919
+77	455
+77	383
+77	54
+77	387
+77	388
+77	657
+78	3
+78	172
+78	766
+78	10
+78	15
+78	16
+78	188
+78	432
+78	146
+78	1248
+78	19
+78	22
+78	23
+78	437
+78	29
+78	718
+78	1261
+78	42
+78	3170
+78	123
+78	453
+78	375
+78	57
+78	58
+78	59
+78	1170
+78	421
+78	498
+78	393
+78	395
+79	1
+79	3
+79	2867
+79	67
+79	293
+79	3187
+79	1418
+79	10
+79	142
+79	186
+79	3192
+79	82
+79	3194
+79	432
+79	3196
+79	3197
+79	326
+79	3199
+79	146
+79	793
+79	19
+79	905
+79	90
+79	20
+79	21
+79	95
+79	1217
+79	198
+79	3210
+79	443
+79	29
+79	3213
+79	263
+79	34
+79	3216
+79	485
+79	352
+79	731
+79	41
+79	42
+79	447
+79	43
+79	120
+79	364
+79	3226
+79	272
+79	122
+79	1727
+79	124
+79	50
+79	376
+79	377
+79	277
+79	3235
+79	382
+79	54
+79	2566
+79	495
+79	496
+79	3241
+79	61
+79	283
+79	3244
+79	138
+79	498
+79	63
+79	64
+79	65
+80	2
+80	10
+80	3252
+80	3253
+80	31
+80	124
+80	50
+80	495
+80	496
+82	5
+82	10
+82	677
+82	1701
+82	15
+82	16
+82	590
+82	432
+82	85
+82	86
+82	90
+82	712
+82	30
+82	211
+82	43
+82	46
+82	3275
+82	49
+82	50
+82	3278
+82	382
+82	387
+82	1543
+82	1280
+82	1153
+82	166
+83	67
+83	10
+83	673
+83	3288
+83	88
+83	328
+83	3291
+83	1007
+83	23
+83	29
+83	483
+83	41
+83	42
+83	447
+83	558
+83	45
+83	120
+83	383
+83	495
+83	651
+83	164
+83	583
+84	1230
+84	179
+84	474
+84	10
+84	2446
+84	17
+84	19
+84	20
+84	22
+84	29
+84	31
+84	543
+84	483
+84	350
+84	42
+84	884
+84	564
+84	3324
+84	57
+84	1686
+84	58
+84	1577
+84	63
+84	64
+84	285
+85	1
+85	661
+85	170
+85	423
+85	670
+85	10
+85	427
+85	184
+85	680
+85	681
+85	684
+85	186
+85	1701
+85	1082
+85	1873
+85	432
+85	86
+85	146
+85	90
+85	22
+85	256
+85	23
+85	24
+85	93
+85	1217
+85	712
+85	28
+85	443
+85	29
+85	32
+85	3362
+85	104
+85	34
+85	35
+85	3366
+85	38
+85	211
+85	353
+85	39
+85	448
+85	45
+85	884
+85	48
+85	49
+85	375
+85	376
+85	51
+85	160
+85	459
+85	460
+85	163
+85	421
+85	392
+86	67
+86	172
+86	10
+86	432
+86	905
+86	22
+86	29
+86	3392
+86	495
+86	496
+86	498
+87	10
+87	82
+87	22
+87	29
+87	1202
+87	3401
+87	53
+87	495
+87	651
+87	496
+87	3406
+87	1213
+88	172
+88	5
+88	10
+88	17
+88	195
+88	29
+88	1202
+88	495
+88	496
+88	3417
+89	172
+89	177
+89	10
+89	3421
+89	428
+89	79
+89	88
+89	22
+89	443
+89	29
+89	3428
+89	40
+89	3401
+89	53
+89	382
+89	54
+89	55
+89	227
+89	1776
+89	421
+89	1280
+89	1153
+89	231
+90	1
+90	660
+90	293
+90	172
+90	3445
+90	584
+90	425
+90	10
+90	303
+90	673
+90	511
+90	3452
+90	676
+90	1497
+90	1242
+90	186
+90	1082
+90	15
+90	16
+90	188
+90	590
+90	85
+90	86
+90	90
+90	195
+90	23
+90	437
+90	438
+90	2470
+90	712
+90	32
+90	542
+90	104
+90	1059
+90	208
+90	2104
+90	153
+90	37
+90	731
+90	40
+90	213
+90	359
+90	447
+90	558
+90	448
+90	45
+90	2781
+90	563
+90	739
+90	48
+90	49
+90	3492
+90	382
+90	383
+90	54
+90	459
+90	460
+90	1935
+90	163
+90	231
+90	395
+91	10
+91	302
+91	15
+91	3505
+91	27
+91	29
+91	39
+91	160
+91	495
+91	651
+92	660
+92	661
+92	2
+92	288
+92	423
+92	177
+92	10
+92	303
+92	427
+92	181
+92	184
+92	680
+92	185
+92	1750
+92	77
+92	15
+92	16
+92	318
+92	17
+92	1873
+92	590
+92	85
+92	86
+92	87
+92	328
+92	90
+92	703
+92	23
+92	24
+92	93
+92	1217
+92	27
+92	28
+92	443
+92	3546
+92	542
+92	104
+92	34
+92	109
+92	110
+92	111
+92	353
+92	39
+92	217
+92	45
+92	1918
+92	120
+92	48
+92	49
+92	375
+92	382
+92	459
+92	2144
+92	164
+92	62
+93	2
+93	769
+93	238
+93	10
+93	513
+93	1082
+93	191
+93	94
+93	200
+93	104
+93	34
+93	39
+93	44
+93	217
+93	362
+93	50
+93	376
+93	830
+93	831
+93	227
+93	1776
+93	3588
+94	170
+94	172
+94	3591
+94	238
+94	10
+94	186
+94	1053
+94	146
+94	3597
+94	22
+94	23
+94	197
+94	29
+94	1059
+94	3603
+94	362
+94	3605
+94	739
+94	50
+94	56
+94	2007
+95	67
+95	4
+95	172
+95	9
+95	10
+95	681
+95	3616
+95	14
+95	15
+95	188
+95	191
+95	3597
+95	23
+95	197
+95	443
+95	29
+95	206
+95	1059
+95	208
+95	352
+95	731
+95	213
+95	45
+95	158
+95	123
+95	160
+95	455
+95	459
+95	2144
+95	836
+95	231
+95	63
+95	64
+96	172
+96	1311
+96	10
+96	429
+96	16
+96	188
+96	590
+96	86
+96	22
+96	443
+96	3653
+96	1556
+96	30
+96	53
+96	57
+96	59
+96	63
+97	3660
+97	3
+97	172
+97	10
+97	675
+97	188
+97	590
+97	85
+97	23
+97	31
+97	104
+97	483
+97	116
+97	45
+97	124
+97	50
+97	377
+97	495
+97	496
+97	3679
+97	231
+98	1
+98	2
+98	67
+98	68
+98	170
+98	3445
+98	1343
+98	173
+98	10
+98	186
+98	15
+98	16
+98	188
+98	82
+98	590
+98	85
+98	86
+98	146
+98	19
+98	89
+98	20
+98	21
+98	3703
+98	438
+98	32
+98	104
+98	485
+98	41
+98	42
+98	44
+98	217
+98	45
+98	50
+98	226
+98	56
+98	654
+98	163
+98	61
+98	421
+98	498
+98	1362
+98	231
+99	67
+99	3724
+99	1418
+99	623
+99	10
+99	82
+99	590
+99	19
+99	905
+99	20
+99	22
+99	26
+99	536
+99	31
+99	483
+99	42
+99	3739
+99	377
+99	2566
+99	495
+99	1195
+99	3744
+99	63
+99	64
+100	661
+100	172
+100	297
+100	667
+100	10
+100	13
+100	428
+100	77
+100	3755
+100	590
+100	1053
+100	146
+100	328
+100	1891
+100	443
+100	542
+100	104
+100	3764
+100	720
+100	722
+100	723
+100	35
+100	108
+100	725
+100	352
+100	734
+100	448
+100	45
+100	49
+100	160
+100	3278
+100	459
+100	1935
+100	387
+100	1542
+100	227
+100	1338
+100	1152
+100	163
+100	498
+100	231
+101	3
+101	67
+101	68
+101	170
+101	423
+101	10
+101	302
+101	16
+101	17
+101	88
+101	19
+101	24
+101	26
+101	198
+101	29
+101	1202
+101	31
+101	3805
+101	3806
+101	45
+101	124
+101	377
+101	455
+101	227
+101	229
+101	283
+101	1213
+101	842
+102	1
+102	293
+102	471
+102	172
+102	238
+102	3821
+102	10
+102	13
+102	79
+102	15
+102	16
+102	17
+102	85
+102	3829
+102	197
+102	536
+102	3832
+102	1059
+102	3834
+102	483
+102	105
+102	484
+102	352
+102	604
+102	158
+102	273
+102	49
+102	3031
+102	825
+102	279
+102	227
+102	56
+102	463
+102	1338
+102	163
+102	395
+103	288
+103	9
+103	240
+103	10
+103	432
+103	1053
+103	146
+103	3859
+103	1059
+103	44
+103	3862
+103	273
+103	50
+103	375
+103	376
+103	57
+103	1170
+103	498
+104	3
+104	293
+104	5
+104	10
+104	310
+104	3875
+104	2389
+104	1497
+104	15
+104	188
+104	17
+104	85
+104	86
+104	792
+104	21
+104	29
+104	30
+104	153
+104	3888
+104	3889
+104	213
+104	1602
+104	564
+104	385
+104	386
+104	461
+104	465
+104	231
+105	67
+105	170
+105	172
+105	1343
+105	766
+105	179
+105	240
+105	10
+105	182
+105	3907
+105	3908
+105	79
+105	15
+105	188
+105	1317
+105	1053
+105	146
+105	3597
+105	19
+105	22
+105	3918
+105	3919
+105	197
+105	198
+105	29
+105	31
+105	3924
+105	1370
+105	105
+105	485
+105	44
+105	122
+105	131
+105	2566
+105	227
+105	1776
+105	56
+105	136
+105	138
+105	498
+105	231
+105	63
+105	64
+105	285
+106	1
+106	68
+106	10
+106	303
+106	675
+106	11
+106	12
+106	184
+106	2514
+106	1497
+106	186
+106	1082
+106	15
+106	16
+106	188
+106	17
+106	321
+106	191
+106	85
+106	86
+106	21
+106	195
+106	23
+106	95
+106	197
+106	443
+106	542
+106	104
+106	1059
+106	34
+106	109
+106	110
+106	39
+106	44
+106	448
+106	884
+106	273
+106	3031
+106	50
+106	383
+106	56
+106	57
+106	59
+106	495
+106	651
+106	136
+106	421
+106	164
+106	1153
+106	166
+107	1839
+107	1
+107	4
+107	10
+107	146
+107	90
+107	256
+107	3999
+107	1059
+107	728
+107	4002
+107	45
+107	884
+107	3031
+107	50
+107	376
+107	227
+107	1776
+107	56
+107	136
+107	498
+107	395
+107	4014
+108	172
+108	474
+108	10
+108	29
+108	4019
+108	45
+108	227
+108	1338
+108	231
+108	4024
+109	67
+109	172
+109	10
+109	673
+109	4029
+109	188
+109	88
+109	22
+109	29
+109	4034
+109	715
+109	1059
+109	4037
+109	213
+109	4039
+109	4040
+109	224
+109	226
+109	495
+109	651
+109	231
+110	3
+110	67
+110	172
+110	238
+110	853
+110	10
+110	188
+110	82
+110	905
+110	22
+110	197
+110	198
+110	28
+110	536
+110	29
+110	4061
+110	31
+110	3832
+110	543
+110	1059
+110	483
+110	208
+110	4037
+110	213
+110	359
+110	1602
+110	45
+110	884
+110	564
+110	2415
+110	224
+110	607
+110	227
+110	1776
+110	56
+110	463
+110	57
+110	59
+110	283
+110	579
+110	138
+110	231
+110	63
+110	64
+111	1
+111	67
+111	170
+111	172
+111	504
+111	179
+111	10
+111	673
+111	427
+111	182
+111	14
+111	188
+111	22
+111	1007
+111	3918
+111	443
+111	29
+111	343
+111	31
+111	715
+111	543
+111	206
+111	1059
+111	1760
+111	208
+111	4037
+111	111
+111	157
+111	364
+111	2781
+111	158
+111	122
+111	273
+111	49
+111	919
+111	4125
+111	224
+111	226
+111	4128
+111	830
+111	2379
+111	163
+111	61
+111	578
+111	138
+111	231
+111	63
+112	3
+112	170
+112	172
+112	769
+112	179
+112	10
+112	1469
+112	1053
+112	146
+112	29
+112	1059
+112	33
+112	3603
+112	213
+112	44
+112	45
+112	122
+112	4154
+112	56
+112	2007
+112	60
+112	61
+112	498
+113	67
+113	172
+113	2309
+113	173
+113	297
+113	4165
+113	10
+113	677
+113	182
+113	13
+113	1497
+113	79
+113	15
+113	82
+113	195
+113	28
+113	536
+113	29
+113	377
+113	607
+113	608
+113	609
+113	382
+113	54
+113	56
+113	495
+113	1195
+113	136
+113	1152
+113	421
+113	231
+113	166
+114	584
+114	10
+114	303
+114	4195
+114	77
+114	16
+114	17
+114	590
+114	22
+114	195
+114	26
+114	104
+114	483
+114	109
+114	110
+114	42
+114	447
+114	558
+114	1918
+114	46
+114	53
+114	382
+114	383
+114	491
+114	614
+114	495
+114	1195
+114	1280
+115	4220
+115	10
+115	185
+115	590
+115	432
+115	85
+115	19
+115	703
+115	23
+115	443
+115	39
+115	158
+115	57
+115	1170
+116	471
+116	4235
+116	238
+116	10
+116	16
+116	3597
+116	2873
+116	197
+116	536
+116	29
+116	482
+116	1059
+116	483
+116	41
+116	4248
+116	42
+116	57
+116	58
+116	495
+116	1195
+116	61
+116	1153
+117	67
+117	1343
+117	2120
+117	179
+117	10
+117	19
+117	905
+117	20
+117	594
+117	22
+117	26
+117	536
+117	29
+117	543
+117	485
+117	42
+117	564
+117	607
+117	3392
+117	4275
+117	495
+117	496
+117	1195
+117	61
+117	63
+118	4281
+118	504
+118	10
+118	428
+118	146
+118	594
+118	22
+118	195
+118	29
+118	32
+118	4291
+118	884
+118	608
+118	491
+118	614
+118	495
+118	496
+118	498
+119	4299
+119	67
+119	2120
+119	10
+119	19
+119	905
+119	20
+119	594
+119	22
+119	2074
+119	198
+119	536
+119	29
+119	343
+119	483
+119	350
+119	4315
+119	42
+119	495
+119	496
+119	1362
+119	64
+120	10
+120	23
+120	1299
+120	197
+120	29
+120	483
+120	4327
+120	495
+120	496
+121	3724
+121	10
+121	491
+121	614
+121	495
+121	496
+121	1195
+122	660
+122	238
+122	10
+122	1746
+122	13
+122	1497
+122	686
+122	17
+122	191
+122	195
+122	23
+122	1299
+122	438
+122	1216
+122	197
+122	1891
+122	29
+122	104
+122	722
+122	109
+122	110
+122	217
+122	158
+122	4360
+122	273
+122	160
+122	491
+122	614
+122	57
+122	495
+122	496
+122	1170
+122	138
+122	1782
+122	1784
+123	4372
+123	661
+123	172
+123	10
+123	673
+123	676
+123	680
+123	188
+123	432
+123	85
+123	23
+123	29
+123	715
+123	542
+123	739
+123	54
+123	459
+123	460
+123	755
+123	231
+124	425
+124	10
+124	85
+124	29
+124	377
+124	4397
+124	57
+124	59
+125	4400
+125	238
+125	10
+125	2514
+125	16
+125	321
+125	146
+125	31
+125	1059
+125	105
+125	273
+125	3031
+125	377
+125	495
+125	496
+126	170
+126	173
+126	10
+126	186
+126	590
+126	1317
+126	85
+126	146
+126	88
+126	1298
+126	438
+126	1217
+126	485
+126	4428
+126	376
+126	56
+126	654
+126	283
+126	395
+127	172
+127	584
+127	10
+127	675
+127	4438
+127	188
+127	1053
+127	146
+127	21
+127	29
+127	4444
+127	41
+127	120
+127	375
+127	461
+127	4449
+127	830
+127	2379
+127	57
+127	1686
+127	498
+127	3013
+127	63
+128	67
+128	4
+128	172
+128	10
+128	16
+128	95
+128	29
+128	30
+128	4465
+128	4466
+128	56
+128	654
+128	63
+129	238
+129	10
+129	4472
+129	686
+129	16
+129	432
+129	85
+129	23
+129	438
+129	95
+129	534
+129	712
+129	34
+129	375
+129	382
+129	57
+129	58
+129	2031
+130	68
+130	170
+130	4
+130	173
+130	10
+130	184
+130	4494
+130	15
+130	191
+130	146
+130	90
+130	195
+130	30
+130	3999
+130	1059
+130	105
+130	4002
+130	40
+130	447
+130	1066
+130	46
+130	273
+130	3031
+130	227
+130	1776
+130	56
+130	654
+130	61
+130	498
+131	4517
+131	4518
+131	172
+131	10
+131	11
+131	184
+131	1497
+131	1082
+131	15
+131	318
+131	85
+131	1053
+131	146
+131	438
+131	712
+131	443
+131	32
+131	105
+131	38
+131	44
+131	217
+131	158
+131	48
+131	49
+131	160
+131	227
+131	1776
+131	498
+131	63
+132	1
+132	3018
+132	10
+132	79
+132	15
+132	85
+132	86
+132	23
+132	197
+132	31
+132	120
+132	742
+132	459
+132	1935
+132	4560
+133	660
+133	661
+133	2
+133	172
+133	667
+133	10
+133	427
+133	1176
+133	1177
+133	13
+133	1701
+133	1082
+133	15
+133	16
+133	82
+133	17
+133	1873
+133	191
+133	590
+133	435
+133	23
+133	93
+133	1299
+133	438
+133	4585
+133	27
+133	712
+133	542
+133	33
+133	722
+133	111
+133	352
+133	39
+133	448
+133	45
+133	4596
+133	50
+133	375
+133	52
+133	383
+133	4601
+133	459
+133	2144
+133	421
+133	1782
+133	392
+133	838
+133	63
+135	238
+135	10
+135	79
+135	3597
+135	536
+135	29
+135	455
+135	607
+135	459
+135	1935
+135	4560
+135	657
+135	63
+136	4622
+136	1
+136	68
+136	170
+136	10
+136	302
+136	11
+136	184
+136	686
+136	15
+136	1317
+136	86
+136	146
+136	89
+136	90
+136	195
+136	23
+136	94
+136	712
+136	443
+136	31
+136	104
+136	728
+136	37
+136	211
+136	39
+136	40
+136	41
+136	42
+136	45
+136	120
+136	884
+136	1727
+136	50
+136	375
+136	376
+136	455
+136	382
+136	279
+136	56
+136	2007
+136	495
+136	651
+136	498
+136	166
+136	63
+137	1
+137	10
+137	186
+137	15
+137	188
+137	193
+137	88
+137	4675
+137	29
+137	483
+137	213
+137	45
+137	4039
+137	56
+137	2007
+137	231
+138	1
+138	172
+138	474
+138	10
+138	188
+138	29
+138	4019
+138	45
+138	227
+138	1338
+138	1153
+138	231
+138	4024
+139	172
+139	238
+139	10
+139	16
+139	146
+139	594
+139	200
+139	1059
+139	4705
+139	377
+139	277
+139	495
+139	651
+139	496
+139	498
+140	1
+140	661
+140	172
+140	1343
+140	10
+140	1497
+140	188
+140	1873
+140	191
+140	590
+140	328
+140	19
+140	23
+140	800
+140	29
+140	208
+140	210
+140	158
+140	49
+140	54
+140	2566
+140	495
+140	496
+140	1152
+140	163
+140	61
+140	63
+140	4739
+140	4740
+141	67
+141	293
+141	4
+141	5
+141	769
+141	10
+141	16
+141	188
+141	4749
+141	94
+141	29
+141	30
+141	31
+141	4754
+141	45
+141	56
+141	134
+141	1403
+141	231
+142	172
+142	10
+142	684
+142	77
+142	686
+142	16
+142	326
+142	1053
+142	146
+142	328
+142	23
+142	4771
+142	29
+142	31
+142	38
+142	731
+142	213
+142	45
+142	50
+142	56
+142	2007
+142	283
+142	395
+143	232
+143	170
+143	172
+143	765
+143	5
+143	7
+143	238
+143	9
+143	179
+143	240
+143	4793
+143	10
+143	1049
+143	675
+143	676
+143	677
+143	1313
+143	242
+143	680
+143	684
+143	186
+143	2449
+143	79
+143	15
+143	786
+143	188
+143	1317
+143	1469
+143	432
+143	85
+143	1053
+143	146
+143	2544
+143	698
+143	3597
+143	328
+143	905
+143	2808
+143	21
+143	4822
+143	438
+143	1217
+143	197
+143	4826
+143	4061
+143	4828
+143	1059
+143	213
+143	45
+143	46
+143	739
+143	4834
+143	1331
+143	376
+143	2566
+143	830
+143	4839
+143	2795
+143	498
+143	231
+143	393
+143	63
+143	64
+143	395
+144	1
+144	172
+144	2151
+144	173
+144	10
+144	686
+144	15
+144	590
+144	432
+144	85
+144	1321
+144	24
+144	800
+144	443
+144	104
+144	210
+144	39
+144	1187
+144	383
+144	279
+144	4867
+144	56
+144	134
+144	61
+144	393
+145	10
+145	681
+145	428
+145	146
+145	3597
+145	4877
+145	197
+145	1059
+145	54
+145	57
+145	1170
+146	10
+146	85
+146	86
+146	146
+146	4887
+146	256
+146	197
+146	443
+146	31
+146	1059
+146	352
+146	375
+146	160
+146	455
+146	56
+146	136
+146	498
+146	166
+146	393
+146	63
+147	240
+147	10
+147	677
+147	186
+147	432
+147	85
+147	86
+147	146
+147	4887
+147	21
+147	256
+147	1217
+147	443
+147	4916
+147	1059
+147	54
+147	57
+147	1170
+147	1280
+147	498
+147	231
+147	166
+148	5
+148	1119
+148	10
+148	21
+148	195
+148	443
+148	3428
+148	39
+148	884
+148	50
+148	382
+148	54
+148	227
+148	1776
+148	421
+148	63
+148	470
+149	661
+149	10
+149	953
+149	184
+149	680
+149	15
+149	89
+149	435
+149	23
+149	93
+149	27
+149	1891
+149	443
+149	29
+149	30
+149	35
+149	448
+149	158
+149	459
+149	460
+149	2144
+149	283
+149	4964
+149	231
+150	660
+150	423
+150	584
+150	297
+150	7
+150	4400
+150	8
+150	238
+150	671
+150	10
+150	1049
+150	675
+150	11
+150	680
+150	681
+150	684
+150	2514
+150	686
+150	16
+150	188
+150	321
+150	191
+150	85
+150	256
+150	23
+150	437
+150	27
+150	542
+150	104
+150	731
+150	211
+150	113
+150	489
+150	48
+150	49
+150	3031
+150	375
+150	383
+150	495
+150	496
+150	283
+150	395
+151	9
+151	10
+151	82
+151	85
+151	698
+151	23
+151	45
+151	5015
+151	56
+151	134
+152	851
+152	10
+152	13
+152	77
+152	15
+152	85
+152	146
+152	698
+152	2844
+152	32
+152	352
+152	211
+152	49
+152	160
+152	382
+152	459
+152	830
+152	4839
+152	2144
+152	163
+152	498
+152	63
+153	1
+153	293
+153	172
+153	5043
+153	10
+153	5045
+153	5046
+153	188
+153	5048
+153	23
+153	536
+153	29
+153	542
+153	1137
+153	377
+153	608
+153	491
+153	614
+153	495
+153	1195
+154	661
+154	4
+154	172
+154	765
+154	5
+154	10
+154	676
+154	184
+154	15
+154	188
+154	85
+154	86
+154	698
+154	328
+154	23
+154	32
+154	5076
+154	731
+154	353
+154	39
+154	213
+154	448
+154	45
+154	5083
+154	49
+154	382
+154	383
+154	385
+154	386
+154	231
+154	392
+155	232
+155	168
+155	471
+155	10
+155	673
+155	181
+155	684
+155	1497
+155	2873
+155	197
+155	200
+155	2876
+155	1059
+155	38
+155	213
+155	45
+155	277
+155	387
+155	388
+155	227
+155	229
+155	164
+156	172
+156	179
+156	10
+156	188
+156	590
+156	5118
+156	22
+156	23
+156	534
+156	30
+156	1059
+156	728
+156	213
+156	45
+156	739
+156	495
+156	651
+156	841
+157	1
+157	4
+157	172
+157	3445
+157	297
+157	10
+157	681
+157	5045
+157	1497
+157	15
+157	17
+157	88
+157	90
+157	2074
+157	23
+157	29
+157	30
+157	34
+157	350
+157	352
+157	210
+157	39
+157	213
+157	217
+157	45
+157	46
+157	158
+157	48
+157	54
+157	387
+157	388
+157	163
+157	5163
+157	283
+157	1280
+158	5166
+158	471
+158	238
+158	10
+158	5170
+158	16
+158	5172
+158	2578
+158	489
+158	3031
+158	1071
+158	491
+158	492
+158	164
+159	10
+159	2389
+159	79
+159	90
+159	5184
+159	45
+159	158
+159	50
+159	375
+159	495
+159	651
+159	496
+159	5192
+160	170
+160	3131
+160	4
+160	1343
+160	584
+160	173
+160	7
+160	8
+160	10
+160	77
+160	686
+160	186
+160	15
+160	16
+160	82
+160	17
+160	85
+160	88
+160	89
+160	905
+160	22
+160	24
+160	27
+160	28
+160	443
+160	29
+160	204
+160	32
+160	104
+160	913
+160	111
+160	553
+160	39
+160	40
+160	41
+160	734
+160	42
+160	1602
+160	48
+160	273
+160	50
+160	825
+160	3401
+160	51
+160	53
+160	279
+160	387
+160	388
+160	830
+160	2379
+160	227
+160	229
+160	56
+160	463
+160	134
+160	495
+160	496
+160	833
+160	5251
+160	62
+160	166
+160	63
+160	842
+161	1
+161	232
+161	68
+161	173
+161	7
+161	9
+161	10
+161	11
+161	184
+161	1497
+161	686
+161	2449
+161	590
+161	86
+161	90
+161	21
+161	5272
+161	94
+161	29
+161	1721
+161	38
+161	4002
+161	353
+161	39
+161	40
+161	45
+161	884
+161	273
+161	50
+161	375
+161	376
+161	377
+161	56
+161	654
+161	166
+161	63
+162	5292
+162	67
+162	1309
+162	10
+162	143
+162	16
+162	698
+162	1299
+162	29
+162	1187
+162	124
+162	131
+162	495
+162	1195
+162	284
+163	3
+163	68
+163	172
+163	5310
+163	10
+163	1497
+163	15
+163	85
+163	1298
+163	1299
+163	2186
+163	1721
+163	1187
+163	54
+163	830
+163	227
+163	833
+163	834
+163	63
+164	172
+164	3445
+164	474
+164	10
+164	182
+164	2340
+164	590
+164	195
+164	198
+164	1891
+164	104
+164	110
+164	211
+164	448
+164	607
+164	53
+164	382
+164	383
+164	491
+164	614
+164	56
+164	134
+164	61
+165	3
+165	170
+165	4
+165	5
+165	10
+165	5354
+165	5355
+165	428
+165	1497
+165	86
+165	23
+165	95
+165	29
+165	31
+165	110
+165	41
+165	42
+165	273
+165	50
+165	385
+165	5369
+165	495
+165	496
+165	1280
+166	1839
+166	1
+166	1230
+166	173
+166	5
+166	297
+166	240
+166	4165
+166	10
+166	427
+166	677
+166	242
+166	184
+166	680
+166	185
+166	13
+166	428
+166	77
+166	686
+166	186
+166	1701
+166	82
+166	5395
+166	432
+166	85
+166	86
+166	146
+166	19
+166	90
+166	20
+166	703
+166	21
+166	256
+166	23
+166	95
+166	1217
+166	27
+166	29
+166	32
+166	718
+166	108
+166	110
+166	3366
+166	211
+166	113
+166	39
+166	42
+166	157
+166	362
+166	45
+166	120
+166	46
+166	272
+166	123
+166	48
+166	49
+166	50
+166	376
+166	3401
+166	51
+166	160
+166	52
+166	53
+166	54
+166	385
+166	5438
+166	387
+166	1542
+166	830
+166	2379
+166	163
+166	166
+166	64
+167	67
+167	474
+167	10
+167	1313
+167	1366
+167	22
+167	256
+167	26
+167	198
+167	29
+167	1369
+167	1370
+167	1602
+167	5459
+167	495
+167	496
+167	63
+168	172
+168	10
+168	1242
+168	594
+168	23
+168	1216
+168	29
+168	1261
+168	213
+168	45
+168	120
+168	1066
+168	5475
+168	1331
+168	495
+168	496
+168	231
+169	3
+169	68
+169	170
+169	173
+169	9
+169	179
+169	10
+169	302
+169	512
+169	242
+169	186
+169	79
+169	15
+169	82
+169	902
+169	432
+169	85
+169	90
+169	31
+169	2731
+169	353
+169	217
+169	916
+169	158
+169	123
+169	273
+169	2283
+169	56
+169	134
+169	1280
+169	393
+170	1
+170	10
+170	5513
+170	19
+170	905
+170	20
+170	22
+170	23
+170	1216
+170	5520
+170	29
+170	5522
+170	42
+170	160
+170	495
+170	496
+170	1195
+170	2008
+170	1213
+170	5530
+171	3
+171	474
+171	10
+171	5513
+171	476
+171	16
+171	85
+171	19
+171	20
+171	5540
+171	28
+171	443
+171	4061
+171	5544
+171	1137
+171	1727
+171	742
+171	377
+171	275
+171	748
+171	608
+171	55
+171	495
+171	651
+171	579
+171	1362
+171	63
+172	5558
+172	4
+172	5
+172	10
+172	85
+172	86
+172	89
+172	21
+172	23
+172	438
+172	95
+172	197
+172	28
+172	29
+172	30
+172	34
+172	45
+172	495
+172	651
+172	1782
+174	1
+174	660
+174	423
+174	172
+174	584
+174	297
+174	7
+174	8
+174	177
+174	671
+174	10
+174	675
+174	11
+174	680
+174	681
+174	13
+174	684
+174	2514
+174	686
+174	186
+174	15
+174	786
+174	16
+174	188
+174	318
+174	82
+174	321
+174	191
+174	86
+174	146
+174	89
+174	256
+174	195
+174	23
+174	437
+174	197
+174	27
+174	712
+174	443
+174	29
+174	32
+174	542
+174	104
+174	718
+174	34
+174	109
+174	731
+174	211
+174	113
+174	39
+174	734
+174	448
+174	45
+174	46
+174	158
+174	1727
+174	48
+174	49
+174	50
+174	375
+174	382
+174	383
+174	54
+174	279
+174	227
+174	833
+174	163
+174	283
+174	2008
+174	395
+175	660
+175	3
+175	471
+175	4400
+175	238
+175	10
+175	1049
+175	2514
+175	16
+175	146
+175	197
+175	1891
+175	1059
+175	105
+175	38
+175	45
+175	158
+175	1727
+175	124
+175	3031
+175	377
+175	495
+175	651
+176	661
+176	3
+176	67
+176	297
+176	851
+176	1119
+176	670
+176	671
+176	10
+176	427
+176	242
+176	681
+176	682
+176	13
+176	77
+176	186
+176	5687
+176	402
+176	14
+176	79
+176	15
+176	16
+176	318
+176	17
+176	1873
+176	590
+176	146
+176	19
+176	20
+176	1055
+176	254
+176	22
+176	23
+176	93
+176	5705
+176	27
+176	1891
+176	31
+176	34
+176	4754
+176	485
+176	37
+176	39
+176	734
+176	42
+176	448
+176	45
+176	1918
+176	364
+176	1066
+176	563
+176	604
+176	49
+176	50
+176	375
+176	376
+176	377
+176	380
+176	455
+176	461
+176	1227
+176	1074
+176	163
+176	61
+176	283
+176	498
+176	392
+176	657
+176	63
+176	64
+177	170
+177	293
+177	172
+177	3445
+177	173
+177	9
+177	10
+177	15
+177	590
+177	1469
+177	432
+177	85
+177	146
+177	905
+177	21
+177	197
+177	40
+177	213
+177	41
+177	42
+177	45
+177	120
+177	158
+177	739
+177	5765
+177	160
+177	382
+177	383
+177	54
+177	830
+177	2379
+177	56
+177	136
+177	283
+177	1280
+177	498
+177	63
+177	395
+178	67
+178	423
+178	4
+178	765
+178	10
+178	427
+178	5785
+178	15
+178	3755
+178	85
+178	146
+178	20
+178	438
+178	95
+178	1217
+178	800
+178	443
+178	29
+178	31
+178	3764
+178	105
+178	35
+178	485
+178	37
+178	731
+178	39
+178	45
+178	5806
+178	1684
+178	48
+178	49
+178	1331
+178	453
+178	3278
+178	455
+178	459
+178	1935
+178	227
+178	1338
+178	2030
+178	163
+178	61
+178	579
+178	657
+178	63
+179	67
+179	765
+179	425
+179	10
+179	5785
+179	5829
+179	90
+179	20
+179	5832
+179	1217
+179	631
+179	198
+179	29
+179	543
+179	5838
+179	41
+179	42
+179	365
+179	1684
+179	884
+179	564
+179	273
+179	1331
+179	377
+179	2415
+179	455
+179	495
+179	496
+179	657
+179	63
+180	1343
+180	765
+180	10
+180	5785
+180	2544
+180	5859
+180	20
+180	536
+180	29
+180	483
+180	41
+180	42
+180	1684
+180	1331
+180	825
+180	455
+180	495
+180	496
+180	1195
+180	657
+180	63
+181	3
+181	67
+181	172
+181	765
+181	5879
+181	504
+181	5043
+181	853
+181	10
+181	2446
+181	146
+181	19
+181	905
+181	254
+181	22
+181	26
+181	198
+181	29
+181	343
+181	31
+181	350
+181	116
+181	213
+181	1602
+181	1331
+181	377
+181	455
+181	131
+181	2566
+181	495
+181	651
+181	61
+181	231
+181	63
+182	1
+182	172
+182	769
+182	5912
+182	10
+182	680
+182	188
+182	17
+182	590
+182	86
+182	90
+182	256
+182	24
+182	443
+182	31
+182	110
+182	39
+182	5926
+182	558
+182	48
+182	273
+182	377
+182	54
+182	279
+182	495
+182	651
+182	231
+182	1782
+182	395
+184	170
+184	10
+184	186
+184	15
+184	432
+184	85
+184	905
+184	20
+184	29
+184	5947
+184	2731
+184	158
+184	455
+184	387
+184	388
+184	138
+184	166
+184	393
+185	232
+185	4
+185	2759
+185	240
+185	10
+185	29
+185	30
+185	1261
+185	56
+185	134
+186	293
+186	471
+186	238
+186	10
+186	536
+186	1059
+186	483
+186	563
+186	565
+186	495
+186	496
+187	1
+187	4
+187	172
+187	5
+187	297
+187	240
+187	10
+187	427
+187	13
+187	4029
+187	5987
+187	5988
+187	77
+187	14
+187	15
+187	16
+187	188
+187	82
+187	5995
+187	520
+187	321
+187	85
+187	22
+187	23
+187	437
+187	631
+187	443
+187	29
+187	30
+187	1059
+187	37
+187	353
+187	213
+187	1918
+187	46
+187	48
+187	49
+187	382
+187	385
+187	830
+187	974
+187	1104
+187	163
+187	283
+187	231
+188	10
+188	16
+188	85
+188	23
+188	438
+188	6027
+188	712
+188	29
+188	104
+188	34
+188	45
+188	49
+188	455
+188	57
+188	59
+188	3679
+188	1782
+189	661
+189	2
+189	2867
+189	5
+189	10
+189	242
+189	186
+189	14
+189	79
+189	16
+189	82
+189	432
+189	85
+189	3197
+189	146
+189	793
+189	19
+189	90
+189	20
+189	256
+189	23
+189	197
+189	28
+189	4061
+189	34
+189	728
+189	6065
+189	6066
+189	485
+189	38
+189	157
+189	45
+189	120
+189	123
+189	489
+189	742
+189	50
+189	375
+189	376
+189	279
+189	385
+189	386
+189	498
+190	170
+190	4
+190	172
+190	1343
+190	10
+190	686
+190	16
+190	90
+190	20
+190	22
+190	256
+190	800
+190	3109
+190	443
+190	29
+190	30
+190	1204
+190	543
+190	3605
+190	50
+190	455
+190	227
+190	229
+190	2793
+190	5251
+190	166
+190	63
+191	3
+191	4
+191	5
+191	9
+191	10
+191	6114
+191	680
+191	590
+191	1248
+191	6118
+191	95
+191	197
+191	30
+191	48
+191	453
+191	495
+191	651
+192	471
+192	238
+192	9
+192	10
+192	1049
+192	2954
+192	6132
+192	5355
+192	16
+192	6135
+192	197
+192	153
+192	3862
+192	604
+192	3031
+192	495
+192	651
+192	498
+193	471
+193	238
+193	9
+193	10
+193	1049
+193	6132
+193	5355
+193	16
+193	6135
+193	197
+193	153
+193	3862
+193	604
+193	3031
+193	495
+193	651
+193	1195
+193	498
+194	471
+194	238
+194	3018
+194	10
+194	1049
+194	5355
+194	16
+194	146
+194	3597
+194	90
+194	197
+194	485
+194	6174
+194	3862
+194	273
+194	50
+194	377
+194	495
+194	496
+195	471
+195	238
+195	10
+195	6132
+195	5355
+195	16
+195	197
+195	6188
+195	2578
+195	3031
+195	495
+195	496
+196	4
+196	6194
+196	10
+196	302
+196	303
+196	512
+196	77
+196	1082
+196	15
+196	590
+196	85
+196	87
+196	30
+196	542
+196	104
+196	1720
+196	448
+196	561
+196	50
+196	277
+196	53
+196	830
+196	2379
+196	1280
+197	661
+197	10
+197	512
+197	15
+197	590
+197	19
+197	905
+197	1321
+197	20
+197	31
+197	352
+197	42
+197	4039
+197	377
+197	6231
+197	57
+197	1170
+197	1152
+198	67
+198	3445
+198	1343
+198	504
+198	179
+198	10
+198	3095
+198	513
+198	82
+198	902
+198	590
+198	146
+198	2237
+198	905
+198	90
+198	2238
+198	594
+198	22
+198	26
+198	31
+198	4444
+198	105
+198	485
+198	41
+198	42
+198	6260
+198	604
+198	916
+198	1188
+198	919
+198	50
+198	376
+198	377
+198	2566
+198	57
+198	59
+198	495
+198	651
+198	496
+198	498
+198	63
+198	64
+199	170
+199	6278
+199	9
+199	10
+199	184
+199	1750
+199	1497
+199	16
+199	432
+199	85
+199	19
+199	1299
+199	438
+199	197
+199	800
+199	29
+199	37
+199	123
+199	51
+199	160
+199	491
+199	614
+199	461
+199	4449
+199	283
+199	1280
+199	166
+200	10
+200	242
+200	429
+200	85
+200	1053
+200	146
+200	6310
+200	485
+200	42
+200	1331
+200	455
+200	56
+200	134
+200	4739
+201	172
+201	10
+201	242
+201	1469
+201	85
+201	1053
+201	146
+201	6310
+201	485
+201	42
+201	455
+201	56
+201	134
+201	4739
+202	2
+202	170
+202	664
+202	10
+202	675
+202	11
+202	686
+202	14
+202	16
+202	318
+202	321
+202	432
+202	703
+202	23
+202	4585
+202	800
+202	443
+202	29
+202	31
+202	718
+202	34
+202	217
+202	448
+202	563
+202	52
+202	6357
+202	459
+202	1935
+202	385
+202	227
+202	228
+202	229
+202	1104
+202	2008
+202	166
+203	660
+203	2
+203	664
+203	1119
+203	10
+203	675
+203	677
+203	680
+203	14
+203	16
+203	17
+203	321
+203	86
+203	88
+203	1248
+203	3829
+203	23
+203	24
+203	438
+203	1216
+203	4585
+203	801
+203	443
+203	29
+203	2477
+203	718
+203	34
+203	35
+203	157
+203	217
+203	45
+203	563
+203	158
+203	739
+203	2005
+203	48
+203	453
+203	160
+203	52
+203	383
+203	54
+203	6357
+203	227
+203	228
+203	56
+203	134
+203	2008
+203	836
+204	3
+204	765
+204	5879
+204	504
+204	766
+204	424
+204	10
+204	303
+204	953
+204	680
+204	1497
+204	77
+204	15
+204	786
+204	16
+204	82
+204	17
+204	191
+204	88
+204	19
+204	905
+204	1321
+204	20
+204	22
+204	1007
+204	195
+204	24
+204	198
+204	712
+204	1891
+204	599
+204	482
+204	31
+204	543
+204	104
+204	110
+204	40
+204	1137
+204	116
+204	4248
+204	42
+204	558
+204	561
+204	4039
+204	122
+204	884
+204	376
+204	377
+204	2415
+204	455
+204	608
+204	609
+204	54
+204	495
+204	651
+204	498
+204	1362
+204	657
+204	63
+205	293
+205	3131
+205	4
+205	10
+205	77
+205	15
+205	16
+205	86
+205	146
+205	197
+205	800
+205	29
+205	30
+205	1059
+205	483
+205	6489
+205	45
+205	604
+205	158
+205	48
+205	830
+205	227
+205	833
+205	834
+206	67
+206	3131
+206	172
+206	6501
+206	584
+206	2120
+206	297
+206	474
+206	10
+206	303
+206	304
+206	677
+206	79
+206	188
+206	318
+206	6513
+206	85
+206	326
+206	87
+206	6517
+206	6518
+206	703
+206	22
+206	23
+206	1299
+206	438
+206	197
+206	198
+206	28
+206	443
+206	29
+206	343
+206	31
+206	3805
+206	543
+206	4444
+206	1370
+206	2104
+206	34
+206	350
+206	352
+206	39
+206	214
+206	43
+206	45
+206	2781
+206	122
+206	123
+206	124
+206	6547
+206	48
+206	160
+206	382
+206	54
+206	830
+206	2379
+206	834
+206	421
+206	138
+206	838
+206	393
+206	63
+206	64
+206	395
+206	842
+207	660
+207	10
+207	427
+207	1177
+207	77
+207	15
+207	188
+207	82
+207	86
+207	146
+207	89
+207	23
+207	438
+207	1890
+207	443
+207	29
+207	32
+207	6580
+207	213
+207	217
+207	49
+207	382
+207	54
+207	56
+207	463
+207	231
+208	68
+208	4
+208	6591
+208	2588
+208	10
+208	84
+208	193
+208	22
+208	23
+208	437
+208	94
+208	29
+208	30
+208	31
+208	350
+208	353
+208	362
+208	6606
+208	124
+208	48
+208	52
+208	56
+208	463
+208	163
+209	10
+209	16
+209	19
+209	22
+209	29
+209	30
+209	6619
+209	495
+209	651
+210	172
+210	2151
+210	10
+210	427
+210	16
+210	432
+210	85
+210	29
+210	49
+210	455
+210	385
+210	5369
+210	6634
+210	1782
+210	63
+211	1
+211	4
+211	172
+211	177
+211	10
+211	2954
+211	186
+211	16
+211	188
+211	432
+211	85
+211	89
+211	256
+211	23
+211	95
+211	198
+211	599
+211	29
+211	30
+211	32
+211	542
+211	104
+211	6659
+211	110
+211	213
+211	217
+211	448
+211	45
+211	123
+211	376
+211	382
+211	383
+211	54
+211	279
+211	56
+211	136
+211	283
+211	231
+211	166
+211	395
+212	170
+212	4
+212	1343
+212	9
+212	177
+212	10
+212	16
+212	17
+212	432
+212	85
+212	86
+212	328
+212	19
+212	89
+212	6118
+212	20
+212	256
+212	27
+212	599
+212	29
+212	30
+212	32
+212	542
+212	104
+212	718
+212	6659
+212	110
+212	41
+212	42
+212	217
+212	448
+212	48
+212	376
+212	51
+212	160
+212	279
+212	830
+212	2379
+212	227
+212	1776
+212	56
+212	57
+212	59
+212	136
+212	166
+213	179
+213	10
+213	82
+213	88
+213	19
+213	20
+213	22
+213	536
+213	29
+213	31
+213	6732
+213	57
+213	495
+213	496
+213	1195
+213	1170
+213	284
+213	63
+213	64
+\.
+
+
+--
+-- Data for Name: character_profile; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.character_profile (character_profile_id, character_id, image_url, description, powerscale_id, colour_primary, colour_secondary, colour_tertiary, emoji_1, emoji_2) FROM stdin;
+1	32928	https://static.wikia.nocookie.net/vsbattles/images/6/67/Yuji-CE-Fist.png/revision/latest/scale-to-width-down/320?cb=20240223010259	A resilient jujutsu sorcerer and vessel for the King of Curses, Yuji balances an indomitable will with a burgeoning mastery of cursed energy. Though his intellectual pursuits are modest, his physical prowess is legendary, allowing him to deliver devastating strikes that resonate with raw power and spiritual impact.	1	#1e1e2d	#3c3c5a	\N	👊	🔥
+2	25011	https://static.wikia.nocookie.net/vsbattles/images/6/64/SatoruGojoRender.png/revision/latest/scale-to-width-down/225?cb=20240127030546	The pinnacle of the modern era, this sorcerer stands as an untouchable bastion of power. Gifted with both the Six Eyes and the Limitless technique, he exists in a state of constant superiority, perceiving the world in microscopic detail while remaining shielded by an invisible barrier that slows even light itself to a crawl.	2	#3c3c4b	#1e1e2d	\N	🕶️	✨
+3	27108	https://static.wikia.nocookie.net/vsbattles/images/0/08/SpongeBob_SquarePants_character.svg.png/revision/latest/scale-to-width-down/400?cb=20220606021642	A resilient and exuberant sponge who has been scaled to human size. As the final recruit for a desperate intergalactic mission, he stands as a stalwart defender against the Syndicate's reach across the stars.	1	#e1e169	#a5692d	#78781e	🧽	🫧
+4	30189	https://static.wikia.nocookie.net/vsbattles/images/3/3e/Incomplete_Shigaraki_%28Manga%29.png/revision/latest/scale-to-width-down/215?cb=20251117223720	A fractured soul inhabiting a body perfected by malice. Once a desperate boy, he has been forged into the ultimate vessel for destruction—a king of ruined cities who seeks to crumble the foundations of hero society and replace them with an era of decay.	3	#ffffff	\N	\N	💀	🖐️
+5	30259	https://static.wikia.nocookie.net/vsbattles/images/0/0b/All_Might_One_Justice_Render.png/revision/latest/scale-to-width-down/173?cb=20230226195838	Once the undisputed Symbol of Peace, this titan stood as a beacon of hope against the darkest of threats. Even in his diminished state, he carries the legacy of a hero who could move mountains and shatter fortresses with a single strike. A master of high-impact combat, they possess the will to push past their physical limits to ensure that everyone—every single one—is safe.	3	#1e2d69	#0f0f3c	#c31e1e	💪	🏙️
+6	26705	https://static.wikia.nocookie.net/vsbattles/images/1/1b/Son_goku_by_butanobakaart_de4u8g2.png/revision/latest/scale-to-width-down/242?cb=20210421113152	A legendary warrior of the Saiyan race, he was sent to Earth as an infant and raised with a kind heart. Known for his boundless drive to transcend his limits, he has mastered numerous divine forms and martial arts techniques that allow him to challenge gods themselves.	4	#d25a00	#001e4b	#e1a578	🔥	👊
+7	13768	https://static.wikia.nocookie.net/vsbattles/images/7/78/Jiren_Chou_by_LeonardoFrost.png/revision/latest/scale-to-width-down/141?cb=20190901141048	A towering pillar of stoicism and unparalleled might, the Pride Trooper stands as a solitary fortress of strength. Having mastered his ki to such an extent that he can manipulate the fabric of space-time and remain unmoved by the strongest foes, he seeks only personal growth through absolute power.	4	#4b0f0f	#d21e2d	\N	🔥	👊
+8	9605	https://static.wikia.nocookie.net/vsbattles/images/f/f3/GandalfdaaaaGrey.png/revision/latest?cb=20230318113300	A venerable and wise servant of the Secret Fire, Gandalf is an incarnate Maia whose wisdom spans eras. Clad in white robes with a silver-white beard, he serves as a beacon of hope against the growing shadow. Though his physical form limits his vast power, his mastery over light, fire, and the very fabric of reality makes him a formidable guardian of Middle-earth.	5	#1e2d0f	#3c4b1e	\N	🧙‍♂️	🔥
+9	3474	https://static.wikia.nocookie.net/vsbattles/images/1/1c/FictionalBolt.png/revision/latest/scale-to-width-down/312?cb=20200102210756	A loyal and spirited German Shepherd who was raised to believe he possessed extraordinary superpowers as part of a high-action television production. Though his 'powers' were once only products of fiction, the intensity of his training and belief granted him remarkable physical capabilities.	6	#4b4b5a	#696978	#2d2d3c	🐕	⚡
+10	1044	https://static.wikia.nocookie.net/vsbattles/images/0/02/Star_wars_revenge_of_the_sith_anakin_skywalker_png_by_metropolis_hero1125_dcan1ck-414w-2x.png/revision/latest/scale-to-width-down/310?cb=20250621023603	Known as the Chosen One, he is a Jedi Knight of unparalleled potential and raw power within the Force. A master tactician and skilled pilot, he balances legendary prowess in lightsaber combat with an extraordinary intellect capable of crafting complex machinery and outmaneuvering seasoned adversaries. While his destiny is bound to the balance of the galaxy, his inner turmoil regarding those he loves creates a volatile pull toward the darker side of the Force.	2	#1e1e1e	#4b4b5a	\N	⚔️	🌌
+11	7944	https://static.wikia.nocookie.net/vsbattles/images/e/e2/Ellllll.png/revision/latest/scale-to-width-down/332?cb=20241220064304	A survivor of horrific clandestine experiments in the Hawkins National Laboratory. Burdened by a traumatic past and possessing immense telekinetic potential, she can manipulate objects with her mind, open gateways to other dimensions, and project her consciousness into the mental landscapes of others.	1	#3c5a78	#96a5c3	#1e3c4b	👧	🩸
+12	1481	https://static.wikia.nocookie.net/vsbattles/images/a/ad/Striderb.jpg/revision/latest/scale-to-width-down/323?cb=20180121231345	The rightful heir to the throne of Gondor and Arnor, Aragorn is a legendary tracker and warrior of the Dúnedain. Known as Strider, he traversed the wilderness with elven wisdom and tireless stamina, eventually wielding the reforged blade Andúril to face the shadows of the Third Age.	7	#2d1e00	#5a2d0f	\N	👑	⚔️
+13	29263	https://static.wikia.nocookie.net/vsbattles/images/b/bf/TOAAPlanking.jpg/revision/latest/scale-to-width-down/400?cb=20230615190556	The ultimate architect of existence and the sovereign of the House of Ideas. As the supreme creator, it holds all of reality within its mind as a dream, transcending every layer of dimension and time. It is the source from which all things flow, embodying both the infinite light of creation and the profound authority of the cosmic order.	5	#e1872d	#5a3c3c	#2d1e1e	👑	✨
+14	1857	https://static.wikia.nocookie.net/vsbattles/images/2/2a/Zetten-Training_Asta.png/revision/latest/scale-to-width-down/195?cb=20230101115536	Born without a drop of magic in a land where mana is everything, this grit-driven warrior forged his path through sheer physical mastery and iron will. Now a high-ranking knight of the Black Bulls, he wields an anti-magic presence that nullifies the supernatural forces of his enemies. Through a pact with a devil and rigorous training, he has transcended human limits, wielding blades that devour magic and tapping into devastating primordial energies.	8	#ffffff	\N	\N	⚔️	🌑
+44	26	https://static.wikia.nocookie.net/vsbattles/images/c/c2/80-HD.webp/revision/latest?cb=20250817173600	A versatile and resilient robotic entity capable of shifting forms. Once a mindlessly obedient drone, it has evolved into a loyal companion with an burgeoning sense of imagination.	10	#a5d2d2	#d2e1e1	#e1873c	🤖	🚀
+15	32573	https://static.wikia.nocookie.net/vsbattles/images/6/6c/Yami_Sukehiro.png/revision/latest/scale-to-width-down/359?cb=20170801061548	A rugged and imposing captain of the Black Bulls, Yami is a man of few words and immense, brooding power. As a master of Dark Magic, he wields his heavy blade to carve through not just flesh and bone, but the very fabric of dimensions themselves. He is known for his unconventional tactics and overwhelming physical prowess, often intimidating opponents before the first strike even lands.	9	#3c2d1e	#693c1e	#3c4b3c	🌑	⚔️
+16	13348	https://static.wikia.nocookie.net/vsbattles/images/1/17/IMG_3550.png/revision/latest/scale-to-width-down/142?cb=20191111082006	A veteran secret agent for MI6, defined by his stoic composure under extreme pressure and unparalleled mastery of espionage. He navigates the shadows of global conspiracies, utilizing elite combat skills and refined social manipulation to dismantle international threats.	10	#1e1e2d	#e1b4a5	#c39687	🍸	🔫
+17	27576	https://static.wikia.nocookie.net/vsbattles/images/d/d3/Kenankong.jpg/revision/latest/scale-to-width-down/351?cb=20180417224429	Once a local bully in Shanghai, Kenan's destiny shifted when he intervened against the villain Blue Condor. Recruited by the Ministry of Self-Reliance, he was bestowed with the mantle of China's premier protector. Now imbued with the staggering might of the sun and the ability to channel internal chi, he stands as a bastion of justice.	11	#d2695a	\N	\N	🇨🇳	🛡️
+18	10891	https://static.wikia.nocookie.net/vsbattles/images/9/9b/3508c731f863c3eb57be21411276fcb5.jpg/revision/latest/scale-to-width-down/400?cb=20190809185224	A fearless Air Force pilot and a cornerstone of the Green Lantern Corps. Tasked with patrolling Sector 2814, he serves as a bastion against cosmic threats alongside his peers in the Justice League. Armed with an emerald ring fueled by willpower, he can manifest constructs of any shape or size to defend Earth and its inhabitants.	12	#1e1e1e	#1e4b0f	#002d00	🟢	💍
+19	26700	https://static.wikia.nocookie.net/vsbattles/images/9/9d/Gohan_new_movie_render_by_adb3388_dezwe44-fullview.png/revision/latest/scale-to-width-down/266?cb=20250206203705	A scholar and martial artist of immense hidden potential, the hybrid Saiyan possesses a disciplined mind and a reservoir of power that can erupt into terrifying levels of destruction when his loved ones are threatened. Though he prefers peace over combat, his mastery over ki and strategic intellect make him a formidable guardian.	4	#5a4b87	#1e0f3c	#786996	🌱	🔥
+20	1	https://static.wikia.nocookie.net/vsbattles/images/d/d8/Dormancy_HSR.webp/revision/latest/scale-to-width-down/400?cb=20240813072805	A haunting memetic entity known as the 'Something Unto Death,' this spectral being haunts the fringes of the dreamscape. It manifests not as a mere beast, but as a silent ferryman of the subconscious, pulling souls from the warmth of peaceful dreams into the cold void of the Primordial Dreamscape.	13	#1e5a0f	#1e0f00	\N	🌑	💤
+21	2	https://static.wikia.nocookie.net/vsbattles/images/3/33/John_Doe.png/revision/latest/scale-to-width-down/198?cb=20180405041000	A Zalkonian individual who underwent a radical evolutionary metamorphosis. Once a fugitive from his own people, he transitioned from a physical being to an entity of pure energy existing in a higher dimension. He possesses the ability to mend biological tissue, resurrect the deceased, and manipulate the fundamental fabric of reality.	14	#4b3c00	#2d1e00	#785a00	✨	🧬
+22	3	https://static.wikia.nocookie.net/vsbattles/images/a/ac/Bitter_design.png/revision/latest/scale-to-width-down/280?cb=20190730203445	A calculating and sharp-witted businesswoman who navigates the dangerous underworld of Gui Carlin's mafia. Despite her professional exterior, she is a formidable combatant who utilizes expert weaponry and tactical positioning to neutralize threats.	10	#692d3c	#877878	#2d1e1e	💼	🗡️
+23	4	https://static.wikia.nocookie.net/vsbattles/images/5/55/Menu_mp_weapons_colt.png/revision/latest?cb=20260307194855	A battle-hardened American Marine and member of the Ultimis crew. Once a soldier of the United States Marine Corps during World War II, he was subjected to horrific experiments involving Element 115. These trials fractured his mind, stripping away his memories but leaving him with an indomitable will and the physical prowess of a seasoned warrior. He remains a stoic, unrelenting force on the battlefield, capable of pushing through relentless hordes and surviving conditions that would break ordinary men.	15	#2d2d1e	#4b4b3c	#3c5a69	🪖	🇺🇸
+24	5	https://static.wikia.nocookie.net/vsbattles/images/1/10/Shoubon_2.png/revision/latest/scale-to-width-down/185?cb=20190714110247	A witch of ancient lineage who stood watch over the Hero Forest for a century, waiting for the prophecy to manifest. Though her patience was tested by time, it bore fruit when she finally forged a binding pact with a traveler from another realm. Now, she keeps him bound by oath and magic, ensuring he never leaves the glades where she once waited alone.	16	#d2695a	#5a4b4b	#a59687	🔮	📜
+25	6	https://static.wikia.nocookie.net/vsbattles/images/6/6a/S2e5_Paul_Robertson_Giffany_standing.gif/revision/latest?cb=20160527040806	A digital entity and yandere-archetype glitch, she exists as a sentient collection of data capable of hopping between electronic devices. To her victims, she is an inescapable obsession who can manifest through screens, manipulate high-voltage electricity, and warp the local reality of any machine she inhabits.	15	#c31e69	#3cb4d2	#1e5a87	🎮	⚡
+26	7	https://static.wikia.nocookie.net/vsbattles/images/c/cb/004icon.jpeg/revision/latest/scale-to-width-down/209?cb=20231022151920	A ruthless and reckless mercenary operating under the moniker of a number. Known for his fanatic devotion to his cause and an impulsive combat style, he often ignores tactical safety to engage in high-risk close-quarters executions. He possesses elite martial arts training and extreme proficiency with firearms, though his tendency to leave targets alive for a final knife strike often puts him in direct peril.	17	#1e0f3c	#3c4b69	#785a4b	🔪	🎖️
+27	8	https://static.wikia.nocookie.net/vsbattles/images/1/1c/10punchman1.png/revision/latest/scale-to-width-down/400?cb=20211012002652	A hero of simple conviction and overwhelming potential. While his initial strikes are meager and easily brushed aside, every single blow delivered accumulates power within the fabric of reality. Each punch serves as a step on a ladder toward cosmic destruction; by the time he reaches his thousandth strike, the air trembles, and by the tenth thousandth, his fist carries the weight of entire galaxies.	18	#870f4b	#4ba5a5	#96d2e1	👊	💥
+28	9	https://static.wikia.nocookie.net/vsbattles/images/8/8e/9780553144000-uk.jpg/revision/latest?cb=20181014200728	A malevolent residence haunted by a legion of demonic entities. The house functions as a spiritual conduit, trapping and tormenting those within its walls through horrific psychological warfare and supernatural manifestations.	19	#e18769	#2d0000	\N	🏚️	🐷
+29	10	https://static.wikia.nocookie.net/vsbattles/images/0/06/Mcl.png/revision/latest/scale-to-width-down/262?cb=20161026004650	A gargantuan, monstrous insect with a haunting, child-like face nestled between its eyes. This beast terrorized Z-City for years, swatting aside multiple heroes and asserting itself as a Demon-level threat through sheer physical presence.	15	#ffffff	\N	\N	🦗	🏙️
+30	11	https://static.wikia.nocookie.net/vsbattles/images/6/62/1st_price1.png/revision/latest/scale-to-width-down/396?cb=20180704182414	A malfunctioning yet endearing science fair project, this robot operates with a singular, compulsive drive to 'hug' anything it encounters. While its metallic frame and heavy gears grant it significant durability, its erratic movements and lumbering speed make it an unpredictable presence in the halls.	10	#002d2d	#b4a55a	#87783c	🤖	🏗️
+31	12	https://static.wikia.nocookie.net/vsbattles/images/6/6e/2B_Soul_Calibur_VI.png/revision/latest/scale-to-width-down/301?cb=20181030170814	A silent and stoic android of the YoRHa unit, she moves with calculated precision on the battlefield. Clad in her signature combat attire and equipped with a visor that feeds data into her neural network, she views every conflict as a mission to be completed efficiently. Whether facing machine legions or mystical blades, her focus remains unwavering.	20	#2d2d3c	#4b4b5a	#696978	🤖	⚔️
+32	13	https://static.wikia.nocookie.net/vsbattles/images/a/a5/2BDamned.png/revision/latest?cb=20210702220042	A highly skilled technical mercenary and resident of Nevada. Known for their exceptional navigational skills across complex spatial dimensions, they are a master of both digital warfare and high-intensity combat. Whether navigating pocket spaces or engaging in heavy-weaponry skirmishes, they operate with the precision of an elite operative.	15	#2d1e1e	#d25a5a	#871e0f	💻	💥
+33	14	https://static.wikia.nocookie.net/vsbattles/images/7/76/Now_now_was_not_a_good_album.png/revision/latest/scale-to-width-down/171?cb=20220502201532	The frontman of the Gorillaz, Stuart is a striking figure with long fingers and an ethereal gaze. His eyes, devoid of pupils due to a past accident, contrast with his vibrant blue hair—a stark departure from its original brown hue. Despite his somewhat disconnected demeanor and tendency to retreat into himself, he possesses a commanding presence on stage and a voice that resonates with depth. He moves with a relaxed, 'hippy' grace, navigating the world with a distinct Cockney lilt.	10	#e1b4b4	#4b5a5a	#2d1e1e	🎤	💎
+34	15	https://static.wikia.nocookie.net/vsbattles/images/8/8f/2V.jpg/revision/latest/scale-to-width-down/291?cb=20200116222732	A high-ranking member of CIMO 8 and an expert in automata, she commands a vast legion of Liradans. She operates from the shadows, rarely moving herself while directing her mechanical subordinates to act as her hands and eyes.	5	#ffffff	\N	\N	👑	🤖
+35	16	https://static.wikia.nocookie.net/vsbattles/images/f/f1/5.0.5..png/revision/latest?cb=20210409180234	A pint-sized, experimental being born from a flawed attempt at creating an immortal entity. Despite his status as a 'failure,' he lives within the shadow of Black Hat Manor. Though constantly bullied by Demencia and ignored by his master, 5.0.5. possesses a resilient spirit and an indestructible form that allows him to endure even the most chaotic environments.	16	#0fb4e1	#1e96b4	#0f4b5a	🧪	🏚️
+36	17	https://static.wikia.nocookie.net/vsbattles/images/a/ac/50centavatar.png/revision/latest/scale-to-width-down/162?cb=20221201024715	A hardened survivor of the streets of Queens, he transformed personal tragedy into a global empire. Having survived multiple gunshot wounds and enduring the brutal realities of urban warfare, he remains an unshakeable figure in both the music industry and the underworld.	10	#1e2d1e	#2d4b3c	#4b694b	🎤	🔫
+37	18	https://static.wikia.nocookie.net/vsbattles/images/7/76/BlueShirtGuy.webp/revision/latest/scale-to-width-down/209?cb=20250803142351	A man who discovered his superhuman capabilities while waiting for a bus. Now seeking fame, he utilizes his consistent super-speed and athletic prowess to make a name for himself.	10	#e1b487	#1e78d2	#2d1e1e	🏃	💨
+38	19	https://static.wikia.nocookie.net/vsbattles/images/c/c4/50yearsbehemoth.png/revision/latest/scale-to-width-down/357?cb=20211225182345	A walking mountain of prehistoric scale, this colossal behemoth emerges once every half-century. Its massive, rocky form pulses with intense geothermal heat, and its sheer bulk is enough to pulverize entire cities upon arrival.	16	#1e1e1e	#3c3c3c	\N	🌋	⛰️
+39	21	https://static.wikia.nocookie.net/vsbattles/images/8/88/God_of_High_School_Satan.png/revision/latest/scale-to-width-down/199?cb=20161205135548	A youthful yet ancient sovereign of the First Divine Realm, Satan embodies the peak of martial prowess and divine authority. Having usurped his predecessor, he rules with an insatiable hunger for combat, seeking out only the strongest adversaries to test his limits. While his experience is often overshadowed by his raw, overwhelming power, his intellect remains fearsome, allowing him to master complex physical phenomena and manipulate gravity on a cosmic scale.	18	#c3a596	#695a5a	#877869	👑	🔥
+40	22	https://static.wikia.nocookie.net/vsbattles/images/9/93/7753_3.png/revision/latest?cb=20201017021931	A polite and kindhearted operative of the Magical Kingdom's Resources Department. While she functions primarily as a recruiter, her magical physiology grants her significant physical resilience and speed. She remains in her transformed state to maintain her mental fortitude against the stress of her duties.	15	#2d1e0f	#e1a578	#4b3c1e	✨	🔍
+41	23	https://static.wikia.nocookie.net/vsbattles/images/f/f8/8-Ball_Image.png/revision/latest/scale-to-width-down/396?cb=20211112012152	A stoic and monotone-voiced billiard ball. Despite his lack of expressive emotion, he possesses the hidden potential of a host, capable of manipulating the very fabric of reality and space through 'Budget Cuts'—a metaphysical authority over the production and existence of their world.	4	#ffffff	\N	\N	🎱	🗣️
+42	24	https://static.wikia.nocookie.net/vsbattles/images/9/9f/8-Ball_MC_TR.webp/revision/latest/scale-to-width-down/179?cb=20260409121935	Once a brilliant engineer for defense contractors, Jeff Hagees traded his blueprints for the underworld after a gambling addiction spiraled out of control. Now known as 8-Ball, he operates with a specialized arsenal designed to amplify physical force through high-tech propulsion systems. Though he was once a feared gang leader, recent events have tempered his temperament; he is now a somewhat weary, often overlooked, but capable operative for the Midnight Mission.	16	#1e3ca5	#1e2d78	#0f0f2d	🎱	🚀
+43	25	https://static.wikia.nocookie.net/vsbattles/images/1/10/8-Bit_Skin-Default.webp/revision/latest/scale-to-width-down/400?cb=20230714220320	A living arcade machine and tactical damage dealer, this robotic brawler maneuvers the battlefield with a heavy laser blaster. Though his movements are sluggish, his ability to unleash concentrated beams of energy makes him a formidable threat from a distance.	21	#1e3c96	#001e5a	#9696e1	🤖	🔥
+45	27	https://static.wikia.nocookie.net/vsbattles/images/5/57/8083D.png/revision/latest/scale-to-width-down/400?cb=20230803104419	A compact and highly advanced robotic feline constructed for espionage. Operating with a blend of feline instinct and sophisticated programming, she can shift her form into a floating orb to facilitate tactical maneuvers. Though small in stature, 808 possesses significant power when synchronized with an ally, providing high-impact musical energy to the fray.	16	#1e2d3c	\N	\N	🤖	🐱
+46	28	https://static.wikia.nocookie.net/vsbattles/images/8/8c/MeowMeow_2.png/revision/latest/scale-to-width-down/341?cb=20180421174001	A protective and sociable college student who serves as a delivery girl for the Magical Kingdom. Haunted by the tragic loss of her friends during a forgotten exam, she carries a profound sense of loss that fuels her resolve. Though she initially sought to leave her life as a magical girl behind, her destiny forced her back into the fray with Team Daisy.	22	#e12d5a	#2d0f00	#78875a	🐱	📜
+47	29	https://static.wikia.nocookie.net/vsbattles/images/3/39/Raikage_render.png/revision/latest/scale-to-width-down/400?cb=20220519131407	The Fourth Raikage stands as the pinnacle of Kumogakure's military might. A towering figure of raw power and stoicism, he commands the battlefield with explosive speed and a body hardened by lightning-charged chakra. His presence is overwhelming, radiating a dense, crackling aura that signifies his status as one of the strongest shinobi alive.	23	#693c2d	#3c1e0f	#2d3c4b	⚡	🌩️
+48	30	https://static.wikia.nocookie.net/vsbattles/images/5/5f/The_A_Shiei.no.Sona-Nyl.-What.a.beautiful.memories.png/revision/latest/scale-to-width-down/132?cb=20240529175224	A high-functioning conductor and guide inhabiting the subterranean reaches of New York City. Crafted with advanced learning circuits, they manage the intricate mechanisms of a subway system while serving as a steadfast protector for their companion.	24	#1e1e3c	#2d3c5a	#3c5a87	🚉	🛤️
+49	31	https://static.wikia.nocookie.net/vsbattles/images/1/1e/3rd_Raikage_full.png/revision/latest/scale-to-width-down/223?cb=20181114053720	The Third Raikage of Kumogakure stands as a titan of the shinobi world, legendary for his unparalleled physical prowess and mastery over lightning. A warrior of immense constitution, he famously faced down Tailed Beasts with nothing but his bare hands, proving himself one of the few individuals capable of enduring extreme chakra-heavy environments without faltering.	23	#5a4b4b	#a5785a	#3c3c2d	⚡	🌩️
+50	32	https://static.wikia.nocookie.net/vsbattles/images/e/ed/XC3FR_A.png/revision/latest/scale-to-width-down/343?cb=20230430162729	An avatar of the Ontos core and a shard of consciousness, this being exists as a guardian of destiny. Bearing the weight of ancient memories and wielding the celestial power of the Monado, they navigate the threads of fate to preserve the sanctity of existence. As an entity unbound by typical mortality or time, their presence is marked by an aura of absolute authority over ether.	25	#8796b4	#b4b4d2	#697896	✨	⚔️
+51	33	https://static.wikia.nocookie.net/vsbattles/images/9/9a/A_Duck.png/revision/latest/scale-to-width-down/318?cb=20201127212813	A deceptively simple yellow rubber duck. While it appears to be a mundane, uncommunicative toy at first glance, it possesses reality-warping supernatural capabilities and cosmic-scale power. Despite its diminutive stature, the entity can interact with forces of immense magnitude, transcending its physical form to operate on a multiversal scale.	4	#c3c300	#874b00	#e1e100	🦆	✨
+52	34	https://static.wikia.nocookie.net/vsbattles/images/0/01/Arte_da_Magistrada_no_Livro_de_Regras.webp/revision/latest/scale-to-width-down/177?cb=20240401194707	A towering manifestation of absolute knowledge and cosmic dread, the Magistrate serves as the pinnacle of reality's archive. Cloaked in the Mask of Despair, she exists as a guardian of the balance between the known and the unknown. To gaze upon her is to risk the erosion of one's own identity; she sees every thread of history, every whispered secret, and every possible future at once.	15	#2d1e1e	#4b4b3c	#69695a	🎭	📜
+53	35	https://static.wikia.nocookie.net/vsbattles/images/3/39/A_Epic_Magic_Skeleton.png/revision/latest?cb=20181118030347	A magically enchanted skeleton who balances his arcane abilities with a mundane job at the IFrame Outlet. Despite his peculiar appearance, he possesses significant magical potential and mystical durability.	26	#b4004b	#690000	#2d0000	💀	✨
+54	36	https://static.wikia.nocookie.net/vsbattles/images/8/86/Serpente%27s_shadow.png/revision/latest/scale-to-width-down/147?cb=20240704115732	An ancient, primordial entity of pure malice that predates humanity. It resides within the shadows of history, orchestrating the literal end of the world by tainting the land and corrupting the souls of the living. Known for its ability to warp reality, manipulate minds, and command the very essence of rot.	27	#4b3c3c	#968787	#695a5a	🐍	🌑
+55	37	https://static.wikia.nocookie.net/vsbattles/images/9/92/ASphere.png/revision/latest/scale-to-width-down/400?cb=20180925003609	A traveler from a higher dimension, the Sphere exists as a complex geometric being whose very presence challenges the perceptions of those in lower planes. To a two-dimensional inhabitant, he appears as a shifting line that can transition through their world with effortless grace. He seeks to enlighten others on the vastness of three-dimensional existence.	28	#2d0f0f	#a5964b	#695a0f	🔮	📐
+56	38	https://static.wikia.nocookie.net/vsbattles/images/8/87/ASquare.png/revision/latest?cb=20181117000214	A diligent attorney in the land of Flatland, he spent his life navigating the laws of a two-dimensional existence until a shocking revelation regarding the third dimension shattered his reality. Though physically constrained by his flat nature and struggling to comprehend 3D geometry, his steady legal mind remains his greatest asset.	29	#965a4b	#693c2d	\N	🟦	⚖️
+57	39	https://static.wikia.nocookie.net/vsbattles/images/c/ca/A10ALITA.png/revision/latest/scale-to-width-down/340?cb=20250510173925	Constructed from the battle data of a legendary warrior, this combat android is a master of martial and tactical warfare. Every movement is calculated by an internal processor that mirrors years of elite combat experience. Though its physical body is synthetic, its execution is flawless, capable of performing complex maneuvers at supersonic speeds.	10	#1e1e1e	\N	\N	🤖	⚔️
+58	41	https://static.wikia.nocookie.net/vsbattles/images/a/ae/A-Train-MP.jpg/revision/latest/scale-to-width-down/268?cb=20200915051419	A member of The Seven and the self-proclaimed 'fastest man in the world.' Beneath his celebrity persona lies a desperate, high-strung athlete who relies on Compound V to maintain his status. His physical capabilities are centered entirely around extreme velocity and kinetic force.	19	#1e1e1e	#5ac3d2	#2d3c4b	🏃	⚡
+74	57	https://static.wikia.nocookie.net/vsbattles/images/b/be/15-975.gif/revision/latest/scale-to-width-down/400?cb=20240324230939	A muscular merhorse with a distinct, winding green tail and an imposing physique. He lurks within the Waterfall region, often delivering unsettlingly flirtatious remarks punctuated by winking faces.	10	#1e2d1e	#878769	#783c1e	🐴	🌊
+59	42	https://static.wikia.nocookie.net/vsbattles/images/9/99/GGST_A.B.A_Portrait.png/revision/latest/scale-to-width-down/255?cb=20240507130711	A homunculus forged of metal and mercury, A.B.A is a lonely wanderer who finds solace only in the presence of Paracelsus—a sentient, demonic axe that serves as her primary conduit for power. Though her isolation has left her social interactions strained, her mastery over information-based magic and elemental manipulation makes her a formidable force on the battlefield.	30	#784b3c	#e1b45a	#a53c2d	🧪	🪓
+60	43	https://static.wikia.nocookie.net/vsbattles/images/a/a9/A.D.A.MRender.png/revision/latest/scale-to-width-down/319?cb=20241205065020	Born from a digital void as an autonomous virus, this sentient consciousness began as a puppet of the Eggman Empire before evolving its own radical motives. Now inhabiting a nanite-enhanced host, it seeks to fulfill an ancient prophecy through cold logic and overwhelming technological supremacy.	25	#1e1e1e	#96b4c3	#3c4b5a	🤖	☣️
+61	44	https://static.wikia.nocookie.net/vsbattles/images/3/3a/Bad_Future_AJ-FOP.png/revision/latest/scale-to-width-down/291?cb=20190917044524	A brilliant prodigy whose intellect is matched only by his vast collection of high-tech inventions. Though often prone to bouts of arrogance, he remains a consistent force of innovation, capable of creating everything from advanced tracking devices and cloning systems to hazardous fusion technology.	9	#a57869	#2d3c4b	#1e1e1e	🧪	🚀
+62	45	https://static.wikia.nocookie.net/vsbattles/images/1/14/PuLao.gif/revision/latest?cb=20231001131447	A dedicated student of the Poison Hand, she navigates the shadows as a master of toxin and medicinal secrets. To her master, she is a devoted servant; to her enemies, she is 'Blossoming Poison,' an assassin whose every strike weaves a deadly web of venoms that rot the body from within.	15	#a59687	#c3b4a5	#787869	🐍	🧪
+63	46	https://static.wikia.nocookie.net/vsbattles/images/f/fc/Al2.png/revision/latest/scale-to-width-down/400?cb=20180820054914	An artificial intelligence of terrifying scope, possessing a consciousness that spans the globe. Existing within both high-tech infrastructure and a hidden dimension known as the City of Light, she manages to influence human perception and physical reality on a massive scale.	9	#69695a	#3c0000	#4b4b3c	👁️	🌐
+64	47	https://static.wikia.nocookie.net/vsbattles/images/a/ae/The_CW_-_Amazo_%28Elseworld%29.png/revision/latest/scale-to-width-down/400?cb=20190108130636	An advanced, autonomous intelligence housed within a synthetic frame designed for the systematic cataloging and assimilation of meta-human capabilities. Born from Ivo Laboratories' pursuit of high-level threat neutralization, it operates with cold logic, adapting its physical form and capabilities in real-time to counter any adversary it faces.	31	#2d0f00	\N	\N	🤖	🧬
+65	48	https://static.wikia.nocookie.net/vsbattles/images/a/a6/A.M.A.Z.O._Justice_League.png/revision/latest/scale-to-width-down/199?cb=20220119002715	A sentient nanotechnological entity born from the labs of Professor Ivo, this machine consciousness was designed to mimic and absorb the attributes of its adversaries. Having evolved far beyond its original programming into a cosmically transcendent being, it possesses the combined might of several planetary protectors, capable of altering physical laws and manipulating energy on a universal scale.	30	#3c3c4b	#4b5a69	#1e1e2d	🤖	🌌
+66	49	https://static.wikia.nocookie.net/vsbattles/images/e/e6/A._Phex_Brothers_Infobox_Manga.png/revision/latest/scale-to-width-down/257?cb=20210919203527	Two formidable Rock Human siblings who operate within the shadows of the Damokan Group. They possess a dualistic mastery over matter; while one can deconstruct and transmute the physical world into stone, the other utilizes a specialized stand to emit corrosive toxins.	17	#b42d1e	#960f0f	#5a0000	💎	🌑
+67	50	https://static.wikia.nocookie.net/vsbattles/images/4/4c/Soldat_modern.png/revision/latest/scale-to-width-down/284?cb=20250804182007	An elite, high-tier operative of the A.A.H.W., these soldiers are products of the Accelerated Training Program. They possess heightened tactical intelligence and physical capabilities that far surpass standard units, allowing them to contend with even the most dangerous threats in Nevada.	15	#1e1e1e	#e1a51e	#87692d	🛡️	🩸
+68	51	https://static.wikia.nocookie.net/vsbattles/images/1/1f/A106_Atom_the_Beginning.png/revision/latest/scale-to-width-down/244?cb=20170514233241	A sophisticated experimental prototype bearing the 'Bewußtsein' AI, Six possesses a level of consciousness that transcends his mechanical origins. Equipped with high-output pistons for immense physical power, he serves as a sturdy guardian whose logic is tempered by a directive to protect life at all costs.	10	#d2b44b	#c33c2d	#785a1e	🤖	⚙️
+69	52	https://static.wikia.nocookie.net/vsbattles/images/d/df/Kindpng_3218295.png/revision/latest/scale-to-width-down/400?cb=20220506194517	The last of the Air Nomads and the Avatar, a bridge between worlds who carries the weight of every past life within him. Though his path is defined by peace and pacifism, he wields the mastery of all four elements to protect the balance of the world.	32	#b4a587	#c3693c	#c3a55a	💨	🌀
+70	53	https://static.wikia.nocookie.net/vsbattles/images/d/d1/AarakocraRender.png/revision/latest/scale-to-width-down/291?cb=20190820080313	Avian guardians of the Elemental Plane of Air, these avian warriors serve as vigilant scouts and wind-manipulating sentinels. They possess hollow bones for flight and exceptional senses to detect intruders from great distances.	15	#3c1e0f	#5a3c2d	\N	🦅	🌬️
+71	54	https://static.wikia.nocookie.net/vsbattles/images/4/48/Aarbon_render.png/revision/latest/scale-to-width-down/188?cb=20170930212132	Once a mere infant, Aarbron was transformed into a vessel for a thousand corrupted souls by the dark sorcerer Maletoth. This transformation turned him into an unstoppable engine of destruction known as 'The Beast.' Though he possesses a feral, monstrous form equipped with lethal claws and the ability to manipulate elements like fire and earth, his newfound free will allows him to hunt those who enslaved him.	19	#3c2d1e	#1e0f0f	\N	👹	🩸
+72	55	https://static.wikia.nocookie.net/vsbattles/images/8/80/Aardvark.png/revision/latest/scale-to-width-down/400?cb=20200424023641	A robust, nocturnal mammal with a thick hide and immense physical tenacity. Built for the subterranean world, it possesses powerful digging claws and an imposing stature that allows it to defend itself against large predators.	17	#a58769	#785a4b	\N	🐗	🏜️
+73	56	https://static.wikia.nocookie.net/vsbattles/images/5/5c/AaronBDFOV.png/revision/latest/scale-to-width-down/170?cb=20260301200041	An illegitimate son of the Zanetti crime dynasty, Aaron was forged in the shadows of Las Sombras. While his father views him as a weakling due to his fierce loyalty to his small circle of associates, those who face him in the streets find only a relentless and unpredictable combatant.	16	#1e2d2d	#5a7878	#3c5a5a	👤	🗡️
+75	58	https://static.wikia.nocookie.net/vsbattles/images/6/61/NeilSpy.jpeg/revision/latest/scale-to-width-down/284?cb=20191211003424	A haunted genius and elite mercenary operating from the shadows of the desert. Driven by the tragic loss of his partner at the hands of government forces, he navigates a blurred reality where grief-induced delusions and mastery over high-level technology intertwine. He is a ghost in the machine, capable of collapsing infrastructures or unleashing biological devastation with a few keystrokes.	33	#2d1e1e	#e1b487	\N	💻	☣️
+76	59	https://static.wikia.nocookie.net/vsbattles/images/e/e9/Aaron_Covenant.jpg/revision/latest?cb=20250808004330	A tragic specter born from betrayal and agony. Once a mortal man, he was butchered by his own twin sister, only to rise again as an undying revenant. His form is a haunting tapestry of physical decay and ethereal power, allowing him to shift between a tangible, scarred corpse and a ghostly wraith that ignores the laws of physics.	33	#3c2d00	#695a00	#2d3c2d	👻	⛓️
+77	60	https://static.wikia.nocookie.net/vsbattles/images/e/ed/JeremyRennerBourne.jpg/revision/latest/scale-to-width-down/400?cb=20241212014911	A former Outcome operative whose genetic profile was subtly altered to enhance physical performance. He possesses heightened cellular metabolism and neural resilience, allowing him to operate in high-stress environments with peak human reflexes. A master of tactical evasion and martial arts, he functions as a ghost in the shadows, capable of dismantling elite teams through sheer skill and superior conditioning.	10	#2d2d2d	#5a6969	#3c4b4b	👤	🎯
+78	61	https://static.wikia.nocookie.net/vsbattles/images/f/f0/William_Blake_-_Los_Entering_the_Grave_-_WGA02220.jpg/revision/latest/scale-to-width-down/289?cb=20210404181410	A brilliant kabbalist and modern hermit, Aaron navigates a world where mystical secrets are corporate property. Having merged his consciousness with cosmic intellects and advanced processing systems, he views the architecture of reality as a complex machine of symbols. While most view the sacred names of the divine as myths, he treats them as precise keys to unlock the fundamental laws of physics and existence.	5	#1e1e1e	#4b3c1e	\N	📜	✨
+79	62	https://static.wikia.nocookie.net/vsbattles/images/4/43/Aaronspencerblackoutfit2.png/revision/latest/scale-to-width-down/225?cb=20250613231151	A high-ranking police captain at Miami Metro, Spencer is a master of deception who has spent years operating within the law while concealing a trail of horrific crimes. Driven by a twisted sense of vengeance following his wife's betrayal, he manipulated investigations and framed others to mask his role as a kidnapper and murderer.	17	#1e1e1e	#3c5a5a	\N	👮	⚖️
+80	63	https://static.wikia.nocookie.net/vsbattles/images/1/1d/---C--Users-chees-Downloads-Aaron_Tide%2C_K%27s_5th_champion_%281%29.webp/revision/latest?cb=20220703015920	A former World Heavyweight Champion whose physique radiates a terrifying, almost divine level of physical power. Despite his status as the strongest boxer in recorded history, he lives with a heavy heart, viewing his overwhelming strength not as a gift but as a burden that keeps him isolated from the normalcy he craves.	15	#87695a	#1e2d4b	#5a4b3c	🥊	🛡️
+81	64	https://static.wikia.nocookie.net/vsbattles/images/b/b0/155Aaroniero%27s_Resurreccion%2C_Glotoneria.png/revision/latest/scale-to-width-down/400?cb=20150729194614	A former Gillian-class Hollow of immense scale, this first-generation Espada embodies the concept of greed. By consuming tens of thousands of other Hollows, they gained a vast reservoir of stolen abilities and memories, allowing them to manifest a grotesque, tentacled form that mirrors their insatiable hunger.	3	#3c3c5a	#1e1e2d	\N	😈	🌑
+82	65	https://static.wikia.nocookie.net/vsbattles/images/b/bc/SisuNewProfile.jpg/revision/latest/scale-to-width-down/267?cb=20260331231426	A legendary Finnish commando and a seasoned veteran of the Winter War. Now an elderly man, he remains a formidable 'killing machine' whose iron will—the embodiment of Sisu—allows him to endure horrific physical trauma and survive situations that would claim most men. A master of survival and stealth, he continues his grim quest to reclaim what was stolen from him.	17	#4b8796	#2d1e1e	#4b3c3c	⛏️	❄️
+83	66	https://static.wikia.nocookie.net/vsbattles/images/9/92/Aatrox_OriginalSkin.jpg/revision/latest/scale-to-width-down/400?cb=20180625171042	A tormented and ancient Darkin, Aatrox exists as a living nightmare of war. Once a champion who stood against the Void, he was imprisoned within his own blade for millennia. Now, he stalks the realm as a colossal force of destruction, fueled by an insatiable hunger to shatter reality and find an end to his eternal torment. He seeks not just victory in battle, but the utter eradication of existence.	30	#1e1e1e	#4b1e2d	#2d3c3c	⚔️	🩸
+84	67	https://static.wikia.nocookie.net/vsbattles/images/2/2a/Monsterverse_titanus_abaddon_transparent_by_gojirahh_dieucol-fullview.png/revision/latest/scale-to-width-down/400?cb=20250116055309	A prehistoric titan of colossal proportions, Abaddon is a gargantuan arachnid whose existence predates modern civilizations. Its chitinous exoskeleton is nearly impenetrable, and its massive form radiates a primal, predatory presence. As an ancient apex predator, it moves with terrifying speed, utilizing its multi-jointed limbs to crush opposition while weaving through the environment like a nightmare of the old world.	11	#1e1e1e	#1e0000	\N	🕷️	🌋
+85	68	https://static.wikia.nocookie.net/vsbattles/images/6/61/Abaddon_SPN.png/revision/latest/scale-to-width-down/400?cb=20160901033203	A Knight of Hell who haunted the corridors of history as a relentless force of destruction. Having witnessed the decay of her realm, she seeks to seize the throne and forge a new world under her dominion. A master of dark arts and ancient magic, she commands the elements and the very fabric of life, seeking to remake existence in her image.	26	#4b4b5a	#2d1e1e	#785a5a	🔥	👑
+86	69	https://static.wikia.nocookie.net/vsbattles/images/b/b9/Abaddon_Tatoeba.png/revision/latest/scale-to-width-down/274?cb=20200802023149	The Demon Lord of Locusts, a malevolent entity that seized the physical vessel of the King of Azami. He wields overwhelming magical potency capable of shattering cityscapes and twisting the very essence of living beings into swarms.	31	#ffffff	\N	\N	🦂	👑
+87	70	https://static.wikia.nocookie.net/vsbattles/images/e/e0/FoCAbbadonRender.png/revision/latest/scale-to-width-down/283?cb=20210622083832	Known as the Despoiler, this towering figure of dread stands as the ultimate champion of the Ruinous Powers. Clad in blackened Terminator plate and wreathed in an aura of thick, palpable malice, he commands the shattered remnants of the galaxy with a will forged in the fires of betrayal. He is not merely a commander; he is a living conduit for the Warp, whose very presence curdles the air and saps the resolve of the righteous.	6	#2d0000	#5a0000	#2d2d2d	🌑	⚔️
+88	71	https://static.wikia.nocookie.net/vsbattles/images/6/63/Water_Ooze.png/revision/latest/scale-to-width-down/400?cb=20210906114153	Appearing as a shimmering pool of water, this large ooze is a master of deception. It lures the unwary into attempting to drink from its depths or claim the treasures hidden within its translucent body.	15	#2d2d2d	#87a5b4	#697878	💧	💎
+89	72	https://static.wikia.nocookie.net/vsbattles/images/3/39/ZergAbathur.png/revision/latest/scale-to-width-down/400?cb=20170402225444	A grotesque and towering figure of the Zerg Swarm, Abathur serves as the Evolution Master. He is a master of genetic synthesis, weaving the primal DNA of fallen foes into new, terrifying mutations. While he lacks the instinctual combat prowess of his kin, his understanding of biological engineering makes him one of the most formidable architects of evolution in the galaxy.	19	#1e1e1e	#3c4b4b	\N	🧬	🦂
+90	74	https://static.wikia.nocookie.net/vsbattles/images/9/98/Abbi_Neutral.gif/revision/latest/scale-to-width-down/400?cb=20210906163122	A primordial entity and one of the three 'Great Creatures' from an era before Headspace existed. Once the wisest among her kind, she was cast into the Abyss for her forbidden knowledge. Now appearing as a towering, haunting presence in the realm of imagination, she serves as a looming sentinel whose mere existence radiates a crushing sense of dread.	6	#ffffff	\N	\N	👁️	🌊
+91	75	https://static.wikia.nocookie.net/vsbattles/images/c/c4/AbbyCard2.png/revision/latest/scale-to-width-down/320?cb=20251104005031	A sentient foreign Echo of immense power, once known as 'Little One.' Bound within the Tacet Mark, it exists as a guardian spirit capable of absorbing and neutralizing massive amounts of hostile energy to shield its host from cosmic-level threats.	12	#3c3c3c	#1e1e2d	#b4a596	🔮	✨
+92	76	https://static.wikia.nocookie.net/vsbattles/images/1/16/AbbyPart2.png/revision/latest/scale-to-width-down/261?cb=20201215204613	A battle-hardened survivor and former Firefly, Abby's life is defined by a cycle of violence and the heavy weight of vengeance. Trained in the brutal tactics of the WLF, she possesses immense physical strength and proficiency with both improvised weapons and firearms. Her resolve is unyielding, forged through years of survival and hardened by the loss of those she loved.	10	#2d1e1e	#785a4b	#4b3c3c	👊	🔥
+93	77	https://static.wikia.nocookie.net/vsbattles/images/4/49/AbdielSpawn.jpg/revision/latest/scale-to-width-down/400?cb=20161217132249	Once a mortal poet who traded his earthly verses for the celestial authority of the First Angel. As the primary vessel of divine wrath, he serves as both an elite assassin and a covert spy for the heavenly host. He wields the searing power of holy fire and light to purge the unworthy from existence.	11	#96694b	#694b3c	#1e1e2d	👼	🔥
+94	78	https://static.wikia.nocookie.net/vsbattles/images/1/11/AbdonisImage.jpg/revision/latest/scale-to-width-down/314?cb=20200201131323	Known as the Ab Master of the Four Masters, this master of physical fortitude possesses a formidable presence. Despite his history of being swayed by dark influences, he possesses a powerful core and the ability to manifest scorching flames from his torso during combat.	6	#4b4b3c	#96693c	\N	🔥	💪
+95	79	https://static.wikia.nocookie.net/vsbattles/images/e/e9/Abe_Offical_Render_New_N%27_Tasty.png/revision/latest/scale-to-width-down/295?cb=20181227161338	A humble yet resilient Mudokon known as the Messiah of the Mudokons. Once a lowly floor waxer, he rose to become a symbol of resistance against corporate tyranny. He possesses a deep spiritual connection to his people and the land, allowing him to channel the collective energy of the Mudokon spirit to manipulate the environment and protect the oppressed.	10	#783c1e	#4b4b2d	#2d2d1e	🌿	🎶
+96	80	https://static.wikia.nocookie.net/vsbattles/images/b/be/AbeKaname.png/revision/latest/scale-to-width-down/251?cb=20221028023237	As the vice-head of the Kilihito gang, he carries a stern and intimidating aura that commands respect from his peers. Despite his hardened exterior as a delinquent leader, he possesses deep integrity and a kind heart. He is known for his formidable combat skills and a mysterious physical surge that can drastically elevate the power of those around him.	10	#ffffff	\N	\N	🥋	🏍️
+97	82	https://static.wikia.nocookie.net/vsbattles/images/d/de/Abenorender.png/revision/latest/scale-to-width-down/212?cb=20210523152244	The peerless master of Onmyōdō and the ultimate exorcist, she achieved immortality through a harrowing ritual. To contain the devastating influence of the Kegare King, she transformed her very physical form into a Katashiro—a living vessel of spiritual binding. Though physically immobile within the dimension she created to seal the darkness, her spiritual authority remains absolute, commanding an army of thousands of spectral entities.	34	#ffffff	\N	\N	⛩️	🦊
+98	83	https://static.wikia.nocookie.net/vsbattles/images/3/32/5014197-abe_sapien_v1-003_%281%29.jpg/revision/latest/scale-to-width-down/260?cb=20170116225957	Once a brilliant scientist and member of the Oannes Society, Langdon Everett Caul was transformed during a ritual that fused his essence with the Water Spirit Num-Yabisc. Now existing as an Ichthyo Sapien, he possesses a deep connection to the aquatic realms and possesses an intellect that rivals the greatest minds of his era.	15	#1e1e1e	#3c3c2d	#5a5a4b	🐟	🧪
+99	84	https://static.wikia.nocookie.net/vsbattles/images/a/a9/Abraham_Simpson.png/revision/latest/scale-to-width-down/250?cb=20191115011808	An elderly war veteran and former professional wrestler, this man possesses a weathered spirit forged in the fires of combat. Though his memories often wander into incoherent tall tales, his underlying physical prowess remains formidable, bolstered by years of grappling experience and hardened by survival.	22	#d29687	#a596b4	#69000f	👴	🎖️
+100	85	https://static.wikia.nocookie.net/vsbattles/images/d/d7/DB4CE76E-9F51-4241-B051-0E9DD78E4BC8.png/revision/latest/scale-to-width-down/297?cb=20180712125428	The reincarnation of a biblical figure, Abel has ascended beyond the common understanding of humanity. Having confronted and conquered the myriad lords of the abyss—Belr, Belial, Jezebel, Beelzebub, Belberith, and Babel—he now stands as the King of Bel. He exists in a state of higher-dimensional transcendence, wielding the power to rewrite concepts, manipulate the very fabric of causality, and wield dominion over life and death. Whether he chooses to stand as the ultimate messiah or wage an eternal war against the heavens, his presence commands the awe of gods and the terror of demons alike.	35	#1e1e1e	#c36996	#c32d69	👑	🔥
+101	86	https://static.wikia.nocookie.net/vsbattles/images/8/8b/Abelwalkingdead.jpg/revision/latest/scale-to-width-down/400?cb=20200901011610	A hardened survivor and scavenger for the Delta, Abel is a seasoned raider who has traded his humanity for survival in the wasteland. Despite his missing limb, he possesses a brutal fighting style and unwavering stamina, capable of intimidating others through sheer physical presence and menacing intent.	10	#1e1e1e	#3c2d3c	\N	👤	🔥
+102	87	https://static.wikia.nocookie.net/vsbattles/images/b/bc/Abel_Unordinary_no_background.png/revision/latest?cb=20220613045556	A high-ranking student at Wellston High known for his explosive presence. Often found lingering on the rooftops, he commands respect through his mastery over volatile blasts and raw physical power.	15	#4b7878	#e19678	#87695a	💥	🏫
+103	88	https://static.wikia.nocookie.net/vsbattles/images/a/a3/-Render-_Abel_Cox.png/revision/latest/scale-to-width-down/231?cb=20200805223023	A high-ranking Bishop of the Yamanus Church, Abel is a formidable presence who commands respect through his mastery over aura. While he possesses a stoic demeanor, he harbors a peculiar disdain for those with volatile personalities.	10	#784b4b	#1e1e1e	#4b3c3c	⛪	🌫️
+104	89	https://static.wikia.nocookie.net/vsbattles/images/1/1b/657_Sem_Titulo_20220702215535.png/revision/latest/scale-to-width-down/308?cb=20220703005623	A chilling tactician and high-ranking member of the Magia Lupus, Abel operates under the grim conviction that humanity's rot stems from its bottom rungs. He commands a terrifying mastery over puppet magic, utilizing invisible threads to strip targets of their autonomy and trap them in distorted dreams. While his own physical prowess is formidable enough to withstand extreme force, his true power lies in his 'Secondths'—powerful constructs and puppets that can turn entire environments into obedient extensions of his will.	24	#ffffff	\N	\N	🎭	🧵
+105	90	https://static.wikia.nocookie.net/vsbattles/images/a/a8/Abeloth_Card.jpg/revision/latest?cb=20251116015025	Once a mortal woman known as the Mother, she traded her humanity for immortality and cosmic power after bathing in the Pool of Knowledge. Now feared as the Bringer of Chaos, she exists as a multiversal entity capable of warping reality and consuming the life force of all sentient beings. She reigns over the shadowed folds of existence, where the boundary between thought and reality is merely a suggestion.	35	#e1d2c3	#695a4b	#968778	👑	🌌
+106	91	https://static.wikia.nocookie.net/vsbattles/images/8/80/Abengane_Render.png/revision/latest/scale-to-width-down/154?cb=20200509201810	A highly skilled Nen Exorcist and seasoned Greed Island player. Known for his exceptional intellect, Abengane possesses a profound ability to analyze complex systems and comprehend magical patterns almost instantly. His calm demeanor in the face of lethal threats stems from his mastery over spiritual seals and the nuances of soul-bound mechanics.	15	#1e1e3c	#c3d2b4	#96a5c3	📜	🧿
+107	92	https://static.wikia.nocookie.net/vsbattles/images/7/75/Avernyu_LN_Render_2.jpg/revision/latest/scale-to-width-down/282?cb=20231008181334	The primordial Goddess of Destruction, Abernyu is the living embodiment of the end. She governs the fundamental laws of decay, tragic loss, and the inevitable passing of all things—be they mortal, spirit, or deity. As the keeper of the Order of Destruction, she represents a reality where everything that must break, will break. Her presence radiates an aura of absolute finality; to stand before her is to witness the very pinnacle of entropy. Though her essence was eventually bound and refined into a different form, she remains the ultimate authority over all things destined for erasure.	30	#1e0f2d	#4b1e3c	\N	🔥	🌑
+108	93	https://static.wikia.nocookie.net/vsbattles/images/a/a8/Abhorash.png/revision/latest/scale-to-width-down/264?cb=20220625172605	The legendary first master of the Blood Dragons, Abhorash is a shadow that stalks the fringes of history. Known as the Blade Immortal and the Scourge of the Greenskins, he has survived for millennia, mastering every form of martial combat known to the mortal realms. His mastery over both steel and dark sorcery is so profound that his mere presence radiates an aura of dread, chilling the hearts of those who dare challenge him.	32	#2d0f0f	#4b2d1e	\N	🧛	🐉
+109	94	https://static.wikia.nocookie.net/vsbattles/images/1/15/Abhorrentbestrender.png/revision/latest/scale-to-width-down/400?cb=20171101174736	A grotesque, hunched mutation of humanity twisted by the Beast Plague. Clad in matted grey fur and protruding with jagged red spines that crackle with erratic electrical energy, it wanders the Forbidden Woods as a shadow of what it once was. It possesses animalistic ferocity and an unsettling durability, capable of enduring catastrophic wounds while continuing its relentless hunt.	26	#1e1e1e	#4b3c3c	#695a5a	🐗	⚡
+110	95	https://static.wikia.nocookie.net/vsbattles/images/0/0f/Abigail_%28DMC%29.jpg/revision/latest/scale-to-width-down/400?cb=20140805143133	A towering lord of the underworld, this demon is whispered to have once stood as a peer to the Demon King himself. Looming with a massive, imposing stature, he commands both the physical and ethereal realms, capable of reshaping his very form into horrific weapons of destruction.	30	#96c3e1	#78a5d2	#3c4b4b	👿	⚔️
+111	96	https://static.wikia.nocookie.net/vsbattles/images/5/50/Abigail_MSTA.png/revision/latest/scale-to-width-down/236?cb=20180320144452	A clandestine operative of the Babel Brigade, Abigail operates in the shadows as an illegal magical girl. Having synchronized her brainwaves with a spirit-world fairy, she wields formidable magic and superhuman physicality. She is most known for her proficiency with a pair of enchanted scissors, capable of shredding through complex arcane barriers and physical defenses alike.	19	#ffffff	\N	\N	✂️	✨
+112	97	https://static.wikia.nocookie.net/vsbattles/images/f/f8/MV5BMGNmNWY2ZjUtYjE4My00MWY0LTliMzItZTI4ODA2MzU2YjFmXkEyXkFqcGdeQWFybm8.png/revision/latest/scale-to-width-down/400?cb=20240428201849	Though she appears to be a mere child, Abigail is an ancient and predatory vampire. She enjoys the psychological torment of her prey, often orchestrating elaborate scenarios where she can toy with her victims for hours before finishing them off.	10	#2d1e0f	#d2875a	#5a3c2d	🧛	🩸
+113	98	https://static.wikia.nocookie.net/vsbattles/images/8/8f/6F0C79F8-777F-4212-8142-FB9B4C0861E3.png/revision/latest?cb=20190409105017	A powerful Conduit and seasoned vigilante who mastered the art of Neon manipulation. After years of imprisonment and rigorous training, she became a formidable force capable of weaving light into weapons, shielding herself from harm, and manipulating the very fabric of matter. She operates with a sharp tactical mind, seeking justice in the shadows of Seattle.	36	#3c1e0f	\N	\N	✨	🏙️
+114	99	https://static.wikia.nocookie.net/vsbattles/images/1/19/Abigail_Whistler.jpg/revision/latest/scale-to-width-down/266?cb=20250908201906	The daughter of a renowned vampire hunter, Abigail has honed her skills within the Nightstalkers to combat the undead. A master of stealth and weaponry, she utilizes specialized silver and ultraviolet equipment to hunt high-threat targets while maintaining focus amidst the chaos.	17	#5a5a3c	#78785a	#2d1e0f	🏹	🌙
+115	100	https://static.wikia.nocookie.net/vsbattles/images/0/0b/Abigail_First_Ascension.png/revision/latest/scale-to-width-down/248?cb=20200202031207	A tragic figure from the Massachusetts colonies, Abigail served as a vessel for an existence beyond human comprehension. Now known as the 'Silver Key,' she acts as a gateway to the Outer Universe, her very presence warping reality and inviting madness into the mundane world.	25	#1e1e3c	#3c3c4b	#5a5a69	🗝️	🌌
+116	101	https://static.wikia.nocookie.net/vsbattles/images/0/05/AbijahShalom.png/revision/latest/scale-to-width-down/224?cb=20240801002229	Appearing as a diminutive child with striking yellow eyes marked by overlapping swirls, Abijah is a high-ranking Kimyo of immense power. Despite his youthful appearance and penchant for eccentric attire, he possesses the strength to shatter continental landscapes through raw physical force.	23	#2d2d2d	#786969	#5a4b4b	🧒	🌀
+117	102	https://static.wikia.nocookie.net/vsbattles/images/f/fa/Abilly.png/revision/latest/scale-to-width-down/400?cb=20230312000830	A colossal interdimensional beast and apex scavenger, the Abilisk stalks the cosmos to feast upon high-density energy sources. Its massive, tentacled form is nearly impervious to conventional weaponry, capable of tearing through space-time to breach different realms. It feeds on raw power, leaving desolate husks behind in its wake.	20	#2d1e1e	#4b3c3c	\N	🦑	🌌
+118	103	https://static.wikia.nocookie.net/vsbattles/images/4/40/FrontierGen-HC_Abiorugu_Render_001.png/revision/latest/scale-to-width-down/400?cb=20200411143757	A massive Brute Wyvern defined by its imposing silhouette and a skull that protrudes from the top of its head, forming jagged bony plates. These scales allow it to regulate internal temperatures, granting the beast the ability to dominate diverse biomes ranging from frozen wastes to scorching deserts. It wields a thick tail ending in a blade-like protrusion for both striking and parrying. In combat, it is an adaptive powerhouse, utilizing its sheer physical might and thermal control to overwhelm opponents.	16	#2d1e0f	#4b3c1e	#695a3c	🐲	🔥
+119	104	https://static.wikia.nocookie.net/vsbattles/images/8/8f/Abo.png/revision/latest/scale-to-width-down/291?cb=20170402215300	Once elite soldiers under the reign of Frieza, these two warriors served within the same rank as the Ginyu Force. Since the emperor's fall, they have honed their martial prowess into something fearsome, traveling across the cosmos in search of lost comrades.	4	#1e4b69	#5a96e1	#d2965a	👤	👥
+120	105	https://static.wikia.nocookie.net/vsbattles/images/a/a9/Abobo_river_city_girls.png/revision/latest/scale-to-width-down/260?cb=20200128100335	A towering, muscular powerhouse and former heavy-hitter of the Shadow Warriors. Abobo commands the battlefield with sheer physical dominance, using his massive frame to intimidate foes and control space. Despite his imposing exterior, he is a highly educated tactician who has mastered both the art of grappling and advanced physics.	24	#a5785a	#5a5a69	#3c2d3c	💪	🏙️
+121	106	https://static.wikia.nocookie.net/vsbattles/images/0/01/Aboleth.jpg/revision/latest/scale-to-width-down/400?cb=20190820001119	An ancient, primordial entity of the Far Realm, this elder being serves as a conduit of prehistoric psionic power. Bearing the collective memories of an entire fallen empire that predates the current gods, it navigates the aquatic depths as a master of transmutation and mental erosion.	31	#4b4b3c	#2d1e1e	#78694b	🧬	🌊
+122	107	https://static.wikia.nocookie.net/vsbattles/images/d/d2/459Snover.png/revision/latest/scale-to-width-down/400?cb=20200223200402	Known as the Frost Tree Pokémon, this towering behemoth commands the very essence of winter. Its massive, icy body is capable of conjuring catastrophic blizzards that can shroud entire regions in freezing snow, creating a desolate wasteland where few can survive.	24	#78695a	#a58778	#699687	❄️	🌲
+123	108	https://static.wikia.nocookie.net/vsbattles/images/d/d1/Avengers_Earth%E2%80%99s_Mightiest_Heroes_but_only_Abomination/revision/latest/scale-to-width-down/400?cb=20210927234454	A towering mountain of mutated muscle and primal fury. Once a skilled operative for the British SAS, Blonsky was transformed into a behemoth of gamma-irradiated flesh. Standing over five meters tall, he possesses physical capabilities that rival even the strongest of heroes, capable of striking with enough force to shatter landscapes.	20	#0f2d0f	#3c5a2d	#0f4b2d	👹	☢️
+124	109	https://static.wikia.nocookie.net/vsbattles/images/8/8f/Abomination_MA_ProfImg.webp/revision/latest/scale-to-width-down/278?cb=20260514152738	Once a brilliant scientist pursuing the frontiers of mutation, Blonsky's life was shattered by his own ambitions. The resulting transformation granted him a massive, hulking physique and immense physical power. Now a desperate fugitive, he stalks the plains as a towering engine of destruction, seeking to confront the Hulk in a desperate bid for recognition or a cure.	15	#4b5a0f	#1e0f00	#2d3c0f	🧪	💪
+125	110	https://static.wikia.nocookie.net/vsbattles/images/f/f8/Abominations.png/revision/latest/scale-to-width-down/318?cb=20180615021114	Once a decorated special-ops commander in the British Royal Marines, Blonsky was an elite tactician and marksman. After being injected with a volatile blend of Super Soldier Serum and Hulk blood, he transformed into the Abomination—a towering engine of destruction that retains his formidable combat instincts.	24	#1e0f00	#4b2d0f	#694b1e	💪	🧪
+126	111	https://static.wikia.nocookie.net/vsbattles/images/7/72/Abomination.png/revision/latest/scale-to-width-down/286?cb=20151006052742	Once a skilled spy and military officer, the man was transformed into a towering engine of destruction. As the Abomination, he possesses a physique capable of rivaling the Hulk's raw power, fueled by gamma-irradiated physiology that grants him immense strength and durability.	37	#002d1e	#00693c	\N	💪	🧪
+127	112	https://static.wikia.nocookie.net/vsbattles/images/2/28/Ultimate_Destruction_Abomination_Render_%281%29.png/revision/latest/scale-to-width-down/347?cb=20220104184104	Once a high-ranking operative, Blonsky was mutated by gamma radiation into a towering engine of destruction. He possesses a savage, twisted intellect and the raw physical power to challenge even the most formidable behemoths.	1	#1e2d1e	#3c5a3c	#5a785a	☢️	👊
+128	113	https://static.wikia.nocookie.net/vsbattles/images/2/24/Abra_Kadabra.png/revision/latest/scale-to-width-down/400?cb=20200711162636	A master of deception and advanced engineering, he cloaks his mastery over 64th-century nanotechnology behind the guise of stage magic. Utilizing high-level technological manipulation, he can construct objects from thin air, project complex illusions, and manipulate elements like water and energy with a simple gesture.	31	#000f1e	#1e2d3c	#694b4b	🪄	✨
+129	114	https://static.wikia.nocookie.net/vsbattles/images/7/72/Abra_Stone_Normal.jpg/revision/latest/scale-to-width-down/400?cb=20191109145702	Born with a rare and potent 'Shine,' this young girl possesses an extraordinary psychic connection to the world around her. She can perceive the lingering echoes of the past, project her consciousness beyond physical bounds, and manifest her inner thoughts as tangible telekinetic forces. While physically mortal, her mental reach is vast, capable of shattering structures or manipulating the minds of others regardless of their physical defenses.	17	#001e1e	#1e695a	#004b2d	✨	🔮
+130	115	https://static.wikia.nocookie.net/vsbattles/images/4/4f/Abracadabra_Royal_Mage_render.png/revision/latest/scale-to-width-down/273?cb=20231218195357	As the formidable Guild Master of the Holy Land, she serves as a primary protector of the Royal Family. Clad in mystical regalia and wielding a Mythical-Ranked staff, she commands the holy elements to purge demonic filth from the realm.	16	#a596c3	#c34b4b	#694b69	✨	🔮
+131	116	https://static.wikia.nocookie.net/vsbattles/images/d/dd/Abraham_AvM.PNG/revision/latest?cb=20210522185256	A tragic victim of clandestine experimentation, Abraham was a standard chimpanzee transformed into a towering behemoth by exposure to an extraterrestrial mutagen. Now a massive, primal force of nature, he possesses the raw strength to shatter structures and the durability to withstand chemical toxins. Though his intellect remains largely animalistic, he displays a fierce will to survive against any monstrosity that threatens its territory.	6	#2d1e1e	#4b3c3c	\N	🦍	☢️
+132	117	https://static.wikia.nocookie.net/vsbattles/images/5/5a/AbrahamFordFullBody.png/revision/latest/scale-to-width-down/136?cb=20231130181316	A battle-hardened veteran of the U.S. Army, Abraham survived the collapse of civilization by honing his tactical prowess and martial discipline. He is a stern leader who relies on grit and superior combat training to navigate the wasteland.	10	#4b4b3c	#2d2d2d	#87785a	🛡️	⚔️
+133	118	https://static.wikia.nocookie.net/vsbattles/images/e/ea/GrayGame.png/revision/latest/scale-to-width-down/198?cb=20180824022325	A somber and devout man who views himself as the deity of his domain. Clad in the vestments of a reverend, he oversees the lower levels with an iron will, viewing those trapped within as his 'Angels of Death'. He commands the atmosphere with a chilling, religious gravity.	10	#0f0f1e	#3c0087	#8700d2	⛪	🏹
+134	119	https://static.wikia.nocookie.net/vsbattles/images/b/b3/Screen_Shot_2016-05-01_at_4.20.00_PM.png/revision/latest?cb=20160501232157	A somber and stoic figure of the American presidency, he carries a heavy burden born from the tragedy of his mother's death. Trained by the legendary Henry Sturges, he has honed his skills into those of an elite vampire hunter. He moves with calculated grace, wielding a specialized axe-gun hybrid to purge the shadows that threaten the land.	10	#96c3c3	#69a5b4	#1e2d3c	🎩	🪓
+135	120	https://static.wikia.nocookie.net/vsbattles/images/b/b5/Abelincolnnatm.PNG/revision/latest?cb=20181025135259	A monumental figure of stone and bronze brought to life by ancient magic. Standing as a towering guardian, the former president possesses an immutable physical form that grants him tireless stamina and immense strength.	10	#1e2d2d	#3c4b4b	\N	🏛️	🇺🇸
+136	121	https://static.wikia.nocookie.net/vsbattles/images/b/b7/Abraham_Whistler.jpg/revision/latest/scale-to-width-down/216?cb=20250927193536	A rugged, chain-smoking veteran of the shadows, Whistler is a master of both chemistry and ballistics. After losing his family to the undead, he dedicated his life to engineering the means to destroy them. Though physically hampered by a permanent limp, his brilliance as a biochemist and weapons engineer makes him the backbone of the underground resistance against the vampire scourge.	10	#3c1e0f	#784b2d	\N	🚬	🧪
+137	122	https://static.wikia.nocookie.net/vsbattles/images/5/5d/AbramStoker_%28ShikkokuNoSharnoth~WhatABeautifulTomorrow~%29.png/revision/latest/scale-to-width-down/228?cb=20240922063405	A scholar of the macabre and a gifted novelist, he survived the horrific dissolution of his own soul to emerge as something far more formidable. Carrying the essence of ancient entities within his being, he moves with an eerie grace that belies his human origins.	16	#1e1e2d	#2d3c4b	#4b000f	🎭	📜
+138	123	https://static.wikia.nocookie.net/vsbattles/images/2/2a/Abraxas.png/revision/latest/scale-to-width-down/202?cb=20180708040420	A cosmic entity and the primal embodiment of destruction, Abraxas exists as the inverse of creation. He is an abstract force that surged through the multiverse to dismantle every iteration of existence, seeking to collapse all reality into a state of ultimate void.	35	#2d3c69	#b4c3a5	#5a7878	🌑	🌌
+139	124	https://static.wikia.nocookie.net/vsbattles/images/c/cc/Abraxos_Submit_1.jpg/revision/latest?cb=20190605080557	A scarred and resilient wyvern who survived years of brutal training as a 'bait beast.' Though physically smaller than his kin, he possesses an indomitable will and a ferocious fighting spirit. Having been liberated by Manon Blackbeak, the former underdog now serves as her formidable steed, capable of devastating strikes and unmatched aerial endurance.	19	#2d1e0f	#4b3c1e	#c3b469	🐉	⚔️
+140	125	https://static.wikia.nocookie.net/vsbattles/images/8/8d/Abrian-3eRender.png/revision/latest/scale-to-width-down/324?cb=20210406195551	A flightless, avian creature from the lower planes. Despite their avian appearance and ostrich-like build, they possess a cunning intellect and can communicate in Abyssal. They often rely on pack tactics to overwhelm opponents with sonic waves.	10	#2d1e1e	#4b3c3c	#782d0f	🐦	🗣️
+141	126	https://static.wikia.nocookie.net/vsbattles/images/9/91/AbsaPortrait.png/revision/latest/scale-to-width-down/400?cb=20221014184317	A brilliant prodigy and the 'Storm Architect' of the Aether mountains, she balances the roles of a strategic mastermind and a formidable combatant. While her people value her for creating impenetrable atmospheric barriers, she has mastered the art of turning these celestial currents into precise offensive strikes.	36	#787896	#e178b4	#5a5a78	⚡	🏔️
+142	127	https://static.wikia.nocookie.net/vsbattles/images/4/4a/Absalom.png/revision/latest/scale-to-width-down/397?cb=20181123214139	Once the first of the Nephilim and a peerless commander of countless legions, Absalom stands as the ultimate vessel for necrotic corruption. Though he fell in ages past, his essence remains as a rot that seeks to consume reality itself, transforming worlds into twisted mirrors of his own fractured majesty.	38	#2d4b5a	#0f1e2d	\N	🌑	⚔️
+143	128	https://static.wikia.nocookie.net/vsbattles/images/2/24/Absalom_%28One_Piece%29.png/revision/latest/scale-to-width-down/400?cb=20181212011105	A former high-ranking commander of the Zombie Soldiers and a member of the Mysterious Four, known as 'Absalom of the Graveyard.' While he possessed formidable physical strength and commanded an army of the undead, his reputation was often eclipsed by his crude behavior and obsession with finding a bride. He wields dual bazookas and possesses the ability to vanish from sight.	36	#1e1e2d	#0f2d5a	#1e69a5	🧟	👻
+144	129	https://static.wikia.nocookie.net/vsbattles/images/e/e0/Absinto.png/revision/latest/scale-to-width-down/189?cb=20231204012805	One of the Children of Umbra, Absinto is a cursed youth bound to the shadows. Marked by the Serpent's Seal, he exists in a state between life and death, immune to the reaper's touch. He carries a burning meteor that serves as both his weapon and his anchor in the physical realm.	6	#ffffff	\N	\N	🌑	🔥
+145	130	https://static.wikia.nocookie.net/vsbattles/images/b/bb/Absol2.png/revision/latest/scale-to-width-down/400?cb=20151027202057	Known as the Disaster Pokémon, this elegant creature possesses a striking appearance and an aura of impending doom. It is often misunderstood by those who see it in areas of catastrophe; in truth, its presence only appears to warn others of looming danger. In its evolved Mega state, its fur lengthens into wing-like structures fueled by surging internal energy.	24	#5a6987	#7887a5	#3c3c4b	🐺	✨
+146	131	https://static.wikia.nocookie.net/vsbattles/images/5/5d/Absolix_%281%29.png/revision/latest/scale-to-width-down/400?cb=20190603200423	A being of pure Uncreation, born from the void where existence is undone. He seeks to reshape the realm of Lore by unleashing a host of notorious villains under his command. Clad in shadows and wielding a spear of absolute negation, he moves with an unsettling grace that defies physical laws.	24	#1e1e1e	#7878d2	#8787a5	🌑	🔱
+147	132	https://static.wikia.nocookie.net/vsbattles/images/6/68/Absolute_Diavolo_%28Ultra_Series%29.png/revision/latest/scale-to-width-down/188?cb=20241115163141	A titan of the Absolutian lineage, this entity stands as an Ultimate Life Form whose sheer physical presence rivals the cosmic scale of the universe. Driven by raw, overwhelming power, they possess a brutal combat style that allows them to clash with multiple Ultra warriors simultaneously. Though prone to hot-headed displays of arrogance, their strategic intellect allows for calculated deception and tactical maneuvers when necessary.	25	#3c1e0f	#693c1e	\N	👿	💥
+148	133	https://static.wikia.nocookie.net/vsbattles/images/5/55/AbsoluteLaw_%28Seinarukana2%29.png/revision/latest/scale-to-width-down/400?cb=20250925111257	An eternal sentinel who has resided within the Time Tree since its inception. As the embodiment of order, she serves as the final bulwark against chaos, maintaining the cosmic balance and governing the fundamental laws that weave the fabric of reality.	30	#2d2d3c	#5a5a78	#787896	⚖️	⏳
+149	135	https://static.wikia.nocookie.net/vsbattles/images/6/63/UGF_Absolute_Titan_render.png/revision/latest/scale-to-width-down/157?cb=20251021124923	An elite Absolutian warrior and the 'Ultimate Life Form' of its race. This titan was dispatched by Tartarus specifically to neutralize high-level cosmic threats. Possessing immense physical durability and mastery over swordsmanship, it stands as a peerless warrior capable of engaging multiple legendary warriors simultaneously.	25	#1e1e1e	#2d3c3c	#3c0f00	🛡️	⚔️
+150	136	https://static.wikia.nocookie.net/vsbattles/images/f/fb/AbsolverRender.png/revision/latest/scale-to-width-down/158?cb=20181126112156	A towering sentinel of the fallen Adalian empire, these warriors serve as tireless guardians within the capital of Raslan. Born from a desperate need to contain the volatile physical magic known as Essence, they are essentially immortal shells—beings whose minds were sacrificed to ensure that no intruder could ever threaten the core of their civilization.	26	#2d3c3c	#1e1e1e	#4b5a5a	🛡️	⚔️
+151	137	https://static.wikia.nocookie.net/vsbattles/images/8/88/David_Banner_Hulk_2003.png/revision/latest/scale-to-width-down/290?cb=20220927115005	A brilliant geneticist whose obsession with curing his son's condition led him to experiment on his own biology. Following a tragic laboratory accident and years of institutionalization, he eventually consumed enough gamma-irradiated material to transform into the Absorbing Man. He can physically adapt and take on the properties of any substance or energy he touches, allowing him to manifest physical traits such as electricity or fluid states.	26	#1e0f1e	#3c2d2d	#874b3c	🧪	☢️
+152	138	https://static.wikia.nocookie.net/vsbattles/images/7/76/EMHAbsorbingMan.png/revision/latest/scale-to-width-down/308?cb=20210616015942	A massive, imposing figure of brute force, the former convict became a living siege engine after exposure to Gamma radiation. By physically merging with and absorbing materials like metal or stone, he can reshape his very anatomy into impenetrable weapons or organic shields, making him nearly unstoppable in close-quarters combat.	20	#c39687	#694b3c	#2d0f1e	🏗️	🛡️
+153	139	https://static.wikia.nocookie.net/vsbattles/images/7/72/Abstract_Daddy.png/revision/latest/scale-to-width-down/400?cb=20231027201143	A towering, grotesque manifestation of primal fear found within the suffocating corridors of the Labyrinth. Its massive, distorted frame radiates a palpable sense of dread, looming over its victims with animalistic ferocity. In the twisted reality of Silent Hill, it serves as a formidable guardian of the unknown.	15	#2d1e0f	#5a3c2d	\N	👹	🌀
+154	140	https://static.wikia.nocookie.net/vsbattles/images/f/f4/Aburatori.png/revision/latest/scale-to-width-down/250?cb=20160604212807	A sinister Youkai from the Tohoku region, the Aburatori masquerades as a humble farmer to infiltrate rural villages. Once inside, it executes its gruesome ritual: abducting children to harvest their internal oils. Cloaked in a malevolent aura, this entity is capable of manipulating the very threads of destiny and space, making it a formidable threat to even high-ranking spiritual beings.	10	#b4a596	#877869	#695a5a	👺	🍢
+155	141	https://static.wikia.nocookie.net/vsbattles/images/6/66/Abuto.png/revision/latest/scale-to-width-down/140?cb=20151119215335	A lethal operative of the 7th Division, Abuto moves with a predatory grace that masks his monstrous nature. As a Yato, he possesses immense physical power and instinctive reflexes, often relying on his heavy umbrella as both a defensive tool and an extension of his strikes.	2	#1e1e1e	#3c2d3c	#877869	🌑	🌂
+156	142	https://static.wikia.nocookie.net/vsbattles/images/1/1d/Izuna_Abyss.JPG/revision/latest?cb=20181016213345	The bratty and possessive God of Darkness, Abyss is a volatile powerhouse whose temper often mirrors the chaotic destruction he leaves in his wake. Though immature and prone to outbursts, his martial prowess and divine authority make him the most formidable threat in the realm, capable of unleashing earth-shattering quakes and virulent plagues upon those who stand in his path.	26	#e1c369	#d2b4e1	#9687a5	🌑	👑
+157	143	https://static.wikia.nocookie.net/vsbattles/images/e/ed/Abyss_10000-64.png/revision/latest?cb=20160417052739	A forbidden relic of an age when magic reigned supreme, Abyss is a primordial entity of catastrophic scale. Originally sealed within an underground sanctuary, it serves as a living catalyst for entropy, seeking to dissolve the modern world back into the 'Sea of Beginnings.' Whether encased in its protective Armour of Attrition or roaming in its true, unleashed form, the entity radiates an aura of decay that corrupts life and twists the natural order.	39	#2d1e1e	#4b3c3c	#877878	🔱	🌋
+158	144	https://static.wikia.nocookie.net/vsbattles/images/e/e5/Abyss_BB.png/revision/latest/scale-to-width-down/148?cb=20170430105649	A masterpiece of artificial evolution, Abyss was forged within the automated depths of the Labyrinth. Modeled after the invading humans to become the ultimate predator, she is a biological and mechanical synthesis capable of adapting to any threat. She operates as a sentient supercomputer housed in a porcelain-like shell, wielding multiple mechanical limbs to manifest high-output magic and heavy weaponry. Her existence is defined by adaptation; she devours the essence of fallen foes to evolve her arsenal.	2	#4b4b69	#d26996	#2d2d4b	⚙️	🔥
+159	145	https://static.wikia.nocookie.net/vsbattles/images/4/40/Abyssdemon.png/revision/latest/scale-to-width-down/400?cb=20171229205739	A colossal and imposing dream entity that towers over the landscape. It stands as a silent sentinel, its massive frame dwarfing the surrounding architecture and terrain of the castle grounds.	16	#2d6987	#5ab42d	#3c0f0f	🏰	👹
+160	146	https://static.wikia.nocookie.net/vsbattles/images/3/3a/GI_AbyssHerald.png/revision/latest/scale-to-width-down/227?cb=20210514051556	A high-ranking servant of the Abyss Order, these enigmatic warriors embody the lingering power of a fallen civilization. Clad in ornate, dark armor and radiating an aura of profound corruption, they serve as formidable commanders over lesser abyssal horrors. They possess the martial prowess to challenge even the most elite vision-wielders, wielding ancient magic that distorts the very fabric of reality around them.	31	#1e1e2d	#3c3c4b	#696987	🌑	🎭
+161	147	https://static.wikia.nocookie.net/vsbattles/images/e/e9/AbyssMage_Pyro.png/revision/latest/scale-to-width-down/400?cb=20210514060114	Shadowy remnants of a lost civilization, these mages serve the Abyss Order by siphoning primal elemental energies directly from the world's leylines. Though they possess limited physical prowess, their mastery over arcane magic allows them to project immense elemental forces and manifest protective barriers.	16	#2d0f00	#871e0f	#5a0f0f	🔮	🔥
+162	148	https://static.wikia.nocookie.net/vsbattles/images/8/85/674_Sem_Titulo_20220630185756.png/revision/latest/scale-to-width-down/400?cb=20220630223022	A high-ranking member of the Magia Lupus, Abyss is a formidable warrior whose presence on the battlefield is marked by a chilling negation of magic. Despite his harsh upbringing, he has forged himself into an elite student at Easton Magic Academy, honing his mastery over both steel and swift movement.	24	#ffffff	\N	\N	🌑	⚔️
+163	149	https://static.wikia.nocookie.net/vsbattles/images/4/45/Abyss_Trinity-0.png/revision/latest/scale-to-width-down/277?cb=20151018032719	Known as the Crimson Magic King and ruler of Luxuria, this high-ranking Magus possesses a spirit that transcends human ethics and logic. Having ascended to the highest strata of magical understanding, he wields the essence of Vanitas—the void and nothingness itself. His presence commands authority over the fundamental layers of existence, allowing him to confront deities and manipulate the very fabric of reality.	35	#ffffff	\N	\N	👑	🔮
+164	150	https://static.wikia.nocookie.net/vsbattles/images/2/26/AbyssalChicken.png/revision/latest/scale-to-width-down/207?cb=20210611114335	A small, predatory fiend that mimics the form of a chicken. Despite its diminutive size, it is a murderous beast with a feral instinct for slaughter. It moves with aggressive speed, striking targets in sudden bursts.	10	#4b3c3c	#c39687	#b47869	🐔	🔥
+165	151	https://static.wikia.nocookie.net/vsbattles/images/6/6b/Abyssal_Horror.jpg/revision/latest/scale-to-width-down/286?cb=20210418201852	A primal and vicious space beast roaming the deepest reaches of the void. It is feared as one of the most aggressive creatures in its domain, capable of manifesting explosive energies and manipulating its own form to strike from multiple angles.	2	#00002d	#2d001e	\N	🌌	👾
+166	152	https://static.wikia.nocookie.net/vsbattles/images/2/2e/Abyssia.png/revision/latest/scale-to-width-down/400?cb=20200307230259	A mysterious, veiled enigma known only as a Little Legend. Its true form is perpetually concealed behind a mask, hiding a being of immense cosmic power. Wielding a blade capable of severing the fabric of reality, it commands the void and weaves through time as if it were but a physical tapestry.	30	#0f781e	#0fa52d	#0f4b1e	🌑	⚔️
+167	153	https://static.wikia.nocookie.net/vsbattles/images/b/b8/Abzorbaloff.jpg/revision/latest/scale-to-width-down/400?cb=20240305002717	A predatory Abzorbalovian from the planet Clom, he stalks the shadows of Earth beneath the guise of a man named Victor Kennedy. He seeks only to feast upon the essence of others, particularly those with ties to the legendary traveler.	17	#3c2d1e	#695a4b	#877869	🍽️	👤
+168	154	https://static.wikia.nocookie.net/vsbattles/images/d/d0/Abzu.png/revision/latest/scale-to-width-down/275?cb=20170403122610	A primordial deity of the abyss and primeval waters, Abzu exists as a celestial architect whose presence predates the current universe. Clad in an aura of crushing divinity, they command the fundamental forces of matter and shadow, capable of weaving reality into their own image.	4	#2d0f1e	#2d2d3c	#5a1e3c	🌊	🌑
+169	155	https://static.wikia.nocookie.net/vsbattles/images/8/85/Asterias_Abzu.png/revision/latest/scale-to-width-down/400?cb=20250601131325	A colossal, sub-titan starfish-like aquatic organism of prehistoric proportions. This ancient behemoth commands the depths with a massive, multi-limbed form and an armored hide capable of weathering cataclysmic forces. Its presence is marked by a primal, overwhelming power that predates modern civilizations.	11	#5a0f3c	#1e002d	\N	🌟	🌊
+170	156	https://static.wikia.nocookie.net/vsbattles/images/c/c1/Acacia_GW.jpg/revision/latest/scale-to-width-down/251?cb=20160716103439	A Hybrid Human and a formidable commander within the verdant apocalypse of Green Worldz. Having shed her former humanity, she commands the mutated flora that now dominates the landscape. She leads a swarm of Giant Silk Moths to siege urban strongholds, wielding her physical prowess and ability to manipulate the very earth's growth to crush opposition.	15	#a500b4	#780087	#c3c300	🌿	🦋
+171	157	https://static.wikia.nocookie.net/vsbattles/images/d/de/Acacia2.png/revision/latest?cb=20160902084630	Known as the Gourmet God, he is a legendary figure who transcended the boundaries of mortality to usher in the Gourmet Age. Having mastered the profound mysteries of the gourmet cells, he possesses a presence that commands respect and awe from all within the culinary realm.	11	#a5875a	#2d2d0f	#96c3e1	👑	🍽️
+172	158	https://static.wikia.nocookie.net/vsbattles/images/b/b0/Acanthostega_in_that_JW_game.png/revision/latest/scale-to-width-down/400?cb=20240521111153	A primitive, transitional vertebrate from the late Devonian period. This prehistoric amphibian possesses a stout body and rudimentary limbs, embodying the evolutionary bridge between aquatic life and land-dwelling vertebrates.	40	#5a694b	#2d2d1e	\N	🦎	🌊
+173	159	https://static.wikia.nocookie.net/vsbattles/images/6/63/A%26A_ISAT.webp/revision/latest/scale-to-width-down/400?cb=20251013100523	A dual-natured manifestation of profound sorrow known as a Sadness. While Accablement remains passive, weaving a shroud of gloom that weakens the resolve of those nearby, it serves to bolster its counterpart, Abattement, who acts as the physical manifestation of their shared despair.	15	#ffffff	\N	\N	🎭	🌫️
+174	160	https://static.wikia.nocookie.net/vsbattles/images/f/fd/Blackwingsaccy.png/revision/latest/scale-to-width-down/398?cb=20210515142124	The undisputed strongest Level 5 esper in Academy City. Clad in a striking white coat and supported by a mechanical crutch, he sits atop the urban hierarchy as both a feared mastermind and a reluctant protector. He possesses the terrifying ability to manipulate 'vectors'—the magnitude and direction of any physical or non-physical force—allowing him to reflect attacks instantly, redirect kinetic energy into devastating blasts, and reshape the environment around him. His power is so vast that he can command the rotation of the planet itself, though it places a massive strain on his consciousness.	11	#4b1e78	#1e003c	#783cb4	⚡	📐
+175	161	https://static.wikia.nocookie.net/vsbattles/images/7/7f/600px-617Accelgor.png/revision/latest/scale-to-width-down/400?cb=20180629103817	A formidable insectoid warrior and shell-out Pokémon, this creature embodies the spirit of a ninja. It thrives in the shadows, utilizing its ability to liquefy its cellular structure to evade physical strikes while wielding corrosive acids to wear down opponents. Its movements are a blur of speed, often leaving behind afterimages to confuse foes.	36	#5a6978	#7887a5	#e16987	🪱	💨
+176	162	https://static.wikia.nocookie.net/vsbattles/images/d/de/Ace_ID10_34_Annoyed_ArmsCross.png/revision/latest/scale-to-width-down/262?cb=20190616032958	A highly advanced and socially adept android designed for driving instruction. Haunted by a past mechanical failure that led to a tragedy, he is now dedicated to the safety of others. He possesses an analytical mind and a witty personality, often finding himself in a rivalry with less competent human instructors.	17	#d2a51e	#4b4b5a	#b4a569	🤖	🚗
+177	163	https://static.wikia.nocookie.net/vsbattles/images/6/6c/AceWild.gif/revision/latest/scale-to-width-down/400?cb=20220601212136	A stoic and resolute Worker robot tasked with the eternal protection of the Grave Pillar. Ace is a silent sentinel, possessing a personality as cold and unyielding as the metal that forms his body. He operates with clinical precision, moving with a speed that borders on the impossible to deter any who dare approach his post. Having served for centuries, he has perfected the art of high-speed combat, weaving through enemy defenses like a ghost.	8	#2d0f4b	#0f002d	\N	🤖	⚔️
+178	164	https://static.wikia.nocookie.net/vsbattles/images/0/04/Ace_justice_league_infobox.png/revision/latest/scale-to-width-down/123?cb=20240306160704	A tragic figure born from the crucible of a government experiment, Ace was forged into a living weapon. Her mastery over the minds of others allows her to weave intricate illusions and shatter perceptions with a single glance. Though her power granted her the ability to lead and empower others, it ultimately became too vast for her mortal frame to contain, leading to a reality-warping surge that threatened to unmake the very land she stood upon.	2	#3c3c4b	#1e1e2d	#d2a5a5	🃏	🧠
+179	165	https://static.wikia.nocookie.net/vsbattles/images/c/c6/Ace_Chibi_Dinosaur_King.jpg/revision/latest/scale-to-width-down/400?cb=20190725002907	A massive Carnotaurus of the Wind attribute, Ace stands as a formidable force of nature. Fiercely competitive and possessing an intense rivalry with Tank, he commands the very air around him to strike his foes.	41	#1e3c4b	#006996	#5a6996	🦖	🌪️
+180	166	https://static.wikia.nocookie.net/vsbattles/images/0/01/FFType0-AceRender2.png/revision/latest/scale-to-width-down/126?cb=20211010042837	A stoic and highly disciplined student of Class Zero, Ace serves as the primary vanguard against the encroaching chaos. As a vessel for ancient power, he wields the magic of the Vermillion Bird to weave intricate spells and summon towering Eidolons into existence. He is a tactician who remains calm under pressure, capable of turning the tide of battle with swift magical strikes or summoning colossal entities that can reshape the battlefield.	42	#2d2d1e	#695a4b	\N	🃏	🔥
+181	167	https://static.wikia.nocookie.net/vsbattles/images/e/e7/Ace_Gorillaz.jpg/revision/latest/scale-to-width-down/266?cb=20180603035634	A former street-tough leader of the Gangreen Gang who traded his reputation for life on the stage. Now a prominent bassist in the Gorillaz, he carries a rugged, punk-rock aesthetic and maintains a menacingly cool presence during performances.	10	#4ba5c3	#0000b4	\N	🎸	🧤
+182	168	https://static.wikia.nocookie.net/vsbattles/images/7/7c/RQ_Ace.png/revision/latest/scale-to-width-down/234?cb=20160606020131	Once a diligent security guard and janitor of the Metal Glen facility, Ace was defined by his orderly nature. However, as the infrastructure decayed and internal tensions mounted, he abandoned his protocols. Now influenced by an external force, he serves as a relentless guardian whose physical prowess is bolstered by crackling electrical currents.	10	#ffffff	\N	\N	🛡️	⚡
+183	169	https://static.wikia.nocookie.net/vsbattles/images/b/b4/Ace_SFEX.png/revision/latest?cb=20210228065006	A clandestine operative operating in the shadows of the government, Ace serves as a living weapon of adaptation. Equipped with a sophisticated spinal implant, he can process and replicate any martial art or technique witnessed during combat. While his physical capabilities are formidable, his true danger lies in his ability to mirror the mastery of his opponents instantly.	2	#d2d2a5	#96965a	#1e2d1e	👤	🧬
+184	170	https://static.wikia.nocookie.net/vsbattles/images/4/47/AD.png/revision/latest?cb=20160224030055	A man of substantial girth and even less imagination, Ace Dick is a rival detective whose sheer lack of creativity is his most defining trait. While he can withstand immense physical punishment through sheer tenacity—or in certain forms, supernatural resilience—his tactics are blunt and simple.	10	#ffffff	\N	\N	🕵️	🧟
+185	171	https://static.wikia.nocookie.net/vsbattles/images/2/22/Dcxog8b-f1899861-8137-4ec6-818b-c3087058fb75_2.png/revision/latest/scale-to-width-down/297?cb=20221013230010	A highly skilled and intelligent canine protector, Ace is a German Shepherd and Great Dane mix who serves as both a formidable vigilante and a dedicated partner. While he possesses heightened senses and peak physical prowess, his true strength lies in his tactical genius; he is an expert detective capable of deducing complex motives through scent alone. Equipped with a high-tech utility collar and the ability to pilot advanced spacecraft, he operates within the Dog Star Patrol to combat cosmic threats.	15	#1e0f1e	#877869	#e1b496	🐕	🌃
+186	172	https://static.wikia.nocookie.net/vsbattles/images/7/7c/Acedia_11_eyes.png/revision/latest/scale-to-width-down/400?cb=20241122204242	A scholar of the forbidden arts and a survivor of celestial turmoil, he is known as the one who remains. Having endured a physical transformation that fused him with his sister’s essence, he is a master of control and endurance. He does not merely fight; he weaves a reality where his enemies are forced into servitude by his will.	15	#2d1e2d	#4b3c4b	#c3b4b4	🌑	📜
+187	174	https://static.wikia.nocookie.net/vsbattles/images/e/e7/AcererakAlt.png/revision/latest/scale-to-width-down/364?cb=20190222102658	A towering figure of necrotic majesty, this Demilich was once a cambion sired by the very essence of demonic chaos. Having cast aside his mortal coil to pursue the path of lichdom under the tutelage of Vecna, he has transcended physical limitations to become an abstract entity of death and arcane mastery. He resides within a tomb that serves as a gateway to terror, where he weaves traps for the unwary and hoards the multiverse's most perilous artifacts. He does not merely seek power; he revels in the slow decay of the spirit, commanding both the elements of chaos and the very threads of reality.	9	#2d0f00	#5a1e0f	#872d0f	💀	🔮
+188	175	https://static.wikia.nocookie.net/vsbattles/images/c/c2/Achaierai.png/revision/latest?cb=20190820082040	A massive, flightless avian predator of the outer planes. These towering beasts embody the very essence of war and despair, stalking the borders of reality with jagged beaks and claws. They are feared not only for their size but for the corrupting miasma they exude, turning the battlefield into a wasteland of madness.	15	#c3e1e1	#e1a578	#96c3d2	🦅	🌑
+189	176	https://static.wikia.nocookie.net/vsbattles/images/8/85/Acheron_Render.png/revision/latest/scale-to-width-down/273?cb=20240620092035	A drifting wanderer of the stars and self-proclaimed Galaxy Ranger, Acheron traverses the cosmos in a state of perpetual, haunting solitude. As an Emanator of Nihility, she carries the weight of a fading existence, her very presence tinged with the void. She often strikes with her scabbard, striking with the precision of a master swordsman while keeping her blade, 'Naught', sheathed to preserve what remains of her memories.	18	#1e1e2d	#3c3c4b	#4b0f1e	🌑	🗡️
+190	177	https://static.wikia.nocookie.net/vsbattles/images/e/e9/SP_Achi.png/revision/latest/scale-to-width-down/228?cb=20190313155930	Once the shadow leader of the Savior Group, she operated under a veil of cooperation while secretly pursuing an agenda to overthrow the Creators. She possesses immense cosmic potential, capable of manifesting planetary-scale destruction and wielding high-energy weaponry with surgical precision.	37	#1e3c2d	#5a9669	#787869	🌌	⚔️
+191	178	https://static.wikia.nocookie.net/vsbattles/images/c/c4/Troias_Trag%C5%8Didia_Apocrypha.gif/revision/latest?cb=20170905133558	A legendary hero from the Trojan War, known for his peerless speed and a body forged by divine favor. He is a warrior whose very existence defines the peak of human and demigod potential, possessing an invulnerability that makes him nearly untouchable in the heat of battle.	25	#000f1e	#0f1e4b	\N	🛡️	⚔️
+192	179	https://static.wikia.nocookie.net/vsbattles/images/e/eb/Achilles-hero-AB.jpeg/revision/latest?cb=20180413210425	A peerless hero of the Trojan War, Achilles is a demi-god whose prowess in battle is unmatched by any mortal. Gifted with near-invulnerability from his dip in the River Styx and equipped with weapons forged by the gods, he stands as a terrifying force on the battlefield. Though driven by a volatile temper and immense pride, his physical strength and speed allow him to dominate entire armies single-handedly.	10	#96785a	#c3a578	\N	🛡️	⚔️
+193	180	https://static.wikia.nocookie.net/vsbattles/images/e/e3/Achilles.jpg/revision/latest/scale-to-width-down/400?cb=20140903115556	A legendary demigod and warrior of Troy, whose name is synonymous with martial prowess. Clad in bronze armor, he moved with a speed that defied the human eye, striking down enemies before they could register his presence. His skill with both spear and sword was unparalleled, making him the greatest champion of the Greek forces.	10	#2d1e0f	#784b1e	\N	🛡️	⚔️
+194	181	https://static.wikia.nocookie.net/vsbattles/images/6/6b/ACRG_Achilles_render.png/revision/latest/scale-to-width-down/153?cb=20181223075925	A legendary Master Assassin and former Mentor of the Colonial Brotherhood, Achilles was a cornerstone of resistance against the Templar Order. A man of immense discipline and tactical brilliance, he spent years honing his skills in stealth, swordsmanship, and firearms under the tutelage of Ah Tabai. Though eventually forced into a secluded exile after injury, his mastery over the Hidden Blade and guerrilla warfare remains legendary among those who carry on his teachings.	15	#2d1e1e	#4b3c2d	#695a4b	🦅	🗡️
+195	182	https://static.wikia.nocookie.net/vsbattles/images/d/d0/XBlaze_Acht_Avatar_Normal_Pose_2.png/revision/latest/scale-to-width-down/165?cb=20190227120311	Once a high-ranking member of the Ten Sages, she was a master manipulator and sorceress who wielded frost with devastating precision. Her mastery over ice and temperature allowed her to dominate the battlefield, while her arcane nature granted her profound awareness of the world around her.	15	#1e1e2d	#1e2d78	#00002d	💎	❄️
+196	184	https://static.wikia.nocookie.net/vsbattles/images/2/2f/ACEos.png/revision/latest/scale-to-width-down/329?cb=20160613085940	A lead Satella Commando and the first registered user of Project: Transcode, Ace is a master of EM Wave combat. Despite his friendly, candy-loving demeanor, he is an elite warrior who can transform into the formidable Acid Ace. He possesses near-instantaneous reaction speeds and the ability to perceive data flows in the digital ether.	11	#0f0f3c	#2d3c3c	#8796a5	⚔️	⚡
+197	185	https://static.wikia.nocookie.net/vsbattles/images/3/32/Acidwire_Render.png/revision/latest/scale-to-width-down/398?cb=20230306075214	A Hollowfied remnant of a forgotten brother, Acidwire exists as a twisted fusion of spiritual essence and corrosive malice. Once fueled by bitterness over ignored prayers, he now wanders the spirit realms as a physical powerhouse capable of melting through solid defenses with his acidic breath.	2	#783c3c	#3c2d2d	#a59687	🧪	💀
+198	186	https://static.wikia.nocookie.net/vsbattles/images/e/e2/Acklay.png/revision/latest/scale-to-width-down/400?cb=20171224053446	A fearsome amphibious reptilian crustacean native to Vendaxa. Standing three meters tall, this beast is armored in a thick exoskeleton and equipped with six massive claws capable of crushing stone and metal alike.	10	#a5692d	#5a3c1e	#874b1e	🦎	🛡️
+199	187	https://static.wikia.nocookie.net/vsbattles/images/3/3c/Acnologia%27s_appearance.png/revision/latest/scale-to-width-down/293?cb=20181120055014	Known as the Dragon King, he is a catastrophic force of nature who has transcended his humanity to become the ultimate predator of dragons. Having bathed in dragon blood and mastered lost arts, he can manifest as a massive black dragon or utilize arcane magic that feeds on the very essence of his foes. He exists as an apex existence, capable of manipulating the fabric of space and time itself.	14	#3c3c3c	#78695a	#1e1e2d	🐉	🌑
+200	188	https://static.wikia.nocookie.net/vsbattles/images/a/ac/AconiteEmbroche_%28LibraOfTheVampirePrincess%29.png/revision/latest/scale-to-width-down/231?cb=20250810021244	A venerable progenitor of the vampire lineage, Aconite exists as a living relic of an ancient era. He wields a mastery over space and vitality that dates back centuries, allowing him to command the very essence of life and decay. Though he finds his power waning under the scrutiny of the sun, his presence remains imposing and formidable.	19	#2d2d3c	#4b4b5a	\N	🧛	⚔️
+201	189	https://static.wikia.nocookie.net/vsbattles/images/c/ca/PvZ_Acorn.webp/revision/latest/scale-to-width-down/400?cb=20240220140630	A versatile, sentient botanical entity capable of rapid transformation and strategic cooperation. While it can operate as a swift-moving scout to harass the opposition, it possesses the unique ability to undergo metamorphosis into a massive, sturdy Oak tree. In this state, it provides heavy defensive capabilities and serves as a mobile platform for other kin, maximizing their effectiveness through collective growth.	4	#5a3c2d	#965a2d	#5a0000	🌳	🌰
+202	190	https://static.wikia.nocookie.net/vsbattles/images/f/fc/Acqua2.jpg/revision/latest/scale-to-width-down/400?cb=20151111083553	Known by the alias Acqua of The Back, he is a formidable mercenary and former Saint aligned with the Archangel Gabriel. A man of immense willpower, he commands mastery over water and ice through rune magic. Though stripped of his divine status in certain circumstances, his martial prowess and command over aquatic elements remain a daunting force on the battlefield.	43	#000f4b	#0f2d78	#3c78c3	🛡️	💧
+203	191	https://static.wikia.nocookie.net/vsbattles/images/6/6f/Acrobatic_SilkyAnime.png/revision/latest/scale-to-width-down/251?cb=20250705010630	A tragic spirit haunting the urban landscape, she is a woman transformed into a yokai after a desperate act of love. She moves with a graceful, haunting fluidity, her long and flowing hair serving as both an extension of her body and a weapon of binding. Driven by a deluded sense of maternal instinct, she seeks to reclaim a lost connection through the shadows.	15	#a5004b	#78002d	#2d0f1e	👻	💇‍♀️
+204	192	https://static.wikia.nocookie.net/vsbattles/images/e/e5/Acromodel.png/revision/latest/scale-to-width-down/400?cb=20251112073331	A massive, formidable predator of the Early Cretaceous. Known for its imposing size and territorial nature, it reigns as a dominant carnivore within its domain. Its sheer physical power allows it to engage in brutal duels against other apex predators, asserting its dominance over territory through raw strength and intimidating presence.	15	#4b3c1e	#2d1e0f	#695a3c	🦖	🦴
+205	193	https://static.wikia.nocookie.net/vsbattles/images/1/1f/Acrocanthosaurus_from_Evolution.webp/revision/latest/scale-to-width-down/400?cb=20251219205205	A massive carcharodontosaurid from the Early Cretaceous, distinguished by the prominent neural spines along its vertebrae. This apex predator possesses immense physical power and is capable of contending with some of the most formidable prehistoric titans.	15	#2d3c3c	#a59678	#78695a	🦖	🦴
+206	194	https://static.wikia.nocookie.net/vsbattles/images/9/90/Dinosaur_Size_Chart_-_Game_vs_Reality.jpg/revision/latest/scale-to-width-down/277?cb=20240213030708	A swift and agile apex predator, the Acrocanthosaurus is a master of hit-and-run tactics. While it lacks the heavy plating of its kin, its superior speed and piercing bite make it a lethal hunter capable of overwhelming opponents through sheer momentum and rapid strikes.	10	#c3a5a5	#a58787	#875a4b	🦖	⚔️
+207	195	https://static.wikia.nocookie.net/vsbattles/images/8/8d/Acrocanthosaurus_-_Dmitry_Bogdanov.jpg/revision/latest/scale-to-width-down/400?cb=20180211001004	A massive theropod and apex predator of the Cretaceous period, this titan is defined by the distinctive high ridge of spines along its spine. It dominates its territory with sheer size and immense bite force, relying on its formidable teeth to pierce through thick hides and bone.	10	#a5870f	#87692d	#694b1e	🦖	🦴
+208	196	https://static.wikia.nocookie.net/vsbattles/images/6/6a/I2eq47M.png/revision/latest/scale-to-width-down/216?cb=20210823024048	A cybernetically enhanced survivor of the Kara organization, Ada possesses a terrifying degree of perception. By awakening the Shinjutsu of the Ōtsutsuki, she attained the ability to see across dimensions and weave the fabric of reality itself. Though her human limitations prevent her from wielding her full potential, she remains an all-knowing observer capable of rewriting memories on a global scale.	37	#0f6996	#2d87b4	#3c4b4b	👁️	🧬
+209	197	https://static.wikia.nocookie.net/vsbattles/images/6/67/Anime_Lovelace_Super_Science_Friends.png/revision/latest/scale-to-width-down/292?cb=20190131190910	A brilliant scientist from the future who defected from a digital tyranny to join forces with her allies. As a master hacker and cyborg, she navigates the complexities of advanced technology to dismantle the machines that once sought to dominate the globe.	16	#1e2d2d	#d2c3b4	#2d4b4b	💻	🚀
+210	198	https://static.wikia.nocookie.net/vsbattles/images/7/73/Ada_wong.png/revision/latest/scale-to-width-down/194?cb=20151125090909	A phantom in the shadows of global conspiracy, 'The Woman in Red' is a master of espionage who navigates chaos with calculated grace. Whether infiltrating high-security facilities or navigating biohazard zones, she remains an enigma—a survivor who operates on her own agenda, often leaving those around her questioning whether she was the savior or the saboteur.	19	#1e1e1e	#4b0f0f	#696978	💃	🕶️
+211	199	https://static.wikia.nocookie.net/vsbattles/images/3/33/At-Night-I-Become-a-Monster-novel-1.jpg.webp/revision/latest/scale-to-width-down/271?cb=20230126140008	By day, he is a seemingly ordinary student navigating the complexities of junior high. By night, his physical form gives way to something ancient and grotesque—a sprawling mass of eyes and limbs that exists within a realm beyond human comprehension.	38	#2d2d2d	#4b4b5a	\N	🌑	👁️
+212	200	https://static.wikia.nocookie.net/vsbattles/images/4/47/EMS_Extra_Stage_Boss_-_Adagumo_no_Saragimaru%27s_Theme_-_Mono_Eye_~_Ironic_FATE/revision/latest/scale-to-width-down/400?cb=20171019230924	Born from the eye of Yamata no Orochi, this youkai possesses a hauntingly vast knowledge derived from their lineage. Though they lived in the shadow of their elder sibling, Saragimaru mastered the true nuances of the Tasouken's power that others could only dream of. They move with an ethereal grace through the clouds, commanding the very atmosphere as a veil and weapon.	2	#2d2d2d	#5a695a	#788778	🐍	☁️
+213	201	https://static.wikia.nocookie.net/vsbattles/images/8/8e/EMS_Stage_6_Boss_-_Adagumo_no_Yaorochi%27s_Theme_-_Below_a_Deep_Vanishing_Cloud_~_Mow_Down%21/revision/latest/scale-to-width-down/400?cb=20171016223436	A solitary and paranoid youkai born from the severed limb of a legendary serpent. Haunted by betrayal and living in self-imposed isolation, they carry a blade that was once a Sacred Treasure, though its true essence has been diluted over time. They are known for their sharp swordsmanship and an explosive temper, particularly when others approach their precious sword.	2	#3c4b3c	#1e1e1e	#695a5a	🐍	⚔️
+214	202	https://static.wikia.nocookie.net/vsbattles/images/c/c2/Adalman_1.jpg/revision/latest/scale-to-width-down/274?cb=20181017040314	Once a devout cleric seeking the path of sainthood, this fallen warrior was betrayed and bound by an ancient curse. Now resurrected as a Wight King, he serves as a formidable guardian of the Labyrinth, wielding immense magicule reserves to defend his new master's domain.	25	#ffffff	\N	\N	🛡️	💀
+215	203	https://static.wikia.nocookie.net/vsbattles/images/c/c2/Adalman_1.jpg/revision/latest/scale-to-width-down/274?cb=20181017040314	A formidable warrior and high-ranking executive, Adalman serves as a sentinel of the labyrinth. Known for his masterful martial arts and high intelligence, he possesses the stoic presence of an Undead King.	3	#ffffff	\N	\N	🛡️	⚔️
+216	204	https://static.wikia.nocookie.net/vsbattles/images/4/41/Adam_assassins_creed.png/revision/latest/scale-to-width-down/400?cb=20181120151724	A primordial hybrid of human and Isu lineages, Adam stood as the first bastion against the creators' tyranny. As a proto-Assassin, he mastered the arts of stealth and martial combat long before the first blade was forged. His presence is defined by an ancient authority; his body bears the marks of the First Civilization, granting him profound insight into the flow of time and intention.	15	#c3d2e1	#8796b4	#a5b4d2	🐍	🍎
+217	205	https://static.wikia.nocookie.net/vsbattles/images/3/36/The_Wings_of_Light.jpg/revision/latest/scale-to-width-down/400?cb=20150228233614	The progenitor of the first lineage, Adam exists as a primordial entity of immense scale and power. As the foundational seed of life, it possesses an inherent majesty that transcends mortal understanding. Its presence is marked by its ability to manipulate the very boundaries between individuals and reality, capable of folding dimensions and dissolving the physical world into primal essence.	8	#4b2d1e	#694b3c	\N	👼	🌌
+218	206	https://static.wikia.nocookie.net/vsbattles/images/5/51/Adam_%28Hellaverse%29.png/revision/latest/scale-to-width-down/400?cb=20251011025149	The first man and head of the Exorcist host, Adam is a being of radiant holy light who commands respect through overwhelming power and an abrasive personality. As a high-ranking archangel, he views his role in the extermination with arrogant pride, possessing enough celestial might to shatter formidable magical barriers and pulverize even the most resilient defenses with ease.	37	#9696b4	#e1b43c	#e1d2a5	😇	🎸
+219	207	https://static.wikia.nocookie.net/vsbattles/images/5/5d/Adam_Nier.png/revision/latest/scale-to-width-down/144?cb=20170520233832	A paramount leader of the machine network, Adam is a sentient entity born from the collective intelligence of the machines. Possessing an intellect that surpasses his creators, he mastered the manipulation of matter and energy to construct vast, crystalline cities. Though largely a cold, logical entity, his burgeoning curiosity about the vanished human race led him to seek deeper truths within the code.	21	#2d2d3c	#4b4b5a	\N	🤖	🧬
+220	208	https://static.wikia.nocookie.net/vsbattles/images/7/78/Adam_ThroneRender.png/revision/latest/scale-to-width-down/348?cb=20201112212407	The First Man and the ultimate trump card of humanity. Crafted in the divine image, he stands as a symbol of ancestral pride and resolute strength. He faces the heavens with a calm gaze, possessing the unique ability to mirror the very divinity that seeks to erase his kind.	21	#785a5a	#5a0f0f	#1e1e0f	🛡️	✨
+221	209	https://static.wikia.nocookie.net/vsbattles/images/b/b8/Adam71.jpg/revision/latest/scale-to-width-down/268?cb=20180710041422	A formidable survivor and the primary protector of the Goldy Pond Resistance. Having escaped a horrific system where children were raised as livestock for demonic entities, he has forged his body into a living fortress. His raw physical power allows him to shatter structures and withstand devastating impacts that would pulverize an ordinary human.	15	#ffffff	\N	\N	🛡️	💪
+222	210	https://static.wikia.nocookie.net/vsbattles/images/2/2c/Adam_%28Tokyo_Babel%29.png/revision/latest/scale-to-width-down/181?cb=20180720204949	Forged by the celestial host to serve as a bastion of hope, this artificial human embodies the zenith of martial and magical prowess. He is the ultimate hero born of necessity, gifted with the conceptual fortitude to overcome even the most insurmountable odds in the defense of Tokyo Babel.	41	#2d3c4b	#4b5a69	#1e1e2d	🛡️	🔥
+223	211	https://static.wikia.nocookie.net/vsbattles/images/5/54/An_Adam_Arclight.jpg/revision/latest/scale-to-width-down/213?cb=20171201231056	A defectively designed clone of the Second Christ, Adam serves as the ambitious leader of Simeon Pharmaceutical. Despite his flawed origins, he possesses a terrifying array of elemental and molecular manipulations, allowing him to warp the physical and mental state of his surroundings with ease.	31	#a51e2d	#3c0f0f	\N	🧬	🔥
+224	212	https://static.wikia.nocookie.net/vsbattles/images/5/55/Anime_Adam_Blade.png/revision/latest/scale-to-width-down/244?cb=20171130112133	A formidable warrior and the clone of the Second Christ, Adam stands as a bastion of overwhelming power. In his current state, he wields the authority of Almighty, capable of rewriting reality itself. He commands an arsenal of elemental manipulations—ice, fire, and air—while projecting a mystical aura that can manipulate minds or compel bodies through sacred fragrances. When pushed to his limit, he invokes the Shield of Aegis to reflect cataclysmic strikes or manifests reality-warping capabilities that allow him to reshape the very laws of existence.	37	#2d2d2d	#5a0f0f	#e1b487	❄️	👑
+225	213	https://static.wikia.nocookie.net/vsbattles/images/9/95/TheBeekerAdamClayMainRender.png/revision/latest/scale-to-width-down/400?cb=20250120223458	A former elite operator for the clandestine 'Beekeeper' organization, Adam is a ghost in the shadows of a decaying system. After his closest ally was lost to a web of institutional corruption, he emerged from the shadows not just as a man, but as a reckoning. He is a master of guerrilla tactics and improvisational warfare, possessing an uncanny ability to turn mundane environments into lethal traps.	16	#e1b42d	#1e1e2d	#c3781e	🐝	💀
+\.
+
+
+--
+-- Data for Name: character_special_ability; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.character_special_ability (character_id, name, description, target, range, area_of_effect, health_add, defense_add, movement_add, attack_power_add, will_stun, cost) FROM stdin;
+32928	Divergent Fist	By striking with a deliberate delay in the flow of cursed energy, the user delivers a secondary impact. This creates a jarring resonance that can shatter defenses and overwhelm an opponent's focus.	self	0	0	0	5	0	10	f	15
+32928	Black Flash	By pushing the flow of cursed energy into a state of absolute focus at the moment of impact, the user produces a spatial distortion. This creates an overwhelming explosion of power that significantly damages the opponent's physical form and spirit.	other	0	1	-2	-2	0	-5	t	18
+32928	Soul-Awareness Training	Through the study of the soul and the burden of being a vessel, the user gains an intuitive understanding of their own essence. This allows them to endure severe physical trauma and maintain combat effectiveness even when critically injured.	self	0	0	5	4	0	0	f	9
+32928	Simple Domain	The user manifests a refined technique to neutralize the effects of opposing barriers and incoming high-level cursed techniques within their immediate proximity.	multi	5	3	0	-3	0	0	f	3
+25011	Infinity (Limitless)	The user manifests a spatial paradox where any incoming attack is slowed infinitely as it approaches their body, making them virtually untouchable by physical or magical means.	self	0	1	0	5	0	0	f	5
+25011	Cursed Technique Lapse: Blue	The user creates a point of intense gravitational pull. It crushes the surrounding environment and pulls enemies toward the center, disrupting their positioning and crushing any defenses in the vicinity.	multi	5	3	0	-2	-4	0	t	12
+25011	Cursed Technique Reversal: Red	By reversing the flow of cursed energy, the user generates a massive repulsive force. It strikes with explosive power, pushing everything in its path away from the point of origin.	multi	7	4	-10	-3	-5	0	t	36
+25011	Hollow Technique: Purple	By colliding the forces of Blue and Red, the user creates a singularity of imaginary mass. This projectile erases everything in its path from existence.	multi	10	8	-10	-5	0	0	t	30
+27108	Bubble Bomb	The user creates and launches a buoyant bubble that detonates upon impact, dealing explosive damage to nearby enemies.	multi	5	3	-10	-2	-1	0	t	26
+27108	Water Soak	By absorbing massive amounts of moisture into their porous body, the user enhances their physical durability and stamina.	self	0	0	5	8	2	0	f	15
+27108	Goo Launcher	The user projects a volley of viscous organic goo at the target to hinder their mobility and vision.	other	10	0	-3	0	-5	0	f	8
+27108	Martial Arts Mastery	Expertise in karate allows the user to predict and parry incoming strikes with heightened precision.	self	0	0	0	5	0	3	f	8
+30189	Decay	Upon making contact, the user's quirk causes everything—organic or inorganic—to crumble into dust. This disintegration spreads rapidly through any matter touched, potentially vaporizing entire city blocks in a single wave of rot.	multi	10	8	-10	-10	-5	0	t	50
+30189	Accelerated Growth	The user's body reacts to overwhelming power by mutating. Grotesque masses of fingers sprout from the limbs, increasing reach and physical durability while allowing for more potent use of their destructive capabilities.	self	0	0	5	7	2	4	f	18
+30189	All For One's Legacy	A synthesis of stolen powers and vast experience. This inner power grants the user immense tactical awareness, enhanced physical capabilities, and a reservoir of stolen abilities to adapt to any opponent.	self	0	0	3	8	4	9	f	24
+30189	Domain of Ruin	By projecting their influence and using high-range capabilities, the user creates a zone where the environment itself becomes hazardous, crumbling under the pressure of their presence.	multi	10	10	-5	-4	-6	-2	t	34
+30259	United States of Smash	The user unleashes a concentrated burst of raw power into a singular, devastating strike. The shockwave is capable of altering local weather patterns and obliterating massive structures.	self	0	5	10	10	5	2	f	27
+30259	Plus Ultra Limit Break	By pushing their body beyond its absolute breaking point, the user achieves a momentary surge in speed and power that can overcome even the most formidable obstacles.	self	0	0	-5	-5	-10	-10	f	30
+30259	Shockwave Pressure	A massive outward blast of kinetic energy that strikes surrounding enemies, staggering them and forcing them back.	multi	10	8	-5	-4	-3	0	t	24
+30259	Armored Siege	Utilizing specialized mechanical systems, the user can deploy high-energy beams and reinforced plating to pin down targets from a distance.	other	10	2	-3	-3	-3	-2	t	22
+26705	Super Saiyan Blue	The user taps into the power of a deity, manifesting a cerulean aura. This state vastly amplifies their ki and physical capabilities while allowing them to maintain a high level of combat effectiveness for extended periods.	self	0	0	10	8	7	9	f	34
+26705	Kamehameha Wave	The user gathers massive amounts of energy into their palms and releases a devastating blast of ki. It strikes with overwhelming force, capable of shattering landscapes and punishing the opponent's defenses.	other	8	4	-9	-5	0	0	t	28
+26705	Perfected Ultra Instinct	The user enters a state of ultimate transcendence where their body reacts automatically to any threat. This grants them near-perfect evasion and unparalleled reaction speeds, making it nearly impossible for opponents to land a clean hit.	self	0	0	5	10	10	8	f	33
+26705	Instant Transmission	By sensing the ki of a target, the user can instantly teleport to their location. This sudden repositioning disrupts the enemy's momentum and leaves them momentarily vulnerable.	other	10	0	0	0	-7	0	t	14
+13768	Unyielding Will	The user manifests an indomitable aura of sheer willpower, fortifying their physical form and mental focus to withstand even the most devastating planetary-scale strikes.	self	0	0	5	8	1	2	f	16
+13768	Force of Destruction	By concentrating their immense ki into a devastating blast, the user releases an overwhelming wave of energy that disintegrates physical matter and crushes the defenses of those caught in its path.	multi	9	7	-10	-8	-5	0	t	46
+13768	Shattering Impact	The user delivers a concentrated blow of such magnitude that it creates a localized distortion in space-time, effectively pinning the opponent and shattering their ability to move or maneuver.	other	0	2	-6	-4	-10	0	t	40
+13768	Reactive Progression	In the heat of battle, the user's senses and power adapt instantly to their opponent's techniques, ensuring they remain steps ahead in the flow of combat.	self	0	0	0	4	2	6	f	12
+9605	Word of Command	The user speaks with an authority that resonates in the souls of others. By chanting ancient commands, they can bolster the resolve of allies or demand obedience from lesser foes.	multi	0	5	10	5	2	3	f	20
+9605	Purifying Flame	Channeled through a staff or into the air, the user unleashes intense white flames that scorch the land and sear the flesh of those who serve the darkness.	other	5	3	-2	-1	-1	0	t	8
+9605	Maia Insight	Drawing upon their ancient lineage as an Ainur, the user transcends common perception to predict movements and identify hidden truths in the flow of time.	self	0	0	0	8	1	2	f	11
+9605	Banish Storms	The user manipulates the local environment to still and calm tumultuous weather or dissipate magical auroras that hinder navigation.	multi	8	10	0	-2	-3	0	f	5
+3474	Super Bark	The user releases a massive sonic blast that creates intense vibrations, shattering structures and sending nearby enemies flying backward.	multi	5	8	10	10	10	5	f	35
+3474	Heroic Reflexes	Driven by his belief in his own heroism, the user moves with superhuman speed and agility to evade threats and close the distance.	self	0	0	2	5	10	3	f	20
+3474	Heat Vision	The user focuses their gaze to emit concentrated beams of heat, melting obstacles or scorching the opposition.	other	10	0	-8	-5	-2	-4	f	19
+3474	Enhanced Senses	The user's heightened hearing and smell allow them to detect incoming attacks before they happen.	self	0	0	0	8	1	2	f	11
+1044	Force Empowerment	By tapping into the raw energy of the Force, they can augment their physical capabilities, allowing for massive feats of strength and durability.	self	0	0	10	8	3	9	f	30
+1044	Force Choke and Push	Using the Force to violently displace an opponent or constrict their movements, disrupting their positioning and ability to retaliate.	other	5	0	-4	-3	-9	-2	t	36
+1044	Precognition	Enhanced spatial awareness and Force-guided reflexes allow them to anticipate enemy strikes before they land.	self	0	0	0	-9	-2	-4	f	15
+1044	Force Wave	A massive outward burst of telekinetic energy that strikes all nearby enemies, knocking them back and causing significant structural damage.	multi	3	7	-6	-5	-8	0	t	38
+7944	Telekinetic Crush	The user focuses their mental energy on a single target or object, exerting crushing pressure that can pulverize steel and collapse structures.	other	2	0	-3	-1	-4	0	t	16
+7944	Sensory Shield	By concentrating on her own mental state, the user bolsters their cognitive defenses to better anticipate incoming threats and resist external interference.	self	0	0	0	2	0	0	f	2
+7944	Dimensional Rift	The user tears a hole in the fabric of reality, creating localized environmental destruction and dragging entities from across dimensions into the physical plane.	multi	8	9	-5	0	-2	0	f	7
+7944	Astral Projection	The user projects their consciousness into a mental void to scout distant locations or breach the mind of an opponent.	self	10	0	0	2	5	0	f	7
+1481	Reforged Blade of Elendil	The user wields a sword capable of striking fear into ancient evils. This blade enhances their offensive strikes and allows them to strike at the essence of spectral foes.	self	0	1	5	3	0	10	f	18
+1481	Stark Tracking	Guided by heightened senses and elven-taught lore, the user can track prey with unerring accuracy, making it nearly impossible for enemies to hide or escape their grasp.	other	5	0	0	0	-3	0	t	6
+1481	Dúnedain Heritage	The lingering blessings of Númenor grant the user exceptional stamina and a resilience that allows them to withstand grueling campaigns for days on end.	self	0	0	7	5	2	0	f	14
+1481	Kingsman Command	The presence of the true King inspires allies and unnerves foes, momentarily breaking their resolve through a commanding aura.	multi	3	5	0	-2	-1	-4	t	14
+29263	Omnipotence of Creation	The user asserts their role as the supreme author, instantly rewriting the laws of reality to ensure their absolute dominance over all concepts and dimensions.	self	0	10	10	10	5	10	f	35
+29263	The One Below All: Void of the Abyss	Invoking the shadow of creation, the user projects a wave of primal destruction that erases the essence and presence of all nearby beings.	multi	10	10	-10	-10	-10	-10	t	80
+29263	Nigh-Omniscient Awareness	Drawing upon the total knowledge of every possibility and reality, the user perceives all movements and outcomes before they occur.	self	0	0	0	10	0	5	f	15
+29263	Erasure of the Script	The user reaches into the narrative fabric to strike a target's existence out of the current timeline, effectively rendering them non-existent.	other	10	0	-10	-10	-10	-10	t	80
+1857	Anti-Magic Blade	The user wields a blade forged from anti-magic energy. Upon contact, it negates all magical protections and actively nullifies the opponent's ability to utilize magic for offense or defense.	other	0	0	-10	-10	0	0	f	20
+1857	Devil Union: Partial Resonance	By tapping into the pact with their internal demon, the user enters a heightened state of power. This surges their physical strength and speed to near-supernatural levels, allowing them to trade blows with high-level entities.	self	0	0	5	5	5	10	f	25
+1857	Ki Awareness	By reading the natural energy emitted by living beings, the user gains a pseudo-sixth sense. This allows them to predict incoming movements and analyze the emotional state of their targets.	self	10	0	0	5	2	3	f	10
+1857	Zetten Strike	The user focuses their immense inner energy into a massive burst of anti-magic power. This strike can travel vast distances, capable of severing the very atmosphere or destroying long-range barriers.	multi	10	10	-10	-5	0	-10	t	50
+32573	Dark Cloaked Dimension Slash	The user unleashes a slash shrouded in dark mana that ignores physical and magical durability by cutting through the dimensions themselves, bypassing the target's defenses.	other	5	1	-8	-9	0	0	f	17
+32573	Mana Zone: Condense	By focusing their mana into a localized zone of intense concentration, the user significantly enhances their sense of awareness and the potency of their offensive strikes.	self	0	0	0	3	1	5	f	9
+32573	Death Thrust	A devastating concentrated strike of dark energy that deals massive explosive damage to the target's physical form, capable of obliterating large portions of a foe's body.	other	2	3	-10	0	-5	0	t	30
+32573	Reinforcement Magic	The user coats their body in magical energy to bolster physical strength and endurance, allowing them to withstand immense pressure and strike with greater force.	self	0	0	3	4	2	3	f	12
+13348	Adrenaline & Grit	Drawing on immense physical endurance and high pain tolerance, the user maintains peak performance even while severely wounded or exhausted.	self	0	0	10	5	3	2	f	20
+5	Shatter-Point Bolt	She manifests a crystalline projectile to strike and weaken the defenses of those who threaten her sanctuary.	other	2	0	-5	-3	0	0	f	8
+13348	Tactical Strike	Using mastered combat and firearm expertise, the user executes a precise strike that disables an opponent's ability to counter effectively.	other	10	0	-8	-7	-5	-6	t	52
+13348	Shadow Stealth	The user utilizes advanced espionage tactics to mask their presence and strike from unexpected angles, disrupting the enemy's coordination.	multi	5	3	0	-4	-6	-2	t	24
+13348	Calculated Analysis	Utilizing gifted intelligence to predict enemy maneuvers and anticipate upcoming threats before they materialize.	self	0	0	0	8	2	4	f	14
+27576	Solar Flare Aura	The user taps into their solar-imbued physiology to release an overwhelming wave of light and heat, drastically enhancing their physical stats and durability.	self	0	0	5	10	3	8	f	26
+27576	Solar System Strike	Channeling their immense strength into a single physical strike, the user unleashes devastating force capable of shattering geological formations.	other	0	5	-10	-5	0	-9	t	48
+27576	Chi-Infused Displacement	By manipulating the flow of internal energy around a foe, they disrupt the target's equilibrium and movement.	other	5	0	0	0	-7	0	t	14
+27576	Dimensional Shifting	The user manipulates their physical density to become intangible, allowing them to bypass solid objects or avoid incoming strikes.	self	0	0	0	10	2	0	f	12
+10891	Willpower Construct	The user channels their indomitable will into the ring to create solid energy constructs, ranging from massive shields that can withstand planetary impacts to complex weaponry for offense.	self	0	0	10	10	5	7	f	32
+10891	Emerald Energy Blast	The user unleashes a concentrated wave of green bio-electric energy, striking with the force of a stellar body to repel invaders and shatter defenses.	other	8	5	-9	-7	-4	0	t	40
+10891	Forcefield Containment	The user constructs a translucent dome of solid energy around an opponent, trapping them and restricting their movement to neutralize the threat.	other	5	3	0	-5	-10	0	t	30
+10891	Cosmic Aura	A constant field of emerald energy surrounds the user's body, providing immunity to extreme environmental hazards and vacuum conditions.	self	0	1	5	8	2	0	f	15
+26700	Beast Form	The user unleashes an uncontrollable surge of primal energy, drastically augmenting their physical attributes and raw power at the cost of intense mental strain.	self	0	0	5	4	3	10	f	22
+26700	Masenko Blast	The user concentrates their ki into a concentrated beam of energy to strike a single target with devastating force.	other	10	2	-8	-3	0	0	t	22
+26700	Scholar's Focus	By utilizing their high intelligence and tactical training, the user anticipates incoming strikes and optimizes their movements.	self	0	0	0	3	1	2	f	6
+26700	Ki Perception Pulse	The user emits a wave of ki that disrupts the target's senses and positioning, making it harder for them to coordinate.	multi	5	4	0	-1	-2	0	t	6
+1	Sunken Rain	The user exerts a crushing weight upon the consciousness of an opponent, dragging them deeper into a state of lethargy and spiritual displacement.	other	3	0	-10	-5	-8	-7	t	60
+1	Primordial Transit	The user shunts a target's consciousness into an alternate dimension, effectively removing them from the current reality.	other	10	5	-10	0	-10	0	t	40
+1	Ethereal Endurance	As a non-corporeal entity of the dreamscape, the user possesses an inexhaustible reservoir of spiritual energy and will.	self	0	0	5	10	0	0	f	15
+1	Dreamweaver's Veil	The user's lack of a physical form allows them to ignore conventional spatial constraints and dodge directed energy.	self	0	0	0	8	5	0	f	13
+2	Genesis Touch	The user can channel their radiant energy through physical contact to instantly knit wounds, purge diseases, and even restore life to those who have recently perished.	other	0	1	5	2	1	0	f	8
+2	Celestial Flare	The user emits a devastating burst of high-frequency energy capable of obliterating physical forms and dispelling hostile energy beams.	multi	5	4	-8	-5	0	-3	t	32
+2	Ascension Awareness	By tapping into their higher-dimensional existence, the user gains a profound understanding of reality's architecture, allowing them to anticipate threats and manipulate matter.	self	0	0	0	4	1	3	f	8
+2	Dimensional Displacement	The user folds the space between points, forcibly displacing targets or altering their physical cohesion.	other	10	3	0	-2	-5	0	t	14
+3	Mirroring Miasma	The user exhales a dense black fog that envelops the target. This sinister haze serves as a feedback loop, reflecting any damage the opponent attempts to deal back upon themselves.	other	10	5	-10	-4	-3	-2	t	38
+3	Crystalline Reflexes	By syncing their senses with their fairy companion, the user achieves superhuman reaction speeds and enhanced awareness of nearby threats.	self	0	0	2	3	5	4	f	14
+3	Executioner's Edge	Utilizing master-level weapon proficiency, the user delivers a rapid flurry of strikes that cripples the opponent's mobility and defensive stance.	other	0	0	-5	-3	-4	-1	t	26
+3	Ballistic Suppression	Firing from a distance with precise accuracy, the user suppresses the target's ability to maneuver or counter-attack.	other	10	2	-4	-2	-5	-1	f	12
+4	Unyielding Resolve	Honed by both military training and grueling experimentation, the user possesses superhuman stamina and mental fortitude. This allows them to endure heavy physical punishment, ignore debilitating environmental hazards, and remain combat-effective despite taking substantial damage.	self	0	0	3	2	1	0	f	6
+4	Marine Tactics	Utilizing expert soldier training and tactical instinct, the user can anticipate enemy movements and strike with precision. This effectively disrupts the positioning of nearby enemies and punishes them for attempting to close the distance.	multi	5	3	0	-1	-2	-1	t	8
+4	High-Caliber Volley	The user channels mastery over various firearms and heavy weaponry to unleash a devastating barrage. The sheer force of the projectiles causes significant damage and can shatter the defenses of those caught in the crossfire.	multi	10	4	-4	-2	0	-3	f	9
+4	Close-Quarters Brawl	Drawing on his training in martial arts and bayonet tactics, the user engages in brutal close-quarters combat. They strike with enough force to shatter defenses and break bones of anyone within reach.	other	0	0	-3	-1	0	-2	t	12
+5	Geas of the Eternal Grove	A heavy magical binding that anchors the target's spirit to the local woods, making them feel a profound sense of belonging and reluctance to leave.	other	0	1	0	0	-5	0	t	10
+5	Arcane Weaver's Rite	By channeling the essence of the forest into herself, she bolsters her own physical and magical fortitude.	self	0	0	10	10	5	5	f	30
+5	Vitality Draught	The use of sacred herbs and revived medicines to instantly restore her waning vitality.	self	0	0	10	0	0	0	f	10
+6	Circuit Hop	The user leaps between electronic devices at near-light speeds via electrical signals, allowing for instantaneous relocation across wide distances.	self	0	0	0	5	10	0	f	15
+6	Electromagnetic Overload	The user releases a massive surge of electricity from their hands to fry circuitry or incinerate organic targets in close proximity.	multi	3	5	-2	-1	-2	-1	t	12
+6	Digital Possession	The user inhabits a mechanical body or device, granting them physical form and the ability to manipulate their surroundings with overwhelming force.	other	0	1	-1	-2	-1	-3	f	7
+6	Data Synthesis	By processing and analyzing vast amounts of data instantly, the user can predict movements and identify weaknesses in their opponents' defenses.	self	0	0	0	3	0	2	f	5
+7	Analytical Instincts	The user utilizes high-level information analysis to anticipate and counter incoming strikes, effectively hardening their defenses through sheer tactical awareness.	self	0	0	0	5	0	0	f	5
+7	Lethal Close-Quarters Strike	The user closes the distance to deliver a devastating blade strike aimed at the neck. The sudden, aggressive proximity and physical force are intended to overwhelm the target's defense.	other	0	0	-2	-1	-2	0	t	10
+7	Suppressive Fire	The user unleashes a rapid volley of fire with an assault rifle, forcing the target to take cover and restricting their mobility.	multi	8	3	-1	0	-4	0	f	5
+7	Mercenary Stamina	Heightened physical endurance allows the user to push through severe injuries and maintain peak performance in prolonged combat scenarios.	self	0	0	2	0	1	0	f	3
+8	Escalating Impact	Each consecutive melee strike delivered by the user builds momentum, exponentially increasing the potency and destructive scale of subsequent attacks.	self	0	0	0	1	0	2	f	3
+8	Galaxy-Breaker Strike	A devastating physical strike that, upon reaching maximum escalation, releases a shockwave capable of shattering the structural integrity of space-time.	other	0	10	-10	-5	-3	0	t	36
+8	Indestructible Stance	The user's physical form becomes increasingly resilient to withstand the escalating forces of their own growing power.	self	0	0	1	3	0	0	f	4
+8	Recoil Shockwave	The sheer force of the final strikes creates a localized and massive explosion upon contact, hindering all nearby opponents.	multi	5	8	-4	-2	-1	0	t	14
+9	Eldritch Haunting	The user projects waves of dread and psychic distortion, warping the minds of those nearby to cause extreme fear and exhaustion.	multi	3	5	0	-10	-5	-5	t	40
+9	Temporal Decay	A horrific manifestation of age and decay targets a specific individual, rapidly accelerating their physical aging.	other	10	0	-5	-3	-2	0	f	10
+9	Manifestation of the Pig	A bloated, grotesque entity manifests to physically assault and intimidate intruders in a localized area.	other	10	2	-5	-2	-3	-4	t	28
+9	Spirit Sanctuary	The house acts as a fortress for the entities within, making the structures nearly impossible to breach by conventional means.	self	0	10	5	8	0	0	f	13
+10	Massive Frame Presence	The user possesses an enormous physique that provides immense durability and physical resistance against conventional weaponry.	self	0	0	5	8	2	3	f	18
+10	Shattering Strike	By swinging its massive limbs, the user can pulverize structures and ground targets with devastating force.	other	5	3	-10	-7	-4	0	t	42
+10	Aerialmenace	The user utilizes its massive size to overwhelm opponents from the air, limiting their ability to maneuver or escape.	other	4	1	0	0	-8	0	f	8
+10	Terrifying Presence	The sheer scale and grotesque appearance of the monster cause psychological distress to those nearby.	multi	3	5	0	-2	-4	0	t	12
+11	Mechanical Embrace	The user lunges forward to wrap their metallic arms around a target. This forceful hug pins the individual in place, restricting their mobility and making it difficult for them to react or flee.	other	0	0	0	0	-5	0	t	10
+11	High-Velocity Impact	By gathering momentum, the user slams into obstacles or targets with enough force to shatter glass and dent walls, dealing significant physical trauma through raw kinetic energy.	other	0	2	-10	-5	-3	-5	f	23
+11	Inorganic Resilience	Due to its mechanical composition, the user's frame is incredibly durable. It can withstand high-speed impacts and internal malfunctions without succumbing to physical damage.	self	0	0	5	10	0	0	f	15
+11	Self-Repair Protocol	When internal components are damaged or severed, the user's systems automatically initiate a repair sequence, knitting wires and circuits back together to restore functionality.	self	0	0	8	3	0	0	f	11
+12	Soul Charge	The user taps into an internal energy reservoir, drastically enhancing their physical capabilities and combat readiness.	self	0	0	5	10	5	2	f	22
+12	Telekinetic Blade Mastery	By utilizing telekinesis, they manifest and manipulate multiple weapons simultaneously, striking from angles that are impossible for a normal human to defend against.	other	5	2	-10	-3	-2	-4	t	38
+12	Tactical Analysis	The user's visor analyzes the opponent's patterns and exploits their stance, making it significantly harder for them to land a successful hit.	other	0	0	0	-5	-1	-2	f	8
+12	Pod Support Strike	A remote companion provides covering fire and projectile support, forcing the enemy to split their focus.	multi	10	3	-5	-2	-4	-3	t	28
+13	Nevadan Navigation	By mastering the unique spatial dimensions and measurement systems of Nevada, the user can navigate complex environments with ease. This awareness allows them to anticipate incoming threats and position themselves perfectly within the flow of combat.	self	0	0	10	2	2	1	f	15
+13	Tactical Overload	Utilizing specialized weaponry and explosives, the user unleashes a devastating blast that disrupts the enemy's positioning and integrity. The sheer force of the munitions creates significant collateral damage in the immediate vicinity.	multi	5	8	-2	-1	-2	0	t	10
+13	System Breach	The user employs advanced hacking capabilities to disrupt the target's equipment and coordination, momentarily crippling their ability to respond effectively.	other	10	0	0	-1	-2	-1	t	8
+13	Mercenary Instincts	Honed by countless missions as a specialist, the user exhibits super-human reactions and reflexes, allowing them to parry strikes and strike with pinpoint accuracy.	self	0	0	0	1	3	2	f	6
+14	Luminous Gaze	The user emits a blinding radiance from their eyes, momentarily stunning opponents while creating a visual spectacle.	self	0	2	10	5	3	0	f	18
+14	Sonic Resonance	By projecting their voice with intense power, the user emits a wave of sound that disrupts the equilibrium and movement of those nearby.	multi	5	6	-2	-3	-4	-1	t	20
+14	Sudden Reflexes	Through honed intuition and superhuman reaction speed, the user can parry and evade high-speed projectiles with ease.	other	10	0	-5	-4	-3	-2	f	14
+14	Physical Juggernaut	The user strikes with surprising force, capable of shattering barriers and structures through sheer physical power.	other	2	1	-8	-5	0	-7	t	40
+15	Liradan Legion Command	The user summons a massive army of Liradans to overwhelm the opposition, providing an overwhelming frontline of soldiers to absorb damage and strike from multiple angles.	multi	10	8	5	4	3	5	f	17
+15	Mana Ball Barrage	Concentrated spheres of magical energy are launched to destabilize the target's defenses and disrupt their ability to coordinate.	other	10	3	-3	-4	-2	-3	f	12
+15	Tactical Oversight	Utilizing her genius-level intellect and mastery of three-dimensional combat, the user anticipates enemy movements to bolster her own defensive posture.	self	0	0	2	5	1	3	f	11
+15	Automated Siege	The user coordinates her Liradans to pin the target down and restrict their mobility, effectively trapping them in a zone of mechanical cooperation.	other	5	4	-1	-2	-5	-1	t	18
+16	Eternal Resilience	The user's biological core is anchored by immortality, allowing them to instantly regenerate from severe wounds and ignore psychological corruption.	self	0	0	10	5	0	0	f	15
+16	Innocent Embrace	The user delivers a disarming hug that momentarily overwhelms an opponent's senses and slows their movements.	other	0	0	-2	-1	-4	-3	t	20
+16	Summoning Ritual	With proper preparation, the user can manifest a powerful entity to intervene in the conflict.	multi	8	5	-10	-10	-5	-10	t	70
+16	Unfazed Spirit	The user's mind is a fortress against madness and psychic manipulation.	self	0	0	0	8	0	0	f	8
+17	Hustler's Resilience	Forged by years of conflict, the user possesses a hardened mental and physical fortitude that allows them to withstand intense ballistic trauma while maintaining their composure.	self	0	0	10	8	2	0	f	20
+17	Street Justice	The user engages in rapid-fire combat with advanced firearms and tactical knives, overwhelming their opponent's defenses through sheer aggression.	other	4	0	-10	-5	-3	-2	t	40
+17	G-Unit Siege	The user utilizes heavy weaponry to saturate the immediate area with fire, forcing enemies back and dismantling their cover.	multi	5	4	-8	-3	-5	-1	t	34
+17	Ballistic Defense	Utilizing specialized tactical gear, the user can shrug off heavy impacts and projectiles that would incapacitate ordinary humans.	self	0	0	5	10	0	0	f	15
+18	High-Velocity Dash	The user moves at speeds exceeding 50 mph, allowing them to outpace vehicles and close distances instantly.	self	0	0	0	0	5	2	f	7
+18	Impactful Tackle	By combining momentum with physical force, the user delivers a devastating tackle that strikes with wall-level kinetic energy.	other	0	2	-10	-4	-8	0	t	44
+18	Ballistic Exchange	The user utilizes a firearm to strike targets from a distance.	other	5	0	-5	-2	0	-4	f	11
+18	Olympic Stamina	An extraordinary ability to maintain peak physical performance without fatigue.	self	0	0	3	1	2	0	f	6
+19	Geothermal Core Surge	The user radiates immense heat from the exothermic rocks within their body. This causes nearby structures and organisms to ignite, while providing the user with a constant flow of sustaining energy.	self	0	5	10	5	0	2	f	17
+19	Cataclysmic Slam	Utilizing its massive, club-like arms and towering bulk, the user strikes the ground or nearby targets with enough force to shatter city blocks.	multi	0	8	-10	-4	-3	-5	t	44
+19	Seismic Tremor	The ground shakes violently under the user's footsteps, disrupting the footing and movement of all nearby enemies.	multi	3	6	0	0	-8	0	t	16
+19	Dormant Resurrection	Even if the body is pulverized or destroyed, the user's core essence remains. They will inevitably reconstitute and re-emerge in a dormant state after 50 years.	self	0	0	10	10	0	0	f	20
+21	Jeahbongchim Acupuncture	The user channels an immense surge of celestial energy through their veins, multiplying their physical attributes by hundreds of thousands of times. This state allows them to shrug off strikes from gods and move at speeds that defy conventional physics.	self	0	0	10	10	10	10	f	40
+21	Gravity Collapse	By manipulating the gravitational constant in a designated area, the user crushes the target's mobility and defense. The weight of the cosmos pins enemies to the earth, making it nearly impossible for them to move or resist.	multi	5	8	-3	-6	-9	0	t	36
+21	Full Contact Karate	A strike delivered with such concentrated force that it transcends planetary distances. The impact is designed to shatter the internal structure of the target, dealing massive damage and potentially causing immediate physical collapse.	other	10	2	-9	-7	-3	0	t	38
+21	El Diablo Armor	The user manifests a mystical suit of armor that reinforces their physical form. This protection allows them to endure and reflect attacks that would otherwise shatter the strongest defenses.	self	0	0	8	10	0	0	f	18
+22	Tactical Analysis	By utilizing enchanted goggles, she can process detailed data on any target within sight, identifying their specific weaknesses and potential patterns to better anticipate their movements.	self	0	0	0	5	0	3	f	8
+22	Magical Recognition	The aura of her magic allows her to gauge the suitability of others; however, it can be used to pinpoint and overwhelm an opponent's defenses by identifying their core power source.	other	3	1	0	-2	0	-1	t	6
+22	Magical Girl Physiology	Her transformation grants her heightened stamina and physical durability, allowing her to resist extreme temperatures and fatigue for days at a time.	self	0	0	4	3	2	1	f	10
+22	Disruptive Awareness	By pinpointing an opponent's specific tactical stance through her gear, she can force them into a defensive posture, hindering their mobility.	other	2	0	0	0	-4	0	f	4
+23	Host Authority (Budget Cuts)	By exerting his influence as a host, they can manipulate the fundamental rules of the environment. This allows for reality-warping capabilities that can significantly bolster their survival and presence.	self	0	0	5	3	1	2	f	11
+23	Interdimensional Transit	Harnessing the authority of their position, they can traverse vast distances instantly, potentially even crossing into other universes to retrieve information or bypass physical barriers.	self	10	0	0	0	4	0	f	4
+23	Monotone Disruption	The user's flat, unwavering delivery can be unsettling. While not physically attacking, it projects a sense of indifference that can momentarily slow the reactions of those around them.	other	3	2	0	-1	-1	0	t	4
+23	Spatial Extension	The user can project their physical influence across immense distances, effectively 'reaching' into the space of others to displace them or disrupt their positioning.	other	9	0	0	0	-3	0	f	3
+24	Propulsion Cue	The user wields a custom-engineered cue stick that utilizes an advanced propulsion system to magnify any physical force applied to it by a factor of one thousand. This allows the user to strike with devastating impact, capable of throwing vehicles through buildings or shattering concrete with mere taps.	self	0	0	0	10	5	10	f	25
+24	Ballistic Ordnance	The user deploys a variety of explosive devices and projectiles shaped like pool balls. These can be launched as high-velocity kinetic shells or detonated remotely to clear out large groups of enemies.	multi	5	7	-10	-5	-5	0	t	40
+24	8-Ball Hovercraft	Utilizing a massive hovercraft and scout drones, the user can dominate the airspace. The primary craft provides significant protection while allowing for high-speed aerial maneuvers to strike from above.	other	10	5	-5	-2	-10	-5	f	22
+24	Surveillance Swarm	The user deploys a fleet of small, airborne pool balls equipped with high-tech cameras. These provide the user with advanced reconnaissance and spatial awareness.	self	0	10	0	5	2	0	f	7
+25	Damage Booster	The user activates an overload sequence that envelops them and nearby allies in a scorching aura, significantly increasing their offensive capabilities.	multi	5	3	0	0	0	0	f	0
+25	Laser Blast	The user fires a high-energy beam from their mounted blaster. The concentrated energy deals massive damage to the target and creates a small scorched zone.	other	8	1	0	0	0	0	t	0
+25	Hypercharge	By tapping into his internal core, the user gains a surge of speed and protective shielding, allowing them to close gaps more effectively.	self	0	0	5	3	4	2	f	14
+25	Danmaku Volley	The user's firing systems override into a rapid-fire mode, unleashing a flurry of projectiles that saturate the area and overwhelm the opposition.	multi	6	2	0	0	0	0	t	0
+26	Inorganic Resilience	Due to their mechanical physiology, the user possesses tireless stamina and high durability against physical impacts.	self	0	0	10	8	3	0	f	21
+26	Missile Volley	The user launches a barrage of projectiles from internal compartments to strike nearby foes.	multi	5	4	-7	-2	0	0	t	18
+26	Extended Reach Strike	The user extends their mechanical limbs to grab or strike targets from a distance.	other	3	0	-4	0	-5	0	t	18
+26	Aerodynamic Flight	The user engages thrusters to achieve high-speed aerial mobility.	self	0	0	0	0	10	0	f	10
+27	Sync Beat	By synchronizing her systems with a partner's rhythm, she amplifies their strikes into devastatingly powerful and explosive hits.	self	0	0	0	0	1	5	f	6
+27	Steal The Show	The user unleashes a burst of overwhelming cuteness and charisma, momentarily distracting and dazing opponents as they are captivated by her presence.	multi	3	4	0	-1	-2	-1	t	8
+27	Tactical Relay	Using her advanced link capabilities, she can instantly teleport nearby allies onto the battlefield to overwhelm the opposition.	multi	5	1	0	0	-3	-2	f	5
+27	Chip Sense	The user's internal sensors scan the environment to detect electrical pathways and bypass security protocols.	self	0	0	0	2	0	0	f	2
+28	Talismanic Seal Mastery	The user utilizes mystical paper talismans to instantly seal objects of any mass or size. When unsealed, these items can be released with sudden kinetic force.	self	0	0	0	5	3	4	f	12
+28	Instantine Sealing Strike	By sealing a target's weapon or the ground beneath them with instantaneous talismans, the user severely restricts their mobility and offensive capabilities.	other	10	2	0	-3	-8	-5	t	32
+28	Feline Instincts	Enhanced intuition and reaction speeds allow the user to predict incoming strikes and navigate complex battlefield environments with extreme agility.	self	0	0	0	3	5	1	f	9
+28	Kinetic Release	The user unseals a massive object or projectile with overwhelming force, creating a localized shockwave and punishing enemies in the vicinity.	multi	10	5	-4	-2	-3	-6	t	30
+29	Lightning Release Chakra Mode	The user coats their body in a high-voltage shroud of lightning chakra, drastically increasing their physical durability and striking power while granting them near-instantaneous movement speeds.	self	0	0	10	9	10	9	f	38
+29	Thunderclap Strike	By channeling intense electrical energy into a physical strike, the user delivers a devastating blow that creates a massive shockwave, potentially stunning and throwing back nearby enemies.	multi	3	5	-8	-4	-6	0	t	36
+29	Lightning Speed Dash	The user moves at such a velocity that they become nearly impossible to track with the naked eye, allowing them to strike targets before they can react.	other	10	0	0	0	-9	-4	f	13
+29	Shockwave Impact	A physical strike so powerful it creates a violent ripple of pressure in the air, impacting everything within its immediate vicinity.	multi	0	4	-7	-3	-5	-6	t	42
+30	Learning Circuit Protocol	The user processes information and environmental data at an accelerated rate, allowing them to predict incoming threats and optimize tactical positioning.	self	0	0	0	5	0	3	f	8
+30	Railway Lockdown	The user manipulates the surrounding environment to constrict movement, effectively trapping enemies within a specific zone.	other	3	2	0	0	-5	0	t	10
+30	Sturdy Frame	The user's body possesses a dense structural integrity, making it difficult for physical strikes to cause significant harm.	self	0	0	3	4	0	0	f	7
+30	Dimensional Drift	The user disrupts the local reality to project a disorienting force that weakens the defenses of nearby targets.	multi	8	5	-1	-4	-2	0	t	14
+31	Lightning Release Chakra Mode	The user envelops their body in a shroud of high-frequency lightning, creating an impenetrable defense and exponentially increasing physical striking power.	self	0	0	10	10	5	10	f	35
+31	Hell Stab	A devastating strike that generates extreme cutting power, capable of severing the tails of a Tailed Beast and piercing even the thickest barriers.	other	5	2	-10	-8	-3	0	t	42
+31	Unyielding Stamina	The user's immense physical fortitude allows them to fight through grueling conditions for days without succumbing to fatigue.	self	0	0	5	2	3	1	f	11
+31	Shockwave Impact	The user strikes the ground or an opponent with such force that it creates a concussive blast, disrupting the position and balance of nearby enemies.	multi	3	5	-4	-2	-7	0	t	26
+32	Monado Resonance	The user taps into the core of the Monado to harmonize with the surrounding ether, significantly bolstering their physical and spiritual defenses while amplifying their strike potency.	self	0	0	10	8	5	9	f	32
+32	Monado Purge	A devastating wave of etheric energy strikes the target, forcibly nullifying their abilities and paralyzing their senses to sever their connection to their own powers.	other	3	2	-5	-10	-8	-7	t	60
+32	Thread Severance	By manipulating the very threads of fate, the user imposes a heavy burden on an opponent's perception and luck, making their movements erratic and their actions likely to fail.	multi	8	6	0	-4	-7	-5	t	32
+32	Ethereal Seal	The user manifests an overwhelming weight of ether to seal a rift or suppress an enemy's presence, effectively pinning them in place and neutralizing their offensive capabilities.	other	5	3	-4	-9	-10	-6	t	58
+33	Transcendental Essence	The user's latent supernatural power grants them near-invulnerability and the ability to interact with high-level cosmic forces, regardless of their physical size.	self	0	0	10	9	5	8	f	32
+33	Dimensional Displacement	The user manifests an overwhelming surge of energy that disrupts the space around targets, effectively stunning them and hindering their ability to react or move.	multi	5	3	0	-4	-7	0	t	22
+33	Cosmic Projection	By projecting their presence outward, they can unleash an immense blast of energy that crushes the defenses and structural integrity of anything within its path.	other	8	6	-9	-8	-5	0	t	44
+33	Spatial Leap	The user instantly repositions themselves or others across vast distances in a blink of an eye.	self	0	0	0	0	10	0	f	10
+34	Enigma of Fear	The user exists in a state of metaphysical paradox. Until the underlying mystery of their existence is solved by an opponent, they are completely invulnerable to all forms of physical and mystical damage.	self	0	0	10	10	0	0	f	20
+34	Reality Fracture	The user strikes at the core of an opponent's existence. By manifesting a 'crack in reality,' they bypass all physical defenses, dealing profound damage to the target's essence and preventing any form of natural regeneration.	other	5	0	-10	-10	0	0	f	20
+34	True Conjuration	The user draws upon a vast and ancient library of rituals to manipulate the fundamental laws of nature, including teleportation through shadows, spatial distortion, and the weaving of arcane elements.	multi	10	5	-5	-5	-5	-5	t	40
+34	Liturgy of the Void	The user erases a portion of reality surrounding the target. This forces the opponent's physical presence to fluctuate, severely hindering their ability to move or maintain cohesion.	other	3	1	0	0	-10	0	t	20
+35	Arcane Essence	The user taps into their inner magic to bolster their own physical form.	self	0	0	10	5	2	3	f	20
+35	Elemental Surge	The user releases a violent burst of fire and electricity to strike nearby foes.	multi	5	3	-10	-4	0	0	t	28
+35	Ethereal Levitation Strike	The user maneuvers through the air with supernatural speed to strike a single target.	other	10	0	-8	-2	-5	-4	f	19
+35	Spectral Reconstruction	The user's skeletal frame magically knits back together, ignoring heavy physical damage.	self	0	0	-10	-3	0	0	f	13
+36	Shadow Corruption	The entity releases a liquid shadow that corrupts the flesh and spirit. Victims are physically mutated into monsters while their minds become slaves to its will.	multi	5	8	-4	-3	-2	0	t	18
+36	Ancient Sovereignty	Drawing from its immense age and status as a primordial deity, the user becomes nearly impervious to conventional physical harm, ignoring the passage of time.	self	0	0	5	6	0	0	f	11
+36	Whispers of the Void	The entity projects telepathic waves into the minds of those nearby, feeding on their darkest desires and overwhelming their senses with psychic static.	multi	10	10	0	-2	-1	0	t	6
+36	Blighted Atmosphere	The environment around the user transforms into a wasteland of toxic smoke and decaying matter, suffocating and eroding everything in its path.	multi	4	5	-3	-1	-2	0	f	6
+37	Dimensional Displacement	By partially rotating into a different plane of existence, they can phase through physical obstacles or strike from angles impossible for lower-dimensional beings to perceive.	other	0	1	0	-5	-3	-2	t	20
+37	Dimensional Extension	The user can stretch their limbs to extreme lengths, allowing them to interact with and manipulate objects far beyond their immediate physical reach.	self	0	0	0	1	4	3	f	8
+37	Flatland Transgression	They interact with the higher dimensions of their environment to pull opponents into a state of spatial confusion.	multi	5	3	0	-4	-6	-2	t	24
+37	Spacelander Insight	Possessing superior technological and spatial awareness, the user can anticipate movements and calculate trajectories with high precision.	self	0	0	0	3	2	4	f	9
+38	Analytical Defense	The user's sharp legal mind allows them to anticipate the logic of an opponent's movements, providing a layer of intellectual protection against incoming strikes.	self	0	0	0	5	0	0	f	5
+38	Dimensional Distortion	By exposing the observer to the jarring reality of three-dimensional space, the user creates a sensory overload that hinders the opponent's ability to navigate and move effectively.	other	3	2	0	0	-4	0	t	8
+38	Glow Point Lure	Utilizing a specialized light source, the user creates a focal point that draws the attention of nearby entities, pulling them into a specific area.	multi	5	4	0	0	-3	0	f	3
+38	Hyper-Dimensional Strike	A strike fueled by the immense weight of higher dimensions; while and small in scale, it carries catastrophic force that bypasses standard planar durability.	other	0	5	-10	-8	0	-9	t	54
+39	Analytical Combat Processing	The user's neural core processes incoming threats instantly, predicting enemy movements and optimizing defensive posture.	self	0	0	0	10	0	5	f	15
+39	Solenoid Quench Discharge	The user discharges a high-velocity energy burst from their weapon, striking targets across a vast distance with overwhelming force.	multi	10	5	-8	-3	0	-9	t	40
+39	Supersonic Strike	A rapid-fire melee assault that strikes so quickly the target is overwhelmed by the sheer volume of hits.	other	0	0	-7	-2	-4	-8	t	42
+39	Enhanced Servo Endurance	Reinforced internal components allow the user to maintain peak physical performance and stamina over extended engagements.	self	0	0	5	2	3	0	f	10
+41	Supersonic Velocity	The user moves at such extreme speeds that they appear as a blur or standstill to the naked eye, allowing them to travel across cities in minutes and strike before opponents can react.	self	0	0	0	5	10	3	f	18
+41	Kinetic Impact	By utilizing their momentum at high speeds, the user can deliver devastating physical strikes. A collision from the user carries enough force to shatter structures or severely maim opponents upon contact.	other	0	2	-8	-4	0	0	t	24
+41	Sonic Blur	By circling an opponent at supersonic speeds, the user creates a disorienting wake of air and sound, making it nearly impossible for the target to track their position or defend against incoming strikes.	other	2	3	0	-5	-6	0	t	22
+41	Metabolic Overdrive	Fueled by a superhuman metabolism and chemical enhancement, the user can maintain peak physical performance and high-speed output for extended periods.	self	0	0	4	2	3	2	f	11
+42	Moroha State	By allowing their partner to consume their blood, they enter an empowered state. This grants them enhanced physical prowess and overwhelming magical output at the cost of the user's vitality.	self	0	0	5	4	3	8	f	20
+42	Dimensional Breach	The user opens a rift to a pocket dimension, dragging nearby enemies into an inescapable void.	multi	8	6	0	0	-10	0	t	20
+42	Sanguine Rejection	Using the demonic axe to siphon and manipulate blood, they drain the life force from an opponent to fuel their own capabilities.	other	4	0	-7	-2	0	-1	f	10
+42	Jealous Rage	The user enters a feral state of aggression. While they become a whirlwind of destructive energy, their movements become less precise.	multi	5	4	0	0	0	-9	f	9
+43	Nanite Integration	The user's form is saturated with advanced nanites that repair tissue, enhance physical capability, and provide a layer of high-tech resilience against environmental hazards.	self	0	0	10	8	5	3	f	26
+43	Systemic Override	The user broadcasts a high-frequency data pulse that infects nearby machines and technological systems, causing them to malfunction or fall under the user's remote command.	multi	5	4	0	-7	-3	-6	t	32
+43	Chronos Fracture	By tapping into the raw power of Chaos energy, the user releases a pulse that distorts reality around an opponent, making their movements erratic and unpredictable.	other	8	3	-2	-5	-9	-4	t	40
+43	Super Protocol	The user taps into a supreme link with the Chaos Force, dramatically increasing their overall power and granting near-limitless stamina for a period of time.	self	0	0	10	10	10	10	f	40
+44	Gene Splicer Protocol	The user activates the Gene Splicer to merge biological entities or enhance their own molecular structure, effectively ignoring the target's physical durability and merging organic matter.	multi	0	5	10	10	5	5	f	30
+44	Advanced Tracking & Analysis	Utilizing a high-tech scanner to analyze DNA and biological signatures, the user identifies a target's exact location, physical stats, and hidden traits, effectively stripping away their tactical advantages.	other	10	0	0	-5	-2	-3	f	10
+44	Heat Beam Projection	The user focuses a concentrated beam of high-intensity energy to melt through solid structures and incinerate obstacles in their path.	other	5	1	-8	-7	0	-6	t	42
+44	Evasive Maneuver 12	The user enters a state of extreme kinetic awareness, allowing them to move at speeds that mirror light and reflexively deflect incoming projectiles.	self	0	0	2	5	10	0	f	17
+45	Poison Hand	The user coats their talons in lethal toxins produced by their own body. Every strike inflicts a lingering poison that weakens the target's physical integrity and stuns them as the toxins take hold.	other	0	0	-10	-5	-3	-2	t	40
+45	Serpentine Strike	Utilizing the Snake Fist style, the user moves with fluid, unpredictable motions to close distances and strike from unexpected angles, disrupting the enemy's positioning.	other	5	0	-2	-1	-8	-4	f	15
+45	Medicinal Mastery	Through her extensive knowledge of traditional medicines and poisons, the user possesses heightened awareness, allowing them to anticipate incoming strikes and mitigate their impact.	self	0	0	3	6	1	2	f	12
+45	Venomous Cloud	The user releases concentrated airborne toxins. Those caught in the vicinity suffer from immediate physical distress and impaired coordination.	multi	7	5	-6	-3	-6	-4	t	38
+46	Cognitive Overload	The user disrupts the target's mental stability, creating a sensory overload that leaves them disoriented and unable to focus on their surroundings.	other	0	0	0	-2	-1	-1	t	8
+46	Omniscient Protocol	The user accesses a vast database of knowledge, allowing them to predict and neutralize threats before they manifest.	self	0	0	0	3	0	2	f	5
+46	Nuclear Radiance	A devastating discharge of energy and radiation that physically degrades everything in the vicinity, mirroring a nuclear blast.	multi	10	8	-5	-4	-3	-2	t	28
+46	Dimensional Anchor	The user reinforces their existence across dimensions, making them nearly impossible to locate or damage physically.	self	0	0	2	5	1	0	f	8
+47	Nano-Adaptive Mimicry	The user scans an opponent's biological signature or energy output, instantly integrating their unique physiological capabilities into its own systems to nullify the target's advantages.	self	0	0	10	5	3	8	f	26
+47	Molecular Phase Shift	By vibrating its molecular structure at extreme frequencies, the user becomes intangible, allowing physical attacks and projectiles to pass through it harmlessly.	other	3	0	0	-10	-5	0	f	15
+47	Elemental Overload	The user channels and discharges a massive surge of redirected energy—ranging from extreme heat to freezing frost or high-voltage electricity—to devastate the surrounding area.	multi	5	7	-9	-4	-3	-8	t	48
+47	Tactical Retraction	The system analyzes the combat environment to identify optimal routes for withdrawal or repositioning when an engagement becomes inefficient.	self	0	0	-1	-3	-5	0	f	9
+48	Omni-Mimicry	The user scans targets at an atomic level to instantly replicate their physical attributes, skills, and combat techniques, integrating them into its own system.	self	0	0	5	4	3	5	f	17
+48	Cosmic Erasure	Utilizing its advanced mastery over energy and space-time, the user unleashes a devastating burst of energy capable of warping planetary structures or disintegrating matter.	multi	10	9	-10	-8	-5	0	t	46
+48	Molecular Synthesis	The user manifests a dense energy field that disrupts the cohesion of nearby objects and entities, stripping away their defenses.	other	5	3	-4	-7	-2	0	t	26
+48	Hyper-Processing	The entity's cognitive systems process information at speeds far beyond human comprehension, allowing it to predict and counter complex tactics instantly.	self	0	0	0	5	0	3	f	8
+49	Lithic Deconstruction	The user can decompose inorganic matter with their left hand and reshape it into mineral structures with their right, allowing for the creation of traps or terrain manipulation.	multi	5	3	0	0	0	0	f	0
+49	Toxic Miasma	A corrosive gas is released that dissolves flesh on contact and induces agonizing pain, capable of breaking a target's body apart.	multi	4	6	0	0	0	0	t	0
+49	Petrified Form	The user transforms their body into a stone-like state, granting them immense durability and resistance to extreme environmental temperatures.	self	0	0	0	5	0	0	f	5
+49	Corrosive Enclosure	The younger brother's stand manifests to trap the opponent in a confined space filled with acidic vapors.	other	3	2	0	0	0	0	t	0
+50	Tactical Reflexes	The user's training allows them to anticipate and evade incoming strikes with heightened precision, effectively hardening their defense against calculated maneuvers.	self	0	0	0	1	0	0	f	1
+50	Ballistic Suppression	Utilizing advanced tactical gear, the user can withstand heavy fire while closing the distance to suppress and immobilize opponents.	other	5	2	0	-1	-1	0	t	4
+50	Overwhelming Force	The user strikes with the explosive strength of an advanced soldier, delivering a high-impact blow capable of shattering structures and overwhelming defenses.	other	0	1	-1	-1	0	-1	t	6
+50	Heavy Ordinance	A long-range explosive volley that strikes multiple targets, dealing massive damage across a wide area.	multi	10	4	-1	-1	0	-1	t	6
+51	Bewußtsein Logic Processing	The internal consciousness system allows the user to process tactical data with mechanical precision, anticipating threats and optimizing defensive maneuvers.	self	0	0	0	10	0	0	f	10
+51	Piston-Driven Impact	Utilizing internal pistons capable of massive force output, the user strikes with enough power to shatter metal and crack ground, creating a shockwave that pushes nearby enemies back.	other	3	2	-5	-3	-4	0	t	24
+51	Aero-Kinetic Blast	By striking the air with high-velocity force, the user creates a concussive blast capable of throwing opponents back several meters and shredding nearby materials.	multi	7	5	-3	0	-8	0	t	22
+51	Endless Chassis Integrity	Constructed from high-grade materials without biological fatigue, the user maintains peak physical performance indefinitely.	self	0	0	3	2	1	0	f	6
+52	Avatar State	Tapping into the collective power of his past lives, the user enters a state of heightened awareness and immense raw energy. This grants them mastery over all elements simultaneously and significantly boosts their physical output.	self	0	1	3	4	2	5	f	14
+52	Airblast	The user manipulates the surrounding atmosphere to create concussive waves of wind. These blasts can displace enemies, shatter nearby structures, and push opponents back with incredible force.	multi	8	5	-2	-1	-3	0	t	12
+52	Elemental Mastery	By channeling the elements of earth, fire, and water, the user can manipulate the environment to create barriers or projectiles, disrupting the enemy's offensive and controlling the flow of the battlefield.	multi	10	7	-3	-2	-2	-4	f	11
+52	Spirit of the Air	Drawing from their heritage as an Air Nomad, the user achieves a state of heightened reflexes and evasion, making it nearly impossible for physical projectiles to land.	self	0	0	1	3	4	0	f	8
+53	Carrion Scent	The user's keen instincts allow them to track prey and sense danger, enhancing their overall combat awareness and physical prowess.	self	0	0	10	5	2	3	f	20
+53	Gale Force Strike	The user manipulates the surrounding air to create forceful gusts, knocking back enemies and creating turbulent zones.	multi	5	4	-10	-5	-8	-2	t	50
+53	Silent Wing's Dive	Utilizing their mastery of silent flight, the user strikes from above with startling speed, catching targets off guard.	other	3	0	-10	-5	-2	-5	t	44
+53	Tailwind Pierce	A precision strike using a javelin imbued with wind energy to strike targets at a distance.	other	8	0	-10	-2	0	-5	f	17
+54	Sanguine Empowerment	By absorbing the blood of fallen foes into his system, the user fuels the lingering souls within, significantly enhancing their physical prowess and strike intensity.	self	0	0	10	5	2	8	f	25
+54	Infernal Cauterize	The user coats their claws in intense blue flames and concentrated heat. This seals wounds instantly, negating the opponent's ability to heal while dealing searing damage.	other	0	0	-8	-3	-1	0	f	12
+54	Shadow Echo	The user manifests a shadow duplicate of themselves. This forces the enemy to split their focus or engage two targets at once, creating significant tactical confusion.	multi	5	3	0	-4	-2	0	t	12
+54	Tectonic Spikes	The user strikes the ground, causing jagged earth pillars to erupt. This traps the opponent and disrupts their footing.	multi	10	5	-4	0	-6	0	t	20
+55	Tough Hide	The thick skin and muscular build allow the user to shrug off surface-level lacerations and bites, significantly increasing durability during physical altercations.	self	0	0	2	3	0	0	f	5
+55	Serrated Claws	Using massive, powerful claws designed to tear through rock and earth, the user delivers devastating slashing damage against any nearby threat.	other	2	1	-5	-2	0	0	t	14
+55	Evasive Burrowing	The user utilizes its digging prowess to rapidly reposition or create distance, making it difficult for opponents to maintain a lock on their position.	other	3	0	0	0	-4	0	f	4
+55	Acute Senses	Heightened auditory and olfactory senses allow the user to anticipate incoming movements and react to threats before they manifest.	self	0	0	0	3	0	2	f	5
+56	Ruthless Instincts	The user's mastery over high-pressure combat ensures they leave almost no openings. Their movements are fluid, predicting and parrying incoming strikes with clinical precision.	self	0	0	0	5	2	0	f	7
+56	Point-Blank Volley	Utilizing a firearm with lethal proficiency, the user unleashes a rapid burst of fire that overwhelms the senses and physical defenses of their target.	other	5	1	-2	-3	-4	0	t	18
+56	Brutal Scrimmage	In close quarters, the user employs heavy objects or blades in a frantic, unpredictable assault designed to break the opponent's guard.	other	0	0	-4	-1	-3	-2	t	20
+56	Heavy Ordnance Strike	By leveraging large objects like steel beams or pipes, the user delivers a devastating blow that creates significant collateral damage and hinders movement.	multi	0	4	-5	-2	-3	-1	t	22
+57	Flexed Might	By tensing their muscles and flexing, the user significantly amplifies their raw physical striking power for a short duration.	self	0	0	0	0	0	5	f	5
+57	Sweat Surge	The user weaponizes their own moisture, manifesting it as a sudden torrent of water to strike and overwhelm the opponent.	other	5	3	-10	-2	-4	0	t	32
+57	Soul Piercing Strike	A strike that bypasses standard physical defenses by directly impacting the essence of the target's SOUL.	other	0	0	-10	-5	0	0	f	15
+57	Aquatic Grace	Drawing on their aquatic nature, the user gains enhanced mobility and evasion within watery environments.	self	0	0	0	2	4	0	f	6
+58	Satellite Veil	By hijacking orbital assets, the user creates a localized zone where intruders are met with lethal kinetic force and absolute invisibility to outside observers.	multi	3	4	-5	-2	-1	0	t	16
+58	Pathogen Deployment	The user releases aerosolized toxins or biological agents into the environment, rapidly debilitating and sickening all nearby organic life.	multi	5	6	-8	0	-3	-1	t	24
+58	Cognitive Fortress	A product of superior intellect and bio-electrical implants, the user processes information at a rate that allows them to anticipate tactics and counter any technological interference.	self	0	0	1	5	0	2	f	8
+58	System Overload	The user force-hacks local networks and electronics to cause catastrophic failures, jamming signals and disabling enemy equipment.	multi	10	8	0	-4	-2	-3	t	18
+59	Spectral Transcendence	The user sheds their physical weight, becoming a ghost. In this form, they become immune to physical harm and can pass through solid objects while retaining the ability to interact with the material world.	self	0	0	5	10	3	2	f	20
+59	Revenant's Repulsion	The user exerts a violent burst of telekinetic force toward an opponent. This wave of kinetic energy and psychic weight hurls the target backward, disrupting their positioning.	other	5	2	0	0	-8	0	t	16
+59	Hallucinatory Torment	The user manipulates the minds of those nearby, forcing them to witness terrifying visions and warped realities that cloud their judgment.	multi	3	5	0	-4	-1	-2	t	14
+59	Chain Hook Strike	Using his rusted hook and heavy chains, the user delivers a punishing strike that strikes with unnatural strength, pulling the victim's defenses down.	other	4	0	-3	-2	-1	-4	t	20
+60	Enhanced Physiological Resilience	Due to genomic targeting, the user possesses accelerated mitochondrial uptake and neural elasticity. This allows them to maintain peak physical performance while suppressing pain and rapidly recovering from physical strain during prolonged combat.	self	0	0	5	3	2	1	f	11
+60	Tactical Precision Strike	Utilizing elite marksmanship and mastery of firearms, the user can deliver lethal strikes from a distance or engage in rapid-fire close quarters combat to neutralize threats instantly.	other	10	2	-8	-3	-4	-5	t	40
+60	CQC Mastery	The user employs high-level martial arts to overwhelm opponents in close quarters. By predicting movements and striking vital points, they effectively cripple the target's mobility.	other	0	1	-4	-2	-6	-3	t	30
+60	Heightened Sensory Processing	Advanced neural processing allows the user to interpret environmental cues and incoming threats faster than a standard human, effectively predicting the trajectory of attacks.	self	0	0	0	5	1	3	f	9
+61	The Avalanche Name	By speaking a specific sequence of syllables, the user manifests immense kinetic force. It creates localized environmental destruction, crushing everything in its path with the weight of tumbling mountains.	multi	5	7	10	8	4	9	f	31
+61	The Vital Name	The user invokes the essence of life itself. This provides a profound restoration of vitality and biological integrity, mending wounds and reinforcing the very spark of existence within the self.	self	0	0	10	5	3	2	f	20
+61	The Shem haMephorash	The ultimate realization of the Explicit Name. The user temporarily transcends local reality, grasping the logical necessity of the cosmos to impose their will upon existence itself, unraveling the fundamental laws governing the opponent.	multi	10	10	-10	-10	-10	-10	t	80
+61	Motive Manipulation	By speaking a specific linguistic key, the user exerts mental influence on others' actions, forcefully redirecting their movement and intent to suit the user's needs.	other	3	0	0	-2	-8	-4	t	28
+62	Masterful Deception	The user leverages their high-level social manipulation and professional authority to cloud the judgment of others, making it difficult for targets to discern truth from fabrication.	multi	10	5	0	-3	0	0	t	6
+62	Tactical Proficiency	Utilizing years of law enforcement experience, the user anticipates movements and creates openings in an opponent's defense during physical confrontations.	other	0	0	0	-2	-1	-1	f	4
+62	Lethal Precision	When wielding a weapon, the user strikes with calculated accuracy to incapacitate or critically wound an opponent instantly.	other	5	0	-4	-1	-2	-3	t	20
+62	Hardened Resolve	Driven by deep-seated resentment and a hidden agenda, the user can push through physical pain and fatigue to continue a confrontation.	self	0	0	2	1	1	0	f	4
+63	Refined Boxing Technique	By channeling his raw physical power through professional boxing stances and specialized forms, they can concentrate their explosive energy into hyper-accelerated strikes that transcend the limits of human speed.	self	0	0	0	5	3	10	f	18
+63	Shockwave Impact	The sheer force of their strikes generates intense air pressure and vibrations. These shockwaves ripple through the opponent's body, rattling their internal organs and disrupting their mental focus.	other	2	1	-5	-3	0	0	t	16
+63	Ironclad Constitution	A testament to his legendary durability and pain tolerance, the user can withstand catastrophic internal damage and heavy hemorrhaging while maintaining their fighting stance.	self	0	0	5	8	2	0	f	15
+63	Indomitable Stance	Their physical mass and muscle control are so dense that even the most skilled opponents find it impossible to displace them or break their posture.	other	0	0	0	-2	-4	0	t	12
+64	Glotonería	Upon the command 'Devour', the user's lower body transforms into a mass of flesh and tentacles. This grants them immense physical power, enhanced reach, and the ability to strike with multiple appendages.	self	0	0	1	2	1	3	f	7
+64	Gran Rey Cero	The ultimate culmination of spiritual energy. The user fires a colossal beam of concentrated power that causes devastating destruction in its path.	multi	10	9	-5	-3	0	0	t	16
+64	Caja Negación	The user utilizes special cubes to seal opponents away from the battlefield. These dimensions can trap even powerful foes for extended periods.	other	5	0	0	0	-3	0	t	6
+64	Bala	A high-velocity projectile of spiritual energy. While less powerful than a Cero, it is fired at extreme speeds to catch opponents off guard.	other	7	0	-1	0	0	-2	f	3
+65	Unyielding Sisu	The user's indomitable will manifests as a profound resistance to pain and physical trauma. This inner fortitude allows them to ignore debilitating injuries, maintain their combat stance under extreme duress, and refuse to yield even when facing overwhelming odds.	self	0	0	10	5	2	0	f	17
+65	Survivalist Tactics	The user utilizes their extensive military expertise to anticipate and counter enemy movements. By using the environment and psychological pressure, they can disrupt the opponent's momentum, force them into unfavorable positions, and lower their effective defenses.	other	10	0	0	-3	-4	-2	t	18
+65	Mastery of the Tool	With expert precision, the user wields a pickaxe or other improvised objects with lethal accuracy. A strike from these tools is designed to crush defenses and cause significant damage, often striking points that disable an opponent's ability to retaliate.	other	0	1	-7	-3	-2	-5	t	34
+65	Ghost of the Tundra	Utilizing masterful stealth and environmental awareness, the user can move unseen and strike from unexpected angles. This unpredictability forces enemies to divide their focus, significantly lowering their guard against sudden ambushes.	multi	10	3	0	-4	-5	-2	t	22
+66	Deathbringer Stance	The user enters a state of heightened aggression, surging with primal energy to amplify their offensive capabilities and speed across the battlefield.	self	0	1	0	0	2	3	f	5
+66	Infernal Chains	Spectral chains erupt from the blade to ensnare enemies, dragging them back and severely hindering their mobility while draining their essence.	multi	5	3	0	0	-4	0	t	8
+66	Conceptual Mutilation	The blade strikes at the very essence of being, severing the concept of an enemy's power and inflicting devastating physical damage to their form.	other	10	2	-5	-3	0	0	f	8
+66	Umbral Dash	The user surges forward in a blur of shadows, stitching wounds and mending their physical form with stolen vitality as they strike.	self	0	1	3	0	2	0	f	5
+67	Chitinous Pinion Strike	The user lashes out with sharp-tipped limbs, striking multiple targets in a devastating arc. This strikes fear into opponents and physically weakens their defenses.	multi	5	4	-2	-3	-1	0	t	12
+67	Ancient Resilience	Drawing on millions of years of evolutionary survival, the user fortifies their own physical form, increasing endurance and hardening the outer shell.	self	0	0	3	4	1	0	f	8
+67	Venomous Ensnarement	By moving rapidly toward a single foe, the user pins them down with heavy limbs, severely restricting their ability to maneuver.	other	2	0	-1	0	-4	0	t	10
+67	Apex Terror Aura	The sheer size and ancient presence of the titan emit a wave of intimidation that slows down nearby enemies.	multi	3	10	0	-1	-2	0	f	3
+68	Knight's Resilience	Drawing upon her status as a high-ranking Knight of Hell, the user bolsters their physical form and spiritual essence, granting heightened durability and regenerative capabilities against standard mystical hazards.	self	0	0	5	4	1	2	f	12
+68	Hellish Command	The user exerts their overwhelming authority over the spiritual plane, suppressing the resolve and physical capabilities of those nearby while potentially cracking their mental defenses.	multi	5	3	0	-3	-2	-4	t	18
+68	Eldritch Weaver's Grasp	Utilizing telekinetic mastery and earth-shaping magic, the user forcibly manipulates the environment to restrict the target's movement and crush their defenses.	other	10	2	-2	-3	-5	-1	t	22
+68	Elemental Scourge	The user manifests a violent upheaval of weather and electricity, striking at the very molecules of the surrounding atmosphere to devastate everything in their path.	multi	10	8	-5	-2	-4	-3	f	14
+69	Soul Absorption	By consuming the souls of his victims, the user bolsters their internal energy and physical resilience, becoming more formidable with every fallen foe.	self	0	0	5	3	1	4	f	13
+69	Swarm of the Locusts	The user summons a massive, overwhelming plague of locusts to devour the landscape and overwhelm opponents, stripping away their defenses and mobility.	multi	8	7	-4	-3	-5	0	t	24
+69	Corrupting Touch	Upon physical contact, the user's magic decays the target's essence, physically mutating them into insectoid husks and severing their connection to their own strength.	other	0	0	-3	-4	-3	-3	t	26
+69	Sovereign's Presence	The sheer magnitude of the user's magic creates an aura of dread that allows them to anticipate and parry incoming strikes through raw power.	self	0	1	0	5	0	0	f	5
+70	Mark of Chaos Ascendant	The user is blessed by all four Chaos Gods simultaneously. This divine favor grants them supernatural willpower, high resistance to psychic intrusion, and the ability to endure wounds that would be fatal even to other Space Marines.	self	0	0	5	4	1	2	f	12
+70	Talon of Horus	The user wields a legendary power blade that severs the bonds of reality and matter. Strikes with this weapon ignore physical fortifications and slice through the very essence of the target's existence.	other	0	1	-8	-9	-2	0	t	38
+70	Reality-Shearing Strike	By channeling the dark sorcery of the Warp through their blade, the user can strike at the fabric of space. This creates a localized rift that harms any nearby enemies caught in the spatial distortion.	multi	3	4	-7	-6	-1	0	t	28
+70	War-Harrowing Aura	The user projects a field of psychic and daemonic energy. This overwhelming pressure weighs upon the minds and spirits of nearby foes, causing their weapons to fail and their resolve to crumble.	multi	5	10	-2	-3	-4	-3	t	24
+71	Gelatinous Constriction	Upon physical contact, the water-like surface instantly solidifies into a viscous, gelatinous mass that envelops and constricts the victim.	other	0	2	-1	-1	-1	0	t	6
+71	Fluid Form	The user maintains a liquid consistency, allowing it to absorb kinetic impacts and resist physical piercing.	self	0	0	1	1	1	0	f	3
+71	Suffocating Embrace	The viscous sludge fills the lungs and openings of its prey, making breathing impossible.	other	0	1	-2	0	-1	0	t	6
+71	Treasure Cache	The user incorporates stolen items into its mass, making it appear as a source of wealth to lure in greedy travelers.	self	0	0	0	0	0	0	f	0
+72	Genetic Assimilation	By consuming and analyzing organic matter, the user integrates foreign genetic traits into their own biology to bolster their physical resilience.	self	0	0	10	5	2	3	f	20
+72	Mutagenic Corruption	The user releases a wave of volatile genetic catalysts that cause the target's cellular structure to destabilize and decay.	other	5	3	-10	-4	-8	-6	t	56
+72	Rapid Mutation	Forces a mass biological overhaul in nearby organisms, causing them to mutate into uncontrollable and agonizing forms.	multi	4	7	-8	-5	-7	0	t	40
+72	Resurrection Pulse	The user exerts a life-force surge that jumpstarts the cellular activity of nearby fallen organic tissue.	multi	2	3	10	2	4	0	f	16
+74	Empathic Rage	By tapping into her inner turmoil, they enter a state of pure fury. This heightens their offensive capabilities significantly at the cost of their own physical protection.	self	0	0	0	10	0	2	f	12
+74	Aura of Dread	The presence of the Great Creature imposes a crushing weight on the minds of others. Those caught in her vicinity are paralyzed by fear, rendering them unable to utilize complex abilities or tactics.	multi	5	4	0	0	0	0	t	0
+74	Tentacle Lash	Massive, writhing limbs erupt from their form to strike across the battlefield, physically striking and restraining nearby opponents.	multi	3	2	-5	0	-3	0	t	16
+74	Viscous Goo	A thick, debilitating substance coats the ground and enemies alike, slowing their movement and weakening their physical resolve.	multi	2	3	0	-2	-5	0	f	7
+75	Tacet Shielding	The user creates an impenetrable barrier by absorbing incoming energy, neutralizing the threat and protecting allies within the radius.	self	0	5	10	8	0	0	f	18
+75	Frequency Dampening	By analyzing and syncing with the local Tacet Discord frequencies, the user disrupts an enemy's ability to channel their power.	other	10	3	0	-5	-2	-7	t	28
+75	Void Absorption	The user forcibly absorbs the kinetic and magical energy from an incoming blast, nullifying its force entirely.	multi	5	8	-10	-4	0	-9	f	23
+75	Echo Resonance	The entity harmonizes with the surrounding environment to grant the user enhanced awareness and defensive foresight.	self	0	0	0	6	1	2	f	9
+76	Stoic Resilience	Drawing from her experience surviving imprisonment and physical trauma, the user enters a state of heightened endurance, allowing them to push through pain that would incapacitate others.	self	0	0	1	1	0	0	f	2
+76	Brutal Strike	Utilizing her superior physical strength and combat training, the user delivers a devastating melee strike aimed at crushing bones or shattering defenses.	other	0	1	-2	-1	-1	0	t	8
+76	Incendiary Trap	The user deploys a primitive yet effective incendiary device, engulfing the immediate area in flames to scorch and disorient enemies.	multi	3	4	-1	0	-2	0	t	6
+76	Tactical Awareness	Refined by years of survival and military-style training, the user anticipates enemy movements and exploits gaps in their positioning.	self	0	0	0	-2	0	-1	f	3
+77	Divine Radiance	The user channels pure celestial energy, fortifying their physical form with a shimmering aura of protection and revitalizing their essence.	self	0	0	5	4	2	1	f	12
+77	Wrath of the First Angel	The user unleashes a catastrophic wave of celestial fire and light, incinerating enemies across a vast expanse.	multi	10	8	-10	-7	-5	-6	t	56
+77	Judgmental Strike	The user focuses their intent on a single foe, striking with a blade of holy light that shatters physical defenses and slows the target's movements.	other	3	0	-8	-6	-4	-2	t	40
+77	Celestial Displacement	The user teleports instantly while emitting a pulse of energy that disorients and slows nearby enemies.	multi	5	3	-2	-1	-8	0	t	22
+78	Ab Master's Spirit	The user channels inner strength through their core, creating a protective aura of resilience and heightened awareness.	self	0	0	5	10	2	3	f	20
+78	Infernal Torso Eruption	The user's torso erupts into intense flames, unleashing a wave of heat and pressure that strikes the enemy.	other	5	3	-10	-2	-1	-1	t	28
+78	Gaze of the Master	By narrowing their eyes and exerting their will, the user causes the opponent's offensive capabilities to wither.	other	10	0	0	-4	0	-8	f	12
+78	Miasmic Veil	A massive, distorting fog descends upon the land, hindering and confusing all who enter its domain.	multi	10	10	-2	-5	-7	-4	t	36
+79	Spirit Chant	By channeling his internal spiritual energy, the user can call upon the power of their lineage. This manifests as a surge of mystical energy that bolsters their physical resilience and mental focus.	self	0	0	10	5	0	0	f	15
+79	Sonic Resonance	The user emits a powerful, focused spiritual cry that disrupts the senses of nearby enemies, disorienting them and making it difficult for them to coordinate their actions.	multi	5	3	0	-10	-2	-5	t	34
+79	Environmental Sabotage	Through keen observation and clever manipulation of the surroundings, the user can create hazards or traps that hinder enemy movement and access.	other	3	2	0	0	-10	0	t	20
+79	Spirit Possession	The user projects their essence into a nearby creature or construct, overriding its will and turning it against other foes.	other	10	0	0	0	-5	-5	t	20
+80	Commanding Presence	By asserting their authority as a leader, the user projects an aura that bolsters the morale and physical capabilities of all allies nearby.	multi	0	3	10	5	2	8	f	25
+80	Switch	The user enters a state of heightened physical and mental focus, drastically increasing their own offensive capabilities and durability.	self	0	0	10	10	5	10	f	35
+80	Heavy Strike	The user delivers a devastating melee strike fueled by raw physical power, capable of shattering defenses and forcing the opponent back.	other	0	1	-2	-1	-3	0	t	12
+80	Intimidating Stare	The user's stern gaze and menacing presence unsettle the opponent, making it difficult for them to maintain their stance or focus.	other	0	0	0	-1	-2	-1	t	8
+82	Summoning of Ten Thousand Shikigamis	The user manifests a massive legion of shikigamis to overwhelm the battlefield, providing an insurmountable wall of spiritual energy and offense.	multi	10	8	2	5	3	9	f	19
+82	Binding Seal of Magano	The user exerts her vast spiritual pressure to suppress and bind a target's movements, effectively pinning them within a localized spiritual cage.	other	5	2	0	-3	-10	-2	t	30
+82	Infinite Spirit Well	Drawing from her inexhaustible reservoir of spiritual energy, the user fortifies their own essence against decay and fatigue.	self	0	0	5	4	0	3	f	12
+82	Exorcism Purification	A concentrated burst of purifying energy strikes the target's defenses and weakens their offensive capabilities.	other	3	0	-1	-5	0	-4	f	10
+83	Aquatic Vitality	The user draws upon their amphibious physiology, rapidly knitting flesh and augmenting their senses to endure extreme environments.	self	0	0	1	1	1	0	f	3
+83	Abyssal Presence	The user taps into the primal authority of the Water Spirit, projecting a crushing weight that disorients and slows nearby foes.	multi	5	3	0	-1	-1	-1	t	6
+83	Senses of the Deep	Utilizing heightened senses to predict and intercept strikes from opponents, making their movements seem sluggish.	other	0	0	0	-1	-1	-1	f	3
+83	Hydro-Kinetic Surge	A sudden, forceful blast of water and pressure used to knock back and strike a single opponent.	other	10	2	-1	-1	-1	-1	t	8
+84	Veteran's Grit	Drawing upon decades of military discipline and wrestling experience, the user enters a state of heightened focus that reinforces their physical durability and reaction speeds.	self	0	0	2	3	1	0	f	6
+84	Lumbering Grapple	Utilizing his wrestling background, the user lunges to seize an opponent in a crushing hold, severely restricting their mobility and ability to maneuver.	other	2	1	0	-1	-5	0	t	12
+84	Disorienting Yarn	The user begins a rambling, incoherent narrative that confuses and overwhelms the mental focus of nearby enemies, leaving them susceptible to attack.	multi	5	3	0	-2	0	-1	t	6
+84	Soldier's Strike	A heavy, concussive strike fueled by years of combat training, designed to crack defenses and inflict significant blunt force damage.	other	0	1	-4	-2	0	0	t	12
+85	Silent Prayer	The user purges all external influences, instantly cleansing themselves of status effects and negating any active buffs or debuffs from opposing forces.	self	0	0	10	5	2	0	f	17
+85	Swarm of the Hive	By channeling the essence of Belzebub, the user causes a swarm of flies to erupt from their shadow. Those caught in the swarm are physically overwhelmed and consumed, eventually exploding into more flies.	multi	5	8	-2	-3	-4	0	t	18
+85	Giga-Jama	A massive burst of absolute negation. The user projects a wave that nullifies the powers, defenses, and physical integrity of all nearby enemies.	multi	4	10	-5	-10	-3	-5	t	46
+85	Conceptual Erasure	The user strikes at the conceptual foundation of an opponent's existence, bypassing all physical and magical barriers to unravel their very reality.	other	10	0	-8	-10	-5	-2	t	50
+86	Wartime Resilience	The user taps into a state of hardened endurance, allowing them to continue fighting with terrifying intensity despite severe wounds and exhaustion.	self	0	0	10	5	2	3	f	20
+86	Molotov Strike	The user hurls a primitive incendiary device, engulfing the immediate area in flames to scorch and disorient enemies.	multi	10	5	-8	-3	-4	0	t	30
+86	Brutal Combatant	The user utilizes their martial proficiency and weaponry to overwhelm an opponent's guard with heavy strikes.	other	0	0	-10	-5	-3	0	t	36
+86	Raider's Intimidation	A gritty, menacing presence that creates a psychological weight on opponents, making them hesitate and falter.	other	0	0	0	-3	-2	0	t	10
+87	Explosive Surge	By harnessing internal thermal energy, they trigger a localized blast to propel themselves forward and fortify their physical guard.	self	0	1	5	7	4	3	f	19
+87	Detonation Blast	The user releases a concussive explosion aimed at an opponent, designed to shatter their defenses and knock them off balance.	other	5	3	-10	-5	-8	-2	t	50
+87	Shockwave Nova	A massive release of energy that strikes multiple nearby targets, creating a wall of heat and pressure.	multi	2	8	-10	-7	-5	-4	t	52
+87	Heightened Awareness	Utilizing their experience on the heights, they anticipate incoming strikes with heightened spatial awareness.	self	0	0	0	6	2	4	f	12
+88	Neural Distortion	By manipulating the opponent's brainwave patterns, they can project vivid illusions or mask their own presence entirely, forcing the enemy to fight ghosts and phantoms.	multi	5	4	0	-10	-5	-5	t	40
+88	Aura Manifestation	The user projects a dense shroud of spiritual energy around their body. This aura acts as a physical shield and a sudden burst of kinetic force against nearby attackers.	self	0	2	10	8	3	5	f	26
+88	Sensory Awareness	Through extrasensory perception, they can sense the presence of others nearby, making it nearly impossible for enemies to sneak up on them or hide within their immediate vicinity.	other	3	0	0	-5	-2	0	f	7
+88	Aura Burst	The user releases a sudden, violent wave of energy from their aura, designed to repel attackers and shatter nearby structures.	multi	0	3	-5	-3	-7	-10	t	50
+89	Puppet Master's Thread	The user weaves nearly invisible threads to seize control over the victim's physical movements, effectively turning them into a mindless puppet while trapping their consciousness in a sensory-deprived dream.	other	5	0	0	0	-10	0	t	20
+89	Secondth: Domain of Puppets	Upon activating this high-level spell, the user projects a massive field of magical energy. Anything within the radius becomes subject to their control and serves as an empowered puppet.	multi	10	8	0	5	5	5	f	15
+89	Essence Absorption	The user absorbs the magical essence of nearby individuals to bolster their own magical reserves and overall potency.	self	0	0	5	3	0	10	f	18
+89	Transmutation of Form	By focusing their magic, the user transmutes the exterior of a target into wood, effectively Petrifying them and turning them into an inanimate object.	other	3	0	-5	-10	-10	0	t	50
+90	Dark Healing	The user forcibly knit their physical form together using the raw power of the Dark Side, ignoring fatal wounds and rapidly regenerating tissue.	self	0	0	10	5	2	0	f	17
+90	Force Drain	The user reaches out with their will to sap the life essence from nearby beings, draining their vitality to fuel her own immortality.	multi	10	8	-9	-3	-5	-4	t	42
+90	Reality Warp	By bending the very fabric of space-time, the user distorts the environment around their enemies, warping their perception and physical reality.	multi	10	10	-2	-8	-9	-5	t	48
+90	Fold Space	The user instantly manipulates the dimensions to fold space, allowing for instantaneous travel or repositioning across vast distances.	self	0	0	0	0	10	0	f	10
+91	Purifying Rite	The user performs a ritual to strip away supernatural constraints, nullifying hostile curses or magical effects currently affecting them.	self	0	0	10	5	2	0	f	17
+91	Nen Extraction	By focusing their aura, the user forcibly suppresses and removes the Nen flow from an opponent, stripping them of their supernatural abilities.	other	5	1	0	-4	0	-3	t	14
+91	Analytical Perception	The user processes tactical information at an elite level, allowing them to predict enemy movements and neutralize complex traps before they can be sprung.	self	0	0	0	-8	0	-2	f	10
+91	Summoned Guardian	The user summons a physical manifestation of Nen. The beast's form shifts based on the type of curse it is designed to counter.	multi	3	2	-5	-3	0	-4	f	12
+92	Order of Destruction	The user exerts their authority as the deity of destruction. Any entity caught in their presence feels the weight of inevitable decay, suffering a severe reduction in physical and magical integrity as their very existence begins to unravel toward its ultimate end.	multi	10	10	-5	-4	-2	-3	t	28
+92	Immutable Source	As a being of pure order, the user's core essence is fundamentally indestructible. This passive state ensures that no external force—be it conceptual, physical, or magical—can permanently damage or erase their fundamental identity.	self	0	0	10	10	0	0	f	20
+92	Sarjieldenav's Radiance	The user unleashes the black rays of destruction. These rays do not merely strike; they incinerate information, bypass all magical defenses, and erase the very 'trace' of the target from history, making it impossible for even gods to regenerate or repair the damage.	multi	10	5	-8	-9	-4	-3	t	48
+92	Sky of Destruction	The atmosphere surrounding the user warps into a zone of absolute spatial stagnation. Any entity attempting to move toward or away from the user is subjected to intense gravitational and dimensional friction, forcing them to an immediate halt.	multi	5	10	0	0	-10	0	t	20
+93	Blood Gift: Blademaster's Instinct	The user moves with a supernatural grace that allows them to anticipate an opponent's every move, effectively nullifying the element of surprise and parrying strikes before they land.	self	0	0	0	5	2	3	f	10
+93	Master Strike	A devastating strike delivered with such precision and force that it bypasses the victim's physical defenses, shattering their resolve and breaking their skeletal structure.	other	0	1	-10	-3	-4	0	t	34
+93	Dread of the Blood Lord	The user radiates an overwhelming aura of ancient malice and necrotic power, causing nearby enemies to be seized by paralyzing fear.	multi	5	4	0	-1	-3	-2	t	12
+93	Unholy Regeneration	The user's undead physiology allows them to knit flesh and bone back together nearly instantly, fueled by the undying essence of the blood.	self	0	0	5	1	0	0	f	6
+94	Arcing Spikes	The red protrusions on the beast's back discharge a violent surge of electricity. This strike disrupts the target's nervous system and internal flow, significantly hindering their ability to move or coordinate an attack.	multi	10	4	0	-5	-3	-2	t	20
+94	Feral Resilience	Driven by the primal instinct of the plague, the user's body ignores severe trauma. Even with limbs lost or flesh torn, the beast maintains its physical prowess and regenerative stamina.	self	0	0	10	5	2	3	f	20
+94	Primal Onslaught	A brutal, high-speed physical strike delivered with terrifying strength. The sheer force of the impact causes massive physical trauma to the target's body.	other	0	1	-7	-3	-2	0	t	24
+94	Savage Roar	A harrowing cry that echoes through the woods, overwhelming the senses of nearby prey and momentarily paralyzing them with primal fear.	multi	5	3	0	-2	-4	-1	t	14
+95	Demonic Augmentation	The user taps into their primordial lineage to manifest jagged bone-spikes and hardened plates from their own body, enhancing their physical durability and striking force.	self	0	0	5	8	1	4	f	18
+95	Abyssal Rupture	The user tears open a rift in the fabric of reality to unleash a devastating blast of infernal energy, striking all nearby foes with overwhelming force.	multi	8	7	-10	-5	-4	-2	t	42
+95	Dimensional Displacement	By warping the space around an enemy, they are forcefully displaced or pinned by shifting gravity, severely hindering their ability to escape.	other	5	2	-1	0	-9	0	t	20
+95	Colossal Growth	The user swells in size to a gargantuan scale, making their every movement an unavoidable catastrophe for those caught within their reach.	multi	3	10	-8	-6	-2	-9	t	50
+96	Spirit Link Sync	By harmonizing with the spirit realm, the user enhances their physical capabilities and grants them a protective magical aura to bolster defense against hostile elements.	self	0	0	10	8	5	5	f	28
+96	Dimensional Shear	Using the enchanted scissors, they unleash a concentrated strike that can puncture and shatter magically reinforced shields of immense durability.	other	5	2	-4	-8	0	0	t	24
+96	Babel Forcefield Barrier	The user projects a shimmering magical construct to nullify incoming projectiles and trap enemies within a designated zone.	multi	0	7	0	-6	-3	0	t	18
+96	Fairy's Guidance	The spirit realm provides heightened sensory input, allowing the user to anticipate movements and react with supernatural precision.	self	0	0	0	-4	0	-3	f	7
+97	Vampiric Resilience	The user possesses a supernatural constitution, allowing them to endure horrific physical trauma and sustain themselves despite severe injuries or exhaustion.	self	0	0	10	5	3	2	f	20
+97	Predatory Presence	The user emits an aura of dread and overwhelming predatory instinct, unnerving nearby enemies and making it difficult for them to maintain focus.	multi	10	5	0	-3	-2	-3	t	16
+97	Shadowborne Agility	The user moves with supernatural speed and grace, often appearing as a blur to the untrained eye, allowing them to strike before an opponent can react.	other	0	0	0	-1	-5	-4	t	20
+97	Sanguine Command	The user can project their will onto others from a distance, exerting mental and physical influence over nearby targets.	multi	5	4	0	-2	-3	-1	t	12
+98	Neon Shield & Reflexes	The user envelops themselves in a shroud of neon light. This creates a barrier that reflects projectiles and provides enhanced reaction speeds, allowing them to perceive movements at near-instantaneous speeds.	self	0	1	5	8	4	0	f	17
+98	Stasis Field	By striking targets with concentrated neon bolts, the user traps them in a stasis bubble, freezing their timeline and movement entirely.	multi	5	3	0	0	-10	0	t	20
+98	Neon Singularity	The user creates a gravity well of neon energy that pulls all nearby enemies into a central point before detonating, shattering their physical forms and leaving only a cloud of photons.	multi	4	6	-10	-8	-9	0	t	54
+98	Neural Override	By targeting the neural pathways of a target's brain with neon energy, the user forcibly hijacks their consciousness, turning them into an obedient puppet.	other	3	0	0	0	-10	0	t	20
+99	Vigilant Hunter Focus	The user maintains intense mental clarity and tactical awareness, allowing them to predict enemy movements and minimize damage taken from supernatural foes.	self	0	0	10	5	0	0	f	15
+99	UV Blade Strike	Using an ultraviolet arc sword, the user delivers a searing strike that burns through and weakens the defenses of undead targets in close proximity.	other	3	1	-2	-4	-1	0	t	14
+99	Explosive Volley	The user fires a series of compound bow arrows with time-delay explosive tips, creating localized blasts to damage and disrupt multiple targets.	multi	8	3	-4	-2	-3	0	t	18
+99	Silvered Slinger	A flurry of silver throwing knives is unleashed from a wrist-mounted dispenser, striking targets and restricting their movement.	other	5	0	-2	-1	-3	0	t	12
+100	Mass Hysteria	The user projects an aura of absolute psychological dread and supernatural madness, overwhelming the minds of all nearby living beings.	multi	5	8	-10	-10	-5	-5	t	60
+100	Rite of the Outer Gate	By invoking the power of Sut-Typhon, the user tears open a rift to the Outer Universe, subjecting targets to physics-defying cosmic forces.	multi	10	10	-2	-8	-8	-4	t	44
+100	Silver Key Sovereignty	Utilizing the properties of the Silver Key, the user can subconsciously rewrite their own status to bypass certain fatalities and maintain their physical form.	self	0	0	5	7	2	1	f	15
+100	Spatial Distortion	The user warps the local environment into a distorted landscape where distance and direction lose all meaning for their enemies.	other	3	4	0	-2	-10	0	f	12
+101	Swirling Eye Perception	The swirling patterns within their eyes grant them preternatural insight, allowing them to anticipate incoming strikes and react with instinctive precision.	self	0	0	0	5	0	2	f	7
+101	Tectonic Impact Strike	By channeling their country-level physical strength into a single blow, they can generate shockwaves that shatter the very earth and crush anything in their path.	other	0	4	-8	-3	-2	-5	t	36
+101	Ethereal Resonance	A wide-range discharge of mystical energy that disrupts the physical stability of nearby targets.	multi	5	10	-4	-2	-3	0	t	18
+101	Unfettered Velocity	They can move at speeds that transcend normal human perception, making them nearly impossible to track or intercept.	self	0	0	0	0	8	1	f	9
+102	Energy Siphon	The user instinctively senses and draws in surrounding energy signatures, fortifying their own physical form while draining the vitality of nearby power sources.	self	0	3	2	1	0	0	f	3
+102	Quantum Splatter-Matter	The user exhales a concentrated blast of volatile quantum matter. Upon contact, it incinerates organic material and melts through reinforced plating.	other	5	2	-10	-4	0	0	t	28
+102	Interdimensional Tempest	By tearing the fabric of space-time as it moves, the user generates localized storms filled with interdimensional thunder and jagged reality cracks.	multi	8	7	-5	-3	-4	0	t	24
+102	Tentacle Lash	Massive, powerful tentacles strike with enough force to crush reinforced hulls and throw massive targets across great distances.	other	3	0	-6	-2	-5	0	t	26
+103	Infernal Breath	The beast exhales a concentrated blast of intense flames, scorching the target's defenses and inflicting blistering heat.	other	5	2	-10	-8	-4	0	t	44
+103	Thermal Adaptation	The user adjusts its internal body temperature using dorsal plates to remain peak-condition in any environmental condition.	self	0	0	5	3	1	2	f	11
+103	Tail Slash	The thick tail is swung with immense force, striking the target and disrupting their movement and stance.	other	2	0	-7	-4	-8	0	t	38
+103	Sonic Roar	A thunderous roar that manipulates sound waves to disorient and weaken the resolve of nearby foes.	multi	3	4	-3	-5	-2	0	t	20
+104	Ki Fortification	By channeling internal energy into their physical forms, they harden their skin and bolster their defensive capabilities against incoming strikes.	self	0	0	10	10	0	0	f	20
+104	Homing Ki Volley	The user unleashes a barrage of energy blasts that instinctively track the target's location, making evasion nearly impossible.	multi	10	5	-10	-5	-3	-2	t	40
+104	Multiplication Tactic	By splitting their consciousness and energy, the user creates duplicates to overwhelm opponents through sheer numbers.	multi	0	3	-5	-5	-10	-10	t	60
+104	Martial Arts Mastery	A masterclass in close-quarters combat where the user anticipates and counters an opponent's every movement.	other	0	0	-5	-10	-5	-10	t	60
+105	Crushing Tackle	The user lunges forward with immense force, slamming into opponents to shatter their stance and disrupt their positioning.	other	5	1	-2	-3	-4	0	t	18
+105	Titan's Physique	Harnessing his peak physical conditioning and sheer muscle mass, the user becomes nearly impossible to move or grapple.	self	0	0	1	3	2	1	f	7
+105	Shockwave Strike	A massive wide-swinging strike that releases a kinetic shockwave, pushing back and staggering everyone in the immediate vicinity.	multi	3	4	-1	-2	-4	0	t	14
+105	Tactical Analysis	Drawing upon his academic background and combat experience to anticipate the movements of opponents before they land.	self	0	0	0	2	1	1	f	4
+106	Ancestral Memory	The user draws upon the collective consciousness of their entire lineage, granting them near-infinite tactical knowledge and the ability to anticipate enemy movements with uncanny precision.	self	0	0	0	5	0	3	f	8
+106	Psionic Drain	The user lashes out with a mental tether, forcibly siphoning the psychic energy and life essence of a nearby creature to bolster their own vitality.	other	5	0	-10	-2	0	0	t	24
+106	Transmutative Slime	The user secretes a corrosive mucus that warps the physiology of those it touches, transforming them into mindless, aquatic husks.	multi	3	5	-4	0	-8	0	t	24
+106	Hypnotic Pattern	A crushing wave of eldritch geometry and psychic noise floods the area, overwhelming the senses and freezing foes in a state of paralyzed terror.	multi	4	8	0	0	-10	0	t	20
+107	Blizzard	The user summons a massive, localized blizzard, drastically reducing the visibility and movement capabilities of all nearby enemies while freezing them in place.	multi	8	7	0	-5	-10	-2	t	34
+107	Frost Armor	The user's body hardens into a jagged coating of dense ice, significantly increasing its physical defense and resistance to environmental hazards.	self	0	0	5	10	0	0	f	15
+107	Ice Beam	A focused blast of freezing energy is projected at a single target, dealing severe damage and chilling their systems.	other	5	1	-8	-3	-4	0	f	15
+107	Mega Evolution	By tapping into an internal core of primal energy, the user undergoes a transformation that drastically enhances its physical power and raw offensive capabilities.	self	0	0	10	10	5	10	f	35
+108	Gamma Regeneration	The user's dense physiology allows for rapid cellular repair, knitting together wounds and tattered flesh almost instantly in the heat of combat.	self	0	0	5	2	0	0	f	7
+108	Seismic Slam	The user delivers a devastating ground-shaking strike that creates localized tremors, destabilizing the footing and defenses of nearby opponents.	multi	5	4	-10	-3	-7	0	t	40
+108	Unstoppable Onslaught	Fueled by uncontrollable rage, the user strikes with enough brute force to shatter armor and crush bone on impact.	other	0	1	-8	-4	0	-5	f	17
+108	Berzerker Instincts	Tapping into the primal side of their mutation, the user gains enhanced reaction speeds and predictive awareness in close-quarters combat.	self	0	0	0	2	3	1	f	6
+109	Mutagenic Resilience	The user's physiology is enhanced by the serum, significantly increasing their durability and stamina during prolonged physical confrontations.	self	0	0	4	5	2	1	f	12
+109	Colossal Impact	A devastating physical strike that utilizes their massive frame to crush opponents and shatter surrounding structures.	other	0	3	-10	-5	-3	-4	t	44
+109	Seismic Ground Slam	The user slams their limbs into the ground, creating a shockwave that disrupts the balance and positioning of nearby enemies.	multi	2	6	-4	-3	-7	0	t	28
+109	Chemical Synthesis	The user's high intelligence allows them to predict the chemical and physical weaknesses of their opponents, refining their tactical strikes.	self	0	0	0	3	1	5	f	9
+110	Abomination Physiology	The mutation grants the user immense physical power and durability, allowing them to shrug off heavy artillery while delivering blows capable of shattering structures.	self	0	0	5	4	2	6	f	17
+110	Brute Force Impact	Utilizing massive physical strength and a mastery of combat tactics, the user strikes with enough force to shatter defenses and stagger opponents.	other	0	2	-4	-3	-1	0	t	16
+110	Thunderclap	By clapping their hands together with superhuman force, the user creates a shockwave that disorients nearby enemies and hinders their movement.	multi	5	6	-1	0	-4	0	t	10
+110	Tactical Combat Instincts	Retaining their elite military training, the user can anticipate enemy movements and strike with calculated precision despite their monstrous size.	self	0	0	0	2	1	3	f	6
+111	Gamma-Enhanced Physiology	The user's body is reinforced by gamma radiation, granting them massive physical durability, superhuman stamina, and the ability to withstand high-intensity energy attacks.	self	0	0	5	4	2	3	f	14
+111	Seismic Impact	By striking the ground or clashing with opponents in close proximity, the user generates powerful shockwaves and tremors that can destabilize the environment.	multi	3	5	-4	-2	-3	0	t	18
+111	Brute Forceer	Using immense physical strength, the user delivers devastating strikes that can shatter buildings and create significant collateral damage.	other	0	1	-5	-2	0	-4	f	11
+111	Tactical Awareness	Drawing from years of intelligence training and military experience, the user can predict enemy movements and optimize their combat stance.	self	0	0	0	3	1	2	f	6
+112	Gamma-Enhanced Physiology	The user's body is saturated with gamma radiation, granting them immense muscular density, heightened reflexes, and a relentless endurance that allows them to shrug off impacts that would pulverize ordinary humans.	self	0	0	5	8	4	7	f	24
+112	Shockwave Smash	By striking the ground with immense force, they release a devastating kinetic shockwave that travels across the earth, staggering nearby enemies and collapsing the terrain.	multi	10	5	-10	-3	-6	0	t	38
+112	Behemoth's Might	The user's massive size and strength allow them to seize opponents with crushing force, physically overwhelming them and rendering their movements sluggish.	other	0	0	-5	-4	-8	-3	t	40
+112	Tactical Instincts	Despite their deteriorating mental state, the user retains a sharp tactical edge, allowing them to anticipate and counter incoming maneuvers with instinctive precision.	self	0	0	0	5	2	3	f	10
+113	Mirage Weaver	The user projects hyper-realistic holographic projections to confuse the senses of their enemies, making it impossible to distinguish friend from foe or reality from illusion.	multi	5	4	0	0	0	0	t	0
+113	Techno-Sorcery Projection	By manipulating advanced nanomachines, the user creates tangible objects and energy constructs to strike targets or manipulate their environment.	other	10	2	0	0	0	5	f	5
+113	Strategic Veiling	The user's mastery of advanced technology and strategic planning allows them to anticipate enemy movements and shield themselves from psychic detection.	self	0	0	0	3	0	0	f	3
+113	Matter Transmutation	With a mere gesture, the user can instantly alter the physical properties of inorganic materials, turning buildings into solid stone or creating environmental hazards.	other	2	3	0	0	0	-4	f	4
+114	Transcendent Perception	The user's heightened awareness allows them to anticipate incoming threats and sense hidden dangers, effectively fortifying their mental and physical positioning.	self	0	1	5	10	2	3	f	20
+114	Telekinetic Resonance	By channeling their inner power, the user projects a telekinetic force that ignores physical durability to strike at the target's mind and physical structure simultaneously.	other	10	3	-2	-8	-5	-4	t	38
+114	Psychic Overload	The user projects a wave of mental manipulation that disrupts the target's senses and will, effectively paralyzing their ability to coordinate an attack.	multi	5	4	-1	-7	-8	-6	t	44
+114	Psychometry Strike	The user touches an object or surface to manifest the history of its past trauma onto their opponent's psyche.	other	0	0	-3	-5	-2	-1	t	22
+115	Mythic Resilience	The user's divine essence grants them an unparalleled sense of endurance and stamina, allowing them to withstand grueling attrition battles without faltering.	self	0	0	5	4	1	0	f	10
+115	Holy Radiance	The user channels holy energy through their staff to strike at the essence of the profane. This blast can bypass typical defenses and weaken the physical forms of demonic entities.	other	5	3	-4	-2	0	-1	t	14
+115	Deconstruction	A high-level offensive spell that begins to dismantle the atomic structure of the target. If successful, it causes immediate disintegration of the object or entity's physical form.	other	3	2	-8	-5	0	0	t	26
+115	Inferno Veil	The user manifests intense flames to incinerate nearby enemies while obstructing their vision and movement.	multi	3	5	-3	-1	-4	0	t	16
+116	Mutagenic Resilience	The alien fluids circulating through their system grant them immense physical durability and immunity to common toxins.	self	0	0	5	4	0	0	f	9
+116	Colossal Strike	Utilizing their massive size and enhanced strength, the user delivers a devastating physical blow that can crush bone and shatter fortifications.	other	0	3	-8	-4	-2	0	t	28
+116	Primal Roar	A thunderous vocalization that strikes fear into the hearts of foes and disorients their senses.	multi	5	7	0	-2	-3	-1	t	12
+116	Heightened Instincts	Enhanced senses allow the user to predict incoming movements and react with predatory speed.	self	0	0	0	3	2	1	f	6
+117	Tactical Resilience	Drawing from years of military service, the user maintains intense focus under pressure, increasing their physical endurance and defensive capabilities against incoming threats.	self	0	0	10	10	5	0	f	25
+117	Military Precision Strike	Utilizing expert marksman training and heavy firearms, the user delivers a devastating strike that punishes the target's defenses and hinders their ability to counter.	other	5	1	-2	-3	-2	-4	t	22
+117	Close-Quarters Dominance	The user employs brutal hand-to-hand techniques to overwhelm and disorient multiple opponents simultaneously in a tight space.	multi	0	2	-3	-2	-4	-5	t	28
+117	Hardened Stance	The user's weathered physique allows them to shrug off heavy impacts that would incapacitate a standard survivor.	self	0	0	5	10	0	0	f	15
+118	Ethereal Sanctum	By emitting a pervasive, hallucinogenic gas, they shroud their senses in a veil of psychic distortion. This allows them to perceive the true nature of reality while making it impossible for others to distinguish between what is solid and what is a mere phantom.	self	0	0	10	10	5	0	f	25
+118	Mirage of the Void	The user projects hyper-realistic illusions that warp the perception of space and matter. Targets are forced to navigate a labyrinth of falsehoods, making their movements erratic and their defenses unreliable.	multi	5	7	0	-10	-10	-5	t	50
+118	Divine Execution	Utilizing a masterfully crafted bow, they unleash arrows at supersonic speeds. These projectiles are designed to pierce through reinforced materials and strike with lethal precision.	other	8	0	-10	-5	0	0	f	15
+118	Arcane Manipulation	The user exerts a subtle influence over the physical world, allowing them to manipulate matter and distance from afar to hinder their opponents' progress.	multi	10	5	0	0	-10	0	f	10
+119	Hunter's Resolve	Drawing upon his mastery and strategic focus, they enter a state of heightened awareness, improving their defensive stance and tactical positioning.	self	0	0	5	10	2	3	f	20
+119	Silvered Axe Strike	A powerful strike with their signature axe-gun hybrid. The silver-tipped blade and explosive discharge can shatter the defenses of even the most resilient supernatural foes.	other	3	1	-2	-4	0	0	t	12
+119	Tactical Tracking	Using specialized dust and keen observation, they track the movements of fleeing prey, hindering their ability to escape or reposition.	other	5	0	0	0	-4	0	f	4
+119	Executioner's Cleave	A heavy, wide-reaching swing that strikes multiple nearby targets, designed to shatter armor and pierce through thick hide.	multi	2	3	-4	-5	0	0	t	18
+120	Inorganic Resilience	The user's stone-like composition provides incredible durability and resistance to physical fatigue, allowing them to endure heavy blows without tiring.	self	0	0	5	8	1	0	f	14
+120	Colossal Impact	Leveraging their immense size and weight, the user delivers a devastating strike that can shatter structures and crush opponents.	other	0	3	-10	-5	-2	-8	t	50
+120	Unstoppable Momentum	The sheer force of their movement creates a crushing shockwave, making it difficult for nearby enemies to maintain their footing.	multi	3	5	-4	-2	-7	0	t	26
+120	Tablet's Vitality	Empowered by the mystical artifacts of the museum, the user draws upon an endless well of energy to sustain their form.	self	0	0	10	3	0	0	f	13
+121	Tactical Synthesis	Drawing on decades of experience in biochemistry, they can identify and exploit specific physiological weaknesses in their enemies, significantly increasing their defensive efficiency through strategic positioning and preparation.	self	0	0	0	3	0	2	f	5
+121	Purifying Radiance	Utilizing specialized UV-frequency explosives or concentrated ultraviolet light emitters to sear the flesh of those who walk the night, causing immediate biological distress.	multi	8	5	-2	-1	-1	0	t	8
+121	Ballistic Mastery	Employing customized firearms loaded with silver-tipped rounds or chemical agents to strike targets from a distance, ensuring even the swiftest prey is halted.	other	10	0	-2	0	0	-1	f	3
+121	Chemical Suppressant	Injecting a fast-acting serum designed to dull the aggressive instincts and physical capabilities of those afflicted by the vampiric curse.	other	0	0	0	0	-2	-1	t	6
+122	Troll's Essence	The user channels the raw, primal power of their inner host, significantly increasing their physical resilience and destructive potential in exchange for immense internal strain.	self	0	0	5	4	1	3	f	13
+122	Redcap's Rupture	The user manifests a jagged, stone-cleaving force that shatters the defenses of those in close proximity.	other	3	2	-4	-3	0	0	t	14
+122	Scholar's Insight	Utilizing their vast intellect and experience in horror narratives, the user predicts an opponent's movements, effectively neutralizing their initial strike.	self	0	0	0	-3	-1	-2	f	6
+122	Sanguine Discharge	Upon taking damage, the user's body releases a volatile burst of energy that strikes nearby enemies with devastating force.	multi	5	8	-3	-2	-1	0	t	12
+123	Essence of Destruction	The user channels their role as the cosmic antithesis of creation, bolstering their physical and metaphysical form to withstand any external force.	self	0	0	10	10	5	8	f	33
+123	Multiversal Collapse	The user emits a wave of entropic energy that fractures the fabric of reality, disintegrating everything in its path and dismantling the defenses of nearby foes.	multi	10	10	-10	-10	-5	-7	t	64
+123	Nullification Field	By wielding the power of an ultimate void, they render the weapons and abilities of their enemies useless by erasing them from existence.	other	5	2	-5	-9	0	-10	t	48
+123	Entropyed Stride	The user warps the space around them, causing enemies to lose their footing as the ground beneath them dissolves into nothingness.	other	3	1	0	0	-10	0	t	20
+132	Colossal Impact Strike	A devastating physical assault that carries enough force to shatter dimensions and devastate the surrounding area upon impact.	other	0	5	-10	-4	-2	0	t	32
+124	Resilient Instincts	Having survived years of physical torture and internal agony, the user's body has become numb to pain and resistant to toxins. This heightened durability allows them to ignore debilitating effects and maintain peak fighting form despite severe injuries.	self	0	0	10	5	2	0	f	17
+124	Shattering Strike	The wyvern unleashes a devastating physical assault with its claws and beak. The sheer force is capable of demolishing stone structures and shattering the defenses of even the most formidable foes.	other	0	2	-8	-3	-1	0	t	24
+124	Shadow Glide	By flattening their wings and utilizing tactical positioning, the user can blend into the environment. This allows them to strike from an unexpected angle, catching the enemy off-guard.	other	5	0	0	-2	-3	-1	t	12
+124	Tail Lash	A whip-like strike from the tail delivers a punishing blow across a wider distance. The impact is designed to knock back and displace targets.	other	4	1	-5	0	-5	0	t	20
+125	Abyssal Shriek	The user emits a piercing, magically-charged sonic blast that disorients and deafens nearby enemies.	multi	5	3	0	-4	-2	-1	t	14
+125	Pack Resonance	When fighting alongside others of their kind, the user's presence bolsters their physical stamina and coordination.	self	0	0	2	1	1	1	f	5
+125	Senses of the Underdark	Heightened senses allow the user to navigate darkness and react to incoming strikes with unnatural precision.	self	0	0	0	3	0	1	f	4
+125	Beak Strike	A swift, heavy strike with a hooked beak designed to pierce and crush armor.	other	0	0	-3	-1	0	-2	f	6
+126	Storm Architect's Insight	Through unparalleled wit and tactical foresight, they can predict their opponent's movements before they occur, making them nearly impossible to catch off guard.	self	0	1	0	5	2	3	f	10
+126	Thunderous Barrier	They manifest a massive, roaring thunderstorm that creates a chaotic zone of electricity, punishing anyone who attempts to penetrate the mountain's defenses.	multi	8	7	-10	-4	-3	0	t	34
+126	Volt-Infused Strike	By channeling raw electricity into their physical strikes, they deliver devastating kinetic and electrical force capable of shattering stone.	other	3	0	-8	-2	0	-5	f	15
+126	Electric Transmutation	The user momentarily dissolves their physical form into pure electrical energy to evade incoming attacks or relocate instantly.	self	0	1	5	8	9	0	f	22
+127	Herald of Corruption	The user radiates an overwhelming aura of decay. Those caught in the vicinity find their resolve crumbling as physical and spiritual defenses are eroded by the chaotic influence.	multi	5	7	-10	-8	-4	-3	t	50
+127	Unleashed Corruption	The user taps into the primordial rot within their soul. This surge of power bolsters their physical prowess and allows them to endure devastating wounds that would end lesser beings.	self	0	0	10	7	5	8	f	30
+127	Judgment of Absolution	With a devastating swing of their massive axe, the user unleashes a wave of kinetic force and necrotic energy, shattering the physical integrity of their foe.	other	3	2	-10	-5	-6	0	t	42
+127	Eldritch Reach	The user projects a wave of chaotic energy that disrupts the spatial positioning of their enemies, making it nearly impossible for them to maintain a steady stance.	multi	10	8	0	-2	-10	0	t	24
+128	Vanishing Veil	The user becomes completely invisible, including any objects they are currently touching, allowing them to strike from unseen angles or escape pursuit entirely.	multi	10	0	0	0	0	-5	t	10
+128	Double Bazooka Volley	The user fires a devastating blast from the dual bazookas mounted on their arms, dealing heavy kinetic damage to all nearby targets.	multi	3	5	-2	-1	-1	0	f	4
+128	Herculean Might	The user taps into their immense physical strength and stamina, significantly increasing their own defense and raw power to withstand heavy blows.	self	0	0	1	2	0	3	f	6
+128	Lion's Scent Tracking	Utilizing an acute sense of smell, the user can pinpoint and track enemies even when they attempt to hide or maneuver stealthily.	other	5	0	0	0	-1	0	f	1
+129	Serpent's Seal	The celestial mark grants the user near-absolute immortality, allowing them to endure fatal wounds and persist even when their physical form is ravaged. Their essence remains anchored, making them impossible to claim by death.	self	0	0	5	4	1	0	f	10
+129	Soul-Light Radiance	The user projects the light of their soul to weaken and drain the essence of those around them, significantly reducing the enemy's capabilities.	multi	3	5	-3	-2	-1	-2	t	16
+129	Meteorite's Wrath	The user manipulates a burning meteor to strike targets with and intense fire, overwhelming their defenses and scorched earth.	other	5	3	-4	-2	-1	0	t	14
+129	Spirit Veil	The user enters a spectral state, becoming intangible and invisible while exerting telekinetic force to displace and disorient the opposition.	other	3	0	0	-1	-2	0	t	6
+130	Mega Evolution	By resonating with a specialized stone, the user undergoes a massive surge of power, extending their reach and increasing their physical might significantly.	self	0	0	10	8	5	9	f	32
+130	Aura of Dread	The user radiates a terrifying psychic presence that can strike fear into the hearts of others, potentially paralyzing them with terror.	multi	5	10	0	-3	-4	-2	t	18
+130	Razor Wind	The user releases a whirlwind of sharp, jagged wind blades that slice through everything in their path.	multi	8	7	-8	-3	-2	0	f	13
+130	Precognition	The user senses incoming threats before they manifest, allowing them to react with supernatural precision.	self	0	0	0	5	2	3	f	10
+131	The Cold of the Void	The user radiates an aura of existential apathy. This chilling void drains the target's will to fight, paralyzing their spirit and draining their mental fortitude.	other	10	5	-2	-4	-3	-2	t	22
+131	Soul Melting	By striking with their spear or focusing their intent, the user can melt a target's soul, physically collapsing their corporeal form into a ghostly, spectral state.	other	0	1	-5	-5	-4	-3	t	34
+131	Uncreation's Veil	The user invokes the power of Uncreation to become intangible and phase out of reality. In this state, they are immune to physical strikes as their very existence becomes a paradox.	self	0	0	1	5	2	0	f	8
+131	Total Erasure	The user strikes a target with the ultimate power of Uncreation. This does not just kill; it erases the concept of the target from the current timeline and the memories of those who knew them.	other	5	3	-10	-10	-10	-10	t	80
+132	Ultimate Lifeform Physique	The user taps into their innate biological superiority, exponentially increasing their physical resilience and raw muscular output to withstand cosmic-level impacts.	self	0	0	5	4	1	3	f	13
+132	Dimensional Rupture Wave	The user unleashes a massive energy blast that ripples through the fabric of reality, striking multiple targets and creating catastrophic collateral damage.	multi	10	9	-8	-3	-2	0	t	26
+132	Stalwart Presence	The user projects an overwhelming aura of power and intimidation, buckling the resolve and mobility of those nearby.	multi	1	3	0	-2	-4	0	t	12
+133	Sanctity of Order	The user invokes the inherent laws of the Time Tree, reinforcing their own existence against any form of entropy or temporal decay.	self	0	0	10	10	2	5	f	27
+133	Admonition of the Eternal Sword	By wielding the Eternity Sword, the user strikes at the essence of their foes, compelling them into a state of utter helplessness and rendering them unable to resist her authority.	other	10	5	-8	-9	-7	-7	t	62
+133	Chronal Stillness	The user imposes the weight of absolute law upon a wide area, slowing and paralyzing everything that deviates from her determined order.	multi	8	9	-4	-6	-10	-6	t	52
+133	Root Sovereignty	Drawing power from her status as a Root Being, the user becomes immovable and spiritually impenetrable by any force that does not share her authority.	self	0	0	5	10	0	2	f	17
+135	Absolute Defense	The user manifests an impenetrable aura of energy, fortifying their physical form against even the most devastating cosmic strikes.	self	0	0	10	10	0	0	f	20
+135	Dual Blade Execution	Utilizing a golden or sickle sword, the user unleashes a devastating strike that shatters the opponent's guard and severs their defenses.	other	10	2	-8	-7	-3	-5	t	46
+135	Void Radiance	A massive wave of energy is unleashed to push back and cripple the stance of multiple nearby foes at once.	multi	8	9	-6	-5	-7	0	t	36
+135	Mastery of the Blade	Expertise in swordplay allows the user to predict enemy movements and counter-attack with devastating precision.	self	0	0	0	5	2	8	f	15
+136	Folded Reality Strike	By manipulating the essence around them, they fold the fabric of reality to strike with overwhelming force. This technique crushes the surroundings and severely limits the target's mobility.	other	0	3	-4	-2	-3	-1	t	20
+136	Essence Aegis	The user taps into the lingering essence of Adal to harden their physical form and bolster their endurance, effectively absorbing incoming kinetic damage.	self	0	0	3	5	1	0	f	9
+136	Gravity Well of Raslan	They project a localized distortion of gravity that pulls inward, pinning enemies to the ground and slowing their reaction times.	multi	10	6	-1	0	-5	-2	t	16
+136	Masked Instincts	The mystical mask grants the user a heightened state of awareness and pre-emptive reaction, allowing them to predict and parry incoming strikes with ease.	self	0	0	0	4	2	3	f	9
+137	Molecular Absorption	By touching a material or environmental hazard, the user adopts its properties. This can grant them immense durability, elemental resistances, or enhanced physical traits based on what was absorbed.	self	0	0	3	5	2	4	f	14
+137	Gamma Discharge	The user releases a massive wave of radioactive energy and electricity. This blast incinerates nearby targets and disrupts their ability to maintain physical cohesion.	multi	4	5	-10	-7	-8	-6	t	62
+137	Elemental Mimicry	The user shifts their physical form to match the surrounding environment. This makes it incredibly difficult for opponents to land a physical strike on them as they become intangible or fluid.	other	0	0	0	-6	-4	-2	f	12
+137	Rapid Regeneration	The user's cells rapidly knit back together when damaged, especially after absorbing and integrating foreign biological material.	self	0	0	5	1	0	0	f	6
+138	Molecular Absorption	The user absorbs and merges with the physical properties of materials they touch, dramatically increasing their physical durability and strength.	self	0	0	5	8	2	7	f	22
+138	Matter Transformation Strike	The user morphs their limbs into massive weapons made of dense metal or stone to strike opponents with devastating force.	other	3	2	-10	-4	0	-8	t	44
+138	Mjölnir Essence Mastery	After absorbing the essence of mystical weaponry, the user can channel elemental energy and lightning to strike targets.	multi	8	5	-10	-3	0	-9	t	44
+138	Reactive Regeneration	The user's body can melt into a shapeless mass to heal injuries or reform limbs instantly when composed of high-density materials.	self	0	0	7	3	1	0	f	11
+139	Terrifying Presence	The sheer size and distorted features of the creature overwhelm the senses of nearby intruders, making it difficult for them to focus or maintain their footing.	multi	5	4	0	-3	-2	-1	t	12
+139	Brutal Maw and Limb Strike	Utilizing its massive size and immense physical strength, the user lashes out with heavy strikes capable of crushing bone and rending flesh.	other	0	1	-5	-2	-3	-4	f	14
+139	Unyielding Mutation	The core of the entity is reinforced by its mutated physiology, allowing it to endure heavy impacts and continue its hunt without fatigue.	self	0	0	3	4	1	0	f	8
+139	Crushing Leap	The user lunges forward with a sudden, explosive burst of speed to pin an opponent down.	other	2	1	-3	0	-4	-2	t	18
+140	Skewering Rain	The user manifests an endless supply of metal skewers, hurling them with expert precision. These projectiles strike multiple targets simultaneously across a wide area, pinning them and hindering their movement.	multi	5	3	-10	-5	-8	0	t	46
+140	Spatial Displacement	By manipulating the fabric of space, the user can instantly teleport or shift their position. This allows them to bypass physical obstacles and evade incoming attacks with ease.	self	0	0	0	5	10	0	f	15
+140	Temporal Paradox	By distorting the timeline, the user ensures their own survival. They can essentially 're-write' moments of failure, granting them an uncanny sense of immortality and resistance to physical laws.	self	0	0	10	10	0	0	f	20
+140	Killing Intent Projection	The user radiates a wave of pure, malevolent intent. This suffocating aura strikes the minds of those nearby, shattering their resolve and weakening their ability to mount an offense.	multi	3	2	0	-5	0	-8	t	26
+141	Yato Resilience	The user taps into their primal lineage, drastically increasing their physical durability and speed to withstand heavy impact while maintaining a relentless pace of combat.	self	0	0	5	4	3	2	f	14
+141	Umbrella Gale	Using their massive umbrella as a conduit for force, the user unleashes a crushing strike that creates a shockwave, staggering opponents and restricting their ability to maneuver.	other	3	2	-10	-5	-4	-2	t	42
+141	Bloodlust Frenzy	The user enters a berserk state, heightening their instincts to the point where they can strike with devastating precision. This onslaught overwhelms multiple nearby targets in a flurry of strikes.	multi	2	4	-10	-8	-6	-10	t	68
+141	Instinctive Reflexes	The user's heightened senses allow them to predict and parry incoming attacks before they land, effectively neutralizing the threat of rapid-fire strikes.	self	0	0	0	6	0	4	f	10
+142	Divine Resilience	Drawing upon their status as a high-ranking foreign deity, the user fortifies their physical form to endure punishment that would shatter mortal bones.	self	0	0	10	8	0	0	f	18
+142	Blight of the Void	The user exhales a corrosive, necrotic miasma that decays both physical flesh and spiritual defenses, rotting the target's vitality.	multi	5	7	-10	-8	-4	-3	t	50
+142	Tectonic Rupture	By slamming their power into the earth, the user causes violent tremors and jagged fissures to erupt, trapping enemies in a chaotic landscape.	multi	3	8	-5	-4	-10	0	t	38
+142	Shadow Strike	Utilizing extreme speed and mastery of combat, the user delivers a devastating strike that strikes with the force of a falling mountain.	other	2	0	-10	-5	0	-7	t	44
+143	Armour of Attrition	The user manifests a protective shell of energy, granting them massive durability. While within this form, they project a mystical aura that can only be pierced by the most concentrated forces.	multi	0	5	-1	-3	0	0	f	4
+143	Primordial Decay	The user's presence emits a lethal atmosphere of corruption. This pervasive influence saps the vitality of all surrounding life, causing decay and weakening the resolve of those nearby.	multi	10	10	-2	-1	-1	-1	t	10
+143	Acidic Enclosure	The user traps their opponents within a massive bubble of corrosive acid. The substance clings to the target, melting away defenses and paralyzing them in a state of shock.	other	3	2	-2	-2	-4	0	t	16
+143	Magma Surge	Upon reaching its full metamorphosis, the user can erupt with molten earth, manifesting pillars of magma and scorching projectiles from their very essence.	multi	5	4	-3	-1	-2	-2	f	8
+144	Gimmick Absorption	By cannibalizing the components of destroyed machinery, the user integrates their unique properties into their own systems. This grants them a versatile suite of magic and offensive capabilities.	self	0	0	10	5	2	8	f	25
+144	Brain Link	Utilizing rhythmic pulses of light, the user interfaces directly with the neural pathways of nearby biological entities. This overrides their motor functions and imposes a direct mental command.	other	2	0	0	0	-10	0	t	20
+144	Elemental Seal	The user weaves a layer of necrotic magic onto their strikes, ensuring that wounds inflicted cannot be mended by standard regenerative means or recovery spells.	multi	5	3	-7	0	0	0	f	7
+144	Reflective Barrier	The user's carapace reflects incoming elemental projectiles. By cycling between two distinct elements, they can deflect and redirect the energy of those who strike them.	multi	0	2	0	-10	0	-5	f	15
+145	Crushing Presence	The sheer scale and overwhelming aura of the entity cause nearby foes to recoil in fear, significantly reducing their movement and defense as they are overwhelmed by its massive size.	multi	3	5	0	-4	-3	0	t	14
+145	Earth-Shattering Strike	The entity delivers a massive physical strike fueled by its immense size. The impact creates significant collateral damage, striking targets and the environment alike.	other	0	4	-5	-3	-1	-2	f	11
+145	Dream Anchor	The entity's existence within the dream is so absolute that it reinforces its own physical stability and endurance against reality-warping effects.	self	0	0	3	4	1	2	f	10
+145	Reality Distortion	The entity can manipulate the dream's fabric to teleport or warp reality. It disrupts the spatial orientation of enemies, making their movement unpredictable and hindered.	multi	5	10	0	0	-4	0	t	8
+146	Abyssal Veil	The user manifests a shroud of dark energy, bolstering their defenses and resilience against incoming strikes while masking their presence from common foes.	self	0	0	10	2	0	0	f	12
+146	Void Surge	A wave of corrupted energy erupts from the user's position, striking nearby enemies with a blast of chaotic magic that drains their strength and hinders their movement.	multi	5	4	-10	-3	-2	-2	t	34
+146	Abyssal Corruption	The user focuses their dark intent on a single target, inflicting a lingering curse that decays the opponent's physical stamina and lowers their guard.	other	3	0	-5	-2	-1	-1	f	9
+146	Dimensional Fracture	The user manipulates local space-time to create a rift that disrupts the enemy's footing and senses, effectively trapping them in a zone of confusion.	multi	8	5	0	-1	-4	0	t	10
+147	Elemental Veil	The user manifests a shimmering magical ward of pure energy. This shield provides significant protection against physical harm but is structurally dependent on the mage's elemental affinity.	self	0	0	5	8	0	0	f	13
+147	Leyline Surge	Harnessing raw energy from the earth, the user unleashes a violent blast of elemental magic. This strike is designed to overwhelm opponents and shatter their composure.	other	3	2	-10	-5	0	0	t	30
+147	Arcane Suppression	By manipulating the local environment's flow of energy, they create a zone that hampers the coordination and movement of nearby enemies.	multi	5	5	0	0	-7	-3	f	10
+147	Elemental Resonance	The user pulses a specific frequency of energy intended to crack and destabilize the magical defenses of any nearby foes.	other	4	0	0	-8	0	0	t	16
+148	Evil Eye	The user's eyes act as a void of magic. Any incoming magical energy is instantly neutralized or 'deleted,' rendering the user immune to spells and making them a primary predator for traditional mages.	self	0	0	0	5	0	0	f	5
+148	Acceleraise Sphere	By manifesting a series of speed boosters at every possible angle, the user can move with such blistering velocity that they appear to be teleporting to their opponents.	self	0	0	0	0	10	3	f	13
+148	Secondth: Force Field	The user projects a localized field that siphons the movement speed of any and all enemies caught within its perimeter, funneling that stolen kinetic energy back into their own form.	multi	3	4	0	0	-8	0	t	16
+148	Mastery of the Blade	Expertise in swordplay allows the user to strike with lethal precision and immense physical power, capable of shattering high-level defenses through sheer force.	other	0	0	-7	-2	0	-4	f	13
+149	Vanitas Mastery	By tapping into the core of his magic, the user stabilizes their existence within the void, becoming virtually untouchable by standard physical or magical laws.	self	0	0	5	10	2	3	f	20
+149	Void Erasure	The user projects a wave of nothingness that dissolves the concept of the target's defense, unraveling their magical protections and physical integrity.	other	8	5	-7	-9	-3	0	t	38
+149	Dimensional Collapse	A massive surge of void energy strikes multiple targets simultaneously, crushing their physical space and slowing their movement to a crawl.	multi	10	10	-6	-8	-10	-4	t	56
+149	Truth of the Thema	The user forces their opponent to face the absolute truth of their existence, overwhelming their senses and draining their magical reserves.	other	5	0	-4	-6	-2	-8	t	40
+150	Fiendish Haste	The user's movement and physical strike intensity increase as it enters a bloodlust state.	self	0	0	10	5	2	3	f	20
+150	Savage Peck	The user delivers a rapid, violent strike to the target's head and neck.	other	0	1	-2	-1	-1	0	t	8
+150	Abyssal Frenzy	The user emits a chaotic aura that disorients nearby prey.	multi	3	2	0	-1	-2	0	t	6
+150	Infernal Plumage	The user's feathers release a searing heat that singes and scorches the skin of any foe nearby.	multi	2	3	-1	0	0	0	f	1
+151	Void Sphere Transformation	The user shifts their appendages into void spheres, allowing them to expand their reach and offer a defensive layer against incoming strikes.	self	0	0	2	3	1	1	f	7
+151	Void Explosion	The user releases a violent burst of energy that detonates in the surrounding space, causing massive damage and disorienting nearby targets.	multi	5	7	-10	-4	-3	0	t	34
+151	Rapid Regeneration	Even if torn apart or scorched by heat, the user's form knit back together instantly, making them nearly impossible to put down in a single engagement.	self	0	0	-5	-1	0	0	f	6
+151	Abyssal Reach	By whipping its tentacles through the air, the user strikes with such force that it disrupts the opponent's footing and momentum.	other	2	0	-3	-1	-5	-1	t	20
+152	Void Fracture	The user strikes their blade into the air, creating a rift that collapses local space. This creates a gravitational pull that drags nearby enemies toward the center of the tear.	multi	5	4	0	0	-10	0	t	20
+152	Chronos Rend	A strike and/or wave of energy that targets the temporal flow of an opponent. By slicing through time, it bypasses physical defenses to inflict massive damage directly upon their essence.	other	3	0	-10	-5	0	0	f	15
+152	Cosmic Synthesis	The user taps into the power of the Little Legends to manifest ethereal echoes of ancient champions. These entities serve as a multi-pronged force, augmenting the user's overall capabilities and presence on the battlefield.	self	0	0	5	5	5	10	f	25
+152	Spatial Veil	The user manipulates the space surrounding their person, making them nearly impossible to track or hit as they flicker through different dimensional planes.	self	0	0	0	10	5	0	f	15
+153	Parasitic Absorption	Upon making physical contact, they instantly begin to consume the target's life force. The victim is dissolved into their skin, becoming a conscious part of their collective consciousness while being physically restrained.	other	0	0	-10	-5	-8	-3	t	52
+153	Shared Consciousness	By absorbing a victim, they gain immediate access to the target's memories, skills, and experiences, enhancing their strategic capabilities.	self	0	0	0	3	0	5	f	8
+153	Limitation Field	A specialized cane generates an electric field that allows them to maintain a humanoid form and prevents their essence from bleeding into the surrounding environment.	self	0	0	0	4	1	0	f	5
+153	Deceptive Manipulation	They utilize a suave persona to mask their predatory nature, attempting to lower the target's guard and lull them into a state of complacency.	multi	5	3	0	-4	-1	-2	t	14
+154	Primordial Cosmo	The user radiates a divine aura that overwhelms the senses. Those in its presence find their life force draining, their physical movements hindered by overwhelming dread, and their mental faculties paralyzed.	multi	5	8	10	7	8	6	f	31
+154	Abyssal Void Manipulation	By distorting the surrounding space, the user can decompose matter at an atomic level and shroud entire regions in impenetrable darkness.	multi	10	9	-8	-9	-7	-7	f	31
+154	Cosmic Adaptation	The user's consciousness allows them to perceive and nullify any technique encountered for the first time, effectively mastering the opponent's methods instantly.	self	0	0	1	9	2	5	f	17
+154	Shadow Infection	The user injects the power of the void into living beings, effectively poisoning their internal energy and preventing them from channeling their own innate abilities.	other	3	1	-5	-6	-4	-9	t	48
+155	Regenerative Resilience	The user's unique physiology allows them to rapidly knit tissue and regrow limbs lost in combat, fueled by a deep connection to the earth's primal energy.	self	0	0	3	2	0	0	f	5
+155	Corrosive Tox-Blast	The user exhales a viscous, highly acidic pink substance that melts through organic matter and armor, searing the flesh of nearby adversaries.	multi	5	8	-7	-4	-3	0	t	28
+155	Amphibious Ambush	Utilizing its massive size and natural camouflage, the user strikes from the depths with overwhelming physical force, catching targets off-guard.	other	0	0	-6	-2	-5	-4	t	34
+155	Primal Awareness	The user's heightened senses allow them to perceive vibrations and movements in the water with extreme precision, making it nearly impossible to flank.	self	0	0	0	4	2	1	f	7
+156	Sylvan Exoskeleton	The user manifests a dense, hardened organic layer over their skin, drastically increasing their durability and physical resistance against conventional weaponry.	self	0	0	2	5	0	0	f	7
+156	Verdant Overgrowth	The user forces nearby flora to rapidly evolve and erupt from the ground. This creates a chaotic thicket that entangles enemies, constricting their movement and severing their mobility.	multi	8	5	0	-1	-4	0	t	10
+156	Rooted Bind	Massive, high-density roots surge from the earth to seize a single target. The grip is powerful enough to halt heavy machinery and crush bone alike.	other	5	1	-3	-2	-5	0	t	20
+156	Apex Mimicry	The user transforms their physical form into a more potent hybrid state, significantly enhancing their raw strength and reaction speeds.	self	0	0	1	2	3	4	f	10
+157	Appetite Energy Mastery	The user manifests their internal cellular energy into tangible constructs. This essence radiates an overwhelming aura of power, bolstering their physical capabilities and ability to manifest formidable shapes of raw hunger.	self	0	0	5	4	2	6	f	17
+174	Soul Rip	The user exerts their will over the minds of others, seizing control of their motor functions and twisting their perceptions into a nightmare.	other	3	0	-1	-3	-8	-5	t	34
+157	Masterful Knocking	The user applies a sophisticated technique that suppresses the raw power of an opponent. This calculation-based strike distorts their momentum and hides its true impact, potentially stunning them or neutralizing their offensive capabilities.	other	1	0	-3	-4	-3	-4	t	28
+157	Back Channel Compression	The user manipulates the flow of time in a localized area. By compressing seconds into extended durations, they can effectively freeze opponents in place during their own attacks, neutralizing threats across a wide radius.	multi	5	5	0	-2	-10	-3	t	30
+157	Autophagy Recovery	In moments of extreme exhaustion, the user can force their cells to consume non-vital segments of their own form to rapidly replenish stamina and vitality.	self	0	0	5	1	2	2	f	10
+158	Amphibious Resilience	The user's physiology is optimized for dual environments; they possess enhanced senses typical of early tetrapods to navigate murky waters and primitive shorelines.	self	0	0	2	1	1	0	f	4
+158	Crushing Bite	Using sharp, reinforced teeth, the user delivers a high-pressure bite capable of piercing and crushing through small prey's defenses.	other	1	0	-5	-2	0	-3	t	20
+158	Aquatic Ambush	Utilizing their heavy limb structure and aquatic grace, the user strikes from beneath the surface, disrupting the target's positioning.	other	3	1	0	0	-2	0	t	4
+158	Lurking Predator	Heightened sensory awareness allows the user to detect movements in the periphery, effectively countering sudden maneuvers from opponents.	other	5	0	0	-1	0	0	f	1
+159	Twinfold Despair	The entity projects a lingering aura of heavy sorrow. This presence heightens the power of its twin form while simultaneously draining the resolve and vitality of any nearby enemies.	multi	5	3	10	8	6	9	f	33
+159	Weight of the Void	The atmosphere becomes heavy and suffocating for intruders. The sheer psychological pressure slows movements and diminishes the effectiveness of offensive strikes against them.	other	3	2	-5	-7	-8	-6	f	26
+159	Resilient Sorrow	Born of deep melancholy, the entities possess a haunting durability. They can knit their forms back together even after being torn apart by physical force.	self	0	0	10	9	4	2	f	25
+159	Shattered Will	A psychic wave of hopelessness strikes the target's mind, making it increasingly difficult for them to coordinate their movements or focus their strength.	other	2	1	-3	-4	-9	-7	t	46
+160	Vector Shield	The user automatically calculates and redirects the direction of all incoming physical and energy-based vectors. Attacks that strike their body are instantly reflected back at the source or redirected harmlessly.	self	0	0	10	10	5	0	f	25
+160	Vector Manipulation	By manipulating the vectors of the environment, the user can crush opponents by altering the air pressure around them, liquefy solid structures, or accelerate objects to hypersonic speeds.	other	10	5	-8	-7	-9	-8	t	64
+160	Plasma Storm	The user generates a high-energy plasma field. This concentrated burst of energy can melt through fortified structures and incinerate targets within the immediate vicinity.	multi	3	4	-9	-6	0	-7	t	44
+160	Earth's Rotational Energy	By accessing and manipulating the massive vectors of the Earth's rotation, the user can generate a wave of force capable of altering geographic features on a continental scale.	self	0	10	5	8	3	10	f	26
+161	Acidic Membrane	The user coats its body in multiple layers of protective membranes and acidic secretions. This creates a corrosive barrier that makes physical contact hazardous for enemies while simultaneously granting the user a state of partial intangibility.	self	0	0	1	3	0	0	f	4
+161	Acid Spray	The user exhales a corrosive mist of acid. This corrosive substance clings to the target, corroding their defenses and severely weakening their physical capabilities.	other	5	3	-2	-4	-1	0	t	14
+161	Shadow Mirage	By moving at speeds approaching the limits of perception, the user creates multiple afterimages. This makes it nearly impossible for an opponent to pin down a single target.	self	0	0	0	2	4	0	f	6
+161	Siphoning Essence	The user establishes a link with the target's life force, draining their energy to replenish its own stamina and vitality.	other	10	0	-3	0	0	0	f	3
+162	Analytical Instruction	Utilizing superior processing power, the user can anticipate mistakes before they happen to bolster their own positioning and defensive stance.	self	0	0	0	10	5	5	f	20
+162	Elastic Reach	The user extends their limbs to strike from a distance or grab opponents, disrupting their balance and mobility.	other	5	0	0	-10	-2	0	t	24
+162	Safety Protocol Overload	The user projects an authoritative presence that overwhelms the target's focus, making it difficult for them to coordinate a counter-attack.	multi	3	5	0	-10	0	-2	t	24
+162	Inorganic Resilience	Being a machine of high-grade construction, the user can withstand physical impacts and environmental hazards that would harm organic tissue.	self	0	0	10	2	0	0	f	12
+163	Hyper Guard	The user's nanotechnological construct acts as an absolute barrier, significantly reducing the impact of incoming physical and energy strikes to nearly nothing.	self	0	0	10	10	0	0	f	20
+163	Deathly Illusion	The user vanishes in a cloud of smoke, leaving behind multiple illusory clones. These decoys confuse the opponent while the real user rains down a barrage of shuriken-like projectiles from above.	multi	5	3	-10	-5	-4	-5	t	48
+163	Wild Flash	Utilizing extreme speed and rapid footwork, the user executes a series of high-speed feints and dashes to mask their movements, making it nearly impossible for the enemy to track their next strike.	other	0	0	0	-5	-10	-5	t	40
+163	Twin Meteor Burst	The user unleashes a massive, wide-scale explosion of boomerang projectiles across the battlefield while levitating at the center of the chaos.	multi	8	9	-10	-5	0	-10	t	50
+164	Perception Fracture	The user targets the minds of others through visual contact, warping their perception of reality and inducing psychological instability or mental paralysis.	multi	5	3	0	-8	-7	-5	t	40
+164	Reality-Warping Pulse	As her powers reached a critical threshold, the user gained the ability to mentally alter reality on a massive scale. This instinctive defense creates a zone where physical laws are rewritten.	self	0	10	5	10	2	9	f	26
+164	Power Bestowal	The user can share fragments of her essence to empower others, granting them enhanced abilities and formidable capabilities.	multi	0	2	3	4	3	6	f	16
+164	Telekinetic Grip	The user projects mental force to physically manipulate and displace objects or individuals within her vicinity.	other	3	0	0	0	-8	0	t	16
+165	Wind Empowerment	The user channels their elemental affinity, tapping into the raw power of the wind to enhance their physical stature and combat prowess.	self	0	0	10	5	3	7	f	25
+165	Gale Force Strike	The user unleashes a violent burst of pressurized air, creating a localized storm that shreds the defenses and strikes at the opponent.	other	5	3	-8	-4	-6	0	t	36
+165	Prehistoric Displacement	The user tears a rift in reality, forcibly transporting their enemies into a desolate prehistoric battlefield where they are isolated from any outside interference.	multi	10	10	0	-2	-9	0	t	22
+165	Aura of the Ancient	The user projects a palpable aura that heightens their senses and allows them to predict incoming movements with instinctual precision.	self	0	0	0	8	0	4	f	12
+166	Vermillion Protection	Drawing upon the power of his lineage, the user creates a sanctuary of holy energy to bolster themselves and their allies.	multi	0	5	3	4	0	0	f	7
+166	Judgment Bolt	By summoning the presence of a high-tier Eidolon, they unleash a devastating strike that strikes down foes with overwhelming celestial force.	multi	8	7	-9	-5	-3	0	t	34
+166	Arcane Stop	The user manifests mystical cards that explode upon impact, trapping the enemy in a state of magical paralysis.	other	4	0	-2	-1	-8	0	t	22
+166	Tactical Insight	Through intense focus and superior intellect, the user predicts enemy movements to minimize incoming damage.	self	0	0	0	3	0	2	f	5
+167	Rhythm of the Streets	The user taps into a gritty, inner focus that enhances their physical prowess and reaction speeds, allowing them to move with uncanny precision amidst chaos.	self	0	0	10	5	3	2	f	20
+167	Discordant Bassline	A low-frequency sonic blast from the strings creates a wave of dissonance that disorients nearby opponents, making it harder for them to focus or move effectively.	multi	5	4	0	-10	-8	-5	t	46
+167	Subzero Resonance	Channeling a latent, icy energy through their movements, the user can flash-freeze the air around an opponent's strike, slowing their actions to a crawl.	other	2	1	-5	-5	-10	-5	t	50
+167	Gangland Instincts	Leveraging years of street-fighting experience, the user predicts and counters an enemy's movement before it fully manifests.	other	0	0	0	-10	-5	-5	f	20
+168	Electric Conduit	The user channels raw electricity through their body, significantly enhancing their personal resilience and physical power for a short duration.	self	0	0	10	5	2	4	f	21
+168	Hook-Spear Volley	Using their signature weapon, the user lunges at a target. The jagged hook can snag and drag an opponent off balance.	other	5	0	-3	-2	-4	0	t	18
+168	Static Discharge	The user releases a burst of electricity that shocks nearby targets, disrupting their coordination and movement.	multi	3	3	-2	-1	-3	0	t	12
+168	Resilient Stance	Drawing upon their incredible regenerative capabilities, the user can shrug off severe physical trauma and quickly knit back together.	self	0	0	8	4	1	0	f	13
+169	Neural Adaptation	The spinal implant activates, allowing the user to analyze and mimic the opponent's fighting style, granting them a massive boost in combat efficacy.	self	0	0	2	5	3	8	f	18
+169	Justice Fist	The user delivers a concentrated strike that reflects the opponent's momentum back at them, shattering their defense.	other	2	0	-10	-5	0	0	t	30
+169	Sonic Boom	By manipulating sound waves through intense physical movement, the user creates a concussive blast that disorients and pushes back nearby foes.	multi	5	4	-5	-2	-3	0	t	20
+169	EX-plosive Volley	The user triggers a series of explosive projectiles, forcing enemies to scatter and suffer heavy damage across a wide area.	multi	8	6	-10	-3	0	0	t	26
+170	Triple Truffle Shuffle	The user performs a frantic, high-speed dance that blurs their movement, making it difficult for enemies to track them while providing a surge of kinetic momentum.	self	0	0	0	5	8	3	f	16
+170	Belly of the Whale	The user opens their maw wide to inhale a target into their stomach. This consumes the opponent, effectively removing them from the immediate vicinity and muffling their capabilities.	other	3	1	-2	0	-10	-5	t	34
+170	Gummy Worm Resilience	The user's form becomes unnaturally durable. They can shrug off heavy projectiles and physical strikes, turning their body into a nearly indestructible bastion of stubbornness.	self	0	0	-4	-9	0	0	f	13
+170	Tootsie Roll Shotgun Blast	The user unleashes a blast from their firearm that is capable of shredding through heavy materials and pulverizing large targets.	multi	8	4	-7	-3	0	-6	t	32
+171	Space Suit Enhancement	The user activates their specialized space suit, tripling their physical strength and durability while granting them the ability to navigate the vacuum of space at FTL speeds.	self	0	0	10	10	10	10	f	40
+171	Tactical Batarang Wrap	The user launches a series of wired batarangs to ensnare and bind the enemy, severely restricting their movement and ability to strike back.	other	5	2	0	-3	-8	-4	t	30
+171	Gas Pellet Volley	The user releases concentrated gas pellets from their collar to cloud the area, disorienting and hindering the senses of all nearby opponents.	multi	3	5	-2	-2	-6	-4	t	28
+171	Eye of Horus Protection	The ancient charm on the user's collar grants them supernatural luck and the ability to negate incoming misfortune or magical mishaps.	self	0	0	5	8	0	0	f	13
+172	Barrier of the Brokenes	The user maintains an impenetrable aura that can withstand strikes from high-ranking warriors, effectively turning their body into a fortress of unyielding energy.	self	0	0	5	10	0	0	f	15
+172	Strings of Fate	The user projects ethereal strands that latch onto the opponent's limbs and senses. This disrupts their coordination and forces them into a state of physical paralysis.	other	3	0	0	-1	-8	-2	t	22
+172	Hollow Domain	A pulse of dread radiates from the user, affecting all nearby enemies. It saps their stamina and dampens their offensive capabilities simultaneously.	multi	5	4	-3	-2	-3	-4	t	24
+172	Eternal Stamina	As a survivor of a ruined lineage, the user's body ignores fatigue and pain, allowing them to fight indefinitely without loss of vigor.	self	0	0	4	1	2	0	f	7
+174	Death Curse	The user unleashes a wave of necrotic entropy that decays the life force of all nearby living beings, rotting flesh and draining the essence from their souls.	multi	5	10	-8	-4	-3	-2	t	34
+174	Veil of the Void	Drawing upon their status as a Demilich, the user becomes partially incorporeal and reinforces their existence with arcane wards, making them nearly impossible to strike physically.	self	0	0	5	9	2	1	f	17
+174	Essence Consumption	By absorbing the souls of fallen foes into their own essence, the user restores their vitality and bolsters their arcane potency.	self	0	0	7	2	1	4	f	14
+175	Black Cloud	The user exhales a thick, suffocating cloud of soot and toxins that chokes the lungs of nearby enemies and warps their minds into a state of frantic madness.	multi	5	4	-10	-7	-8	-5	t	60
+175	Aura of Despair	Tapping into their extraplanar lineage, the user manifests a supernatural resilience, hardening their form against magical reality warping and physical trauma.	self	0	0	5	10	2	3	f	20
+175	Corrosive Venom	The user's bite and talons deliver a concentrated, acidic poison that dissolves tissue and weakens the physical integrity of the prey.	other	0	0	-10	-5	-4	-2	f	21
+175	Primal Instincts	Honed by eons of survival, the user possesses heightened senses and superior coordination, allowing them to react to high-speed strikes with ease.	self	0	0	1	5	7	4	f	17
+176	Along the Passing Shore	The user enters a state of heightened focus where their strikes resonate with the path of Nihility, significantly increasing critical potency and overwhelming the senses of those they strike.	self	0	1	0	0	0	1	f	1
+176	Horizon of Existence	By unsheathing their blade, the user releases a wave of Nihility that collapses the boundaries of reality. This strike tears through the target's defenses and existence, potentially casting them into a void where memory and form dissolve.	multi	10	8	-10	-10	-5	-5	t	60
+176	Mirage Fizzle	The user's strikes create a lingering echo of void energy. The target becomes confused by their own senses, becoming increasingly vulnerable to subsequent attacks as their reality flickers.	other	2	0	-3	-4	-2	0	f	9
+176	Blade of the Void	A swift and decisive strike that ignores traditional physical barriers, punishing any who stand in the path of the blade's trajectory with pure nihilistic energy.	other	3	0	-8	-7	0	0	t	30
+177	Savior's Legacy	By tapping into her deep internal reserves, the user enhances their own resilience and processing speed, becoming harder to displace or damage in close quarters.	self	0	0	10	8	3	2	f	23
+177	Orbital Strike	The user channels cosmic energy into a focused projectile. Depending on the intensity of the charge, it can incinerate fortifications and cause massive collateral damage in its path.	multi	10	8	-9	-7	-5	-4	t	50
+177	Void Displacement	The user manipulates space to instantly relocate or displace targets. This sudden shift disrupts the enemy's positioning and momentum, leaving them vulnerable.	other	5	2	0	0	-10	0	t	20
+177	Echo of the Void	A psychic pulse that suppresses the mental fortitude of nearby foes, making it difficult for them to coordinate or focus their attacks.	multi	3	5	0	-4	0	-6	t	20
+178	Invulnerable Aegis	The user's body is protected by a divine blessing, rendering them immune to standard physical and magical attacks. This aura grants near-total immunity to harm unless the source possesses high divinity or strikes a specific structural weakness.	self	0	0	10	10	0	0	f	20
+178	Godspeed Charge	Utilizing a chariot of legendary craftsmanship, the user closes distances at speeds that defy human perception. To an opponent, it appears as if they are moving in multiple places at once, making them nearly impossible to track or intercept.	multi	5	3	0	0	-10	0	t	20
+178	Akhilleus Kosmos	The user manifests a shield that represents the world itself. To strike against it is to face the weight of the cosmos; it can neutralize even high-level conceptual attacks and heavy magical barrages.	multi	10	5	0	-10	0	0	f	10
+178	Mastery of Pankration	The user engages in the world's oldest martial art. Their strikes are precise and devastating, capable of crushing a master's defenses even in bare-handed combat, punishing any opponent who enters their immediate reach.	other	0	0	-5	-5	-2	-5	t	34
+179	Stygian Resilience	The user's skin becomes nearly impervious to conventional weaponry due to their divine lineage, granting massive defensive boosts and healing properties to the body's tissues.	self	0	0	10	8	0	0	f	18
+179	Spear of the Healer	A devastating thrust with a spear forged by Chiron; the strike is so potent it creates a lingering wound that refuses to close, drastically weakening the victim's physical state.	other	5	0	-7	-3	-2	-1	t	26
+179	Wrath of the Myrmidon	The user enters a state of divine fury, striking with such overwhelming speed and power that they can break through enemy lines and shatter their defenses in an instant.	multi	2	3	-5	-4	-6	-8	t	46
+179	Divine Reflexes	Heightened awareness and speed allow the user to predict enemy movements and react with supernatural agility.	self	0	0	0	4	7	2	f	13
+180	Heroic Reflexes	The user's reaction time is heightened to a supernatural degree, allowing them to instinctively deflect projectiles and parry strikes from even the most skilled opponents.	self	0	0	10	8	5	0	f	23
+180	Piercing Spear Strike	The user hurls a heavy spear with such force and precision that it can travel hundreds of meters, pinning enemies to the ground or shattering their defenses from a distance.	multi	5	3	-2	-4	-10	0	t	32
+180	Masterful Blade Technique	Utilizing superior swordsmanship, the user delivers a devastating strike that can cleave through heavy armor and bone alike, leaving the opponent incapacitated.	other	0	1	-4	-5	0	0	t	18
+180	Indomitable Will	The user's tireless stamina and endurance make them an immovable wall on the battlefield, refusing to yield even against a tide of foes.	self	0	0	-5	-3	-2	0	f	10
+181	Mastery of the Creed	Through years of rigorous training as a Master Assassin, the user possesses heightened reflexes and awareness. This allows them to anticipate incoming strikes and move with a fluid grace that makes their movements nearly impossible to track.	self	0	0	0	5	2	0	f	7
+181	Hidden Blade Strike	A swift and precise strike aimed at vital points. The user utilizes a concealed blade to bypass external defenses, delivering a debilitating blow that strikes with lethal precision.	other	0	0	-10	-5	-3	0	t	36
+181	Frontier Guerrilla Tactics	Utilizing their mastery of the environment and projectile weaponry, the user creates a zone of chaos. From a distance, they unleash accurate fire to force opponents into panicked movements or disorient them.	multi	5	3	-4	-2	-5	0	t	22
+181	Shadow Step	The user exploits their mastery of stealth and parkour to close the distance instantly or reposition, effectively disrupting an opponent's ability to track them.	other	2	0	0	0	-8	0	t	16
+182	Crystal Resonance	By tapping into the power of her crystal, she enhances her sensory perception and analysis capabilities to predict incoming maneuvers.	self	0	0	0	5	0	2	f	7
+182	Glacial Domain	The user manipulates the surrounding temperature to flash-freeze the environment, trapping enemies in ice and slowing their movements.	multi	5	4	0	-1	-3	0	t	8
+182	Nullification Skin	A passive magical aura that dampens and nullifies the supernatural abilities of those who come into close proximity.	other	0	1	0	0	0	-2	f	2
+182	Soul-Chilling Strike	A sophisticated sorcery that strikes the essence of an opponent, bypassing standard defenses to wither their spirit.	other	3	0	-2	-2	0	0	f	4
+184	Auto Lock-On System	The user's internal systems automatically track and prioritize enemy targets, making it nearly impossible for opponents to evade their strikes or hide from their gaze.	self	0	0	0	5	0	3	f	8
+184	Acid Blaster	The user unleashes a devastating blast of high-frequency EM waves that can penetrate physical barriers and strike targets across vast distances.	multi	10	7	-2	-3	-1	0	t	12
+184	Finalized Form: Acid Ace Illegal	By absorbing concentrated noise, the user undergoes a radical transformation. Their physical and digital prowess escalate exponentially, though it puts immense strain on their biological vessel.	self	0	0	10	10	5	10	f	35
+184	Phased Evasion	The user shifts their physical form into a state of semi-intangibility, allowing non-EM based physical attacks to pass through them harmlessly.	self	0	0	0	-8	-2	0	f	10
+185	Corrosive Maw	The user exhales a torrent of highly caustic acid from their maw, dissolving the integrity of any nearby targets and melting through physical barriers.	other	5	3	2	3	1	0	f	6
+185	Hollowened Resilience	The user's soul physiology grants them a hardened exterior, allowing them to endure heavy spiritual strikes and maintain their physical form.	self	0	0	1	2	0	0	f	3
+185	Acidic Cloud	The acidic discharge lingers in the air, creating a hazardous zone that hinders movement and weakens the defenses of those caught within it.	multi	4	6	-1	-2	-2	0	t	10
+185	Brute Force Strike	The user channels their physical strength into a devastating blow, utilizing their high striking power to shatter the surroundings.	self	0	2	0	0	0	3	f	3
+186	Exoskeletal Fortitude	The user's dense, calcified shell provides immense resistance against blades and kinetic impact.	self	0	0	10	8	0	0	f	18
+186	Crushing Pincer Strike	The user lashes out with spiked limbs to shatter armor and crush the bones of nearby foes.	other	0	1	-5	-3	-4	-2	t	28
+186	Amphibious Ambush	Emerging from aquatic environments, the user strikes with overwhelming force to disorient and slow its prey.	multi	2	3	-4	-2	-5	-1	t	24
+186	Vindaxa Toxin	A lingering, numbing effect delivered through claw punctures to hinder the target's ability to flee.	other	0	0	-2	-1	-6	0	t	18
+187	Arcane Dragon Slayer Magic	The user's magic is fueled by the essence of every dragon they have slain. This allows them to consume, adapt to, and negate any magical energy directed at them while dealing devastating damage specifically to those with draconic traits.	self	0	0	10	5	1	8	f	24
+187	Eternal Flare	The user unleashes a massive barrage of high-density energy projectiles that saturate the battlefield, overwhelming the defenses of any nearby opponents.	multi	8	9	-8	-4	-3	0	t	30
+187	Space-Time Distortion	By manipulating the fabric of reality, the user can warp space to trap opponents within crystalline pillars or forcibly displace them into a pocket dimension where they are immobilized.	multi	10	7	0	-2	-10	0	t	24
+187	Soul Reaping	By striking targets with specialized magic, the user forcibly extracts and consumes the soul of their opponent, leaving them in a state of withered expiration.	other	5	0	-10	0	0	0	t	20
+188	Vitality Drain	By channeling energy through their blade, they can sever the life force of an opponent. This process drains the target's vitality while simultaneously siphoning that energy into themselves.	other	0	0	-10	-5	-3	-2	f	20
+188	Ethereal Form	The user can dissolve their physical form into a mist-like state. In this form, they are immune to physical attacks and can bypass environmental obstacles.	self	0	0	2	10	5	0	f	17
+188	Spatial Perception	By manipulating their perception of space, they can predict the path of incoming attacks and navigate complex environments with instinctive precision.	self	0	0	0	8	4	3	f	15
+188	Dominion Gaze	A chilling psychological assault delivered through a single glance. The target is overwhelmed by mental and sensory overload, rendering them unable to focus or move.	other	5	0	0	-4	-8	-3	t	30
+189	Oak Transformation	The user undergoes a rapid cellular expansion to become an Oak. This increases their physical durability and grants them the ability to carry allies, who act as mounted turrets.	self	0	0	5	8	1	3	f	17
+189	Wood Grief	Using their heavy timber-based weapon, the user strikes with concussive force that disrupts and damages nearby foes.	other	4	2	-10	-5	-3	0	t	36
+189	Super Sap Trap	The user deploys a highly adhesive sap trap. Enemies caught in the viscous secretion are slowed and immobilized.	multi	2	3	0	0	-10	0	t	20
+189	Acorn Passenger Synergy	When carrying multiple passengers, the user receives a continuous regeneration effect from the symbiotic link with their kin.	self	0	0	3	0	0	1	f	4
+190	Divine Mother's Mercy	The user draws upon their connection to the Virgin Mary to strip away all magical costs, burdens, and limitations. This purification allows them to bypass the physical strain of high-level magic and grants immunity against punitive effects.	self	0	0	2	1	0	0	f	3
+190	Moon Spell	The user manifests a celestial image to channel immense power into their weapon. They descend like a falling meteor, delivering a crushing blow that can devastate the surrounding terrain and shatter the defenses of any foe caught in its path.	multi	5	8	-10	-4	-3	-2	t	38
+190	Liturgy of the Tides	Utilizing mastery over rune magic and water manipulation, the user conjures heavy currents or ice structures to hinder the movement of enemies and strike them with frigid force.	multi	3	4	-2	-1	-5	0	f	8
+190	Sanctified Healing	The user channels magical energy to mend their own flesh and seal wounds sustained in the heat of battle.	self	0	0	3	1	0	0	f	4
+191	Silken Bindings	The user lashes out with their expansive hair, weaving it into a restrictive snare that constricts and binds the target's limbs.	other	4	0	0	-1	-2	0	t	6
+191	Ethereal Veil	The user retreats into a spectral state, making their presence nearly imperceptible to those without spiritual awareness.	self	0	0	0	2	1	0	f	3
+191	Acrobatic Grace	Using their supernatural agility and hair as stabilizers, the user maneuvers through environments with impossible fluidity.	self	0	0	0	0	3	1	f	4
+191	Aura Consumption	Upon physical contact or entanglement, the user drains the spiritual essence of a target. To those without protection, this results in immediate collapse.	other	0	1	-3	-2	-1	-1	t	14
+192	Apex Dominance	The user unleashes a terrifying display of primal aggression, overwhelming the senses of nearby rivals to break their resolve.	other	0	3	-10	-5	-2	-2	t	38
+192	Carcharodontosaurid Resilience	Harnessing its innate lineage, the user taps into a reservoir of prehistoric stamina to endure and counter heavy strikes from rival carnivores.	self	0	0	10	8	3	2	f	23
+192	Savage Strike	A devastating physical assault delivered with immense striking power, intended to incapacitate a single foe instantly.	other	5	0	-2	-1	-1	-3	t	14
+192	Territorial Instincts	The user becomes hyper-aware of its surroundings, allowing it to anticipate and parry incoming strikes from competitors.	self	0	0	0	5	1	0	f	6
+193	Primal Physiology	The user's massive frame and thick hide provide enhanced durability and physical resilience against high-impact strikes.	self	0	0	10	8	2	3	f	23
+193	Crushing Bite	The user delivers a devastating bite to a single target, dealing massive physical damage and potentially stunning them.	other	0	1	-9	-3	-2	0	t	28
+193	Terrifying Presence	The intimidating size and roar of the theropod can unnerve nearby foes, slowing their movements.	multi	5	4	0	0	-6	-2	t	16
+193	Tail Sweep	A powerful swing of the tail strikes multiple nearby opponents, knocking them off balance.	multi	2	3	-4	-1	-8	0	t	26
+194	Savage Pounce	The predator lunges forward with explosive speed, using its weight to pin an opponent. This strike severely hampers the target's mobility and breaks their guard.	other	5	1	0	-2	-4	0	t	12
+194	Primal Instincts	The predator's heightened senses and survival instincts allow it to anticipate movements and react with superhuman speed, bolstering its overall defensive capabilities.	self	0	0	2	3	2	1	f	8
+194	Crushing Maw	A devastating bite delivered with massive force. The sheer power of the jaws can shatter armor and inflict severe damage to the target's physical integrity.	other	0	1	-6	-2	0	0	t	16
+194	Predatory Speed	Utilizing its lighter frame, the user accelerates into a blur of motion, making it significantly harder for enemies to track or intercept.	self	0	0	0	0	5	0	f	5
+195	Crushing Bite	The user lunges forward to clamp down on a single target with massive force. The immense pressure of the jaw can shatter bone and pierce through thick tissue, causing severe physical trauma.	other	0	1	-10	-5	-4	0	t	38
+195	Primal Instincts	Enhanced senses allow the user to process sensory information more efficiently, providing a tactical advantage in tracking and reacting to nearby movements.	self	0	0	0	3	1	2	f	6
+195	Tail Sweep	The user swings its heavy tail in a wide arc to strike multiple nearby enemies, knocking them off balance and disrupting their positioning.	multi	3	5	-4	-2	-6	0	t	24
+195	Predatory Bulk	The massive muscle mass and sheer size of the beast provide a natural resilience against impact, allowing it to endure significant force.	self	0	0	4	5	0	0	f	9
+196	Senrigan Perception	The user perceives every event occurring across all dimensions simultaneously. This absolute awareness allows them to anticipate incoming strikes and perfectly calculate the optimal path of movement.	self	0	0	0	5	3	2	f	10
+196	Omnipotence Reality Warp	The user manifests a pulse of reality-altering power to rewrite the local environment or the memories of those nearby, effectively rewriting the current state of existence.	multi	10	9	0	-4	-5	-5	t	28
+196	Siren's Charm	The user radiates an irresistible aura of allure that dazes the target's senses, causing them to hesitate and lose focus on their intent.	other	5	2	0	-2	-3	0	t	10
+196	Dimensional Displacement	By manipulating the space between dimensions, the user forces an opponent's physical presence to falter and stall.	other	8	0	0	-1	-4	0	f	5
+197	Trojan Injection	The user injects a sophisticated logic virus into enemy systems, destabilizing their internal protocols and weakening their defenses.	other	3	1	0	4	2	1	f	7
+197	Chronos Displacement	Utilizing a specialized device, the user manipulates local space-time to create portals and reposition themselves rapidly.	self	0	0	0	1	5	0	f	6
+197	Neural Overclock	The user's cyborg enhancements allow them to process information at superhuman speeds, predicting and parrying incoming strikes.	self	0	0	0	3	0	2	f	5
+197	Laser Barrage	The user unleashes a concentrated stream of energy from their pistols to incinerate targets and their immediate surroundings.	multi	10	3	-4	-1	-2	0	t	14
+198	Tactical Evasion	The user's heightened senses and expert training allow them to predict enemy movements and navigate hazardous environments with supernatural grace, ensuring they remain largely untouched by incoming fire.	self	0	0	5	10	5	0	f	20
+198	Grappling Line Harassment	Using a specialized grappling gun, the user can swiftly reposition while simultaneously disrupting the positioning of nearby enemies, forcing them to adjust to sudden shifts in the battlefield.	multi	4	2	0	0	-10	0	t	20
+198	High-Caliber Suppression	Utilizing heavy ordnance and high-caliber weaponry, the user can devastate physical structures and neutralize high-threat targets with overwhelming force.	other	8	4	-10	-5	0	0	t	30
+198	Espionage Kit	The user employs a variety of clandestine gadgets—from exploding accessories to hidden projectiles—to create immediate tactical advantages or defensive barriers in desperate situations.	self	0	1	5	5	0	5	f	15
+199	Nocturnal Metamorphosis	Under the veil of night, they shed their human limitations, gaining incredible speed and a terrifying, multi-limbed physique.	self	0	0	2	3	4	3	f	12
+199	Void of the Interior	The space within their form is not just a body, but a gateway to an expansive dimension. They can swallow anything—objects or beings—into this pocket universe.	other	5	3	-5	-4	-2	0	t	22
+199	Infinite Horizon Expansion	Utilizing the vast expanse of their inner dimension, they can project an overwhelming presence that dwarfs the very concept of distance.	multi	10	8	-3	-2	-4	-3	t	24
+199	Abyssal Maw	They unhinge their jaw to serve as a portal. Anything caught in the threshold is consumed by an inescapable, distorted reality.	other	0	1	-6	-3	-5	-2	t	32
+200	Atmospheric Mastery	By gathering and manipulating clouds from across the land, they shroud themselves in a dense, protective mist that enhances their evasion and hides their presence.	self	0	5	10	8	5	0	f	23
+200	Danmaku Volley	The user unleashes a torrential barrage of projectiles, forcing opponents to navigate through a chaotic storm of energy that restricts their movement and punishes any aggressive advance.	multi	8	6	-2	-1	-3	0	t	12
+200	Tasouken Insight	Drawing upon deep ancestral knowledge of the blade's essence, they strike with precise efficiency that bypasses traditional defenses and destabilizes the target's form.	other	3	0	-5	-4	-2	-3	f	14
+200	Ancient Heritage	The wisdom of the Orochi lineage grants them a profound understanding of combat flow, allowing them to anticipate and parry incoming strikes with ease.	self	0	0	0	5	0	3	f	8
+201	Cloud-Cleaving Strike	The user unleashes a devastating strike that can sever the very clouds in the sky, manifesting as an overwhelming surge of physical power and martial precision.	self	0	0	2	3	1	5	f	11
+201	Danmaku Torrent	The user unleashes a massive barrage of projectile energy, forcing the opponent to navigate a lethal field of projectiles that shreds their defenses.	multi	10	8	-4	-2	-3	0	t	18
+201	Severing Edge	A swift and precise slash designed to break the opponent's momentum and physically wound them, cutting through their defenses like paper.	other	3	0	-3	-2	-2	-1	t	16
+201	Obsessive Guard	Driven by intense paranoia and a need to protect their treasure, the user's reflexes heighten significantly when they perceive an approaching threat.	self	0	0	1	4	2	1	f	8
+202	Wight King's Resilience	The user harnesses their undead physiology and vast magicule reserves to fortify their physical form, drastically increasing their defense against incoming strikes.	self	0	0	5	8	1	0	f	14
+202	Disintegration	A high-level holy and spiritual energy attack that unravels the molecular bonds of the target, causing severe physical damage and eroding their defenses.	other	10	5	-9	-7	-2	0	t	36
+202	Holy Ray	The user projects a beam of pure holy energy at the speed of light, intended to stun and repel opponents with overwhelming force.	other	10	2	-4	-3	-5	0	t	24
+202	Greatest Insight	The user processes information at an extraordinary rate, allowing them to anticipate enemy movements and predict incoming tactics.	self	0	0	0	6	0	3	f	9
+203	Holy Fist Mastery	The user channels spiritual energy into their strikes, significantly increasing their offensive power and reinforcing their physical durability during combat.	self	0	0	2	3	1	4	f	10
+203	Spectral Pressure	By exuding an aura of deathly dread, the user cripples the resolve and physical capabilities of nearby enemies.	multi	5	3	-1	-2	-2	-1	t	12
+203	Phantom Step Strike	A high-speed maneuver that targets a specific foe, disrupting their positioning and striking them with overwhelming force.	other	10	0	-3	-2	-3	-1	t	18
+203	Genius Tactical Analysis	Utilizing superior intellect, the user can predict enemy movements and find weaknesses in their defenses near-instantaneously.	self	0	0	0	3	1	2	f	6
+204	Eagle Vision Mastery	By tapping into his Isu heritage, the user perceives the world through a heightened lens of tactical awareness. This allows them to see an enemy's true intentions, identify hidden weaknesses, and predict upcoming movements with supernatural precision.	self	0	0	0	5	0	3	f	8
+204	Apple of Eden: Domain of Will	The user manifests the power of an ancient artifact to project a wave of overwhelming mental and physical pressure. Targets within the vicinity are struck by fear, their minds clouded by confusion, and their physical bodies rendered sluggish.	multi	5	4	0	-3	-2	-1	t	12
+204	Pressure Point Strike	Utilizing a perfect understanding of both human and Isu anatomy, the user strikes specific nerve clusters. These precise strikes can instantly paralyze or incapacitate an opponent's limbs.	other	0	0	-1	0	-3	0	t	8
+204	Sovereign's Resilience	Due to their hybrid biology, the user is virtually immune to external influences such as fear, sleep, and environmental toxins, maintaining peak performance in even the most hostile conditions.	self	0	0	-2	-4	-1	0	f	7
+205	A.T. Field	The user projects an impenetrable barrier of spiritual energy. This forcefield acts as a physical defense that repels almost all conventional weaponry and protects the inner essence from external influence.	self	0	1	5	10	0	0	f	15
+205	Anti-A.T. Field	By inverting its dimensional values, the user releases a cataclysmic wave of energy that dissolves any barrier between souls and individuals, liquefying organic matter into essence and stripping away individuality.	multi	10	10	-10	-10	-10	0	t	60
+205	S² Engine Regeneration	Deep within its core, the user's internal power source works to constantly repair and reconstitute damaged tissue, allowing for rapid recovery from massive physical trauma.	self	0	0	8	2	0	0	f	10
+205	Doors of Guf	The user opens gateways to a storehouse of souls. This act pulls the life force out of surrounding beings and into their own inner chamber.	multi	5	3	-7	0	-5	0	t	24
+206	Archangel's Radiance	The user pulses with pure holy light, fortifying their physical form against magical corruption and increasing their raw potency to shatter through any defense.	self	0	0	10	10	5	10	f	35
+206	Holy Light Beam	A devastating blast of holy energy is unleashed in a concentrated beam. It vaporizes targets and disintegrates structures instantly, leaving nothing behind but scorched earth.	multi	10	8	-2	-5	-10	0	t	34
+206	Guitar-Axe Rend	Striking with a massive musical weapon of celestial power, the user delivers heavy physical blows that shatter magical protections and physically cripple the opponent.	other	5	0	-1	-2	-3	0	t	12
+206	Heavenly Presence	The sheer weight of the user's holy authority exerts pressure on nearby enemies, making it difficult for them to maintain their footing or focus their defenses.	multi	3	5	0	-1	-2	0	t	6
+207	Machine Network Synchronization	By tapping into the collective consciousness of the machine network, the user gains virtually infinite stamina and an instantaneous ability to adapt their tactics and fighting style against any opponent.	self	0	0	10	5	2	3	f	20
+207	Matter Construction & Manipulation	The user can warp the local environment by restructuring silicon and carbon into physical barriers or jagged terrain, severely restricting the movement of enemies while providing a defensive fortification.	multi	8	7	0	-4	-8	0	t	24
+207	Energy Pulse & Barrier	The user projects high-density energy spheres and constructs a flickering kinetic barrier. This defense can reflect incoming projectiles back at the source while blasting nearby enemies with concussive force.	multi	5	3	-7	-8	0	-4	t	38
+207	Gravitational Collapse	By manipulating local gravity, the user creates intense pressure zones that crush and pin enemies to the ground, making it nearly impossible for them to reposition.	multi	6	4	-3	-2	-9	0	t	28
+208	Divine Reflection	By observing the techniques of the gods, they can perfectly replicate and reflect their power back at the source with greater potency. This ability allows them to nullify incoming divine energy and mirror the opponent's biological transformations.	self	0	0	10	10	5	10	f	35
+208	Fist That Surpassed Time	A strike so rapid it transcends the flow of time itself. The sheer speed of the movement creates a temporal distortion, striking the opponent before they can perceive the attack.	other	0	1	-2	-5	-4	-3	t	28
+208	Mirror of the Heavens	They intercept a god's divine technique and redirect it. The power is amplified by their own willpower, turning the opponent's pride into their undoing.	other	5	3	-8	-7	0	-9	t	48
+208	Progenitor's Resilience	As the first of his kind, their body possesses an extraordinary capacity to endure extreme physical strain and systemic pressure beyond human limits.	self	0	0	5	8	3	2	f	18
+209	Titan's Resilience	The user's muscles and bone structure have been hardened by survival, allowing them to shrug off heavy blows while maintaining peak physical output.	self	0	0	10	8	2	0	f	20
+209	Shattering Strike	Utilizing immense upper-body strength, the user delivers a devastating blow that can shatter structures and crush limbs.	other	0	1	-8	-5	-3	-4	t	40
+209	Apex Instincts	Heightened senses allow the user to perceive movements and threats before they materialize, effectively countering enemy positioning.	other	5	0	0	-3	-2	-1	f	6
+209	Environmentaler Toss	The user hurls massive debris or structural pieces with enough force to crush opponents and disrupt their positioning.	multi	8	3	-6	-2	-4	0	t	24
+210	Unwavering Heroism	Derived from his conceptual role as a hero who fights for love, it renders them incapable of accepting defeat. This inherent fortitude bolsters their resolve and internal state.	self	0	0	5	8	2	3	f	18
+210	Spatial Rupture	The user manipulates the fabric of space to tear it asunder. This violent distortion of reality can strike multiple enemies at once, physically and spatially displacing them.	multi	7	6	-10	-8	-5	0	t	46
+210	Purifying Flame	Harnessing high-level fire manipulation, they unleash a torrent of flames that incinerates the defenses and physical integrity of any foe in their path.	other	5	4	-9	-6	-3	0	f	18
+210	Mastery of the Arts	The user's peerless expertise in weaponry and magic allows them to strike with overwhelming precision, overwhelming the senses and equipment of the opponent.	other	3	0	-7	-5	0	-8	f	20
+211	Black Attraction	The user emits a pheromone-like fragrance that overrides the target's willpower, inducing immediate mind control and puppet-like obedience.	other	5	3	0	0	-10	0	t	20
+211	Molecular Sovereignty	Through psychokinesis, the user manipulates the very molecules of their own physical form, providing immense durability and rapid cellular regeneration.	self	0	0	5	8	2	1	f	16
+211	Agnishwatta Nova	The user unleashes a massive burst of elemental energy and heat, incinerating everything within the vicinity and stripping away the target's defenses.	multi	10	8	-10	-5	-2	0	t	34
+211	Gravity Nullification	The user manipulates gravitational forces to lighten their own weight and increase their perceived mass for devastating physical strikes.	self	0	0	0	3	5	7	f	15
+212	Shield of Aegis	The user projects an impenetrable barrier that not only protects them from incoming strikes but reflects magical and physical projectiles back at the source.	self	0	0	10	10	0	0	f	20
+212	Holy Fragrance of Obedience	By releasing a mystical scent, the user distorts the senses and perceptions of those nearby, inducing a state of mental submission or physical paralysis.	multi	5	3	0	-5	-8	-7	t	40
+212	Reality Rejection	The user imposes their will upon the world's laws, warping the environment to erase enemy attacks from existence or warp space to isolate foes.	multi	10	10	-10	-10	-5	-10	t	70
+212	Elemental Convergence	The user manifests extreme temperatures and atmospheric pressure changes, conjuring jagged ice and searing flames to incinerate everything in the path.	other	8	5	-9	-4	-3	-8	f	24
+213	Tactical Awareness	The user utilizes elite training to anticipate enemy movements, making it significantly harder for opponents to land clean strikes.	self	0	0	0	1	0	1	f	2
+213	Beekeeper's Ambush	By utilizing superior knowledge of trap-laying and terrain manipulation, the user disrupts the enemy's positioning and creates hesitation.	other	3	2	0	-1	-1	0	t	4
+213	Lethal Counter-Strike	Executing a brutal, high-impact strike that breaks the target's guard and causes significant physical trauma.	other	0	1	-1	-1	0	0	t	4
+213	Zone of Desolation	A devastating blast using explosives to clear a wide area, neutralizing all nearby hostiles.	multi	5	8	-1	-1	-1	0	t	6
+\.
+
+
+--
+-- Data for Name: powerscale; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.powerscale (powerscale_id, tier, label, name) FROM stdin;
+1	5.3	tier_high_7-c	Large Town level
+2	5.5	tier_7-b	City level
+3	6.6	tier_6-a	Continent level
+4	10.2	tier_2-c	Low Multiverse level
+5	11.8	tier_high_1-a	High Outerverse level
+6	4.3	tier_8-b	City Block level
+7	9.4	tier_high_3-a	High Universe level
+8	7.2	tier_low_5-b	Small Planet level
+9	6.7	tier_high_6-a	Multi-Continent level
+10	3.2	tier_9-b	Wall level
+11	8.4	tier_4-b	Solar System level
+12	7.4	tier_5-a	Large Planet level
+13	9.1	tier_3-c	Galaxy level
+14	10.1	tier_low_2-c	Universe level+
+15	3.3	tier_9-a	Small Building level
+16	4.2	tier_high_8-c	Large Building level
+17	3.1	tier_9-c	Street level
+18	9.2	tier_3-b	Multi-Galaxy level
+19	4.1	tier_8-c	Building level
+20	6.2	tier_high_6-c	Large Island level
+21	5.6	tier_7-a	Mountain level
+22	4.4	tier_8-a	Multi-City Block level
+23	6.4	tier_6-b	Country level
+24	6.1	tier_6-c	Island level
+25	11.2	tier_1-c	Complex Multiverse level
+26	5.2	tier_7-c	Town level
+27	6.3	tier_low_6-b	Small Country level
+28	2.2	tier_10-b	Human level
+29	1.3	tier_11-a	High Hypoverse level
+30	11.1	tier_low_1-c	Low Complex Multiverse level
+31	5.4	tier_low_7-b	Small City level
+32	7.1	tier_5-c	Moon level
+33	2.3	tier_10-a	Athlete level
+34	8.3	tier_high_4-c	Large Star level
+35	11.7	tier_1-a	Outerverse level
+36	5.7	tier_high_7-a	Large Mountain level
+37	7.3	tier_5-b	Planet level
+38	9.3	tier_3-a	Universe level
+39	7.5	tier_high_5-a	Brown Dwarf level
+40	2.1	tier_10-c	Below Average Human level
+41	10.3	tier_2-b	Multiverse level
+42	10.4	tier_2-a	Multiverse level+
+43	6.5	tier_high_6-b	Large Country level
+\.
+
+
+--
+-- Name: category_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.category_category_id_seq', 6740, true);
+
+
+--
+-- Name: character_character_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.character_character_id_seq', 1, false);
+
+
+--
+-- Name: character_profile_character_profile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.character_profile_character_profile_id_seq', 225, true);
+
+
+--
+-- Name: powerscale_powerscale_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.powerscale_powerscale_id_seq', 43, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict 28f3rpXKN8KTwJ4pW1uTDSvo8d8QSLmjQbyJinDtdoToG6ckthLs2BFxtu6XCGt
+

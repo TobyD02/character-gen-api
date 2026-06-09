@@ -63,3 +63,12 @@ class CharacterProfileRepository(RepositoryAbstract):
         """)
 
         return [i["character_id"] for i in self.cursor.fetchall()]
+
+    def select_random_character_id(self) -> list[int]:
+        self.cursor.execute("""
+                            SELECT character_id
+                            FROM character_profile
+                            ORDER BY RANDOM() LIMIT 1
+                            """)
+
+        return self.cursor.fetchone()["character_id"]
