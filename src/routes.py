@@ -16,3 +16,7 @@ def register_routes(app: FastAPI):
     @app.get("/character/{character_id}")
     async def get_character(request: Request, character_id: int):
         return IndexController().render_character(request, character_id)
+
+    @app.get("/characters")
+    async def get_character(request: Request):
+        return IndexController().render_characters(request)

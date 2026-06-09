@@ -1,10 +1,17 @@
+import enum
+
 from pydantic import BaseModel
+
+class CharacterSpecialAbilityTarget(enum.Enum):
+    SELF = "self"
+    OTHER = "other"
+    MULTI = "multi"
 
 
 class CharacterSpecialAbilityModel(BaseModel):
     name: str
     description: str
-    target: str
+    target: CharacterSpecialAbilityTarget
     range: int
     area_of_effect: int
     health_add: int

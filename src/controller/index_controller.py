@@ -55,6 +55,18 @@ class IndexController:
         # model = self.character_service.search_death_battle_fandom_with_page_id(page_id)
         return self.character_service.get_or_generate_character(character_id)
 
+    def render_characters(self, request: Request):
+        characters = self.character_service.get_all_generated()
+        return templates.TemplateResponse(
+            request=request, name="cards.html.j2", context={ "characters": [{
+                "character": i.character,
+                "character_profile": i.character_profile,
+                "special_abilities": i.special_abilities,
+                "categories": i.categories,
+                "powerscale": i.powerscale,
+            } for i in characters]}
+        )
+
     def render_character(self, request: Request, character_id: int):
         character = self.character_service.get_or_generate_character(character_id)
         return templates.TemplateResponse(

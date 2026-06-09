@@ -1,0 +1,639 @@
+<style>
+  /* ── COMBAT CARD SCOPED STYLES ── */
+  .card {
+    /* Static Palette & Dimensions */
+    --c-gold:          #d4a843;
+    --c-text:          #e8dfc8;
+    --c-dim:           #8a8070;
+    --c-surface-deep:  #07090e;
+    --c-surface-head:  #0d1117;
+    --c-surface-panel: rgba(255,255,255,.03);
+
+    --card-w:   720px;
+    --card-h:   460px;
+    --img-col:  40%;
+
+    /* Card Shell */
+    width: var(--card-w);
+    height: var(--card-h);
+    position: relative;
+    border-radius: 18px;
+    cursor: default;
+    transform-style: preserve-3d;
+    transition: transform .1s ease-out;
+    animation: cardReveal 1.2s cubic-bezier(.16,1,.3,1) both;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  @keyframes cardReveal {
+    from { opacity:0; transform: translateY(40px) scale(.92) rotateX(6deg); }
+    to   { opacity:1; transform: translateY(0)   scale(1)   rotateX(0deg); }
+  }
+
+  .card-border {
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg,
+      var(--c-p1) 0%,
+      var(--c-gold) 25%,
+      var(--c-p3) 50%,
+      var(--c-gold) 75%,
+      var(--c-p1) 100%
+    );
+    background-size: 300% 300%;
+    animation: shimmer 4s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0%,100% { background-position: 0% 50%; }
+    50%     { background-position: 100% 50%; }
+  }
+
+  .card-face {
+    position: absolute;
+    inset: 2px;
+    border-radius: 17px;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    background: var(--c-surface-deep);
+  }
+
+  /* ── LEFT COLUMN ── */
+  .image-col {
+    position: relative;
+    width: var(--img-col);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .image-col-bg {
+    position: absolute;
+    inset: 0;
+    background: #050709;
+  }
+
+  .image-col-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 120% 40% at 50% 0%,
+        color-mix(in srgb, var(--c-p1) 30%, transparent) 0%,
+        transparent 70%),
+      radial-gradient(ellipse 120% 40% at 50% 100%,
+        color-mix(in srgb, var(--c-p3) 30%, transparent) 0%,
+        transparent 70%);
+    animation: colGlow 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes colGlow {
+    from { opacity: .5; }
+    to   { opacity: 1;  }
+  }
+
+  .image-area {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px 10px 6px;
+    z-index: 2;
+  }
+
+  .char-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    object-position: top center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .image-sep {
+    position: relative;
+    z-index: 2;
+    height: 1px;
+    margin: 0 14px;
+    background: linear-gradient(90deg,
+      transparent,
+      color-mix(in srgb, var(--c-p1) 40%, var(--c-gold)),
+      transparent
+    );
+    flex-shrink: 0;
+  }
+
+  .left-desc {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    padding: 8px 12px 14px;
+    font-size: 10px;
+    line-height: 1.55;
+    color: rgba(232,223,200,.70);
+    font-style: italic;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .left-desc::-webkit-scrollbar { display: none; }
+
+  .image-col-fade {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 28px;
+    background: linear-gradient(to right, transparent, var(--c-surface-deep));
+    z-index: 4;
+    pointer-events: none;
+  }
+
+  .palette-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    display: flex;
+    z-index: 5;
+  }
+  .palette-strip div { flex: 1; opacity: .9; }
+
+  /* ── VERTICAL DIVIDER ── */
+  .divider {
+    width: 1px;
+    flex-shrink: 0;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      color-mix(in srgb, var(--c-p1) 60%, var(--c-gold)) 15%,
+      var(--c-gold) 50%,
+      color-mix(in srgb, var(--c-p3) 60%, var(--c-gold)) 85%,
+      transparent 100%
+    );
+    position: relative;
+    z-index: 5;
+  }
+
+  .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 6px; height: 6px;
+    background: var(--c-gold);
+    box-shadow: 0 0 8px var(--c-gold);
+  }
+
+  /* ── RIGHT COLUMN ── */
+  .info-col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .card-header {
+    position: relative;
+    padding: 12px 16px 10px;
+    background: linear-gradient(160deg,
+      color-mix(in srgb, var(--c-p1) 18%, var(--c-surface-head)) 0%,
+      var(--c-surface-head) 100%
+    );
+    flex-shrink: 0;
+  }
+
+  .card-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, var(--c-p1), var(--c-gold), var(--c-p3));
+  }
+
+  .tier-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(212,168,67,.12);
+    border: 1px solid rgba(212,168,67,.4);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--c-gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tier-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--c-gold);
+    box-shadow: 0 0 6px var(--c-gold);
+  }
+
+  .card-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 14px;
+    font-weight: 900;
+    color: var(--c-text);
+    line-height: 1.2;
+    text-shadow: 0 0 20px color-mix(in srgb, var(--c-p1) 50%, transparent);
+  }
+
+  .card-id {
+    font-size: 9px;
+    color: var(--c-dim);
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+
+  .abilities-label {
+    padding: 6px 14px 3px;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--c-gold);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .abilities-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 8px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-mask-image: linear-gradient(180deg, black 80%, transparent 100%);
+    mask-image: linear-gradient(180deg, black 80%, transparent 100%);
+  }
+  .abilities-list::-webkit-scrollbar { display: none; }
+
+  .ability {
+    position: relative;
+    background: var(--c-surface-panel);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 7px;
+    padding: 6px 8px 6px 32px;
+    flex-shrink: 0;
+    transition: background .2s, border-color .2s;
+  }
+
+  .ability:hover {
+    background: rgba(255,255,255,.07);
+    border-color: color-mix(in srgb, var(--c-p3) 35%, rgba(212,168,67,.2));
+  }
+
+  .ability[data-target="self"]  { border-left: 2px solid var(--c-p1); }
+  .ability[data-target="other"] { border-left: 2px solid var(--c-p3); }
+  .ability[data-target="multi"] { border-left: 2px solid color-mix(in srgb, var(--c-p1) 50%, var(--c-p3)); }
+
+  .ability-cost {
+    position: absolute;
+    left: 6px; top: 50%;
+    transform: translateY(-50%);
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+  }
+
+  .ability[data-target="self"]  .ability-cost { background: var(--c-p1); }
+  .ability[data-target="other"] .ability-cost { background: var(--c-p3); }
+  .ability[data-target="multi"] .ability-cost { background: color-mix(in srgb, var(--c-p1) 50%, var(--c-p3)); }
+
+  .ability-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1px;
+  }
+
+  .target-badge {
+    font-size: 7px;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .ability[data-target="self"]  .target-badge {
+    border: 1px solid color-mix(in srgb, var(--c-p1) 50%, transparent);
+  }
+  .ability[data-target="other"] .target-badge {
+    border: 1px solid color-mix(in srgb, var(--c-p3) 50%, transparent);
+  }
+  .ability[data-target="multi"] .target-badge {
+    border: 1px solid color-mix(in srgb, var(--c-gold) 45%, transparent);
+  }
+
+  .ability-name {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    color: var(--c-text);
+    letter-spacing: .5px;
+    margin-bottom: 1px;
+  }
+
+  .ability-desc {
+    font-size: 9px;
+    color: rgba(232,223,200,.55);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .ability-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    background: rgba(255,255,255,.06);
+    color: var(--c-dim);
+  }
+  .stat-pill.pos  { color: #6ed99a; }
+  .stat-pill.neg  { color: #e06060; }
+  .stat-pill.stun { color: var(--c-gold); background: rgba(212,168,67,.15); }
+  .stat-pill.rng  { color: color-mix(in srgb, var(--c-p1) 85%, #c0e8f8); }
+  .stat-pill.aoe  { color: color-mix(in srgb, var(--c-p3) 85%, #fbbf85); }
+
+  /* ── FOOTER ── */
+  .card-footer {
+    position: relative;
+    padding: 6px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  .card-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, var(--c-p3), var(--c-gold), var(--c-p1));
+  }
+
+  .footer-tier span:first-child {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 7px;
+    color: var(--c-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .footer-tier span:last-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--c-gold);
+  }
+
+  .el-icons { display: flex; gap: 6px; }
+
+  .el-icon {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+  }
+  .el-p1 {
+    background: color-mix(in srgb, var(--c-p1) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c-p1) 50%, transparent);
+  }
+  .el-p3 {
+    background: color-mix(in srgb, var(--c-p3) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--c-p3) 50%, transparent);
+  }
+
+  .footer-id { font-size: 8px; color: var(--c-dim); letter-spacing: 2px; }
+</style>
+
+<div class="card"
+     id="card-{{ character.character_id }}"
+     style="--c-p1: {{ character_profile.colour_primary   | default('#4a6fa5') }};
+            --c-p2: {{ character_profile.colour_secondary | default('#1a1a2e') }};
+            --c-p3: {{ character_profile.colour_tertiary  | default('#c9a84c') }};">
+
+  <div class="card-border"></div>
+  <div class="card-face">
+
+    {# ── LEFT: IMAGE COLUMN ── #}
+    <div class="image-col">
+      <div class="image-col-bg"></div>
+      <div class="image-area">
+        <img class="char-image"
+             src="{{ character_profile.image_url }}"
+             alt="{{ character.name }}"/>
+      </div>
+      <div class="image-sep"></div>
+      <div class="left-desc">{{ character_profile.description }}</div>
+      <div class="image-col-fade"></div>
+      <div class="palette-strip">
+        <div style="background:{{ character_profile.colour_primary   | default('#4a6fa5') }}"></div>
+        <div style="background:{{ character_profile.colour_secondary | default('#1a1a2e') }}"></div>
+        <div style="background:{{ character_profile.colour_tertiary  | default('#c9a84c') }}"></div>
+        <div style="background:#d4a843"></div>
+        <div style="background:#e8dfc8"></div>
+      </div>
+    </div>
+
+    {# ── VERTICAL DIVIDER ── #}
+    <div class="divider"></div>
+
+    {# ── RIGHT: INFO COLUMN ── #}
+    <div class="info-col">
+
+      <div class="card-header">
+        <div class="tier-badge">
+          <div class="tier-dot"></div>
+          {{ powerscale.label | upper | replace("_", "-") }}
+          &nbsp;·&nbsp;
+          {{ powerscale.name }}
+        </div>
+        <div class="card-name">{{ character.name }}</div>
+        <div class="card-id">ID #{{ character.character_id }}&nbsp;·&nbsp;PAGE #{{ character.page_id }}</div>
+      </div>
+
+      <div class="abilities-label">Special Abilities</div>
+      <div class="abilities-list">
+        {% for ab in special_abilities %}
+        <div class="ability" data-target="{{ ab.target.value }}">
+          <div class="ability-cost">{{ ab.cost }}</div>
+          <div class="ability-header">
+            <div class="ability-name">{{ ab.name }}</div>
+            <div class="target-badge">
+              {%- if ab.target.value == 'self' -%}Self
+              {%- elif ab.target.value == 'other' -%}Target
+              {%- else -%}Multi
+              {%- endif -%}
+            </div>
+          </div>
+          <div class="ability-desc">{{ ab.description }}</div>
+          <div class="ability-stats">
+            {% if ab.health_add != 0 %}
+              <span class="stat-pill {{ 'pos' if ab.health_add > 0 else 'neg' }}">♥ {{ '+' if ab.health_add > 0 }}{{ ab.health_add }} HP</span>
+            {% endif %}
+            {% if ab.defense_add != 0 %}
+              <span class="stat-pill {{ 'pos' if ab.defense_add > 0 else 'neg' }}">🛡 {{ '+' if ab.defense_add > 0 }}{{ ab.defense_add }} DEF</span>
+            {% endif %}
+            {% if ab.movement_add != 0 %}
+              <span class="stat-pill {{ 'pos' if ab.movement_add > 0 else 'neg' }}">⚡ {{ '+' if ab.movement_add > 0 }}{{ ab.movement_add }} MOV</span>
+            {% endif %}
+            {% if ab.attack_power_add != 0 %}
+              <span class="stat-pill {{ 'pos' if ab.attack_power_add > 0 else 'neg' }}">⚔ {{ '+' if ab.attack_power_add > 0 }}{{ ab.attack_power_add }} ATK</span>
+            {% endif %}
+            {% if ab.range > 0 %}
+              <span class="stat-pill rng">↗ Range {{ ab.range }}</span>
+            {% endif %}
+            {% if ab.area_of_effect > 1 %}
+              <span class="stat-pill aoe">◎ AoE {{ ab.area_of_effect }}</span>
+            {% endif %}
+            {% if ab.will_stun %}
+              <span class="stat-pill stun">⚡ STUN</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="card-footer">
+        <div class="footer-tier">
+          <span>Power Scale</span>
+          <span>{{ powerscale.name }}</span>
+        </div>
+        <div class="el-icons">
+          <div class="el-icon el-p1">{{ character_profile.emoji_1 }}</div>
+          <div class="el-icon el-p3">{{ character_profile.emoji_2 }}</div>
+        </div>
+        <div class="footer-id">#{{ character.character_id }}</div>
+      </div>
+
+    </div>{# /info-col #}
+
+  </div>
+</div>
+
+<script>
+  /* Immediately Invoked Function Expression (IIFE)
+    Prevents scope pollution if this partial is looped multiple times on one page.
+  */
+  (function() {
+    // Select this specific card using the unique ID
+    const card = document.getElementById('card-{{ character.character_id }}');
+    if (!card) return;
+
+    /* ── Tilt on mousemove strictly within the card ── */
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+      const dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+      card.style.transform = `rotateY(${dx * 7}deg) rotateX(${-dy * 7}deg)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+
+    /* ── Localized Colour helpers ── */
+    function hexToRgb(hex) {
+      hex = hex.trim().replace('#', '').padStart(6, '0');
+      if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+      const n = parseInt(hex, 16);
+      return [n >> 16 & 255, n >> 8 & 255, n & 255];
+    }
+
+    function rgbToHex(r, g, b) {
+      return '#' + [r, g, b].map(c => Math.round(Math.max(0, Math.min(255, c))).toString(16).padStart(2, '0')).join('');
+    }
+
+    function luminance(r, g, b) {
+      return [r, g, b].map(c => {
+        c /= 255;
+        return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      }).reduce((acc, c, i) => acc + c * [0.2126, 0.7152, 0.0722][i], 0);
+    }
+
+    function ensureVisible(hex, minLum = 0.08) {
+      const rgb = hexToRgb(hex);
+      const lum = luminance(...rgb);
+      if (lum >= minLum) return hex;
+      const target = [138, 128, 112];
+      let t = 0;
+      let result = rgb;
+      while (t < 1) {
+        t = Math.min(t + 0.05, 1);
+        result = rgb.map((c, i) => c + (target[i] - c) * t);
+        if (luminance(...result) >= minLum) break;
+      }
+      return rgbToHex(...result);
+    }
+
+    function contrastText(hex) {
+      const [r, g, b] = hexToRgb(hex);
+      return luminance(r, g, b) > 0.179 ? '#07090e' : '#e8dfc8';
+    }
+
+    function blendHex(hex1, hex2, t = 0.5) {
+      const a = hexToRgb(hex1), b = hexToRgb(hex2);
+      return rgbToHex(...a.map((c, i) => c + (b[i] - c) * t));
+    }
+
+    /* ── Apply to this card's abilities ── */
+    const cs = getComputedStyle(card);
+    const p1raw = cs.getPropertyValue('--c-p1').trim() || '#4a6fa5';
+    const p3raw = cs.getPropertyValue('--c-p3').trim() || '#c9a84c';
+    const gold  = '#d4a843';
+    const blendedRaw = blendHex(p1raw, p3raw);
+
+    const p1vis      = ensureVisible(p1raw);
+    const p3vis      = ensureVisible(p3raw);
+    const blendedVis = ensureVisible(blendedRaw);
+
+    // Only select `.ability` elements within this specific card container
+    card.querySelectorAll('.ability').forEach(ab => {
+      const target  = ab.dataset.target;
+      const visCol  = target === 'self' ? p1vis : target === 'other' ? p3vis : blendedVis;
+
+      const bubble = ab.querySelector('.ability-cost');
+      if (bubble) {
+        bubble.style.background = visCol;
+        bubble.style.color = contrastText(visCol);
+      }
+
+      const badge = ab.querySelector('.target-badge');
+      if (badge) {
+        const badgeFill = target === 'multi' ? gold : visCol;
+        badge.style.background = `color-mix(in srgb, ${badgeFill} 18%, transparent)`;
+        badge.style.borderColor = `color-mix(in srgb, ${badgeFill} 55%, transparent)`;
+        badge.style.color = ensureVisible(badgeFill, 0.12);
+      }
+    });
+  })();
+</script>

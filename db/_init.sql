@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS character_profile
     powerscale_id INTEGER,
     colour_primary TEXT,
     colour_secondary TEXT,
-    colour_tertiary TEXT
+    colour_tertiary TEXT,
+    emoji_1 TEXT,
+    emoji_2 TEXT
     );
 
 CREATE TABLE IF NOT EXISTS category

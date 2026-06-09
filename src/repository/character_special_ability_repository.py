@@ -17,7 +17,7 @@ class CharacterSpecialAbilityRepository(RepositoryAbstract):
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             ON CONFLICT (character_id, name) DO NOTHING
             """, [
-                (character_id, a.name, a.description, a.target, a.range, a.area_of_effect, a.health_add, a.defense_add,
+                (character_id, a.name, a.description, a.target.value, a.range, a.area_of_effect, a.health_add, a.defense_add,
                  a.movement_add, a.attack_power_add, a.will_stun, a.cost) for a in
                 special_abilities
             ])

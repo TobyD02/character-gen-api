@@ -59,10 +59,11 @@ class OllamaGenerateCharacterProcess(ProcessAbstract):
         - target: Choose "self" if the ability boosts/heals the user, "other" for a single enemy or ally, or "multi" if it strikes/buffs multiple targets simultaneously.
         - range: Define how far the ability can reach (0 for melee/self/aura, up to 10 for massive intergalactic or long-range sniper distance). If target is "self", range MUST be 0.
         - area_of_effect: Define the splash/blast radius centered on the target. 0 means it hits exactly one point/person. Higher numbers (up to 10) represent massive zone-wide or planet-level crossfire.
-        - health_add: Set between -10 (devastating lethal damage) and 10 (supreme healing/regeneration). 0 means no direct health change.
-        - defense_add: Set between -10 (completely shattering armor/shields) and 10 (becoming near-indestructible). 
-        - movement_add: Set between -10 (stunning, paralyzing, or freezing in place) and 10 (extreme hypersonic or light-speed travel).
-        - attack_power_add: Set between -10 (reduces the targets attack power to the minimum) and 10 (increases the targets attack power to the maximum)
+        - type: Buff it it has positive influence over the target (i.e. increasing their stats), debuff if it has negative effects (decreasing their stats)
+        - health_impact_factor: Represents if the ability will affect the targets hp - in the case of a buff this would heal, in the case of a debuff this would damage.
+        - defense_impact_factor: Represents if the ability will affect the target's defense. In the case of a buff this would increase defense, in the case of a debuff this would reduce defense.
+        - movement_impact_factor: Represents if the ability will affect the target's movement. In the case of a buff this would increase movement speed or mobility, in the case of a debuff this would reduce movement speed or mobility.
+        - attack_power_impact_factor: Represents if the ability will affect the target's attack power. In the case of a buff this would increase attack power, in the case of a debuff this would reduce attack power.
         - will_stun: True if the attack is intended to be used to stun the opponent, or in some way prevent them from taking their next turn. 
         - Narrative Alignment: Ensure the mechanical numbers logically match your written description (e.g., if a Viltrumite punches a hole through a planet, health_add should be deeply negative, range should be 0, and area_of_effect should reflect the collateral damage).
         
@@ -73,11 +74,6 @@ class OllamaGenerateCharacterProcess(ProcessAbstract):
           * Pulling or drawing in targets means disrupting their position -> give a negative `movement_add` to the `other`.
         - Check your target! If target is `SELF`, the values must be positive buffs (+health, +defense, +movement, or +damage_buff_mult). If target is `OTHER` or `MULTI`, negative values represent a powerful attack or debuff.
         
-        RULES FOR SPECIAL ABILITIES 1-4:
-        - special_ability_1 must be an attacking move. This means it must (in some way) apply negative defense, health or both to its target.
-        - special_ability_2 must be a defensive/healing move. This means it must (in some way) apply positive effects to its target.
-        - special_ability_3 can be any type of move - whether that be attacking, defensive/healing, buff/debuff, etc...
-        - special_ability_4 can be any type of move - whether that be attacking, defensive/healing, buff/debuff, etc...
         
         When selecting abilities from the source material, prioritise how iconic/recognisable they are for that
         individual character, as well as diversifying the effects of their abilities. If the source material is heavily 

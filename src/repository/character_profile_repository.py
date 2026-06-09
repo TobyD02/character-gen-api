@@ -18,9 +18,11 @@ class CharacterProfileRepository(RepositoryAbstract):
                 powerscale_id,
                 colour_primary,
                 colour_secondary,
-                colour_tertiary
+                colour_tertiary,
+                emoji_1,
+                emoji_2
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING character_profile_id
             """, (
                 character.character_id,
@@ -29,7 +31,9 @@ class CharacterProfileRepository(RepositoryAbstract):
                 character.powerscale_id,
                 character.colour_primary,
                 character.colour_secondary,
-                character.colour_tertiary
+                character.colour_tertiary,
+                character.emoji_1,
+                character.emoji_2,
             ))
 
         self.connection.commit()
@@ -51,3 +55,11 @@ class CharacterProfileRepository(RepositoryAbstract):
             """, (id,))
         row = self.cursor.fetchone()
         return row if row else None
+
+    def select_all_character_ids(self) -> list[int]:
+        self.cursor.execute("""
+            SELECT character_id 
+            FROM character_profile
+        """)
+
+        return [i["character_id"] for i in self.cursor.fetchall()]

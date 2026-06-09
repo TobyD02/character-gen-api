@@ -11,6 +11,8 @@ class CharacterProfileModel(BaseModel):
     image_url: str
     description: str = ""
     powerscale_id: int|None
+    emoji_1: str
+    emoji_2: str
 
     colour_primary: str|None
     colour_secondary: str|None

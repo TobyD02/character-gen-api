@@ -46,4 +46,6 @@ class CreateCharacterForDbInsertProcess(ProcessAbstract):
             colour_primary=colour_palette["primary"] if "primary" in colour_palette else None,
             colour_secondary=colour_palette["secondary"] if "secondary" in colour_palette else None,
             colour_tertiary=colour_palette["tertiary"] if "tertiary" in colour_palette else None,
+            emoji_1=ollama_character_definition_model.character_emoji_1,
+            emoji_2=ollama_character_definition_model.character_emoji_2,
         )

@@ -2,5 +2,5 @@ GET http://localhost/vegeta
 
 ###
 
-GET http://localhost/character/14831
+GET http://localhost/api/character/14831
 Content-Type: application/json
