@@ -160,6 +160,26 @@ class CharacterService(ServiceAbstract):
 
         return cards
 
+    def get_by_category(self, category_id: int):
+        ids = self.character_profile_repository.get_by_category(category_id)
+
+        print(f"Found {len(ids)} characters", flush=True)
+        cards = []
+        for character_id in ids:
+            cards.append(self.get_or_generate_character(character_id))
+
+        return cards
+
+    def search_by_category(self, query: str):
+        ids = self.character_profile_repository.search_by_category(query)
+
+        print(f"Found {len(ids)} characters", flush=True)
+        cards = []
+        for character_id in ids:
+            cards.append(self.get_or_generate_character(character_id))
+
+        return cards
+
     def _insert_character(
             self,
             character: CharacterModel,

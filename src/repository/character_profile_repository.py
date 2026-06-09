@@ -62,7 +62,7 @@ class CharacterProfileRepository(RepositoryAbstract):
 
         return [i["character_id"] for i in self.cursor.fetchall()]
 
-    def select_random_character_ids(self, limit: int, min_tier: float=1, max_tier: float=12) -> list[int]:
+    def select_random_character_ids(self, limit: int, min_tier: float = 1, max_tier: float = 12) -> list[int]:
         self.cursor.execute(
             """
             SELECT cp.character_id
@@ -76,3 +76,28 @@ class CharacterProfileRepository(RepositoryAbstract):
         )
 
         return [i["character_id"] for i in self.cursor.fetchall()]
+
+    def search_by_category(self, category: str, similarity: float = 0.6) -> list[int]:
+        self.cursor.execute(
+            """
+
+            SELECT DISTINCT cc.character_id, c.name
+            FROM character_category cc
+                     JOIN category c
+                          ON c.category_id = cc.category_id
+            WHERE similarity(c.name, %s) > %s
+            """, (category,similarity))
+
+        return [i["character_id"] for i in self.cursor.fetchall()]
+
+
+    def get_by_category(self, category_id: int) -> list[int]:
+        self.cursor.execute(
+            """
+            SELECT DISTINCT character_id
+            FROM character_category
+            WHERE category_id = %s
+            """, (category_id,))
+
+        return [i["character_id"] for i in self.cursor.fetchall()]
+

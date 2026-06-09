@@ -61,6 +61,12 @@ class IndexController:
     def get_all_characters(self):
         return self.character_service.get_all_characters()
 
+    def get_by_category(self, category_id: int):
+        return self.character_service.get_by_category(category_id)
+
+    def search_by_category(self, query: str):
+        return self.character_service.search_by_category(query)
+
     def render_characters(self, request: Request):
         characters = self.character_service.get_all_characters()
         return templates.TemplateResponse(
