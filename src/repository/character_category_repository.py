@@ -10,7 +10,6 @@ class CharacterCategoryRepository(RepositoryAbstract):
     def insert_many(self, character_id: int, categories: list[str]):
         category_map = self._ensure_categories_exist(categories)
 
-        print(category_map)
 
         self.cursor.executemany(
             """

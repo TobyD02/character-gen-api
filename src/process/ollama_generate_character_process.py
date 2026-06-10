@@ -64,7 +64,6 @@ class OllamaGenerateCharacterProcess(ProcessAbstract):
 
     def execute(self, description: str, categories: list[str]) -> OllamaCharacterDefinitionModel:
         completed_prompt = self.PROMPT_PREFIX + description  # + f"categories: [{','.join(categories)}]"
-        print("Generating...", flush=True)
         response = self.client.chat(
             model=self.model,
             messages=[

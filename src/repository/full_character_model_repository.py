@@ -20,9 +20,7 @@ class FullCharacterModelRepository(RepositoryAbstract):
 
         cp = self.cursor.fetchone()
 
-        print("Got Profile", flush=True)
         character_profile = CharacterProfileModel.model_validate(cp)
-        print(f"Populated Profile {character_profile}", flush=True)
 
         self.cursor.execute(
             """
@@ -35,34 +33,28 @@ class FullCharacterModelRepository(RepositoryAbstract):
             """, (character.character_id,)
         )
 
-        print("Got Categories", flush=True)
         categories = [r["name"] for r in self.cursor.fetchall()]
-        print(f"Populated Categories {categories}", flush=True)
-
 
         self.cursor.execute(
             """
             SELECT *
             FROM powerscale
             WHERE powerscale_id = %s
-            """, (character_profile.powerscale_id, ))
+            """, (character_profile.powerscale_id,))
 
         ps = self.cursor.fetchone()
-        print("Got Powerscale", flush=True)
         powerscale = CharacterPowerScaleModel.model_validate(ps)
-        print(f"Populated Powerscale {powerscale}", flush=True)
 
         self.cursor.execute(
             """
-            SELECT * FROM character_special_ability
+            SELECT *
+            FROM character_special_ability
             WHERE character_id = %s
             """, (character_profile.character_id,)
         )
 
         csa = self.cursor.fetchall()
-        print("Got Special Abilities", flush=True)
         special_abilities = [CharacterSpecialAbilityModel.model_validate(i) for i in csa]
-        print(f"Populated Special Abilities {special_abilities}", flush=True)
 
         return CharacterResponseModel(
             character=character,
@@ -71,3 +63,85 @@ class FullCharacterModelRepository(RepositoryAbstract):
             special_abilities=special_abilities,
             categories=categories,
         )
+
+    def select_all(self):
+        self.cursor.execute(
+            """
+            SELECT json_build_object(
+                           'character', row_to_json(c),
+                           'character_profile', row_to_json(cp),
+                           'powerscale', row_to_json(ps),
+
+                           'categories',
+                           (
+                               SELECT json_agg(cat.name)
+                               FROM character_category cc
+                                        JOIN category cat
+                                             ON cat.category_id = cc.category_id
+                               WHERE cc.character_id = c.character_id
+                           ),
+
+                           'special_abilities',
+                           (
+                               SELECT json_agg(row_to_json(sa))
+                               FROM character_special_ability sa
+                               WHERE sa.character_id = c.character_id
+                           )
+                   ) as character
+            FROM character c
+                     JOIN character_profile cp
+                          ON cp.character_id = c.character_id
+                     JOIN powerscale ps
+                          ON ps.powerscale_id = cp.powerscale_id;
+            """)
+
+        return [CharacterResponseModel.model_validate(i["character"]) for i in self.cursor.fetchall()]
+
+    def select_all_scaled(self):
+        self.cursor.execute(
+            """
+            SELECT json_build_object(
+                           'character', row_to_json(c),
+                           'character_profile', row_to_json(cp),
+                           'powerscale', row_to_json(ps),
+
+                           'categories',
+                           (
+                               SELECT json_agg(cat.name)
+                               FROM character_category cc
+                                        JOIN category cat
+                                             ON cat.category_id = cc.category_id
+                               WHERE cc.character_id = c.character_id
+                           ),
+
+                           'special_abilities',
+                           (
+                               SELECT json_agg(
+                                              json_build_object(
+                                                      'name', sa.name,
+                                                      'description', sa.description,
+                                                      'target', sa.target,
+
+                                                      'range', (sa.range * POWER(ps.tier, 2))::int,
+                                                      'area_of_effect', (sa.area_of_effect * POWER(ps.tier, 2))::int,
+                                                      'health_add', (sa.health_add * POWER(ps.tier, 2))::int,
+                                                      'defense_add', (sa.defense_add * POWER(ps.tier, 2))::int,
+                                                      'movement_add', (sa.movement_add * POWER(ps.tier, 2))::int,
+                                                      'attack_power_add', (sa.attack_power_add * POWER(ps.tier, 2))::int,
+                                                      'will_stun', sa.will_stun,
+                                                      'cost', (sa.cost * POWER(ps.tier, 2))::int
+                                              )
+                                      )
+                               FROM character_special_ability sa
+                               WHERE sa.character_id = c.character_id
+                           )
+                   ) AS character
+            FROM character c
+                     JOIN character_profile cp
+                          ON cp.character_id = c.character_id
+                     JOIN powerscale ps
+                          ON ps.powerscale_id = cp.powerscale_id
+            ORDER BY ps.tier DESC;
+            """)
+
+        return [CharacterResponseModel.model_validate(i["character"]) for i in self.cursor.fetchall()]

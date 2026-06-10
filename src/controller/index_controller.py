@@ -1,6 +1,7 @@
 from src.process.build_character_special_ability_from_generated_process import \
     BuildCharacterSpecialAbilityFromGeneratedProcess
 from src.process.extract_domainant_colour_from_image_url_process import ExtractDominantColourFromImageUrlProcess
+from src.repository.category_repository import CategoryRepository
 from src.repository.character_special_ability_repository import CharacterSpecialAbilityRepository
 from src.model.character_response_model import CharacterResponseModel
 from src.model.death_battle_fandom_query_response_model import DeathBattleFandomQueryResponseModel
@@ -16,6 +17,7 @@ from src.repository.character_profile_repository import CharacterProfileReposito
 from src.repository.character_search_repository import CharacterSearchRepository
 from src.repository.full_character_model_repository import FullCharacterModelRepository
 from src.repository.powerscale_repository import PowerScaleRepository
+from src.service.category_service import CategoryService
 from src.service.character_service import CharacterService
 from src.repository.character_repository import CharacterRepository
 
@@ -42,6 +44,10 @@ class IndexController:
             SearchDeathBattleFandomWikiProcess(),
             FetchAndParseDeathBattleFandomWikiPageContentProcess(),
             ExtractPowerscalingFromDeathBattleQueryResponseProcess(),
+        )
+
+        self.category_service = CategoryService(
+            CategoryRepository()
         )
 
     def get_search(self, character_name: str) -> list[DeathBattleFandomQueryResponseModel] | None:
@@ -102,3 +108,6 @@ class IndexController:
                 "powerscale": i.powerscale,
             } for i in characters]}
         )
+
+    def get_all_categories(self):
+        return self.category_service.get_all_categories()

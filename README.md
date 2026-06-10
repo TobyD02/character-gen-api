@@ -1,3 +1,9 @@
+# BattleBox
+## Doing data dumps from postgres
+```shell
+docker compose exec -it db pg_dump --username=postgres --dbname=app --data-only > db/1_data_dump.sql
+```
+
 ## Todo
 - [ ] Combat Ideas
   - Cannot guarantee that abilities be generated properly - i.e. attacks dont buff enemies, etc...

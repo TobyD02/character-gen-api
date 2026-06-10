@@ -1,10 +1,11 @@
 from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
 
 from src.controller.index_controller import IndexController
-from src.model.death_battle_fandom_query_response_model import DeathBattleFandomQueryResponseModel
-
 
 def register_routes(app: FastAPI):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+
     @app.get("/api/search/{character_name}")
     async def get_search(character_name: str):
         return IndexController().get_search(character_name)
@@ -40,3 +41,7 @@ def register_routes(app: FastAPI):
     @app.get("/characters/roster")
     async def get_character(request: Request):
         return IndexController().render_character_roster(request)
+
+    @app.get("/api/categories")
+    async def get_categories():
+        return IndexController().get_all_categories()

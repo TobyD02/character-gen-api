@@ -15,7 +15,6 @@ class PowerScaleRepository(RepositoryAbstract):
         )
         result = self.cursor.fetchone()
 
-        print(result, flush=True)
 
         if not result:
             return None

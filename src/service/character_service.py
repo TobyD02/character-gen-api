@@ -90,7 +90,7 @@ class CharacterService(ServiceAbstract):
 
         # Check if character profile exists, in which case return it.30259
         try:
-            return self.full_character_model_repository.select(character)
+            return self._scale_character(self.full_character_model_repository.select(character))
         except Exception as e:
             print(f"Failed to find exising character profile, generating new one: {e}", flush=True)
             pass
@@ -140,7 +140,7 @@ class CharacterService(ServiceAbstract):
             color_palette
         )
 
-        return self._insert_character(character, character_profile, powerscaling, model_with_tags, ollama_result, special_ability_models)
+        return self._scale_character(self._insert_character(character, character_profile, powerscaling, model_with_tags, ollama_result, special_ability_models))
 
 
     def get_random_generated(self, count: int):
@@ -153,12 +153,13 @@ class CharacterService(ServiceAbstract):
         return cards
 
     def get_all_characters(self):
-        ids = self.character_profile_repository.select_all_character_ids()
-        cards = []
-        for character_id in ids:
-            cards.append(self.get_or_generate_character(character_id))
-
-        return cards
+        # ids = self.character_profile_repository.select_all_character_ids()
+        # cards = []
+        # for character_id in ids:
+        #     cards.append(self.get_or_generate_character(character_id))
+        #
+        #return cards
+        return self.full_character_model_repository.select_all_scaled()
 
 
     def get_character_roster(self):
@@ -172,7 +173,6 @@ class CharacterService(ServiceAbstract):
     def get_by_category(self, category_id: int):
         ids = self.character_profile_repository.get_by_category(category_id)
 
-        print(f"Found {len(ids)} characters", flush=True)
         cards = []
         for character_id in ids:
             cards.append(self.get_or_generate_character(character_id))
@@ -182,7 +182,6 @@ class CharacterService(ServiceAbstract):
     def search_by_category(self, query: str):
         ids = self.character_profile_repository.search_by_category(query)
 
-        print(f"Found {len(ids)} characters", flush=True)
         cards = []
         for character_id in ids:
             cards.append(self.get_or_generate_character(character_id))
@@ -230,3 +229,15 @@ class CharacterService(ServiceAbstract):
             powerscale=powerscale,
             special_abilities=special_abilities
         )
+
+    def _scale_character(self, character_response_model: CharacterResponseModel) -> CharacterResponseModel:
+        for sa in character_response_model.special_abilities:
+            sa.range = int(sa.range * pow(character_response_model.powerscale.tier, 2))
+            sa.area_of_effect = int(sa.area_of_effect * pow(character_response_model.powerscale.tier, 2))
+            sa.health_add = int(sa.health_add * pow(character_response_model.powerscale.tier, 2))
+            sa.defense_add = int(sa.defense_add * pow(character_response_model.powerscale.tier, 2))
+            sa.movement_add = int(sa.movement_add * pow(character_response_model.powerscale.tier, 2))
+            sa.attack_power_add = int(sa.attack_power_add * pow(character_response_model.powerscale.tier, 2))
+            sa.cost = int(sa.cost * pow(character_response_model.powerscale.tier, 2))
+
+        return character_response_model
